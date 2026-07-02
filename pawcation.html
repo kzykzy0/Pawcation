@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawcation — mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E3A2B;
+    --ink-soft:#4A5F4F;
+    --canvas:#F1EFE2;
+    --paper:#FFFFFF;
+    --line:#DAD5BF;
+    --gold:#E3A23B;
+    --gold-deep:#C67F1E;
+    --moss:#6E8F72;
+    --moss-deep:#4F7256;
+    --stamp:#C1442E;
+    --shadow: 0 18px 40px -18px rgba(30,58,43,0.35);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: radial-gradient(circle at 50% -10%, #EFE6C8 0%, #DCD8C1 45%, #C9C6AE 100%);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    padding:32px 16px 60px;
+  }
+  .lede{
+    text-align:center;
+    max-width:520px;
+    margin-bottom:22px;
+  }
+  .lede .word{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .lede h1{
+    font-family:'Fraunces',serif;
+    font-size:28px;
+    font-weight:600;
+    margin:6px 0 8px;
+  }
+  .lede p{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    margin:0;
+  }
+
+  /* ---------- phone frame ---------- */
+  .device{
+    width:390px;
+    max-width:94vw;
+    height:844px;
+    max-height:88vh;
+    background: linear-gradient(180deg,#152A1E,#0E1C14);
+    border-radius:56px;
+    padding:14px;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255,255,255,0.04);
+    position:relative;
+  }
+  .screen-wrap{
+    width:100%;
+    height:100%;
+    background:var(--canvas);
+    border-radius:42px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .notch{
+    position:absolute;
+    top:14px; left:50%; transform:translateX(-50%);
+    width:120px; height:26px;
+    background:#0E1C14;
+    border-radius:16px;
+    z-index:50;
+  }
+  .statusbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 26px 4px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    flex-shrink:0;
+  }
+  .statusbar .icons{display:flex; gap:5px; align-items:center;}
+
+  /* ---------- top bar / mode switch ---------- */
+  .topbar{
+    padding:6px 20px 14px;
+    flex-shrink:0;
+  }
+  .topbar-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    margin-bottom:12px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Fraunces',serif; font-weight:700; font-size:19px;
+  }
+  .brand .mark{
+    width:30px;height:30px;border-radius:9px;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+  }
+  .backbtn{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .modeswitch{
+    display:flex;
+    background:rgba(30,58,43,0.08);
+    border-radius:999px;
+    padding:3px;
+    gap:2px;
+  }
+  .modeswitch button{
+    border:none; background:transparent;
+    font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600;
+    padding:8px 14px; border-radius:999px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:.2s;
+  }
+  .modeswitch button.active{
+    background:var(--ink); color:var(--canvas);
+  }
+
+  /* ---------- content area ---------- */
+  .content{
+    flex:1;
+    overflow-y:auto;
+    padding:0 20px 100px;
+  }
+  .content::-webkit-scrollbar{display:none;}
+  h2.title{
+    font-family:'Fraunces',serif; font-weight:600; font-size:24px;
+    margin:2px 0 4px;
+  }
+  .subtitle{
+    font-size:13.5px; color:var(--ink-soft); margin:0 0 18px; line-height:1.5;
+  }
+
+  /* ---------- search ---------- */
+  .searchbar{
+    display:flex; align-items:center; gap:10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:12px 14px;
+    margin-bottom:16px;
+  }
+  .searchbar input{
+    border:none; outline:none; background:transparent;
+    font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+    width:100%;
+  }
+  .searchbar input::placeholder{color:#9CA694;}
+
+  .chiprow{display:flex; gap:8px; overflow-x:auto; margin-bottom:18px; padding-bottom:2px;}
+  .chiprow::-webkit-scrollbar{display:none;}
+  .chip{
+    flex-shrink:0;
+    font-size:12.5px; font-weight:600;
+    padding:8px 14px; border-radius:999px;
+    background:var(--paper); border:1px solid var(--line);
+    color:var(--ink-soft);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .chip.active{ background:var(--moss); border-color:var(--moss); color:#fff; }
+
+  /* ---------- sitter / pet cards ---------- */
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:14px;
+    margin-bottom:14px;
+    display:flex; gap:12px;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .card:active{ transform:scale(0.98); }
+  .thumb{
+    width:78px;height:78px;border-radius:14px;flex-shrink:0;
+    background-size:cover; background-position:center;
+    display:flex; align-items:flex-end; justify-content:flex-end;
+  }
+  .card-body{flex:1; min-width:0;}
+  .card-toprow{display:flex; justify-content:space-between; align-items:flex-start; gap:6px;}
+  .card-name{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
+  .rating{
+    display:flex; align-items:center; gap:3px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600;
+    color:var(--gold-deep); flex-shrink:0;
+  }
+  .card-loc{font-size:12.5px; color:var(--ink-soft); margin:2px 0 6px; display:flex; align-items:center; gap:4px;}
+  .tagrow{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:6px;}
+  .tag{
+    font-size:11px; font-weight:600; color:var(--moss-deep);
+    background:rgba(110,143,114,0.14);
+    padding:3px 8px; border-radius:8px;
+  }
+  .price{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13.5px;}
+  .price span{color:var(--ink-soft); font-weight:400; font-size:11.5px;}
+
+  /* ---------- section label ---------- */
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); margin:22px 0 10px;
+  }
+
+  /* ---------- onboarding ---------- */
+  .onboard{
+    height:100%; display:flex; flex-direction:column; justify-content:center;
+    padding:0 22px 60px; text-align:center;
+  }
+  .onboard .mark-lg{
+    width:64px;height:64px;border-radius:20px; background:var(--ink); color:var(--gold);
+    display:flex;align-items:center;justify-content:center; margin:0 auto 18px;
+  }
+  .onboard h1{
+    font-family:'Fraunces',serif; font-size:30px; font-weight:600; margin:0 0 8px; line-height:1.15;
+  }
+  .onboard p.tag{
+    font-size:14px; color:var(--ink-soft); line-height:1.5; margin:0 0 34px;
+    background:transparent; padding:0;
+  }
+  .roleoption{
+    display:flex; align-items:center; gap:14px; text-align:left;
+    background:var(--paper); border:1.5px solid var(--line); border-radius:20px;
+    padding:16px; margin-bottom:14px; cursor:pointer;
+  }
+  .roleoption .ricon{
+    width:48px;height:48px;border-radius:14px; flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .roleoption.owner .ricon{ background:rgba(227,162,59,0.18); color:var(--gold-deep); }
+  .roleoption.sitter .ricon{ background:rgba(110,143,114,0.18); color:var(--moss-deep); }
+  .roleoption strong{font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; display:block;}
+  .roleoption span{font-size:12.5px; color:var(--ink-soft);}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    padding:15px; border-radius:16px; border:none; cursor:pointer; width:100%;
+  }
+  .btn-primary{ background:var(--ink); color:var(--canvas); }
+  .btn-primary:active{ background:#132a1d; }
+  .btn-ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+  /* ---------- detail screen ---------- */
+  .hero-img{
+    height:230px; width:100%; background-size:cover; background-position:center;
+    border-radius:0 0 28px 28px; position:relative; flex-shrink:0;
+  }
+  .hero-fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(14,26,18,0.55) 100%); border-radius:0 0 28px 28px;}
+  .hero-topbtn{
+    position:absolute; top:16px; width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,0.85); backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-caption{
+    position:absolute; bottom:14px; left:20px; right:20px; color:#fff;
+  }
+  .hero-caption h2{font-family:'Fraunces',serif; font-size:22px; font-weight:600; margin:0 0 2px;}
+  .hero-caption .loc{font-size:12.5px; opacity:.9; display:flex; gap:4px; align-items:center;}
+
+  .statrow{ display:flex; gap:10px; margin:16px 0 6px; }
+  .stat{
+    flex:1; background:var(--paper); border:1px solid var(--line); border-radius:14px;
+    padding:10px; text-align:center;
+  }
+  .stat b{display:block; font-family:'Fraunces',serif; font-size:16px;}
+  .stat span{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em;}
+
+  .bio{ font-size:13.5px; line-height:1.6; color:var(--ink-soft); margin:14px 0; }
+
+  .reviewcard{
+    background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:12px 14px; margin-bottom:10px;
+  }
+  .reviewcard .rh{display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;}
+  .reviewcard p{font-size:12.5px; color:var(--ink-soft); margin:0; line-height:1.5;}
+
+  .stickybar{
+    position:sticky; bottom:0; background:linear-gradient(0deg, var(--canvas) 60%, rgba(241,239,226,0));
+    padding:18px 0 6px; display:flex; align-items:center; gap:12px;
+  }
+  .stickybar .pricebox{flex-shrink:0;}
+  .stickybar .pricebox b{font-family:'IBM Plex Mono',monospace; font-size:17px;}
+  .stickybar .pricebox span{display:block; font-size:11px; color:var(--ink-soft);}
+
+  /* ---------- form ---------- */
+  .field{ margin-bottom:14px; }
+  .field label{ font-size:12px; font-weight:600; color:var(--ink-soft); display:block; margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em;}
+  .field input, .field select, .field textarea{
+    width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 13px;
+    font-family:'Inter',sans-serif; font-size:14px; color:var(--ink); background:var(--paper);
+    outline:none;
+  }
+  .field textarea{resize:vertical; min-height:70px;}
+  .field-row{display:flex; gap:10px;}
+  .field-row .field{flex:1;}
+
+  /* ---------- ticket / pawcation pass ---------- */
+  .ticket{
+    background:var(--paper);
+    border-radius:22px;
+    position:relative;
+    box-shadow: 0 14px 30px -14px rgba(30,58,43,0.3);
+    margin-bottom:18px;
+    overflow:visible;
+  }
+  .ticket-top{ padding:20px 20px 16px; position:relative; }
+  .ticket-brand{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+  .ticket-brand .tb-name{ font-family:'Fraunces',serif; font-weight:700; font-size:15px;}
+  .stampbadge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700;
+    color:var(--stamp); border:1.5px solid var(--stamp); border-radius:8px;
+    padding:3px 8px; transform:rotate(-6deg); letter-spacing:.05em;
+  }
+  .ticket-route{ display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .ticket-route .pt{flex:1;}
+  .ticket-route .pt b{display:block; font-family:'IBM Plex Mono',monospace; font-size:19px;}
+  .ticket-route .pt span{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+  .ticket-route .dots{flex:1; border-top:2px dotted var(--line); position:relative; top:-2px;}
+  .ticket-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .ticket-grid div span{display:block; font-size:9.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px;}
+  .ticket-grid div b{font-family:'IBM Plex Mono',monospace; font-size:12.5px;}
+  .tear{
+    position:relative; height:0; border-top:2px dashed var(--line); margin:0 0;
+  }
+  .tear::before, .tear::after{
+    content:''; position:absolute; top:-11px; width:22px; height:22px; border-radius:50%;
+    background: #DCD8C1;
+  }
+  .tear::before{ left:-31px; }
+  .tear::after{ right:-31px; }
+  .ticket-bottom{ padding:16px 20px 20px; display:flex; justify-content:space-between; align-items:center;}
+  .ticket-code{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); letter-spacing:.05em;}
+  .pawstamp{ color:var(--moss-deep); }
+
+  .emptystate{ text-align:center; padding:60px 20px; color:var(--ink-soft); }
+  .emptystate .ico{ margin-bottom:14px; opacity:.5; }
+  .emptystate h3{font-family:'Fraunces',serif; font-size:17px; color:var(--ink); margin:0 0 6px;}
+  .emptystate p{font-size:13px; margin:0;}
+
+  /* ---------- messages ---------- */
+  .msgrow{ display:flex; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--line); cursor:pointer;}
+  .avatar{ width:46px;height:46px;border-radius:50%; background-size:cover; background-position:center; flex-shrink:0; }
+  .msgrow .mbody{flex:1; min-width:0;}
+  .msgrow .mtop{display:flex; justify-content:space-between; font-size:13.5px;}
+  .msgrow .mtop b{font-weight:600;}
+  .msgrow .mtop span{font-size:11px; color:var(--ink-soft);}
+  .msgrow p{margin:2px 0 0; font-size:12.5px; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .unreaddot{width:8px; height:8px; border-radius:50%; background:var(--stamp); flex-shrink:0;}
+
+  /* ---------- profile ---------- */
+  .profile-head{ text-align:center; padding:10px 0 20px; }
+  .profile-head .avatar{ width:84px; height:84px; margin:0 auto 12px; }
+  .profile-head h2{ font-family:'Fraunces',serif; font-size:20px; margin:0 0 2px;}
+  .profile-head p{ font-size:12.5px; color:var(--ink-soft); margin:0;}
+  .profile-row{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--paper); border:1px solid var(--line); padding:15px 16px; border-radius:16px; margin-bottom:10px;
+    font-size:13.5px; font-weight:500; cursor:pointer;
+  }
+  .profile-row .left{display:flex; align-items:center; gap:12px;}
+
+  /* ---------- bottom nav ---------- */
+  .bottomnav{
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    display:flex; padding:10px 10px 22px;
+    border-radius:0 0 42px 42px;
+  }
+  .navitem{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+    color:#A2A891; cursor:pointer; font-size:10.5px; font-weight:600;
+  }
+  .navitem.active{ color:var(--ink); }
+
+  /* toast */
+  .toast{
+    position:absolute; left:20px; right:20px; bottom:100px;
+    background:var(--ink); color:var(--canvas);
+    padding:14px 16px; border-radius:14px;
+    display:flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:500;
+    box-shadow:0 10px 24px rgba(0,0,0,0.25);
+    z-index:80;
+    opacity:0; transform:translateY(10px); pointer-events:none;
+    transition:.25s ease;
+  }
+  .toast.show{ opacity:1; transform:translateY(0); }
+
+  .fade-in{ animation: fadein .25s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- trust banner ---------- */
+  .trustnote{
+    display:flex; gap:10px; background:rgba(110,143,114,0.12);
+    border:1px solid rgba(110,143,114,0.3); border-radius:14px;
+    padding:12px 14px; font-size:12px; line-height:1.5; color:var(--moss-deep);
+    margin-bottom:18px;
+  }
+  .trustnote svg{flex-shrink:0; margin-top:1px;}
+
+  .statuspill{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.03em;
+    padding:6px 12px; border-radius:999px; margin-bottom:18px;
+  }
+  .statuspill.unverified{ background:rgba(193,68,46,0.12); color:var(--stamp); }
+  .statuspill.pending{ background:rgba(227,162,59,0.16); color:var(--gold-deep); }
+  .statuspill.verified{ background:rgba(110,143,114,0.16); color:var(--moss-deep); }
+  .statuspill .dot{ width:6px;height:6px;border-radius:50%; background:currentColor; }
+
+  .upload-tile{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:18px;
+    border:1.5px dashed var(--line);
+    background:var(--paper);
+    background-size:cover; background-position:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; cursor:pointer; overflow:hidden;
+    color:var(--ink-soft);
+  }
+  .upload-tile.filled{ border-style:solid; border-color:var(--moss); }
+  .upload-tile.filled .uplabel{
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(0deg, rgba(14,26,18,0.75), rgba(14,26,18,0));
+    color:#fff; padding:20px 8px 8px; font-size:11px; font-weight:600; text-align:center;
+  }
+  .upload-tile .uplabel-empty{ font-size:11.5px; font-weight:600; text-align:center; padding:0 8px; }
+  .upload-tile input[type=file]{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+  .upload-tile .checkmark{
+    position:absolute; top:8px; right:8px; width:22px;height:22px;border-radius:50%;
+    background:var(--moss); color:#fff; display:flex; align-items:center; justify-content:center;
+  }
+  .upload-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
+  .upload-grid .full{ grid-column:1/-1; }
+
+  /* ---------- credit card visual ---------- */
+  .cc-visual{
+    aspect-ratio:1.586/1;
+    border-radius:20px;
+    background: linear-gradient(135deg, #1E3A2B 0%, #2C4A36 55%, #3E5C45 100%);
+    color:#F1EFE2;
+    padding:20px 22px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; overflow:hidden;
+    margin-bottom:20px;
+    box-shadow: var(--shadow);
+  }
+  .cc-visual::after{
+    content:''; position:absolute; width:200px; height:200px; border-radius:50%;
+    background:radial-gradient(circle, rgba(227,162,59,0.25), transparent 70%);
+    top:-80px; right:-60px;
+  }
+  .cc-top{ display:flex; justify-content:space-between; align-items:flex-start; z-index:1; }
+  .cc-chip{ width:38px; height:28px; border-radius:6px; background:linear-gradient(135deg,#E3A23B,#C67F1E); }
+  .cc-brand{ font-family:'Fraunces',serif; font-weight:600; font-size:14px; opacity:.9; }
+  .cc-number{ font-family:'IBM Plex Mono',monospace; font-size:19px; letter-spacing:.12em; z-index:1; }
+  .cc-bottom{ display:flex; justify-content:space-between; align-items:flex-end; z-index:1; }
+  .cc-bottom div span{ display:block; font-size:8.5px; opacity:.7; text-transform:uppercase; letter-spacing:.08em; margin-bottom:2px;}
+  .cc-bottom div b{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500; }
+
+  .savedcard{
+    display:flex; align-items:center; gap:12px;
+    background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:14px; margin-bottom:10px;
+  }
+  .savedcard .ccmini{
+    width:44px; height:30px; border-radius:6px; flex-shrink:0;
+    background:linear-gradient(135deg, #1E3A2B, #3E5C45);
+    display:flex; align-items:center; justify-content:center; color:var(--gold);
+  }
+  .savedcard b{ font-size:13.5px; display:block; }
+  .savedcard span{ font-size:11.5px; color:var(--ink-soft); }
+  .secure-note{
+    display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--ink-soft);
+    margin-top:2px; margin-bottom:18px;
+  }
+
+  /* ---------- pet grid ---------- */
+  .petgrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  .petcard{
+    background:var(--paper); border:1px solid var(--line); border-radius:18px; overflow:hidden; cursor:pointer;
+  }
+  .petcard .pimg{ height:110px; background-size:cover; background-position:center; }
+  .petcard .pinfo{ padding:10px 12px 12px; }
+  .petcard b{ font-family:'Fraunces',serif; font-size:14px; display:block; }
+  .petcard span{ font-size:11px; color:var(--ink-soft); }
+  .addpet-tile{
+    border:1.5px dashed var(--line); border-radius:18px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    color:var(--ink-soft); font-size:12px; font-weight:600; cursor:pointer;
+    min-height:150px;
+  }
+
+  ::selection{ background:var(--gold); color:#fff; }
+</style>
+</head>
+<body>
+
+<div class="lede">
+  <div class="word">Prototype · mobile-first</div>
+  <h1>Pawcation</h1>
+  <p>A tap-through mock of a two-sided app: people who need a pet minded, and people who want to mind one — for a weekend, a month, or anything between. Tap around inside the frame below.</p>
+</div>
+
+<div class="device">
+  <div class="notch"></div>
+  <div class="screen-wrap">
+    <div class="statusbar">
+      <span id="clock">9:41</span>
+      <div class="icons">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="6" width="3" height="5" rx="0.5" fill="currentColor"/><rect x="4.5" y="4" width="3" height="7" rx="0.5" fill="currentColor"/><rect x="9" y="2" width="3" height="9" rx="0.5" fill="currentColor"/><rect x="13.5" y="0" width="2.5" height="11" rx="0.5" fill="currentColor" opacity="0.35"/></svg>
+        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x="0.5" y="0.5" width="18" height="10" rx="2.5" stroke="currentColor"/><rect x="2" y="2" width="12" height="7" rx="1.2" fill="currentColor"/><rect x="19.5" y="3.5" width="1.6" height="4" rx="0.8" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <div class="topbar" id="topbar"></div>
+    <div class="content" id="content"></div>
+    <div class="bottomnav" id="bottomnav" style="display:none;"></div>
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<script>
+/* ============ ICONS ============ */
+const ICON = {
+  paw:`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="7" cy="8" r="1.8"/><circle cx="12" cy="6" r="1.8"/><circle cx="17" cy="8" r="1.8"/><circle cx="4.5" cy="13" r="1.6"/><path d="M12 12c-3 0-5.5 2.2-5.5 4.8 0 1.9 1.6 2.7 3.1 2.1 1-.4 1.6-.4 2.4-.4s1.4 0 2.4.4c1.5.6 3.1-.2 3.1-2.1 0-2.6-2.5-4.8-5.5-4.8z"/></svg>`,
+  home:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h4v-6h2v6h4a1 1 0 0 0 1-1v-9"/></svg>`,
+  ticket:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a1.6 1.6 0 0 0 0 3v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a1.6 1.6 0 0 0 0-3z"/><path d="M12 6v1.2M12 11v2M12 16.8V18"/></svg>`,
+  chat:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 20l1-5a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></svg>`,
+  user:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.4-3.6 4.3-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/></svg>`,
+  search:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
+  star:`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17.8 5.9 21l1.5-6.8-5.2-4.7 6.9-.7z"/></svg>`,
+  pin:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>`,
+  back:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>`,
+  check:`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`,
+  calendar:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>`,
+  bell:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.5 21a1.7 1.7 0 0 0 3 0"/></svg>`,
+  chevron:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>`,
+  shield:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6z"/></svg>`,
+  logout:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>`,
+  camera:`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>`,
+  idcard:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.6-1.4 1.7-2 3-2s2.4.6 3 2"/><path d="M14 9.5h5M14 13h5"/></svg>`,
+  cardicon:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6 14.5h4"/></svg>`,
+  bank:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M4 10v9M9 10v9M15 10v9M20 10v9"/><path d="M2.5 19.5h19"/></svg>`,
+  plus:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`,
+  trash:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.8A1.8 1.8 0 0 1 10.8 3h2.4A1.8 1.8 0 0 1 15 4.8V7m2 0-.7 12.3a2 2 0 0 1-2 1.7H9.7a2 2 0 0 1-2-1.7L7 7"/></svg>`,
+};
+
+/* ============ MOCK DATA ============ */
+const SITTERS = [
+  {id:'s1', name:'Elif Kaya', loc:'Kadıköy, Istanbul', rating:4.9, reviews:127, price:'₺450', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80', bio:"I've got a big fenced yard and two very lazy cats of my own who mostly ignore guests — perfect if your dog needs space to zoom around, or your cat needs a calm house to hide in for a bit.", tagline:'Big yard, calm house, two resident cats'},
+  {id:'s2', name:'Mert Yıldız', loc:'Beşiktaş, Istanbul', rating:4.8, reviews:94, price:'₺550', pets:['Dogs'], img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80', bio:'Dog walker turned full-time host. Daily walks along the Bosphorus, twice-a-day feeding updates with photos, and a strict no-other-boarders policy — your dog gets the run of the place.', tagline:'Daily Bosphorus walks, photo updates'},
+  {id:'s3', name:'Ayşe Demir', loc:'Üsküdar, Istanbul', rating:5.0, reviews:61, price:'₺350', pets:['Cats','Small pets'], img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', bio:'Quiet apartment, no other animals, no children — genuinely the best fit for shy or elderly cats, rabbits, or anything that startles easily. I work from home so someone is always around.', tagline:'Quiet home, ideal for shy cats'},
+  {id:'s4', name:'Deniz Aksoy', loc:'Şişli, Istanbul', rating:4.7, reviews:203, price:'₺600', pets:['Dogs','Cats','Birds'], img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', bio:'Former vet tech of 6 years — comfortable giving medication, monitoring chronic conditions, and handling senior pets. Also just really like animals more than most people.', tagline:'Former vet tech, meds & senior care ok'},
+];
+
+const REQUESTS = [
+  {id:'r1', pet:'Buddy', type:'Golden Retriever · Dog', owner:'Zeynep Arslan', loc:'Kadıköy, Istanbul', dates:'Jul 10 – Jul 14', pay:'₺1,800 total', img:'https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80', notes:'Buddy is 4, very friendly, needs a short walk twice a day and his evening joint supplement mixed into dinner.'},
+  {id:'r2', pet:'Mia', type:'British Shorthair · Cat', owner:'Can Öztürk', loc:'Beşiktaş, Istanbul', dates:'Jul 20 – Aug 5', pay:'₺5,600 total', img:'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80', notes:'Mia is independent and mostly self-sufficient — mainly need someone to check in, refill food/water, and scoop litter daily.'},
+  {id:'r3', pet:'Rocky', type:'French Bulldog · Dog', owner:'Elif Sarı', loc:'Üsküdar, Istanbul', dates:'Jul 5 – Jul 7', pay:'₺900 total', img:'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=400&q=80', notes:'Short trip, Rocky just needs company — he does not do well fully alone. Brachycephalic, so please keep walks short and cool.'},
+  {id:'r4', pet:'Fındık', type:'Tabby · Cat', owner:'Bora Kılıç', loc:'Şişli, Istanbul', dates:'Aug 1 – Aug 3', pay:'₺700 total', img:'https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&q=80', notes:'First time boarding her, a little anxious. Would love someone patient who can send a photo update.'},
+];
+
+const REVIEWS = [
+  {name:'Zeynep A.', when:'2 weeks ago', text:'Sent photos every single day without me asking. Buddy came home happier than when he left, honestly.'},
+  {name:'Can Ö.', when:'last month', text:'Exactly as described — calm, tidy, clearly good with animals. Would rebook without a second thought.'},
+];
+
+/* ============ STATE ============ */
+let state = {
+  onboarded: false,
+  mode: 'owner', // owner | sitter
+  screen: 'onboard', // onboard | browse | detail | request | ticket | bookings | messages | profile
+  selectedId: null,
+  filter: 'All',
+  bookings: [],
+  form: {},
+  verification: { status:'unverified', selfie:null, idFront:null, idBack:null },
+  cards: [],
+  payout: null,
+  myPets: [],
+};
+
+const app = {
+  content: document.getElementById('content'),
+  topbar: document.getElementById('topbar'),
+  bottomnav: document.getElementById('bottomnav'),
+};
+
+function go(screen, extra={}){
+  state = {...state, screen, ...extra};
+  render();
+  app.content.scrollTop = 0;
+}
+function setMode(mode){
+  state.mode = mode;
+  state.screen = 'browse';
+  state.filter = 'All';
+  render();
+}
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.innerHTML = `<span style="color:var(--gold)">${ICON.check.replace('26','18').replace('26','18')}</span> ${msg}`;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+/* ============ RENDER: TOPBAR ============ */
+function renderTopbar(){
+  if(!state.onboarded){ app.topbar.innerHTML=''; return; }
+  const titles = {
+    browse: state.mode==='owner' ? 'Find a sitter' : 'Pets nearby',
+    detail: null, request: null, ticket: null,
+    bookings: 'Pawcations', messages: 'Messages', profile: 'Profile'
+  };
+  const showBack = ['detail','request','requestDetail','ticket','verify','payment','mypets','addpet'].includes(state.screen);
+  app.topbar.innerHTML = `
+    <div class="topbar-row">
+      ${showBack
+        ? `<div class="backbtn" data-action="back">${ICON.back}</div>`
+        : `<div class="brand"><div class="mark">${ICON.paw}</div>Pawcation</div>`
+      }
+      ${!showBack ? `<div class="backbtn" style="border:none;background:transparent;">${ICON.bell}</div>` : `<div style="width:34px"></div>`}
+    </div>
+    ${!showBack ? `
+    <div class="modeswitch">
+      <button class="${state.mode==='owner'?'active':''}" data-action="mode-owner">I need a sitter</button>
+      <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">I want to sit</button>
+    </div>` : ''}
+  `;
+}
+
+/* ============ RENDER: BOTTOM NAV ============ */
+function renderBottomNav(){
+  if(!state.onboarded){ app.bottomnav.style.display='none'; return; }
+  app.bottomnav.style.display='flex';
+  const items = [
+    {key:'browse', icon:ICON.home, label:'Browse'},
+    {key:'bookings', icon:ICON.ticket, label:'Pawcations'},
+    {key:'messages', icon:ICON.chat, label:'Messages'},
+    {key:'profile', icon:ICON.user, label:'Profile'},
+  ];
+  const activeKey = ['detail','request','ticket'].includes(state.screen) ? null : state.screen;
+  app.bottomnav.innerHTML = items.map(it => `
+    <div class="navitem ${activeKey===it.key?'active':''}" data-action="nav-${it.key}">
+      ${it.icon}<span>${it.label}</span>
+    </div>
+  `).join('');
+}
+
+/* ============ SCREENS ============ */
+function screenOnboard(){
+  return `
+  <div class="onboard fade-in">
+    <div class="mark-lg">${ICON.paw}</div>
+    <h1>A home away<br/>from home.</h1>
+    <p class="tag">Pawcation connects people who need someone to look after a pet with people who genuinely want to. Pick how you're starting out — you can switch anytime.</p>
+    <div class="roleoption owner" data-action="pick-owner">
+      <div class="ricon">${ICON.paw}</div>
+      <div><strong>I need a sitter</strong><span>Going away and need someone to look after your pet</span></div>
+      <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
+    </div>
+    <div class="roleoption sitter" data-action="pick-sitter">
+      <div class="ricon">${ICON.home}</div>
+      <div><strong>I want to sit</strong><span>Open your home and earn by hosting someone's pet</span></div>
+      <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
+    </div>
+  </div>`;
+}
+
+function screenBrowseOwner(){
+  const cats = ['All','Dogs','Cats','Small pets','Birds'];
+  const list = SITTERS.filter(s => state.filter==='All' || s.pets.includes(state.filter));
+  return `
+  <div class="fade-in">
+    <h2 class="title">Find a sitter</h2>
+    <p class="subtitle">Sitters near Istanbul, sorted by rating. Tap a profile to see availability and reviews.</p>
+    <div class="searchbar">${ICON.search}<input placeholder="Neighborhood, dates, pet type…"/></div>
+    <div class="chiprow">
+      ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
+    </div>
+    ${list.map(s=>`
+      <div class="card" data-action="open-sitter-${s.id}">
+        <div class="thumb" style="background-image:url('${s.img}')"></div>
+        <div class="card-body">
+          <div class="card-toprow">
+            <div class="card-name">${s.name}</div>
+            <div class="rating">${ICON.star}${s.rating}</div>
+          </div>
+          <div class="card-loc">${ICON.pin}${s.loc}</div>
+          <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+          <div class="price">${s.price} <span>/ night</span></div>
+        </div>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function screenBrowseSitter(){
+  const cats = ['All','Dog','Cat','Bird'];
+  const list = REQUESTS.filter(r => state.filter==='All' || r.type.includes(state.filter));
+  return `
+  <div class="fade-in">
+    <h2 class="title">Pets nearby</h2>
+    <p class="subtitle">Owners in your area looking for someone to look after their pet. Offer to sit on the ones that fit.</p>
+    <div class="searchbar">${ICON.search}<input placeholder="Dates, neighborhood, pet type…"/></div>
+    <div class="chiprow">
+      ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
+    </div>
+    ${list.map(r=>`
+      <div class="card" data-action="open-request-${r.id}">
+        <div class="thumb" style="background-image:url('${r.img}')"></div>
+        <div class="card-body">
+          <div class="card-toprow">
+            <div class="card-name">${r.pet}</div>
+          </div>
+          <div class="card-loc">${ICON.pin}${r.loc}</div>
+          <div class="tagrow"><span class="tag">${r.type}</span></div>
+          <div class="card-loc" style="margin-top:2px">${ICON.calendar}${r.dates}</div>
+          <div class="price" style="margin-top:6px">${r.pay}</div>
+        </div>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function screenSitterDetail(){
+  const s = SITTERS.find(x=>x.id===state.selectedId);
+  return `
+  <div class="fade-in" style="margin:0 -20px;">
+    <div class="hero-img" style="background-image:url('${s.img}')">
+      <div class="hero-fade"></div>
+      <div class="hero-caption">
+        <h2>${s.name}</h2>
+        <div class="loc">${ICON.pin}${s.loc}</div>
+      </div>
+    </div>
+    <div style="padding:0 20px;">
+      <div class="statrow">
+        <div class="stat"><b>${s.rating}★</b><span>Rating</span></div>
+        <div class="stat"><b>${s.reviews}</b><span>Pawcations</span></div>
+        <div class="stat"><b>${s.price}</b><span>Per night</span></div>
+      </div>
+      <p class="bio">${s.bio}</p>
+      <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+      <div class="section-label">Recent reviews</div>
+      ${REVIEWS.map(r=>`
+        <div class="reviewcard">
+          <div class="rh"><span>${r.name}</span><span style="color:var(--ink-soft);font-weight:400">${r.when}</span></div>
+          <p>${r.text}</p>
+        </div>
+      `).join('')}
+      <div style="height:6px"></div>
+      <div class="stickybar">
+        <div class="pricebox"><b>${s.price}</b><span>per night</span></div>
+        <button class="btn btn-primary" data-action="request-stay-${s.id}">Request this stay</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenRequestForm(){
+  const s = SITTERS.find(x=>x.id===state.selectedId);
+  return `
+  <div class="fade-in">
+    <h2 class="title">Tell ${s.name.split(' ')[0]} about your pet</h2>
+    <p class="subtitle">This goes straight to ${s.name.split(' ')[0]} as a booking request — nothing is confirmed until they accept.</p>
+    <div class="field-row">
+      <div class="field"><label>Pet's name</label><input id="f-petname" placeholder="e.g. Luna" value="Luna"/></div>
+      <div class="field"><label>Pet type</label><select id="f-pettype"><option>Dog</option><option>Cat</option><option>Small pet</option><option>Bird</option></select></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Check-in</label><input id="f-in" type="date" value="2026-07-10"/></div>
+      <div class="field"><label>Check-out</label><input id="f-out" type="date" value="2026-07-14"/></div>
+    </div>
+    <div class="field"><label>Anything ${s.name.split(' ')[0]} should know</label><textarea id="f-notes" placeholder="Feeding schedule, medication, temperament…">Very friendly, needs a short walk morning and evening.</textarea></div>
+    <button class="btn btn-primary" data-action="confirm-request-${s.id}">Send request</button>
+  </div>`;
+}
+
+function screenRequestDetail(){
+  const r = REQUESTS.find(x=>x.id===state.selectedId);
+  return `
+  <div class="fade-in" style="margin:0 -20px;">
+    <div class="hero-img" style="background-image:url('${r.img}')">
+      <div class="hero-fade"></div>
+      <div class="hero-caption">
+        <h2>${r.pet}</h2>
+        <div class="loc">${ICON.pin}${r.loc}</div>
+      </div>
+    </div>
+    <div style="padding:0 20px;">
+      <div class="statrow">
+        <div class="stat"><b>${r.dates.split(' – ')[0]}</b><span>Check-in</span></div>
+        <div class="stat"><b>${r.dates.split(' – ')[1]}</b><span>Check-out</span></div>
+        <div class="stat"><b>${r.pay.split(' ')[0]}</b><span>Total pay</span></div>
+      </div>
+      <div class="tagrow"><span class="tag">${r.type}</span></div>
+      <div class="section-label">From ${r.owner}</div>
+      <p class="bio">${r.notes}</p>
+      <div class="section-label">Owner</div>
+      <div class="reviewcard" style="display:flex;align-items:center;gap:12px;">
+        <div class="avatar" style="background:var(--moss);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;">${r.owner.split(' ').map(n=>n[0]).join('')}</div>
+        <div><b style="display:block;font-size:13.5px;">${r.owner}</b><span style="font-size:12px;color:var(--ink-soft);">Member since 2025</span></div>
+      </div>
+      <div style="height:6px"></div>
+      <div class="stickybar">
+        <div class="pricebox"><b>${r.pay.split(' ')[0]}</b><span>total</span></div>
+        <button class="btn btn-primary" data-action="offer-sit-${r.id}">Offer to sit</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function screenTicket(){
+  const b = state.bookings.find(x=>x.id===state.selectedId) || state.bookings[state.bookings.length-1];
+  if(!b) return screenEmptyBookings();
+  return `
+  <div class="fade-in">
+    <div style="text-align:center;margin:6px 0 18px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">${ICON.check}</div>
+      <h2 class="title" style="margin-bottom:2px;">${b.status==='pending' ? 'Request sent' : 'Confirmed'}</h2>
+      <p class="subtitle">${b.status==='pending' ? "You'll hear back once they respond." : 'This pawcation is booked in.'}</p>
+    </div>
+    ${renderTicketCard(b)}
+    <button class="btn btn-ghost" data-action="nav-bookings">View all pawcations</button>
+  </div>`;
+}
+
+function renderTicketCard(b){
+  return `
+    <div class="ticket">
+      <div class="ticket-top">
+        <div class="ticket-brand">
+          <div class="tb-name">${ICON.paw} Pawcation Pass</div>
+          <div class="stampbadge">${b.status==='pending' ? 'PENDING' : 'CONFIRMED'}</div>
+        </div>
+        <div class="ticket-route">
+          <div class="pt"><b>${b.petName}</b><span>Pet</span></div>
+          <div class="dots"></div>
+          <div class="pt" style="text-align:right"><b>${b.hostName}</b><span>Host</span></div>
+        </div>
+        <div class="ticket-grid">
+          <div><span>Check-in</span><b>${b.checkIn}</b></div>
+          <div><span>Check-out</span><b>${b.checkOut}</b></div>
+          <div><span>Location</span><b>${b.loc}</b></div>
+        </div>
+      </div>
+      <div class="tear"></div>
+      <div class="ticket-bottom">
+        <div class="ticket-code">PASS · ${b.code}</div>
+        <div class="pawstamp">${ICON.paw}</div>
+      </div>
+    </div>
+  `;
+}
+
+function screenEmptyBookings(){
+  return `
+    <div class="emptystate">
+      <div class="ico">${ICON.ticket}</div>
+      <h3>No pawcations yet</h3>
+      <p>${state.mode==='owner' ? 'Request a stay with a sitter and it will show up here.' : 'Offer to sit for a pet and it will show up here.'}</p>
+    </div>`;
+}
+
+function screenBookings(){
+  return `
+  <div class="fade-in">
+    <h2 class="title">Your pawcations</h2>
+    <p class="subtitle">Every request, past and upcoming, kept as a pass.</p>
+    ${state.bookings.length===0 ? screenEmptyBookings() : state.bookings.slice().reverse().map(b=>renderTicketCard(b)).join('')}
+  </div>`;
+}
+
+function screenMessages(){
+  const threads = state.mode==='owner'
+    ? SITTERS.slice(0,3).map((s,i)=>({name:s.name, img:s.img, msg: i===0 ? "Sounds great — I'll take good care of them!" : i===1 ? "Could you send Buddy's vet contact just in case?" : "Looking forward to meeting Luna 🐾", when:['2m','1h','Yesterday'][i], unread:i<2}))
+    : REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i], unread:i<1}));
+  return `
+  <div class="fade-in">
+    <h2 class="title">Messages</h2>
+    <p class="subtitle">Conversations tied to your requests and bookings.</p>
+    ${threads.map(t=>`
+      <div class="msgrow">
+        <div class="avatar" style="background-image:url('${t.img}')"></div>
+        <div class="mbody">
+          <div class="mtop"><b>${t.name}</b><span>${t.when}</span></div>
+          <p>${t.msg}</p>
+        </div>
+        ${t.unread ? '<div class="unreaddot"></div>' : ''}
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function screenProfile(){
+  const isOwner = state.mode==='owner';
+  return `
+  <div class="fade-in">
+    <div class="profile-head">
+      <div class="avatar" style="background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:26px;">Y</div>
+      <h2>You</h2>
+      <p>${isOwner ? 'Pet owner' : 'Sitter'} · Istanbul, Turkey</p>
+    </div>
+    <div class="profile-row" data-action="nav2-verify"><div class="left">${ICON.shield}<span>Verification & trust</span></div>
+      <span style="display:flex;align-items:center;gap:8px;">
+        <span class="statuspill ${state.verification.status}" style="margin:0;padding:3px 9px;font-size:10px;"><span class="dot"></span>${state.verification.status==='unverified' ? 'Not started' : state.verification.status==='pending' ? 'In review' : 'Verified'}</span>
+        ${ICON.chevron}
+      </span>
+    </div>
+    <div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Sitting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-payment"><div class="left">${ICON.cardicon}<span>${isOwner ? 'Payment methods' : 'Payout details'}</span></div>${ICON.chevron}</div>
+    <div class="profile-row"><div class="left">${ICON.bell}<span>Notifications</span></div>${ICON.chevron}</div>
+    <div class="section-label">Switch role</div>
+    <div class="profile-row" data-action="mode-${isOwner ? 'sitter' : 'owner'}"><div class="left">${ICON.home}<span>${isOwner ? 'Start sitting for others' : 'Look for a sitter instead'}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" style="color:var(--stamp);"><div class="left" style="color:var(--stamp);">${ICON.logout}<span>Log out</span></div></div>
+  </div>`;
+}
+
+function screenVerify(){
+  const v = state.verification;
+  const statusLabel = { unverified:'Not started', pending:'In review (usually within 24h)', verified:'Verified' }[v.status];
+  const tile = (key, label) => `
+    <div class="upload-tile ${v[key] ? 'filled' : ''}" style="${v[key] ? `background-image:url('${v[key]}')` : ''}" data-upload="${key}">
+      ${v[key] ? `<div class="checkmark">${ICON.check.replace('26','14').replace('26','14')}</div><div class="uplabel">${label} · added</div>`
+                : `<div style="color:var(--ink-soft)">${ICON.camera}</div><div class="uplabel-empty">${label}</div>`}
+      <input type="file" accept="image/*" data-upload-input="${key}"/>
+    </div>`;
+  return `
+  <div class="fade-in">
+    <h2 class="title">Verification &amp; trust</h2>
+    <p class="subtitle">A quick ID check so both sides can trust who they're handing a pet to. This mock keeps photos in your browser only — nothing is uploaded anywhere.</p>
+    <div class="statuspill ${v.status}"><span class="dot"></span>${statusLabel}</div>
+    <div class="trustnote">${ICON.shield}<span>Your ID photos are only used to confirm your name and face match — they're never shown to other users, only reviewed for verification.</span></div>
+    <div class="section-label">Take a selfie</div>
+    <div class="upload-grid"><div class="full">${tile('selfie','Clear selfie')}</div></div>
+    <div class="section-label">Government ID</div>
+    <div class="upload-grid">
+      ${tile('idFront','Front side')}
+      ${tile('idBack','Back side')}
+    </div>
+    <button class="btn btn-primary" style="margin-top:8px;" data-action="submit-verification" ${(!v.selfie||!v.idFront||!v.idBack) ? 'disabled' : ''}>Submit for review</button>
+  </div>`;
+}
+
+function screenPayment(){
+  const isOwner = state.mode==='owner';
+  if(isOwner){
+    return `
+    <div class="fade-in">
+      <h2 class="title">Payment methods</h2>
+      <p class="subtitle">Used to pay sitters once a stay is confirmed. Card details are only used in this browser session for this mock — never sent or stored anywhere.</p>
+      ${state.cards.length ? state.cards.map((c,i)=>`
+        <div class="savedcard">
+          <div class="ccmini">${ICON.cardicon}</div>
+          <div style="flex:1;"><b>${c.brand} •••• ${c.last4}</b><span>Expires ${c.expiry}</span></div>
+          <div data-action="remove-card-${i}" style="color:var(--stamp);cursor:pointer;">${ICON.trash}</div>
+        </div>
+      `).join('') : ''}
+      <div class="cc-visual" id="cc-preview">
+        <div class="cc-top"><div class="cc-chip"></div><div class="cc-brand">Pawcation</div></div>
+        <div class="cc-number" id="cc-prev-number">•••• •••• •••• ••••</div>
+        <div class="cc-bottom">
+          <div><span>Card holder</span><b id="cc-prev-name">YOUR NAME</b></div>
+          <div><span>Expires</span><b id="cc-prev-exp">MM/YY</b></div>
+        </div>
+      </div>
+      <div class="field"><label>Card number</label><input id="cc-number" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"/></div>
+      <div class="field"><label>Name on card</label><input id="cc-name" placeholder="e.g. Ada Yılmaz"/></div>
+      <div class="field-row">
+        <div class="field"><label>Expiry date</label><input id="cc-exp" placeholder="MM/YY" maxlength="5"/></div>
+        <div class="field"><label>CVV</label><input id="cc-cvv" inputmode="numeric" maxlength="4" placeholder="123" type="password"/></div>
+      </div>
+      <div class="secure-note">${ICON.shield}Encrypted end to end — Pawcation never sees your full card number.</div>
+      <button class="btn btn-primary" data-action="save-card">Save card</button>
+    </div>`;
+  }
+  return `
+    <div class="fade-in">
+      <h2 class="title">Payout details</h2>
+      <p class="subtitle">Where your earnings from hosting get sent after each completed stay.</p>
+      <div class="statrow">
+        <div class="stat"><b>₺2,450</b><span>This month</span></div>
+        <div class="stat"><b>₺11,900</b><span>All time</span></div>
+        <div class="stat"><b>2</b><span>Payouts due</span></div>
+      </div>
+      ${state.payout ? `
+        <div class="savedcard">
+          <div class="ccmini">${ICON.bank}</div>
+          <div style="flex:1;"><b>${state.payout.bankName}</b><span>IBAN ending ${state.payout.ibanLast4}</span></div>
+          <div data-action="remove-payout" style="color:var(--stamp);cursor:pointer;">${ICON.trash}</div>
+        </div>` : ''}
+      <div class="field"><label>Account holder name</label><input id="po-name" placeholder="e.g. Deniz Aksoy"/></div>
+      <div class="field"><label>Bank name</label><input id="po-bank" placeholder="e.g. Garanti BBVA"/></div>
+      <div class="field"><label>IBAN</label><input id="po-iban" placeholder="TR00 0000 0000 0000 0000 0000 00"/></div>
+      <div class="secure-note">${ICON.shield}Payouts are sent within 2 business days of a completed pawcation.</div>
+      <button class="btn btn-primary" data-action="save-payout">Save payout details</button>
+    </div>`;
+}
+
+function screenMyPets(){
+  return `
+  <div class="fade-in">
+    <h2 class="title">My pets</h2>
+    <p class="subtitle">Add a photo and a few details for each pet — sitters see this when you send a request.</p>
+    <div class="petgrid">
+      ${state.myPets.map((p)=>`
+        <div class="petcard">
+          <div class="pimg" style="background-image:url('${p.photo}')"></div>
+          <div class="pinfo"><b>${p.name}</b><span>${p.type}${p.breed ? ' · '+p.breed : ''}</span></div>
+        </div>
+      `).join('')}
+      <div class="addpet-tile" data-action="nav2-addpet">${ICON.plus}Add a pet</div>
+    </div>
+    ${state.myPets.length===0 ? `<p class="subtitle" style="margin-top:2px;">No pets added yet — add one so it's ready to attach to your next request.</p>` : ''}
+  </div>`;
+}
+
+function screenAddPet(){
+  return `
+  <div class="fade-in">
+    <h2 class="title">Add a pet</h2>
+    <p class="subtitle">A good photo helps sitters recognize your pet's personality at a glance.</p>
+    <div class="upload-tile" style="margin-bottom:16px;" data-upload="newPetPhoto">
+      <div style="color:var(--ink-soft)">${ICON.camera}</div><div class="uplabel-empty">Add pet photo</div>
+      <input type="file" accept="image/*" data-upload-input="newPetPhoto"/>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Pet's name</label><input id="pet-name" placeholder="e.g. Luna"/></div>
+      <div class="field"><label>Type</label><select id="pet-type"><option>Dog</option><option>Cat</option><option>Small pet</option><option>Bird</option></select></div>
+    </div>
+    <div class="field"><label>Breed (optional)</label><input id="pet-breed" placeholder="e.g. Golden Retriever"/></div>
+    <div class="field"><label>Notes for sitters</label><textarea id="pet-notes" placeholder="Feeding schedule, medication, temperament…"></textarea></div>
+    <button class="btn btn-primary" data-action="save-pet">Save pet</button>
+  </div>`;
+}
+
+/* ============ MASTER RENDER ============ */
+function render(){
+  renderTopbar();
+  renderBottomNav();
+  let html = '';
+  switch(state.screen){
+    case 'onboard': html = screenOnboard(); break;
+    case 'browse': html = state.mode==='owner' ? screenBrowseOwner() : screenBrowseSitter(); break;
+    case 'detail': html = screenSitterDetail(); break;
+    case 'request': html = screenRequestForm(); break;
+    case 'requestDetail': html = screenRequestDetail(); break;
+    case 'ticket': html = screenTicket(); break;
+    case 'bookings': html = screenBookings(); break;
+    case 'messages': html = screenMessages(); break;
+    case 'profile': html = screenProfile(); break;
+    case 'verify': html = screenVerify(); break;
+    case 'payment': html = screenPayment(); break;
+    case 'mypets': html = screenMyPets(); break;
+    case 'addpet': html = screenAddPet(); break;
+    default: html = screenOnboard();
+  }
+  app.content.innerHTML = html;
+}
+
+/* ============ EVENTS ============ */
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-action]');
+  if(!el) return;
+  const action = el.dataset.action;
+
+  if(action==='pick-owner'){ state.onboarded=true; state.mode='owner'; go('browse'); return; }
+  if(action==='pick-sitter'){ state.onboarded=true; state.mode='sitter'; go('browse'); return; }
+  if(action==='mode-owner'){ setMode('owner'); return; }
+  if(action==='mode-sitter'){ setMode('sitter'); return; }
+  if(action==='back'){
+    if(state.screen==='detail' || state.screen==='requestDetail') go('browse');
+    else if(state.screen==='request') go('detail', {selectedId:state.selectedId});
+    else if(state.screen==='ticket') go('bookings');
+    else if(state.screen==='addpet') go('mypets');
+    else if(['verify','payment','mypets'].includes(state.screen)) go('profile');
+    else go('browse');
+    return;
+  }
+  if(action.startsWith('nav-')){ go(action.replace('nav-','')); return; }
+  if(action.startsWith('filter-')){ state.filter = action.replace('filter-',''); render(); return; }
+  if(action.startsWith('open-sitter-')){ go('detail', {selectedId: action.replace('open-sitter-','')}); return; }
+  if(action.startsWith('open-request-')){ go('requestDetail', {selectedId: action.replace('open-request-','')}); return; }
+  if(action.startsWith('request-stay-')){ go('request', {selectedId: action.replace('request-stay-','')}); return; }
+
+  if(action.startsWith('confirm-request-')){
+    const id = action.replace('confirm-request-','');
+    const s = SITTERS.find(x=>x.id===id);
+    const petName = document.getElementById('f-petname').value || 'Your pet';
+    const checkIn = document.getElementById('f-in').value || '2026-07-10';
+    const checkOut = document.getElementById('f-out').value || '2026-07-14';
+    const booking = {
+      id: 'b'+Date.now(), status:'pending',
+      petName, hostName: s.name, loc: s.loc.split(',')[0],
+      checkIn: fmtDate(checkIn), checkOut: fmtDate(checkOut),
+      code: randCode()
+    };
+    state.bookings.push(booking);
+    toast('Request sent to '+s.name.split(' ')[0]);
+    go('ticket', {selectedId: booking.id});
+    return;
+  }
+
+  if(action.startsWith('offer-sit-')){
+    const id = action.replace('offer-sit-','');
+    const r = REQUESTS.find(x=>x.id===id);
+    const [checkIn, checkOut] = r.dates.split(' – ');
+    const booking = {
+      id: 'b'+Date.now(), status:'confirmed',
+      petName: r.pet, hostName: 'You', loc: r.loc.split(',')[0],
+      checkIn, checkOut, code: randCode()
+    };
+    state.bookings.push(booking);
+    toast('Offer sent to '+r.owner.split(' ')[0]);
+    go('ticket', {selectedId: booking.id});
+    return;
+  }
+
+  if(action==='nav2-verify'){ go('verify'); return; }
+  if(action==='nav2-mypets'){ go('mypets'); return; }
+  if(action==='nav2-payment'){ go('payment'); return; }
+  if(action==='nav2-addpet'){ go('addpet'); return; }
+  if(action==='nav2-noop'){ return; }
+
+  if(action==='submit-verification'){
+    state.verification.status = 'pending';
+    toast('Sent for review — usually done within 24h');
+    go('profile');
+    return;
+  }
+
+  if(action==='save-card'){
+    const number = (document.getElementById('cc-number').value||'').replace(/\s+/g,'');
+    const name = document.getElementById('cc-name').value || 'Card holder';
+    const exp = document.getElementById('cc-exp').value || 'MM/YY';
+    const cvv = document.getElementById('cc-cvv').value;
+    if(number.length < 12 || !cvv){ toast('Check your card details'); return; }
+    state.cards.push({ brand: guessBrand(number), last4: number.slice(-4), expiry: exp, name });
+    toast('Card added');
+    go('payment');
+    return;
+  }
+  if(action && action.startsWith('remove-card-')){
+    const i = parseInt(action.replace('remove-card-',''),10);
+    state.cards.splice(i,1);
+    render();
+    return;
+  }
+
+  if(action==='save-payout'){
+    const name = document.getElementById('po-name').value;
+    const bank = document.getElementById('po-bank').value;
+    const iban = (document.getElementById('po-iban').value||'').replace(/\s+/g,'');
+    if(!name || !bank || iban.length < 6){ toast('Fill in all payout fields'); return; }
+    state.payout = { holder:name, bankName:bank, ibanLast4: iban.slice(-4) };
+    toast('Payout details saved');
+    go('profile');
+    return;
+  }
+  if(action==='remove-payout'){ state.payout = null; render(); return; }
+
+  if(action==='save-pet'){
+    const name = document.getElementById('pet-name').value;
+    const type = document.getElementById('pet-type').value;
+    const breed = document.getElementById('pet-breed').value;
+    const notes = document.getElementById('pet-notes').value;
+    if(!name || !pendingUploads.newPetPhoto){ toast('Add a name and photo first'); return; }
+    state.myPets.push({ name, type, breed, notes, photo: pendingUploads.newPetPhoto });
+    delete pendingUploads.newPetPhoto;
+    toast(name+' added to your pets');
+    go('mypets');
+    return;
+  }
+});
+
+/* ---- file uploads (kept in-memory only, never sent anywhere) ---- */
+const pendingUploads = {};
+document.addEventListener('change', (e) => {
+  const input = e.target.closest('[data-upload-input]');
+  if(!input || !input.files || !input.files[0]) return;
+  const key = input.dataset.uploadInput;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const dataUrl = ev.target.result;
+    if(key === 'newPetPhoto'){
+      pendingUploads.newPetPhoto = dataUrl;
+      const tile = input.closest('.upload-tile');
+      tile.style.backgroundImage = `url('${dataUrl}')`;
+      tile.classList.add('filled');
+      tile.innerHTML = `<div class="checkmark">${ICON.check}</div><div class="uplabel">Photo added</div>` + tile.innerHTML;
+    } else {
+      state.verification[key] = dataUrl;
+      render();
+    }
+  };
+  reader.readAsDataURL(input.files[0]);
+});
+
+/* ---- live credit card preview + simple input formatting ---- */
+document.addEventListener('input', (e) => {
+  if(e.target.id==='cc-number'){
+    let v = e.target.value.replace(/\D/g,'').slice(0,16);
+    e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+    const shown = v.padEnd(16,'•').replace(/(.{4})/g,'$1 ').trim();
+    const el = document.getElementById('cc-prev-number');
+    if(el) el.textContent = v.length ? shown.replace(/\d(?=\d{4})/g,'•') : '•••• •••• •••• ••••';
+  }
+  if(e.target.id==='cc-name'){
+    const el = document.getElementById('cc-prev-name');
+    if(el) el.textContent = (e.target.value || 'YOUR NAME').toUpperCase();
+  }
+  if(e.target.id==='cc-exp'){
+    let v = e.target.value.replace(/[^\d]/g,'').slice(0,4);
+    if(v.length >= 3) v = v.slice(0,2)+'/'+v.slice(2);
+    e.target.value = v;
+    const el = document.getElementById('cc-prev-exp');
+    if(el) el.textContent = v || 'MM/YY';
+  }
+});
+function guessBrand(number){
+  if(/^4/.test(number)) return 'Visa';
+  if(/^5[1-5]/.test(number)) return 'Mastercard';
+  if(/^3[47]/.test(number)) return 'Amex';
+  return 'Card';
+}
+
+function fmtDate(iso){
+  const d = new Date(iso+'T00:00:00');
+  return d.toLocaleDateString('en-US',{month:'short', day:'numeric'});
+}
+function randCode(){
+  return Math.random().toString(36).substring(2,6).toUpperCase() + '-' + Math.floor(1000+Math.random()*9000);
+}
+
+/* clock */
+function tickClock(){
+  const el = document.getElementById('clock');
+  const now = new Date();
+  let h = now.getHours(); const m = now.getMinutes();
+  el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+tickClock(); setInterval(tickClock, 30000);
+
+render();
+</script>
+</body>
+</html>
