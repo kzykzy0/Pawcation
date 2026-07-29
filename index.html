@@ -423,26 +423,66 @@
   .upload-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px; }
   .upload-grid .full{ grid-column:1/-1; }
 
-  /* ---------- credit card visual ---------- */
-  .cc-visual{
-    aspect-ratio:1.586/1;
+  /* ---------- credit card visual: true 3D flip ---------- */
+  .cc-perspective{ position:relative; margin-bottom:20px; perspective:1400px; }
+  .cc-flipper{
+    position:relative; width:100%; aspect-ratio:1.586/1;
+    transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+    transform:rotateY(0deg);
+    transition:transform .8s cubic-bezier(.45,.05,.15,1);
     border-radius:20px;
-    background: linear-gradient(135deg, #1E3A2B 0%, #2C4A36 55%, #3E5C45 100%);
-    color:#F1EFE2;
-    padding:20px 22px;
-    display:flex; flex-direction:column; justify-content:space-between;
-    position:relative; overflow:hidden;
-    margin-bottom:20px;
-    box-shadow: var(--shadow);
   }
-  .cc-visual::after{
+  .cc-flipper.flipped{ transform:rotateY(180deg); }
+
+  .cc-face{
+    position:absolute; inset:0; border-radius:20px;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    overflow:hidden; color:#F1EFE2;
+    box-shadow:0 10px 20px -10px rgba(20,32,24,0.28);
+  }
+  .cc-front{
+    background: linear-gradient(135deg, #1E3A2B 0%, #2C4A36 55%, #3E5C45 100%);
+    padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .cc-front::after{
     content:''; position:absolute; width:200px; height:200px; border-radius:50%;
     background:radial-gradient(circle, rgba(227,162,59,0.25), transparent 70%);
     top:-80px; right:-60px;
   }
+  .cc-back{
+    background: linear-gradient(135deg, #2C4A36 0%, #1E3A2B 100%);
+    transform:rotateY(180deg);
+    display:flex; flex-direction:column;
+  }
+  /* a genuine, physically-positioned right-hand edge — hinges with the card in real 3D
+     space, so it naturally comes into view exactly when the card is edge-on, giving it
+     real thickness instead of vanishing to a flat line */
+  .cc-edge{
+    position:absolute; top:0; right:0; width:9px; height:100%;
+    background:linear-gradient(90deg, rgba(10,18,13,0.95), rgba(80,112,88,0.55));
+    transform-origin:right center;
+    transform:rotateY(90deg);
+    border-radius:0 20px 20px 0;
+  }
+  .cc-stripe{ width:100%; height:38px; background:#14201A; margin-top:20px; }
+  .cc-sigrow{ display:flex; align-items:center; gap:10px; margin:18px 20px 0; }
+  .cc-sigline{
+    flex:1; height:34px; border-radius:4px;
+    background:repeating-linear-gradient(45deg, #E9E5D6, #E9E5D6 3px, #DDD8C4 3px, #DDD8C4 6px);
+  }
+  .cc-cvvbox{
+    background:#F1EFE2; color:#1E3A2B; border-radius:4px;
+    padding:8px 12px; font-family:'IBM Plex Mono',monospace; font-style:italic; font-weight:600; font-size:13px;
+    min-width:44px; text-align:center;
+  }
+  .cc-backbottom{
+    display:flex; align-items:center; gap:8px; margin:14px 20px 0;
+    font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; opacity:.8;
+  }
+  .cc-backbottom b{ font-family:'IBM Plex Mono',monospace; font-size:13px; text-transform:none; letter-spacing:.03em; opacity:1;}
+
   .cc-top{ display:flex; justify-content:space-between; align-items:flex-start; z-index:1; }
   .cc-chip{ width:38px; height:28px; border-radius:6px; background:linear-gradient(135deg,#E3A23B,#C67F1E); }
-  .cc-brand{ font-family:'Fraunces',serif; font-weight:600; font-size:14px; opacity:.9; }
   .cc-scheme{
     font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:11.5px;
     letter-spacing:.06em; text-transform:uppercase;
@@ -459,10 +499,14 @@
     border-top-color:#F1EFE2; animation:spin .7s linear infinite;
   }
   @keyframes spin{ to{ transform:rotate(360deg); } }
-  .cc-number{ font-family:'IBM Plex Mono',monospace; font-size:19px; letter-spacing:.12em; z-index:1; }
+  .cc-number{
+    font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:600; letter-spacing:.12em; z-index:1;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5), 0 -1px 0 rgba(255,255,255,0.15);
+  }
   .cc-bottom{ display:flex; justify-content:space-between; align-items:flex-end; z-index:1; }
   .cc-bottom div span{ display:block; font-size:8.5px; opacity:.7; text-transform:uppercase; letter-spacing:.08em; margin-bottom:2px;}
   .cc-bottom div b{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500; }
+
 
   .savedcard{
     display:flex; align-items:center; gap:12px;
@@ -1025,13 +1069,25 @@ function screenPayment(){
           <div data-action="remove-card-${i}" style="color:var(--stamp);cursor:pointer;">${ICON.trash}</div>
         </div>
       `;}).join('') : ''}
-      <div class="cc-visual" id="cc-preview">
-        <div class="cc-top"><div class="cc-chip"></div><div class="cc-scheme" id="cc-prev-scheme">Card</div></div>
-        <div class="cc-number" id="cc-prev-number">•••• •••• •••• ••••</div>
-        <div class="cc-bankline" id="cc-prev-bank"></div>
-        <div class="cc-bottom">
-          <div><span>Card holder</span><b id="cc-prev-name">YOUR NAME</b></div>
-          <div><span>Expires</span><b id="cc-prev-exp">MM/YY</b></div>
+      <div class="cc-perspective">
+        <div class="cc-flipper" id="cc-flipper">
+          <div class="cc-face cc-front">
+            <div class="cc-top"><div class="cc-chip"></div><div class="cc-scheme" id="cc-prev-scheme">Card</div></div>
+            <div class="cc-number" id="cc-prev-number">•••• •••• •••• ••••</div>
+            <div class="cc-bankline" id="cc-prev-bank"></div>
+            <div class="cc-bottom">
+              <div><span>Card holder</span><b id="cc-prev-name">YOUR NAME</b></div>
+            </div>
+          </div>
+          <div class="cc-face cc-back">
+            <div class="cc-stripe"></div>
+            <div class="cc-sigrow">
+              <div class="cc-sigline"></div>
+              <div class="cc-cvvbox" id="cc-prev-cvv">•••</div>
+            </div>
+            <div class="cc-backbottom"><span>Expires</span><b id="cc-prev-exp">MM/YY</b></div>
+          </div>
+          <div class="cc-edge"></div>
         </div>
       </div>
       <div class="field"><label>Card number</label><input id="cc-number" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"/></div>
@@ -1360,6 +1416,26 @@ document.addEventListener('input', (e) => {
     e.target.value = v;
     const el = document.getElementById('cc-prev-exp');
     if(el) el.textContent = v || 'MM/YY';
+  }
+  if(e.target.id==='cc-cvv'){
+    let v = e.target.value.replace(/\D/g,'').slice(0,4);
+    e.target.value = v;
+    const el = document.getElementById('cc-prev-cvv');
+    if(el) el.textContent = v || '•••';
+  }
+});
+// Flip the card to its back (3D) while the CVV or expiry field has focus, front otherwise
+function setCardFlip(toBack){
+  const flipper = document.getElementById('cc-flipper');
+  if(!flipper) return;
+  flipper.classList.toggle('flipped', toBack);
+}
+document.addEventListener('focusin', (e) => {
+  if(!document.getElementById('cc-flipper')) return;
+  if(e.target.id==='cc-cvv' || e.target.id==='cc-exp'){
+    setCardFlip(true);
+  } else if(e.target.id==='cc-number' || e.target.id==='cc-name'){
+    setCardFlip(false);
   }
 });
 function guessBrand(number){
