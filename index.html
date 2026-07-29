@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pawcation — mock</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1E3A2B">
+<title>Pawcation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -21,88 +24,38 @@
     --shadow: 0 18px 40px -18px rgba(30,58,43,0.35);
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0; height:100%;}
   body{
-    background: radial-gradient(circle at 50% -10%, #EFE6C8 0%, #DCD8C1 45%, #C9C6AE 100%);
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
+    background:var(--canvas);
     font-family:'Inter',sans-serif;
     color:var(--ink);
-    padding:32px 16px 60px;
-  }
-  .lede{
-    text-align:center;
-    max-width:520px;
-    margin-bottom:22px;
-  }
-  .lede .word{
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--gold-deep);
-  }
-  .lede h1{
-    font-family:'Fraunces',serif;
-    font-size:28px;
-    font-weight:600;
-    margin:6px 0 8px;
-  }
-  .lede p{
-    font-size:14px;
-    color:var(--ink-soft);
-    line-height:1.5;
-    margin:0;
+    overflow:hidden;
   }
 
-  /* ---------- phone frame ---------- */
-  .device{
-    width:390px;
-    max-width:94vw;
-    height:844px;
-    max-height:88vh;
-    background: linear-gradient(180deg,#152A1E,#0E1C14);
-    border-radius:56px;
-    padding:14px;
-    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255,255,255,0.04);
-    position:relative;
-  }
+  /* ---------- app shell (fills the real page width) ---------- */
   .screen-wrap{
     width:100%;
-    height:100%;
+    height:100dvh;
     background:var(--canvas);
-    border-radius:42px;
-    overflow:hidden;
     position:relative;
     display:flex;
     flex-direction:column;
+    overflow:hidden;
   }
-  .notch{
-    position:absolute;
-    top:14px; left:50%; transform:translateX(-50%);
-    width:120px; height:26px;
-    background:#0E1C14;
-    border-radius:16px;
-    z-index:50;
+
+  /* content that should stay a comfortable reading/form width even on a wide browser */
+  .narrow{ max-width:640px; margin:0 auto; width:100%; }
+
+  /* card lists: single column on phones, multi-column grid once there's room */
+  .card-grid{ display:block; }
+  @media (min-width:760px){
+    .card-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px; align-items:start; }
+    .card-grid .card{ margin-bottom:0; }
   }
-  .statusbar{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:16px 26px 4px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    font-weight:600;
-    color:var(--ink);
-    flex-shrink:0;
-  }
-  .statusbar .icons{display:flex; gap:5px; align-items:center;}
 
   /* ---------- top bar / mode switch ---------- */
   .topbar{
-    padding:6px 20px 14px;
+    padding:calc(env(safe-area-inset-top, 0px) + 16px) 20px 14px;
     flex-shrink:0;
   }
   .topbar-row{
@@ -151,6 +104,10 @@
     flex:1;
     overflow-y:auto;
     padding:0 20px 100px;
+  }
+  @media (min-width:900px){
+    .content{ padding:0 40px 100px; }
+    .topbar{ padding-left:40px; padding-right:40px; }
   }
   .content::-webkit-scrollbar{display:none;}
   h2.title{
@@ -234,7 +191,7 @@
 
   /* ---------- onboarding ---------- */
   .onboard{
-    height:100%; display:flex; flex-direction:column; justify-content:center;
+    height:100%; max-width:460px; margin:0 auto; display:flex; flex-direction:column; justify-content:center;
     padding:0 22px 60px; text-align:center;
   }
   .onboard .mark-lg{
@@ -396,8 +353,7 @@
     position:absolute; bottom:0; left:0; right:0;
     background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
     border-top:1px solid var(--line);
-    display:flex; padding:10px 10px 22px;
-    border-radius:0 0 42px 42px;
+    display:flex; padding:10px 10px calc(env(safe-area-inset-bottom, 0px) + 10px);
   }
   .navitem{
     flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
@@ -487,6 +443,22 @@
   .cc-top{ display:flex; justify-content:space-between; align-items:flex-start; z-index:1; }
   .cc-chip{ width:38px; height:28px; border-radius:6px; background:linear-gradient(135deg,#E3A23B,#C67F1E); }
   .cc-brand{ font-family:'Fraunces',serif; font-weight:600; font-size:14px; opacity:.9; }
+  .cc-scheme{
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:11.5px;
+    letter-spacing:.06em; text-transform:uppercase;
+    border-radius:6px; padding:4px 9px;
+    background:rgba(241,239,226,0.16); color:#F1EFE2;
+    transition:background .2s;
+  }
+  .cc-bankline{
+    font-family:'Inter',sans-serif; font-size:11px; opacity:.75; margin-top:4px;
+    display:flex; align-items:center; gap:5px; min-height:15px;
+  }
+  .cc-bankline .spinner{
+    width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(241,239,226,0.4);
+    border-top-color:#F1EFE2; animation:spin .7s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
   .cc-number{ font-family:'IBM Plex Mono',monospace; font-size:19px; letter-spacing:.12em; z-index:1; }
   .cc-bottom{ display:flex; justify-content:space-between; align-items:flex-end; z-index:1; }
   .cc-bottom div span{ display:block; font-size:8.5px; opacity:.7; text-transform:uppercase; letter-spacing:.08em; margin-bottom:2px;}
@@ -501,6 +473,7 @@
     width:44px; height:30px; border-radius:6px; flex-shrink:0;
     background:linear-gradient(135deg, #1E3A2B, #3E5C45);
     display:flex; align-items:center; justify-content:center; color:var(--gold);
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:9.5px; color:#fff; letter-spacing:.02em;
   }
   .savedcard b{ font-size:13.5px; display:block; }
   .savedcard span{ font-size:11.5px; color:var(--ink-soft); }
@@ -511,6 +484,9 @@
 
   /* ---------- pet grid ---------- */
   .petgrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+  @media (min-width:760px){
+    .petgrid{ grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); }
+  }
   .petcard{
     background:var(--paper); border:1px solid var(--line); border-radius:18px; overflow:hidden; cursor:pointer;
   }
@@ -526,32 +502,83 @@
   }
 
   ::selection{ background:var(--gold); color:#fff; }
+
+  /* ---------- loading screen ---------- */
+  .loader{
+    position:fixed; inset:0; z-index:1000;
+    background: linear-gradient(180deg,#1E3A2B, #16291D);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:26px;
+    transition: opacity .5s ease, visibility .5s ease;
+  }
+  .loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:700; font-size:22px; color:var(--canvas);
+  }
+  .loader-brand .mk{
+    width:38px; height:38px; border-radius:11px; background:var(--gold);
+    display:flex; align-items:center; justify-content:center; color:var(--ink);
+  }
+  .pawtrack{
+    position:relative;
+    width:210px; height:64px;
+  }
+  .pawstep{
+    position:absolute; top:50%; left:0;
+    width:26px; height:26px;
+    color:var(--gold);
+    opacity:0;
+    transform: translate(0,-50%) scale(.4);
+    animation: pawpop 1.8s ease-in-out infinite;
+  }
+  .pawstep svg{ width:100%; height:100%; display:block; }
+  .pawstep:nth-child(odd){ top:38%; }
+  .pawstep:nth-child(even){ top:62%; }
+  .pawstep:nth-child(1){ left:0%;  animation-delay:0.00s; }
+  .pawstep:nth-child(2){ left:16%; animation-delay:0.18s; }
+  .pawstep:nth-child(3){ left:32%; animation-delay:0.36s; }
+  .pawstep:nth-child(4){ left:48%; animation-delay:0.54s; }
+  .pawstep:nth-child(5){ left:64%; animation-delay:0.72s; }
+  .pawstep:nth-child(6){ left:80%; animation-delay:0.90s; }
+  @keyframes pawpop{
+    0%{   opacity:0;   transform:translate(0,-50%) scale(.4) rotate(-8deg); }
+    18%{  opacity:1;   transform:translate(0,-50%) scale(1)  rotate(0deg); }
+    55%{  opacity:1;   transform:translate(0,-50%) scale(1)  rotate(0deg); }
+    80%{  opacity:0;   transform:translate(0,-50%) scale(.85) rotate(4deg); }
+    100%{ opacity:0; }
+  }
+  .loader-tag{
+    font-family:'Inter',sans-serif; font-size:12.5px; color:rgba(241,239,226,0.65);
+    letter-spacing:.02em;
+  }
 </style>
 </head>
 <body>
 
-<div class="lede">
-  <div class="word">Prototype · mobile-first</div>
-  <h1>Pawcation</h1>
-  <p>A tap-through mock of a two-sided app: people who need a pet minded, and people who want to mind one — for a weekend, a month, or anything between. Tap around inside the frame below.</p>
+<div class="loader" id="loader">
+  <div class="loader-brand">
+    <div class="mk">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="7" cy="8" r="1.8"/><circle cx="12" cy="6" r="1.8"/><circle cx="17" cy="8" r="1.8"/><circle cx="4.5" cy="13" r="1.6"/><path d="M12 12c-3 0-5.5 2.2-5.5 4.8 0 1.9 1.6 2.7 3.1 2.1 1-.4 1.6-.4 2.4-.4s1.4 0 2.4.4c1.5.6 3.1-.2 3.1-2.1 0-2.6-2.5-4.8-5.5-4.8z"/></svg>
+    </div>
+    Pawcation
+  </div>
+  <div class="pawtrack">
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+    <div class="pawstep"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.3"/><circle cx="12" cy="5.3" r="2.3"/><circle cx="17" cy="8" r="2.3"/><circle cx="4" cy="13.5" r="2"/><path d="M12 12.2c-3.4 0-6.2 2.4-6.2 5.3 0 2.1 1.8 3 3.5 2.3 1.1-.4 1.8-.4 2.7-.4s1.6 0 2.7.4c1.7.7 3.5-.2 3.5-2.3 0-2.9-2.8-5.3-6.2-5.3z"/></svg></div>
+  </div>
+  <div class="loader-tag">Fetching the leash…</div>
 </div>
 
-<div class="device">
-  <div class="notch"></div>
-  <div class="screen-wrap">
-    <div class="statusbar">
-      <span id="clock">9:41</span>
-      <div class="icons">
-        <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="6" width="3" height="5" rx="0.5" fill="currentColor"/><rect x="4.5" y="4" width="3" height="7" rx="0.5" fill="currentColor"/><rect x="9" y="2" width="3" height="9" rx="0.5" fill="currentColor"/><rect x="13.5" y="0" width="2.5" height="11" rx="0.5" fill="currentColor" opacity="0.35"/></svg>
-        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"><rect x="0.5" y="0.5" width="18" height="10" rx="2.5" stroke="currentColor"/><rect x="2" y="2" width="12" height="7" rx="1.2" fill="currentColor"/><rect x="19.5" y="3.5" width="1.6" height="4" rx="0.8" fill="currentColor"/></svg>
-      </div>
-    </div>
-
-    <div class="topbar" id="topbar"></div>
-    <div class="content" id="content"></div>
-    <div class="bottomnav" id="bottomnav" style="display:none;"></div>
-    <div class="toast" id="toast"></div>
-  </div>
+<div class="screen-wrap">
+  <div class="topbar" id="topbar"></div>
+  <div class="content" id="content"></div>
+  <div class="bottomnav" id="bottomnav" style="display:none;"></div>
+  <div class="toast" id="toast"></div>
 </div>
 
 <script>
@@ -713,6 +740,7 @@ function screenBrowseOwner(){
     <div class="chiprow">
       ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
     </div>
+    <div class="card-grid">
     ${list.map(s=>`
       <div class="card" data-action="open-sitter-${s.id}">
         <div class="thumb" style="background-image:url('${s.img}')"></div>
@@ -727,6 +755,7 @@ function screenBrowseOwner(){
         </div>
       </div>
     `).join('')}
+    </div>
   </div>`;
 }
 
@@ -741,6 +770,7 @@ function screenBrowseSitter(){
     <div class="chiprow">
       ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
     </div>
+    <div class="card-grid">
     ${list.map(r=>`
       <div class="card" data-action="open-request-${r.id}">
         <div class="thumb" style="background-image:url('${r.img}')"></div>
@@ -755,6 +785,7 @@ function screenBrowseSitter(){
         </div>
       </div>
     `).join('')}
+    </div>
   </div>`;
 }
 
@@ -769,7 +800,7 @@ function screenSitterDetail(){
         <div class="loc">${ICON.pin}${s.loc}</div>
       </div>
     </div>
-    <div style="padding:0 20px;">
+    <div style="padding:0 20px;" class="narrow">
       <div class="statrow">
         <div class="stat"><b>${s.rating}★</b><span>Rating</span></div>
         <div class="stat"><b>${s.reviews}</b><span>Pawcations</span></div>
@@ -796,7 +827,7 @@ function screenSitterDetail(){
 function screenRequestForm(){
   const s = SITTERS.find(x=>x.id===state.selectedId);
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <h2 class="title">Tell ${s.name.split(' ')[0]} about your pet</h2>
     <p class="subtitle">This goes straight to ${s.name.split(' ')[0]} as a booking request — nothing is confirmed until they accept.</p>
     <div class="field-row">
@@ -823,7 +854,7 @@ function screenRequestDetail(){
         <div class="loc">${ICON.pin}${r.loc}</div>
       </div>
     </div>
-    <div style="padding:0 20px;">
+    <div style="padding:0 20px;" class="narrow">
       <div class="statrow">
         <div class="stat"><b>${r.dates.split(' – ')[0]}</b><span>Check-in</span></div>
         <div class="stat"><b>${r.dates.split(' – ')[1]}</b><span>Check-out</span></div>
@@ -850,7 +881,7 @@ function screenTicket(){
   const b = state.bookings.find(x=>x.id===state.selectedId) || state.bookings[state.bookings.length-1];
   if(!b) return screenEmptyBookings();
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <div style="text-align:center;margin:6px 0 18px;">
       <div style="width:52px;height:52px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">${ICON.check}</div>
       <h2 class="title" style="margin-bottom:2px;">${b.status==='pending' ? 'Request sent' : 'Confirmed'}</h2>
@@ -900,7 +931,7 @@ function screenEmptyBookings(){
 
 function screenBookings(){
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <h2 class="title">Your pawcations</h2>
     <p class="subtitle">Every request, past and upcoming, kept as a pass.</p>
     ${state.bookings.length===0 ? screenEmptyBookings() : state.bookings.slice().reverse().map(b=>renderTicketCard(b)).join('')}
@@ -912,7 +943,7 @@ function screenMessages(){
     ? SITTERS.slice(0,3).map((s,i)=>({name:s.name, img:s.img, msg: i===0 ? "Sounds great — I'll take good care of them!" : i===1 ? "Could you send Buddy's vet contact just in case?" : "Looking forward to meeting Luna 🐾", when:['2m','1h','Yesterday'][i], unread:i<2}))
     : REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i], unread:i<1}));
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <h2 class="title">Messages</h2>
     <p class="subtitle">Conversations tied to your requests and bookings.</p>
     ${threads.map(t=>`
@@ -931,7 +962,7 @@ function screenMessages(){
 function screenProfile(){
   const isOwner = state.mode==='owner';
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <div class="profile-head">
       <div class="avatar" style="background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:26px;">Y</div>
       <h2>You</h2>
@@ -962,7 +993,7 @@ function screenVerify(){
       <input type="file" accept="image/*" data-upload-input="${key}"/>
     </div>`;
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <h2 class="title">Verification &amp; trust</h2>
     <p class="subtitle">A quick ID check so both sides can trust who they're handing a pet to. This mock keeps photos in your browser only — nothing is uploaded anywhere.</p>
     <div class="statuspill ${v.status}"><span class="dot"></span>${statusLabel}</div>
@@ -982,19 +1013,22 @@ function screenPayment(){
   const isOwner = state.mode==='owner';
   if(isOwner){
     return `
-    <div class="fade-in">
+    <div class="fade-in narrow">
       <h2 class="title">Payment methods</h2>
       <p class="subtitle">Used to pay sitters once a stay is confirmed. Card details are only used in this browser session for this mock — never sent or stored anywhere.</p>
-      ${state.cards.length ? state.cards.map((c,i)=>`
+      ${state.cards.length ? state.cards.map((c,i)=>{
+        const meta = SCHEME_META[c.brand];
+        return `
         <div class="savedcard">
-          <div class="ccmini">${ICON.cardicon}</div>
-          <div style="flex:1;"><b>${c.brand} •••• ${c.last4}</b><span>Expires ${c.expiry}</span></div>
+          <div class="ccmini" style="${meta ? `background:${meta.bg}` : ''}">${meta ? meta.abbr : ICON.cardicon}</div>
+          <div style="flex:1;"><b>${c.bankName ? c.bankName+' · ' : ''}${c.brand} •••• ${c.last4}</b><span>Expires ${c.expiry}</span></div>
           <div data-action="remove-card-${i}" style="color:var(--stamp);cursor:pointer;">${ICON.trash}</div>
         </div>
-      `).join('') : ''}
+      `;}).join('') : ''}
       <div class="cc-visual" id="cc-preview">
-        <div class="cc-top"><div class="cc-chip"></div><div class="cc-brand">Pawcation</div></div>
+        <div class="cc-top"><div class="cc-chip"></div><div class="cc-scheme" id="cc-prev-scheme">Card</div></div>
         <div class="cc-number" id="cc-prev-number">•••• •••• •••• ••••</div>
+        <div class="cc-bankline" id="cc-prev-bank"></div>
         <div class="cc-bottom">
           <div><span>Card holder</span><b id="cc-prev-name">YOUR NAME</b></div>
           <div><span>Expires</span><b id="cc-prev-exp">MM/YY</b></div>
@@ -1006,12 +1040,12 @@ function screenPayment(){
         <div class="field"><label>Expiry date</label><input id="cc-exp" placeholder="MM/YY" maxlength="5"/></div>
         <div class="field"><label>CVV</label><input id="cc-cvv" inputmode="numeric" maxlength="4" placeholder="123" type="password"/></div>
       </div>
-      <div class="secure-note">${ICON.shield}Encrypted end to end — Pawcation never sees your full card number.</div>
+      <div class="secure-note">${ICON.shield}Encrypted end to end — Pawcation never sees your full card number. Bank name is looked up live from the card's first digits via a public BIN database.</div>
       <button class="btn btn-primary" data-action="save-card">Save card</button>
     </div>`;
   }
   return `
-    <div class="fade-in">
+    <div class="fade-in narrow">
       <h2 class="title">Payout details</h2>
       <p class="subtitle">Where your earnings from hosting get sent after each completed stay.</p>
       <div class="statrow">
@@ -1053,7 +1087,7 @@ function screenMyPets(){
 
 function screenAddPet(){
   return `
-  <div class="fade-in">
+  <div class="fade-in narrow">
     <h2 class="title">Add a pet</h2>
     <p class="subtitle">A good photo helps sitters recognize your pet's personality at a glance.</p>
     <div class="upload-tile" style="margin-bottom:16px;" data-upload="newPetPhoto">
@@ -1171,7 +1205,12 @@ document.addEventListener('click', (e) => {
     const exp = document.getElementById('cc-exp').value || 'MM/YY';
     const cvv = document.getElementById('cc-cvv').value;
     if(number.length < 12 || !cvv){ toast('Check your card details'); return; }
-    state.cards.push({ brand: guessBrand(number), last4: number.slice(-4), expiry: exp, name });
+    state.cards.push({
+      brand: detectScheme(number) || 'Card',
+      bankName: currentCardDetect.bankName || null,
+      last4: number.slice(-4), expiry: exp, name
+    });
+    currentCardDetect = { scheme:null, bankName:null };
     toast('Card added');
     go('payment');
     return;
@@ -1232,14 +1271,84 @@ document.addEventListener('change', (e) => {
   reader.readAsDataURL(input.files[0]);
 });
 
-/* ---- live credit card preview + simple input formatting ---- */
+/* ---- live credit card preview: network detection (local) + bank detection (live BIN lookup) ---- */
+let currentCardDetect = { scheme: null, bankName: null };
+let binLookupTimer = null;
+let binLookupToken = 0;
+
+const SCHEME_PATTERNS = [
+  { name: 'Troy',        test: n => /^9792/.test(n) },
+  { name: 'Amex',        test: n => /^3[47]/.test(n) },
+  { name: 'Diners Club', test: n => /^3(?:0[0-5]|[68])/.test(n) },
+  { name: 'JCB',         test: n => /^35(?:2[89]|[3-8]\d)/.test(n) },
+  { name: 'Discover',    test: n => /^(?:6011|65|64[4-9])/.test(n) },
+  { name: 'Mastercard',  test: n => /^(?:5[1-5]|22[2-9]|2[3-6]\d|27[01]\d|2720)/.test(n) },
+  { name: 'Visa',        test: n => /^4/.test(n) },
+];
+/* Brand badge styling — original color/abbreviation pairing, not a reproduction of any brand's official logo artwork */
+const SCHEME_META = {
+  'Visa':         { bg:'#2C5CE0', abbr:'VISA' },
+  'Mastercard':   { bg:'#D9542F', abbr:'MC'   },
+  'Amex':         { bg:'#2E7D74', abbr:'AMEX' },
+  'Troy':         { bg:'#B8433A', abbr:'TROY' },
+  'Discover':     { bg:'#CB7B1E', abbr:'DISC' },
+  'Diners Club':  { bg:'#5B6B7A', abbr:'DIN'  },
+  'JCB':          { bg:'#3D6B8C', abbr:'JCB'  },
+};
+function detectScheme(number){
+  const hit = SCHEME_PATTERNS.find(p => p.test(number));
+  return hit ? hit.name : null;
+}
+
+function setBankLine(html){
+  const el = document.getElementById('cc-prev-bank');
+  if(el) el.innerHTML = html;
+}
+
+function lookupBank(bin){
+  const myToken = ++binLookupToken;
+  setBankLine(`<span class="spinner"></span> Looking up issuing bank…`);
+  fetch(`https://lookup.binlist.net/${bin}`, { headers: { 'Accept-Version': '3' } })
+    .then(res => { if(!res.ok) throw new Error('not found'); return res.json(); })
+    .then(data => {
+      if(myToken !== binLookupToken) return; // a newer keystroke superseded this lookup
+      const bankName = data.bank && data.bank.name ? data.bank.name : null;
+      const country = data.country && data.country.emoji ? ' ' + data.country.emoji : '';
+      currentCardDetect.bankName = bankName;
+      setBankLine(bankName ? `${bankName}${country}` : 'Bank not identified');
+    })
+    .catch(() => {
+      if(myToken !== binLookupToken) return;
+      currentCardDetect.bankName = null;
+      setBankLine('Bank not identified');
+    });
+}
+
 document.addEventListener('input', (e) => {
   if(e.target.id==='cc-number'){
     let v = e.target.value.replace(/\D/g,'').slice(0,16);
     e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
     const shown = v.padEnd(16,'•').replace(/(.{4})/g,'$1 ').trim();
-    const el = document.getElementById('cc-prev-number');
-    if(el) el.textContent = v.length ? shown.replace(/\d(?=\d{4})/g,'•') : '•••• •••• •••• ••••';
+    const numEl = document.getElementById('cc-prev-number');
+    if(numEl) numEl.textContent = v.length ? shown.replace(/\d(?=\d{4})/g,'•') : '•••• •••• •••• ••••';
+
+    const scheme = detectScheme(v);
+    currentCardDetect.scheme = scheme;
+    const schemeEl = document.getElementById('cc-prev-scheme');
+    if(schemeEl){
+      const meta = SCHEME_META[scheme];
+      schemeEl.textContent = meta ? meta.abbr : 'CARD';
+      schemeEl.style.background = meta ? meta.bg : 'rgba(241,239,226,0.16)';
+    }
+
+    clearTimeout(binLookupTimer);
+    if(v.length >= 6){
+      binLookupTimer = setTimeout(() => lookupBank(v.slice(0,8)), 450);
+    } else {
+      binLookupToken++; // cancel any in-flight lookup
+      currentCardDetect.bankName = null;
+      setBankLine('');
+    }
   }
   if(e.target.id==='cc-name'){
     const el = document.getElementById('cc-prev-name');
@@ -1254,10 +1363,7 @@ document.addEventListener('input', (e) => {
   }
 });
 function guessBrand(number){
-  if(/^4/.test(number)) return 'Visa';
-  if(/^5[1-5]/.test(number)) return 'Mastercard';
-  if(/^3[47]/.test(number)) return 'Amex';
-  return 'Card';
+  return detectScheme(number) || 'Card';
 }
 
 function fmtDate(iso){
@@ -1268,16 +1374,59 @@ function randCode(){
   return Math.random().toString(36).substring(2,6).toUpperCase() + '-' + Math.floor(1000+Math.random()*9000);
 }
 
-/* clock */
-function tickClock(){
-  const el = document.getElementById('clock');
-  const now = new Date();
-  let h = now.getHours(); const m = now.getMinutes();
-  el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-}
-tickClock(); setInterval(tickClock, 30000);
-
 render();
+
+/* ============ SYNTHESIZED "WOOF" SOUND (no audio file — generated in-browser) ============ */
+let barkPlayed = false;
+function playBark(){
+  try{
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctx();
+    const now = ctx.currentTime;
+    function woof(startOffset, duration){
+      const bufferSize = Math.floor(ctx.sampleRate * duration);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for(let i=0;i<bufferSize;i++){ data[i] = (Math.random()*2-1) * Math.pow(1 - i/bufferSize, 1.6); }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.Q.value = 0.8;
+      filter.frequency.setValueAtTime(1000, now+startOffset);
+      filter.frequency.exponentialRampToValueAtTime(200, now+startOffset+duration);
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, now+startOffset);
+      gain.gain.exponentialRampToValueAtTime(0.85, now+startOffset+0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now+startOffset+duration);
+      noise.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+      noise.start(now+startOffset);
+      noise.stop(now+startOffset+duration+0.02);
+    }
+    woof(0, 0.16);
+    woof(0.20, 0.13);
+    barkPlayed = true;
+  }catch(e){ /* Web Audio unavailable — fail silently */ }
+}
+
+/* ============ LOADING SCREEN ============ */
+const loaderEl = document.getElementById('loader');
+function hideLoader(){
+  if(!loaderEl) return;
+  loaderEl.classList.add('hide');
+  setTimeout(() => loaderEl.remove(), 550);
+}
+// Don't wait on window 'load' (fonts/images) — on a slow connection that event can be
+// delayed a long time or never fire cleanly, which would leave the loader stuck.
+// The app itself doesn't depend on those resources, so we just run on a plain timer.
+playBark(); // will silently fail if the browser blocks autoplay audio before any user gesture
+setTimeout(hideLoader, 1900);
+// Absolute safety net: no matter what happens above, never let the loader stay up more than 5s
+setTimeout(hideLoader, 5000);
+// Fallback: if autoplay was blocked, play the bark on the visitor's first tap/click anywhere
+document.addEventListener('click', function firstGestureBark(){
+  if(!barkPlayed) playBark();
+}, { once:true });
 </script>
 </body>
 </html>
