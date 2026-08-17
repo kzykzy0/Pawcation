@@ -230,6 +230,50 @@
   .btn-ghost{ background:transparent; color:var(--ink); border:1.5px solid var(--line); }
   .btn:disabled{ opacity:.45; cursor:not-allowed; }
 
+  /* ---------- consent checkboxes ---------- */
+  .consent-row{
+    display:flex; align-items:flex-start; gap:10px;
+    background:var(--paper); border:1px solid var(--line); border-radius:14px;
+    padding:13px 14px; margin-bottom:10px; cursor:pointer;
+  }
+  .consent-box{
+    width:20px; height:20px; border-radius:6px; flex-shrink:0; margin-top:1px;
+    border:1.5px solid var(--line); background:var(--paper);
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    transition:.15s;
+  }
+  .consent-row.checked .consent-box{ background:var(--moss); border-color:var(--moss); }
+  .consent-row p{ font-size:12px; line-height:1.5; color:var(--ink-soft); margin:0; }
+  .consent-row a{ color:var(--ink); text-decoration:underline; font-weight:600; cursor:pointer; }
+
+  /* ---------- policy document viewer ---------- */
+  .policy-updated{ font-size:11px; color:var(--ink-soft); margin:-8px 0 18px; font-style:italic; }
+  .policy-block h3{ font-family:'Fraunces',serif; font-size:15px; font-weight:600; color:var(--ink); margin:20px 0 8px; }
+  .policy-block p{ font-size:13px; line-height:1.65; color:#333; margin:0 0 12px; }
+  .policy-block ul{ margin:0 0 14px; padding-left:20px; }
+  .policy-block li{ font-size:13px; line-height:1.6; color:#333; margin-bottom:8px; }
+  .policy-table{ width:100%; border-collapse:collapse; margin:6px 0 16px; font-size:12px; }
+  .policy-table th{ background:var(--ink); color:#fff; text-align:left; padding:8px 10px; font-size:11px; }
+  .policy-table td{ padding:8px 10px; border-bottom:1px solid var(--line); color:#333; }
+  .policyhub-row{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--paper); border:1px solid var(--line); border-radius:14px;
+    padding:14px 16px; margin-bottom:10px; cursor:pointer; font-size:13.5px; font-weight:500;
+  }
+  .doc-row{
+    display:flex; align-items:center; gap:14px;
+    background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:14px 16px; margin-bottom:10px; text-decoration:none;
+  }
+  .doc-icon{
+    width:42px; height:42px; border-radius:11px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:#fff;
+  }
+  .doc-info{ flex:1; min-width:0; }
+  .doc-info b{ display:block; font-size:13.5px; color:var(--ink); font-family:'Fraunces',serif; font-weight:600; }
+  .doc-info span{ font-size:11.5px; color:var(--ink-soft); }
+  .doc-download{ color:var(--ink-soft); flex-shrink:0; }
+
   /* ---------- detail screen ---------- */
   .hero-img{
     height:230px; width:100%; background-size:cover; background-position:center;
@@ -657,6 +701,10 @@ const ICON = {
   bank:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M4 10v9M9 10v9M15 10v9M20 10v9"/><path d="M2.5 19.5h19"/></svg>`,
   plus:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`,
   trash:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4.8A1.8 1.8 0 0 1 10.8 3h2.4A1.8 1.8 0 0 1 15 4.8V7m2 0-.7 12.3a2 2 0 0 1-2 1.7H9.7a2 2 0 0 1-2-1.7L7 7"/></svg>`,
+  download:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>`,
+  filesheet:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M9 9v12"/></svg>`,
+  fileslide:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+  filedoc:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4M8 13h8M8 17h5"/></svg>`,
 };
 
 /* ============ MOCK DATA ============ */
@@ -679,6 +727,113 @@ const REVIEWS = [
   {name:'Can Ö.', when:'last month', text:'Exactly as described — calm, tidy, clearly good with animals. Would rebook without a second thought.'},
 ];
 
+/* ============ POLICY CONTENT (in-app legal documents) ============ */
+const POLICIES = {
+  terms: { title:'Kullanım Şartları', updated:'Son güncelleme: bu sürüm bir taslaktır', blocks:[
+    {p:'Pawcation, evcil hayvan sahipleri ("Sahip") ile evcil hayvan bakıcılığı yapmak isteyen kişileri ("Bakıcı") bir araya getiren bir aracı platformdur. Platform, Sahip ile Bakıcı arasında kurulan hizmet ilişkisinin bir tarafı değildir; bakıcılık hizmetini bizzat sunmaz.'},
+    {h:'Hesap Oluşturma ve Doğrulama'},
+    {li:['Kullanıcılar doğru ve güncel bilgi vermekle yükümlüdür.','18 yaşından küçük kişiler hesap oluşturamaz.','Bakıcı olarak hizmet verebilmek için kimlik doğrulama zorunludur.']},
+    {h:'Kullanıcı Yükümlülükleri — Sahip'},
+    {li:['Evcil hayvanın sağlık durumu ve davranışsal geçmişi hakkında doğru bilgi vermek','Kararlaştırılan ücreti zamanında ödemek','Acil durum iletişim bilgilerini güncel tutmak']},
+    {h:'Kullanıcı Yükümlülükleri — Bakıcı'},
+    {li:['Emanet edilen evcil hayvana gerekli özeni göstermek','Anlaşılan bakım koşullarına uymak','Herhangi bir sağlık sorununda Sahip\'i derhal bilgilendirmek']},
+    {h:'Ödeme ve Komisyon'},
+    {p:'Platform, gerçekleşen her rezervasyon üzerinden komisyon alır. Ödemeler lisanslı üçüncü taraf ödeme kuruluşları aracılığıyla işlenir; Platform kart bilgilerini saklamaz.'},
+    {h:'Yasaklı Davranışlar'},
+    {li:['Platform dışında ödeme yaparak komisyonu atlatmaya çalışmak','Yanlış veya yanıltıcı bilgi paylaşmak','Taciz edici, ayrımcı veya tehdit içeren davranışlarda bulunmak','Hesabını başkasına devretmek veya kiralamak']},
+    {h:'Uygulanacak Hukuk'},
+    {p:'İşbu Kullanım Şartları Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlıklarda İstanbul Merkez (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.'},
+  ]},
+  liability: { title:'Sorumluluk Reddi Beyanı', updated:'Liability Waiver', blocks:[
+    {p:'Bu beyan, Platform\'u kullanan her Sahip ve Bakıcı için geçerlidir.'},
+    {li:[
+      'Bakıcı, Platform\'un çalışanı, temsilcisi veya acentesi değildir; bağımsız bir üçüncü kişidir.',
+      'Platform; bakım sırasında evcil hayvanın hastalanması, yaralanması, kaybolması, ölümü veya üçüncü kişilere/mala verdiği zararlardan doğrudan sorumlu tutulamaz.',
+      'Sahip ve Bakıcı, Platform\'un bir sigorta şirketi olmadığını ve bakım sürecindeki riskleri bizzat üstlendiklerini kabul eder.',
+      'Taraflara bağımsız bir evcil hayvan sorumluluk sigortası edinmeleri önemle tavsiye edilir.',
+      'Platform, mücbir sebep (doğal afet, salgın hastalık, resmi makam kararları vb.) nedeniyle oluşan aksaklıklardan sorumlu tutulamaz.',
+      'İşbu beyan, tarafların birbirlerine karşı sahip olabileceği yasal hakları ortadan kaldırmaz; yalnızca Platform\'un sorumluluğunun kapsamını belirler.',
+    ]},
+  ]},
+  kvkk: { title:'KVKK Aydınlatma ve Açık Rıza Metni', updated:'6698 Sayılı Kanun uyarınca', blocks:[
+    {h:'Aydınlatma Metni'},
+    {p:'Veri sorumlusu sıfatıyla Pawcation, kimlik bilgileriniz, iletişim bilgileriniz, profil/selfie/kimlik görselleriniz, ödeme bilgileriniz ve evcil hayvanınıza ait bilgileri; hesap oluşturma, kimlik doğrulama, rezervasyon süreci, ödeme işlemleri ve yasal yükümlülüklerin yerine getirilmesi amacıyla işler.'},
+    {p:'Verileriniz; ödeme işlemleri için lisanslı ödeme kuruluşlarına, kimlik doğrulama için ilgili hizmet sağlayıcılara ve yasal zorunluluk hâlinde yetkili kamu kurumlarına aktarılabilir.'},
+    {p:'KVKK m.11 uyarınca verilerinizin işlenip işlenmediğini öğrenme, düzeltilmesini/silinmesini isteme ve zarar hâlinde tazminat talep etme haklarına sahipsiniz.'},
+    {h:'Açık Rıza'},
+    {li:[
+      'Kimlik belgemin ön/arka yüz görüntüsünün kimlik doğrulama amacıyla işlenmesine,',
+      'Selfie fotoğrafımın kimlik belgemdeki fotoğrafla eşleştirilmesine,',
+      'Evcil hayvanıma ait sağlık/davranış bilgilerinin güvenli eşleştirme amacıyla karşı taraf ile paylaşılmasına,',
+    ]},
+    {p:'açık rızam ile onay veriyorum. Bu rızamı istediğim zaman hesap ayarlarımdan geri çekebileceğimi biliyorum.'},
+  ]},
+  health: { title:'Evcil Hayvan Sağlık ve Davranış Beyanı', updated:null, blocks:[
+    {p:'Sahip, rezervasyon talebinde bulunmadan önce aşağıdaki hususları beyan eder:'},
+    {li:[
+      'Evcil hayvanımın insanlara veya diğer hayvanlara yönelik bilinen bir saldırganlık geçmişi yoktur (varsa, notlar bölümünde açıkça belirtilmiştir).',
+      'Evcil hayvanımın temel aşıları (kuduz dahil) güncel ve eksiksizdir.',
+      'Evcil hayvanımın bilinen kronik bir rahatsızlığı veya düzenli ilaç kullanımı varsa, bunu Bakıcı\'ya bildirdim.',
+      'Verdiğim bilgilerin doğruluğundan şahsen sorumluyum; yanlış veya eksik beyan sonucu oluşabilecek zararlardan Platform sorumlu tutulamaz.',
+    ]},
+  ]},
+  vetconsent: { title:'Acil Veteriner Onayı', updated:null, blocks:[
+    {li:[
+      'Bakım süresi boyunca bana makul çabalara rağmen ulaşılamaması ve evcil hayvanımın sağlığının tehlikede olması hâlinde, Bakıcı\'nın en yakın veteriner kliniğine başvurmasını ve gerekli acil müdahalenin yapılmasını onaylıyorum.',
+      'Bu kapsamda oluşacak masrafların, belirttiğim üst sınıra kadar (₺2.000), tarafımca sonradan karşılanacağını kabul ediyorum.',
+      'Üst sınırı aşan durumlarda, mümkünse önce benimle veya belirttiğim acil durum kişisiyle iletişime geçilmesini talep ediyorum.',
+      'Bu onay yalnızca ilgili rezervasyon için geçerlidir ve rezervasyon sona erdiğinde kendiliğinden sona erer.',
+    ]},
+  ]},
+  cancellation: { title:'İptal ve İade Politikası', updated:null, blocks:[
+    {h:'Sahip Tarafından İptal'},
+    {table:[
+      ['Check-in\'den 7+ gün önce','%100 iade'],
+      ['Check-in\'den 3-7 gün önce','%50 iade'],
+      ['Check-in\'den 3 günden az kala','İade yok'],
+      ['Bakıcı tarafından iptal','%100 iade + öncelikli yeni bakıcı önerisi'],
+    ]},
+    {h:'Platform Komisyonu'},
+    {p:'Tam iade yapılan durumlarda Platform komisyonu da iade edilir. Kısmi iade durumlarında, komisyon iade edilen tutarla orantılı olarak geri ödenir.'},
+    {h:'Erken Sonlandırma'},
+    {p:'Rezervasyon başladıktan sonra erken sonlandırma hâlinde, kullanılmayan günler için iade oranı Bakıcı ile Sahip arasında karşılıklı belirlenir; Platform arabuluculuk sağlayabilir ancak taraf değildir.'},
+  ]},
+  disputes: { title:'Anlaşmazlık Çözüm Süreci', updated:null, blocks:[
+    {h:'1. Doğrudan İletişim'},
+    {p:'Taraflar uyuşmazlığı öncelikle Platform içi mesajlaşma üzerinden doğrudan çözmeye çalışmalıdır.'},
+    {h:'2. Platform Desteği'},
+    {p:'Çözülemeyen uyuşmazlıklarda destek ekibine başvurulabilir. Kanıt olarak check-in/check-out fotoğrafları, mesaj geçmişi ve varsa veteriner raporları sunulabilir. Hedef yanıt süresi: 48 saat.'},
+    {h:'3. Resmi Yollar'},
+    {p:'Çözülemeyen uyuşmazlıklarda taraflar Tüketici Hakem Heyetleri, Tüketici Mahkemeleri veya sözleşmede belirtilen tahkim sürecine başvurabilir.'},
+    {h:'Ciddi Zarar / Yaralanma Durumları'},
+    {p:'Evcil hayvanın ciddi yaralanması, hastalanması veya ölmesi gibi durumlar derhal (mümkünse 24 saat içinde) Platform\'a bildirilmelidir.'},
+  ]},
+};
+const POLICY_ORDER = ['terms','liability','kvkk','health','vetconsent','cancellation','disputes'];
+
+const DOCUMENTS = [
+  { file:'pazar-arastirmasi.xlsx', name:'Pazar Araştırması', desc:'Türkiye evcil hayvan pazarı, rakip analizi, kaynaklar', icon:'filesheet', color:'#4F7256' },
+  { file:'finansal-model.xlsx', name:'Finansal Model', desc:'Varsayımlar, rezervasyon projeksiyonu, gelir-gider', icon:'filesheet', color:'#4F7256' },
+  { file:'lansman-sunumu.pptx', name:'Lansman Sunumu', desc:'11 slaytlık pazar ve lansman sunumu', icon:'fileslide', color:'#C67F1E' },
+  { file:'hukuki-metinler.docx', name:'Hukuki Metinler', desc:'KVKK, Kullanım Şartları, Sorumluluk Reddi ve diğerleri', icon:'filedoc', color:'#2C5CE0' },
+];
+
+function screenDocuments(){
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Business documents</h2>
+    <p class="subtitle">Market research, financial model, pitch deck, and legal policies — everything prepared for launch.</p>
+    ${DOCUMENTS.map(d => `
+      <a class="doc-row" href="${d.file}" download>
+        <div class="doc-icon" style="background:${d.color}">${ICON[d.icon]}</div>
+        <div class="doc-info"><b>${d.name}</b><span>${d.desc}</span></div>
+        <div class="doc-download">${ICON.download}</div>
+      </a>
+    `).join('')}
+    <p class="subtitle" style="margin-top:14px;">Tapping a file downloads it directly — these are the same documents prepared alongside this app.</p>
+  </div>`;
+}
+
 /* ============ STATE ============ */
 let state = {
   onboarded: false,
@@ -689,6 +844,9 @@ let state = {
   bookings: [],
   form: {},
   verification: { status:'unverified', selfie:null, idFront:null, idBack:null },
+  consent: { terms:false, kvkk:false, petHealth:false, vetConsent:false },
+  activePolicy: null,
+  policyReturnTo: 'profile',
   cards: [],
   payout: null,
   myPets: [],
@@ -726,7 +884,7 @@ function renderTopbar(){
     detail: null, request: null, ticket: null,
     bookings: 'Pawcations', messages: 'Messages', profile: 'Profile'
   };
-  const showBack = ['detail','request','requestDetail','ticket','verify','payment','mypets','addpet'].includes(state.screen);
+  const showBack = ['detail','request','requestDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents'].includes(state.screen);
   app.topbar.innerHTML = `
     <div class="topbar-row">
       ${showBack
@@ -738,7 +896,7 @@ function renderTopbar(){
     ${!showBack ? `
     <div class="modeswitch">
       <button class="${state.mode==='owner'?'active':''}" data-action="mode-owner">I need a sitter</button>
-      <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">I want to sit</button>
+      <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">I want to host a pet</button>
     </div>` : ''}
   `;
 }
@@ -775,7 +933,7 @@ function screenOnboard(){
     </div>
     <div class="roleoption sitter" data-action="pick-sitter">
       <div class="ricon">${ICON.home}</div>
-      <div><strong>I want to sit</strong><span>Open your home and earn by hosting someone's pet</span></div>
+      <div><strong>I want to host a pet</strong><span>Open your home and earn by hosting someone's pet — they stay at your place</span></div>
       <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
     </div>
   </div>`;
@@ -817,7 +975,7 @@ function screenBrowseSitter(){
   return `
   <div class="fade-in">
     <h2 class="title">Pets nearby</h2>
-    <p class="subtitle">Owners in your area looking for someone to look after their pet. Offer to sit on the ones that fit.</p>
+    <p class="subtitle">Owners in your area looking for someone to host their pet. Offer to host the ones that fit.</p>
     <div class="searchbar">${ICON.search}<input placeholder="Dates, neighborhood, pet type…"/></div>
     <div class="chiprow">
       ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
@@ -891,7 +1049,16 @@ function screenRequestForm(){
       <div class="field"><label>Check-out</label><input id="f-out" type="date" value="2026-07-14"/></div>
     </div>
     <div class="field"><label>Anything ${s.name.split(' ')[0]} should know</label><textarea id="f-notes" placeholder="Feeding schedule, medication, temperament…">Very friendly, needs a short walk morning and evening.</textarea></div>
-    <button class="btn btn-primary" data-action="confirm-request-${s.id}">Send request</button>
+    <div class="section-label">Before you send</div>
+    <div class="consent-row ${state.consent.petHealth ? 'checked' : ''}" data-action="toggle-consent-petHealth">
+      <div class="consent-box">${state.consent.petHealth ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
+      <p>I confirm my pet has no history of aggression toward people or other animals, and is current on core vaccinations. <a data-action="open-policy-health-request">Read full declaration</a></p>
+    </div>
+    <div class="consent-row ${state.consent.vetConsent ? 'checked' : ''}" data-action="toggle-consent-vetConsent">
+      <div class="consent-box">${state.consent.vetConsent ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
+      <p>If I'm unreachable in an emergency, I authorize the sitter to seek veterinary care on my behalf, up to ₺2,000 — to be reimbursed by me afterward. <a data-action="open-policy-vetconsent-request">Read full consent</a></p>
+    </div>
+    <button class="btn btn-primary" data-action="confirm-request-${s.id}" ${(!state.consent.petHealth||!state.consent.vetConsent) ? 'disabled' : ''}>Send request</button>
   </div>`;
 }
 
@@ -923,7 +1090,7 @@ function screenRequestDetail(){
       <div style="height:6px"></div>
       <div class="stickybar">
         <div class="pricebox"><b>${r.pay.split(' ')[0]}</b><span>total</span></div>
-        <button class="btn btn-primary" data-action="offer-sit-${r.id}">Offer to sit</button>
+        <button class="btn btn-primary" data-action="offer-sit-${r.id}">Offer to host</button>
       </div>
     </div>
   </div>`;
@@ -977,7 +1144,7 @@ function screenEmptyBookings(){
     <div class="emptystate">
       <div class="ico">${ICON.ticket}</div>
       <h3>No pawcations yet</h3>
-      <p>${state.mode==='owner' ? 'Request a stay with a sitter and it will show up here.' : 'Offer to sit for a pet and it will show up here.'}</p>
+      <p>${state.mode==='owner' ? 'Request a stay with a sitter and it will show up here.' : 'Offer to host a pet and it will show up here.'}</p>
     </div>`;
 }
 
@@ -1026,12 +1193,47 @@ function screenProfile(){
         ${ICON.chevron}
       </span>
     </div>
-    <div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Sitting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>
+    <div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Hosting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>
     <div class="profile-row" data-action="nav2-payment"><div class="left">${ICON.cardicon}<span>${isOwner ? 'Payment methods' : 'Payout details'}</span></div>${ICON.chevron}</div>
     <div class="profile-row"><div class="left">${ICON.bell}<span>Notifications</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-policyhub"><div class="left">${ICON.idcard}<span>Legal &amp; policies</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-documents"><div class="left">${ICON.filesheet}<span>Business documents</span></div>${ICON.chevron}</div>
     <div class="section-label">Switch role</div>
-    <div class="profile-row" data-action="mode-${isOwner ? 'sitter' : 'owner'}"><div class="left">${ICON.home}<span>${isOwner ? 'Start sitting for others' : 'Look for a sitter instead'}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="mode-${isOwner ? 'sitter' : 'owner'}"><div class="left">${ICON.home}<span>${isOwner ? 'Start hosting pets' : 'Look for a sitter instead'}</span></div>${ICON.chevron}</div>
     <div class="profile-row" style="color:var(--stamp);"><div class="left" style="color:var(--stamp);">${ICON.logout}<span>Log out</span></div></div>
+  </div>`;
+}
+
+function renderPolicyBlock(block){
+  if(block.h) return `<h3>${block.h}</h3>`;
+  if(block.p) return `<p>${block.p}</p>`;
+  if(block.li) return `<ul>${block.li.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  if(block.table) return `<table class="policy-table"><tr><th>Durum</th><th>Sonuç</th></tr>${block.table.map(row=>`<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`).join('')}</table>`;
+  return '';
+}
+
+function screenPolicy(){
+  const policy = POLICIES[state.activePolicy];
+  if(!policy) return screenPolicyHub();
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">${policy.title}</h2>
+    ${policy.updated ? `<div class="policy-updated">${policy.updated}</div>` : '<div style="height:10px"></div>'}
+    <div class="policy-block">${policy.blocks.map(renderPolicyBlock).join('')}</div>
+    <button class="btn btn-ghost" data-action="back">Close</button>
+  </div>`;
+}
+
+function screenPolicyHub(){
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Legal &amp; policies</h2>
+    <p class="subtitle">Every policy that governs how Pawcation works — the same texts linked from verification and booking.</p>
+    ${POLICY_ORDER.map(key => `
+      <div class="policyhub-row" data-action="open-policy-${key}-policyhub">
+        <span>${POLICIES[key].title}</span>${ICON.chevron}
+      </div>
+    `).join('')}
   </div>`;
 }
 
@@ -1057,7 +1259,16 @@ function screenVerify(){
       ${tile('idFront','Front side')}
       ${tile('idBack','Back side')}
     </div>
-    <button class="btn btn-primary" style="margin-top:8px;" data-action="submit-verification" ${(!v.selfie||!v.idFront||!v.idBack) ? 'disabled' : ''}>Submit for review</button>
+    <div class="section-label">Before you continue</div>
+    <div class="consent-row ${state.consent.terms ? 'checked' : ''}" data-action="toggle-consent-terms">
+      <div class="consent-box">${state.consent.terms ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
+      <p>I've read and agree to the <a data-action="open-policy-terms-verify">Terms of Service</a> and <a data-action="open-policy-liability-verify">Liability Waiver</a> — including that Pawcation is a platform connecting owners and sitters, and is not itself an insurer or guarantor of any stay.</p>
+    </div>
+    <div class="consent-row ${state.consent.kvkk ? 'checked' : ''}" data-action="toggle-consent-kvkk">
+      <div class="consent-box">${state.consent.kvkk ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
+      <p>I've read the <a data-action="open-policy-kvkk-verify">KVKK Disclosure &amp; Consent Notice</a> and explicitly consent to my ID and selfie being processed for identity verification.</p>
+    </div>
+    <button class="btn btn-primary" style="margin-top:8px;" data-action="submit-verification" ${(!v.selfie||!v.idFront||!v.idBack||!state.consent.terms||!state.consent.kvkk) ? 'disabled' : ''}>Submit for review</button>
   </div>`;
 }
 
@@ -1140,7 +1351,7 @@ function screenMyPets(){
       ${state.myPets.map((p)=>`
         <div class="petcard">
           <div class="pimg" style="background-image:url('${p.photo}')"></div>
-          <div class="pinfo"><b>${p.name}</b><span>${p.type}${p.breed ? ' · '+p.breed : ''}</span></div>
+          <div class="pinfo"><b>${p.name}</b><span>${p.type}${p.breed ? ' · '+p.breed : ''}${p.age ? ' · '+p.age+' yr' : ''}</span></div>
         </div>
       `).join('')}
       <div class="addpet-tile" data-action="nav2-addpet">${ICON.plus}Add a pet</div>
@@ -1162,7 +1373,10 @@ function screenAddPet(){
       <div class="field"><label>Pet's name</label><input id="pet-name" placeholder="e.g. Luna"/></div>
       <div class="field"><label>Type</label><select id="pet-type"><option>Dog</option><option>Cat</option><option>Small pet</option><option>Bird</option></select></div>
     </div>
-    <div class="field"><label>Breed (optional)</label><input id="pet-breed" placeholder="e.g. Golden Retriever"/></div>
+    <div class="field-row">
+      <div class="field"><label>Breed (optional)</label><input id="pet-breed" placeholder="e.g. Golden Retriever"/></div>
+      <div class="field"><label>Age</label><input id="pet-age" type="number" min="0" max="40" placeholder="e.g. 3"/></div>
+    </div>
     <div class="field"><label>Notes for sitters</label><textarea id="pet-notes" placeholder="Feeding schedule, medication, temperament…"></textarea></div>
     <button class="btn btn-primary" data-action="save-pet">Save pet</button>
   </div>`;
@@ -1187,6 +1401,9 @@ function render(){
     case 'payment': html = screenPayment(); break;
     case 'mypets': html = screenMyPets(); break;
     case 'addpet': html = screenAddPet(); break;
+    case 'policy': html = screenPolicy(); break;
+    case 'policyhub': html = screenPolicyHub(); break;
+    case 'documents': html = screenDocuments(); break;
     default: html = screenOnboard();
   }
   app.content.innerHTML = html;
@@ -1207,15 +1424,34 @@ document.addEventListener('click', (e) => {
     else if(state.screen==='request') go('detail', {selectedId:state.selectedId});
     else if(state.screen==='ticket') go('bookings');
     else if(state.screen==='addpet') go('mypets');
+    else if(state.screen==='policy') go(state.policyReturnTo || 'policyhub');
+    else if(state.screen==='policyhub') go('profile');
+    else if(state.screen==='documents') go('profile');
     else if(['verify','payment','mypets'].includes(state.screen)) go('profile');
     else go('browse');
     return;
   }
+  if(action.startsWith('open-policy-')){
+    const rest = action.replace('open-policy-','').split('-');
+    const returnTo = rest.pop();
+    const key = rest.join('-');
+    state.activePolicy = key;
+    state.policyReturnTo = returnTo;
+    go('policy');
+    return;
+  }
+  if(action==='nav2-policyhub'){ go('policyhub'); return; }
+  if(action==='nav2-documents'){ go('documents'); return; }
   if(action.startsWith('nav-')){ go(action.replace('nav-','')); return; }
   if(action.startsWith('filter-')){ state.filter = action.replace('filter-',''); render(); return; }
   if(action.startsWith('open-sitter-')){ go('detail', {selectedId: action.replace('open-sitter-','')}); return; }
   if(action.startsWith('open-request-')){ go('requestDetail', {selectedId: action.replace('open-request-','')}); return; }
-  if(action.startsWith('request-stay-')){ go('request', {selectedId: action.replace('request-stay-','')}); return; }
+  if(action.startsWith('request-stay-')){
+    state.consent.petHealth = false;
+    state.consent.vetConsent = false;
+    go('request', {selectedId: action.replace('request-stay-','')});
+    return;
+  }
 
   if(action.startsWith('confirm-request-')){
     const id = action.replace('confirm-request-','');
@@ -1251,6 +1487,12 @@ document.addEventListener('click', (e) => {
   }
 
   if(action==='nav2-verify'){ go('verify'); return; }
+  if(action.startsWith('toggle-consent-')){
+    const key = action.replace('toggle-consent-','');
+    state.consent[key] = !state.consent[key];
+    render();
+    return;
+  }
   if(action==='nav2-mypets'){ go('mypets'); return; }
   if(action==='nav2-payment'){ go('payment'); return; }
   if(action==='nav2-addpet'){ go('addpet'); return; }
@@ -1302,9 +1544,10 @@ document.addEventListener('click', (e) => {
     const name = document.getElementById('pet-name').value;
     const type = document.getElementById('pet-type').value;
     const breed = document.getElementById('pet-breed').value;
+    const age = document.getElementById('pet-age').value;
     const notes = document.getElementById('pet-notes').value;
     if(!name || !pendingUploads.newPetPhoto){ toast('Add a name and photo first'); return; }
-    state.myPets.push({ name, type, breed, notes, photo: pendingUploads.newPetPhoto });
+    state.myPets.push({ name, type, breed, age, notes, photo: pendingUploads.newPetPhoto });
     delete pendingUploads.newPetPhoto;
     toast(name+' added to your pets');
     go('mypets');
