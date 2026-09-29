@@ -166,7 +166,17 @@
     width:78px;height:78px;border-radius:14px;flex-shrink:0;
     background-size:cover; background-position:center;
     display:flex; align-items:flex-end; justify-content:flex-end;
+    position:relative;
   }
+  .heart-btn{
+    position:absolute; top:5px; right:5px; width:24px; height:24px; border-radius:50%;
+    background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center;
+    color:var(--stamp); cursor:pointer; z-index:2;
+  }
+  .heart-btn svg{ width:13px; height:13px; }
+  .heart-btn.active svg{ fill:var(--stamp); }
+  .hero-img .heart-btn{ top:16px; right:16px; width:38px; height:38px; }
+  .hero-img .heart-btn svg{ width:18px; height:18px; }
   .card-body{flex:1; min-width:0;}
   .card-toprow{display:flex; justify-content:space-between; align-items:flex-start; gap:6px;}
   .card-name{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
@@ -195,7 +205,7 @@
   /* ---------- onboarding ---------- */
   .onboard{
     height:100%; max-width:460px; margin:0 auto; display:flex; flex-direction:column; justify-content:center;
-    padding:0 22px 60px; text-align:center;
+    padding:0 22px 60px; text-align:center; position:relative;
   }
   .onboard .mark-lg{
     width:64px;height:64px;border-radius:20px; background:var(--ink); color:var(--gold);
@@ -223,6 +233,29 @@
   .roleoption strong{font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; display:block;}
   .roleoption span{font-size:12.5px; color:var(--ink-soft);}
 
+  /* ---------- language switch ---------- */
+  .langswitch{
+    position:absolute; top:18px; right:18px; display:flex; gap:2px;
+    background:var(--paper); border:1.5px solid var(--line); border-radius:12px; padding:3px;
+  }
+  .onboard .langswitch{ position:absolute; }
+  .langpill{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;
+    padding:5px 10px; border-radius:9px; cursor:pointer; color:var(--ink-soft);
+  }
+  .langpill.active{ background:var(--ink); color:var(--canvas); }
+
+  /* ---------- onboarding tour ---------- */
+  .tourscreen{ position:relative; }
+  .tourskip{
+    position:absolute; top:20px; left:0; right:0; text-align:center;
+    font-size:12.5px; font-weight:600; color:var(--ink-soft); cursor:pointer;
+  }
+  .tourdots{ display:flex; gap:7px; justify-content:center; margin-bottom:26px; }
+  .tourdot{ width:7px; height:7px; border-radius:50%; background:var(--line); }
+  .tourdot.active{ background:var(--ink); width:20px; border-radius:5px; transition:all .2s; }
+  .tourbtn{ margin-top:4px; }
+
   /* ---------- buttons ---------- */
   .btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
@@ -249,6 +282,59 @@
   .consent-row.checked .consent-box{ background:var(--moss); border-color:var(--moss); }
   .consent-row p{ font-size:12px; line-height:1.5; color:var(--ink-soft); margin:0; }
   .consent-row a{ color:var(--ink); text-decoration:underline; font-weight:600; cursor:pointer; }
+  .consent-row.addon-row.checked .consent-box{ background:var(--gold-deep); border-color:var(--gold-deep); }
+  .consent-row p b{ color:var(--ink); }
+
+  /* ---------- price summary ---------- */
+  .pricebox-summary{
+    background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:14px 16px; margin:4px 0 18px;
+  }
+  .pb-row{ display:flex; justify-content:space-between; font-size:13px; padding:5px 0; color:var(--ink-soft); }
+  .pb-row b{ color:var(--ink); font-family:'IBM Plex Mono',monospace; font-weight:600; }
+  .pb-row.total{ border-top:1px dashed var(--line); margin-top:4px; padding-top:10px; font-weight:600; color:var(--ink); }
+  .pb-row.total b{ font-size:15.5px; }
+
+  /* ---------- instant book / protect badge ---------- */
+  .protect-badge{ display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:700; color:var(--moss-deep); margin-top:8px; }
+  .protect-badge svg{ width:12px; height:12px; }
+
+  /* ---------- loyalty / rewards ---------- */
+  .pointsbanner{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--ink); color:var(--canvas); border-radius:18px; padding:18px 20px; margin-bottom:18px;
+  }
+  .pointsbanner b{ font-family:'Fraunces',serif; font-size:26px; display:block; }
+  .pointsbanner span{ font-size:11.5px; color:var(--canvas); opacity:.75; text-transform:uppercase; letter-spacing:.06em; }
+  .pointsbanner svg{ width:30px; height:30px; color:var(--gold); }
+  .reward-row{
+    display:flex; align-items:center; gap:12px; background:var(--paper); border:1px solid var(--line);
+    border-radius:16px; padding:12px 14px; margin-bottom:10px;
+  }
+  .reward-row.locked{ opacity:.55; }
+  .rw-icon{ width:38px; height:38px; border-radius:11px; background:rgba(227,162,59,0.16); color:var(--gold-deep); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .rw-body{ flex:1; min-width:0; }
+  .rw-body b{ display:block; font-size:13px; }
+  .rw-body span{ font-size:11px; color:var(--ink-soft); }
+
+  /* ---------- session schedule ---------- */
+  .session-row{
+    display:flex; align-items:center; gap:12px; background:var(--paper); border:1px solid var(--line);
+    border-radius:14px; padding:10px 14px; margin-bottom:8px; cursor:pointer;
+  }
+  .session-row.done{ opacity:.6; }
+  .session-num{
+    width:26px; height:26px; border-radius:50%; background:rgba(110,143,114,0.15); color:var(--moss-deep);
+    display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0;
+  }
+  .session-body{ flex:1; min-width:0; }
+  .session-body b{ display:block; font-size:13px; }
+  .session-body span{ font-size:11px; color:var(--ink-soft); }
+  .session-check{
+    width:20px; height:20px; border-radius:50%; border:1.5px solid var(--line); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:#fff;
+  }
+  .session-row.done .session-check{ background:var(--moss); border-color:var(--moss); }
 
   /* ---------- policy document viewer ---------- */
   .policy-updated{ font-size:11px; color:var(--ink-soft); margin:-8px 0 18px; font-style:italic; }
@@ -310,6 +396,55 @@
   }
   .reviewcard .rh{display:flex; justify-content:space-between; font-size:12.5px; font-weight:600; margin-bottom:4px;}
   .reviewcard p{font-size:12.5px; color:var(--ink-soft); margin:0; line-height:1.5;}
+
+  /* ---------- trust badges ---------- */
+  .trustbadges{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 4px;}
+  .trustbadge{
+    display:flex; align-items:center; gap:5px;
+    font-size:11px; font-weight:600; color:var(--moss-deep);
+    background:rgba(110,143,114,0.14);
+    padding:5px 10px 5px 8px; border-radius:999px;
+  }
+  .trustbadge svg{width:12px;height:12px;flex-shrink:0;}
+  .trustbadge.instant{ color:var(--gold-deep); background:rgba(227,162,59,0.18); }
+  .responsetime{
+    display:flex; align-items:center; gap:6px; font-size:12px; color:var(--ink-soft);
+    margin:8px 0 2px;
+  }
+  .responsetime svg{width:13px;height:13px;flex-shrink:0;color:var(--moss-deep);}
+
+  /* ---------- stay updates ---------- */
+  .stayupdate{
+    display:flex; gap:12px; background:var(--paper); border:1px solid var(--line);
+    border-radius:16px; padding:10px; margin-bottom:10px;
+  }
+  .su-img{width:64px;height:64px;border-radius:12px;flex-shrink:0; background-size:cover; background-position:center;}
+  .su-body{flex:1; min-width:0;}
+  .su-body p{font-size:13px; margin:0 0 4px; line-height:1.4;}
+  .su-body span{font-size:11px; color:var(--ink-soft);}
+
+  /* ---------- star picker (reviews) ---------- */
+  .starpicker{display:flex; gap:6px;}
+  .starpicker span{width:26px;height:26px; display:flex; align-items:center; justify-content:center; color:var(--line); cursor:pointer;}
+  .starpicker span svg{width:22px;height:22px;}
+  .starpicker span.filled{color:var(--gold);}
+
+  /* ---------- SOS ---------- */
+  .sos-btn{ border-color:var(--stamp) !important; color:var(--stamp) !important; display:flex; align-items:center; gap:8px; justify-content:center; }
+  .sos-btn svg{width:16px;height:16px;}
+  .sos-banner{
+    background:rgba(193,68,46,0.1); border:1.5px solid rgba(193,68,46,0.3); border-radius:16px;
+    padding:14px; display:flex; gap:10px; align-items:flex-start; margin-bottom:18px; color:var(--stamp);
+  }
+  .sos-banner svg{width:20px;height:20px;flex-shrink:0;margin-top:1px;}
+  .sos-banner p{margin:0; font-size:12.5px; line-height:1.5; color:var(--ink);}
+  .sos-option{
+    display:flex; align-items:center; gap:12px; background:var(--paper); border:1px solid var(--line);
+    border-radius:16px; padding:14px; margin-bottom:10px; cursor:pointer;
+  }
+  .sos-option .soicon{width:38px;height:38px;border-radius:11px; background:rgba(193,68,46,0.12); color:var(--stamp); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .sos-option b{display:block; font-size:13.5px;}
+  .sos-option span{font-size:11.5px; color:var(--ink-soft);}
 
   .stickybar{
     position:sticky; bottom:0; background:linear-gradient(0deg, var(--canvas) 60%, rgba(241,239,226,0));
@@ -383,6 +518,46 @@
   .msgrow .mtop span{font-size:11px; color:var(--ink-soft);}
   .msgrow p{margin:2px 0 0; font-size:12.5px; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .unreaddot{width:8px; height:8px; border-radius:50%; background:var(--stamp); flex-shrink:0;}
+
+  /* ---------- chat thread ---------- */
+  .chat-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .chat-header .avatar{ width:36px;height:36px;border-radius:50%;background-size:cover;background-position:center; }
+  .chat-header b{ font-family:'Fraunces',serif; font-size:15.5px; }
+  .chat-messages{ display:flex; flex-direction:column; gap:8px; padding-bottom:12px; }
+  .chat-bubble{ max-width:78%; padding:10px 13px; border-radius:16px; font-size:13.5px; line-height:1.45; }
+  .chat-bubble p{ margin:0; }
+  .chat-bubble span{ display:block; font-size:10px; margin-top:4px; opacity:.6; }
+  .chat-bubble.them{ align-self:flex-start; background:var(--paper); border:1px solid var(--line); border-bottom-left-radius:4px; }
+  .chat-bubble.me{ align-self:flex-end; background:var(--ink); color:var(--canvas); border-bottom-right-radius:4px; }
+  .chat-inputbar{
+    position:sticky; bottom:0; display:flex; gap:8px; align-items:center;
+    background:var(--canvas); padding:10px 0 4px; margin-top:auto;
+  }
+  .chat-inputbar input{
+    flex:1; border:1.5px solid var(--line); border-radius:999px; padding:11px 16px;
+    font-family:'Inter',sans-serif; font-size:13.5px; background:var(--paper); outline:none;
+  }
+  .sendbtn{
+    width:42px; height:42px; border-radius:50%; background:var(--ink); color:var(--gold);
+    border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .sendbtn svg{ width:17px; height:17px; }
+
+  /* ---------- mini calendar ---------- */
+  .cal-grid-head{ display:grid; grid-template-columns:repeat(7,1fr); font-size:10px; color:var(--ink-soft); text-align:center; margin-bottom:5px; }
+  .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:5px; margin-bottom:10px; }
+  .cal-cell{
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+    border-radius:8px; font-size:11px; font-weight:600;
+    background:rgba(110,143,114,0.12); color:var(--moss-deep);
+  }
+  .cal-cell.blocked{ background:rgba(193,68,46,0.12); color:var(--stamp); }
+  .cal-cell.empty{ background:transparent; }
+  .cal-cell.editable{ cursor:pointer; }
+  .cal-legend{ display:flex; gap:14px; font-size:11px; color:var(--ink-soft); margin-bottom:18px; }
+  .cal-legend .caldot{ width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:4px; }
+  .cal-legend .caldot.open{ background:var(--moss); }
+  .cal-legend .caldot.blocked{ background:var(--stamp); }
 
   /* ---------- profile ---------- */
   .profile-head{ text-align:center; padding:10px 0 20px; }
@@ -710,14 +885,21 @@ const ICON = {
   fileslide:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
   filedoc:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4M8 13h8M8 17h5"/></svg>`,
   cert:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5.5"/><path d="M9 13.3 7.5 21l4.5-2.5 4.5 2.5-1.5-7.7"/></svg>`,
+  alert:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r="0.6" fill="currentColor" stroke="none"/></svg>`,
+  phone:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>`,
+  bolt:`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg>`,
+  gift:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="1.5"/><path d="M3 13h18"/><path d="M12 9v12"/><path d="M12 9C9.5 9 8 7.5 8 6a2.5 2.5 0 0 1 4-2c.8 1 1 3 1 5z"/><path d="M12 9c2.5 0 4-1.5 4-3a2.5 2.5 0 0 0-4-2c-.8 1-1 3-1 5z"/></svg>`,
+  send:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>`,
+  heart:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.5C.5 7.8 2.8 4 6.5 4c2 0 3.7 1.1 4.5 2.7C11.8 5.1 13.5 4 15.5 4 19.2 4 21.5 7.8 20 11.5 17.5 16.4 12 21 12 21z"/></svg>`,
+  clock:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>`,
 };
 
 /* ============ MOCK DATA ============ */
 const SITTERS = [
-  {id:'s1', name:'Elif Kaya', loc:'Kadıköy, Istanbul', rating:4.9, reviews:127, price:'₺450', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80', bio:"I've got a big fenced yard and two very lazy cats of my own who mostly ignore guests — perfect if your dog needs space to zoom around, or your cat needs a calm house to hide in for a bit.", tagline:'Big yard, calm house, two resident cats'},
-  {id:'s2', name:'Mert Yıldız', loc:'Beşiktaş, Istanbul', rating:4.8, reviews:94, price:'₺550', pets:['Dogs'], img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80', bio:'Dog walker turned full-time host. Daily walks along the Bosphorus, twice-a-day feeding updates with photos, and a strict no-other-boarders policy — your dog gets the run of the place.', tagline:'Daily Bosphorus walks, photo updates'},
-  {id:'s3', name:'Ayşe Demir', loc:'Üsküdar, Istanbul', rating:5.0, reviews:61, price:'₺350', pets:['Cats','Small pets'], img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', bio:'Quiet apartment, no other animals, no children — genuinely the best fit for shy or elderly cats, rabbits, or anything that startles easily. I work from home so someone is always around.', tagline:'Quiet home, ideal for shy cats'},
-  {id:'s4', name:'Deniz Aksoy', loc:'Şişli, Istanbul', rating:4.7, reviews:203, price:'₺600', pets:['Dogs','Cats','Birds'], img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', bio:'Former vet tech of 6 years — comfortable giving medication, monitoring chronic conditions, and handling senior pets. Also just really like animals more than most people.', tagline:'Former vet tech, meds & senior care ok'},
+  {id:'s1', name:'Elif Kaya', loc:'Kadıköy, Istanbul', rating:4.9, reviews:127, price:'₺450', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80', bio:"I've got a big fenced yard and two very lazy cats of my own who mostly ignore guests — perfect if your dog needs space to zoom around, or your cat needs a calm house to hide in for a bit.", tagline:'Big yard, calm house, two resident cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:['2026-07-12','2026-07-13'], responseMinutes:35},
+  {id:'s2', name:'Mert Yıldız', loc:'Beşiktaş, Istanbul', rating:4.8, reviews:94, price:'₺550', pets:['Dogs'], img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80', bio:'Dog walker turned full-time host. Daily walks along the Bosphorus, twice-a-day feeding updates with photos, and a strict no-other-boarders policy — your dog gets the run of the place.', tagline:'Daily Bosphorus walks, photo updates', verified:true, backgroundCheck:false, instantBook:false, blockedDates:['2026-07-20','2026-07-21','2026-07-22'], responseMinutes:180},
+  {id:'s3', name:'Ayşe Demir', loc:'Üsküdar, Istanbul', rating:5.0, reviews:61, price:'₺350', pets:['Cats','Small pets'], img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', bio:'Quiet apartment, no other animals, no children — genuinely the best fit for shy or elderly cats, rabbits, or anything that startles easily. I work from home so someone is always around.', tagline:'Quiet home, ideal for shy cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:[], responseMinutes:15},
+  {id:'s4', name:'Deniz Aksoy', loc:'Şişli, Istanbul', rating:4.7, reviews:203, price:'₺600', pets:['Dogs','Cats','Birds'], img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', bio:'Former vet tech of 6 years — comfortable giving medication, monitoring chronic conditions, and handling senior pets. Also just really like animals more than most people.', tagline:'Former vet tech, meds & senior care ok', verified:true, backgroundCheck:true, instantBook:false, blockedDates:['2026-07-05'], responseMinutes:60},
 ];
 
 const REQUESTS = [
@@ -737,6 +919,69 @@ const REVIEWS = [
   {name:'Zeynep A.', when:'2 weeks ago', text:'Sent photos every single day without me asking. Buddy came home happier than when he left, honestly.'},
   {name:'Can Ö.', when:'last month', text:'Exactly as described — calm, tidy, clearly good with animals. Would rebook without a second thought.'},
 ];
+
+const TRAINER_REVIEWS = [
+  {name:'Gizem K.', when:'2 weeks ago', text:'Max is a different dog. Structured, clear homework between sessions, genuinely cares.', stars:5},
+  {name:'Selin A.', when:'last month', text:'Boncuk stopped pulling on the leash within 3 sessions. Really patient with a stubborn dog.', stars:5},
+];
+
+const REWARDS = [
+  {id:'r1', title:'₺50 off your next booking', cost:400, icon:ICON.cardicon},
+  {id:'r2', title:'Free Pawcation Protect add-on', cost:250, icon:ICON.shield},
+  {id:'r3', title:'₺150 off your next booking', cost:1000, icon:ICON.cardicon},
+  {id:'r4', title:'Priority support for a month', cost:150, icon:ICON.bell},
+];
+
+function seedChats(){
+  const chats = {};
+  SITTERS.slice(0,3).forEach((s,i)=>{
+    chats['owner-'+s.id] = { name:s.name, img:s.img, unread:i<2, messages:[
+      { from:'them', text: i===0 ? "Sounds great — I'll take good care of them!" : i===1 ? "Could you send Buddy's vet contact just in case?" : "Looking forward to meeting Luna 🐾", when:['2m','1h','Yesterday'][i] }
+    ]};
+  });
+  REQUESTS.slice(0,3).forEach((r,i)=>{
+    chats['sitter-'+r.id] = { name:r.owner, img:r.img, unread:i<1, messages:[
+      { from:'them', text: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i] }
+    ]};
+  });
+  TRAINING_REQUESTS.slice(0,3).forEach((r,i)=>{
+    chats['trainer-'+r.id] = { name:r.owner, img:r.img, unread:i<1, messages:[
+      { from:'them', text: i===0 ? "Thank you for taking on Boncuk's training!" : i===1 ? "She does get startled by loud noises, heads up." : "Same time next week works great.", when:['5m','3h','Mon'][i] }
+    ]};
+  });
+  return chats;
+}
+
+/* ============ AVAILABILITY CALENDAR (fixed demo month: July 2026) ============ */
+const CAL_MONTH = { year:2026, month:6, label:'July 2026' };
+function renderMiniCalendar(blockedDates, editable){
+  const year = CAL_MONTH.year, month = CAL_MONTH.month;
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const firstDow = new Date(year, month, 1).getDay();
+  const cells = [];
+  for(let i=0;i<firstDow;i++) cells.push('<div class="cal-cell empty"></div>');
+  for(let d=1; d<=daysInMonth; d++){
+    const iso = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const blocked = blockedDates.includes(iso);
+    cells.push(`<div class="cal-cell ${blocked?'blocked':'open'} ${editable?'editable':''}" ${editable?`data-action="toggle-avail-${iso}"`:''}>${d}</div>`);
+  }
+  return `
+    <div class="cal-grid-head">${['S','M','T','W','T','F','S'].map(d=>`<div>${d}</div>`).join('')}</div>
+    <div class="cal-grid">${cells.join('')}</div>
+    <div class="cal-legend"><span><i class="caldot open"></i>Available</span><span><i class="caldot blocked"></i>Not available</span></div>
+  `;
+}
+function isRangeBlocked(s, checkIn, checkOut){
+  if(!s.blockedDates || !s.blockedDates.length) return false;
+  let d = new Date(checkIn+'T00:00:00');
+  const end = new Date(checkOut+'T00:00:00');
+  while(d < end){
+    const iso = d.toISOString().slice(0,10);
+    if(s.blockedDates.includes(iso)) return true;
+    d.setDate(d.getDate()+1);
+  }
+  return false;
+}
 
 /* ============ POLICY CONTENT (in-app legal documents) ============ */
 const POLICIES = {
@@ -845,15 +1090,94 @@ function screenDocuments(){
   </div>`;
 }
 
+/* ============ I18N (TR / EN) ============ */
+const I18N = {
+  en: {
+    nav_browse:'Browse', nav_bookings:'Pawcations', nav_messages:'Messages', nav_profile:'Profile',
+    mode_owner:'I need a sitter', mode_sitter:'I want to host a pet', mode_trainer:"I'm a trainer",
+    title_find_sitter:'Find a sitter', title_pets_nearby:'Pets nearby', title_pets_training:'Pets needing training',
+    title_bookings:'Pawcations', title_messages:'Messages', title_profile:'Profile',
+    tour_skip:'Skip', tour_next:'Next', tour_get_started:'Get started',
+    tour1_title:'A home away from home', tour1_body:'Pawcation connects pet owners with people who genuinely want to look after their pets — verified, reviewed, and local.',
+    tour2_title:'Find someone you can trust', tour2_body:'ID verification, background checks, real reviews, and a live photo diary during every stay — no more guessing.',
+    tour3_title:'Host, train, or both', tour3_body:'Open your home to pets and earn, or offer training sessions as a certified trainer. Switch roles anytime.',
+    tour4_title:'Book with peace of mind', tour4_body:'Optional Pawcation Protect coverage, 24/7 SOS support, and clear cancellation policies — every step of the way.',
+    onboard_title1:'A home away', onboard_title2:'from home.',
+    onboard_tag:"Pawcation connects people who need someone to look after a pet with people who genuinely want to. Pick how you're starting out — you can switch anytime.",
+    onboard_owner_title:'I need a sitter', onboard_owner_sub:'Going away and need someone to look after your pet',
+    onboard_sitter_title:'I want to host a pet', onboard_sitter_sub:"Open your home and earn by hosting someone's pet — they stay at your place",
+    onboard_trainer_title:"I'm a pet trainer", onboard_trainer_sub:'Offer training sessions and get matched with owners who need help',
+    profile_you:'You', profile_verification:'Verification & trust', profile_mypets:'My pets', profile_availability:'My availability',
+    profile_favorites:'Favorites', profile_payment:'Payment methods', profile_payout:'Payout details',
+    profile_notifications:'Notifications', profile_legal:'Legal & policies', profile_documents:'Business documents',
+    profile_points:'Pawcation Points', profile_trainercv:'Trainer CV', profile_language:'Language',
+    profile_switch_role:'Switch role', profile_logout:'Log out', profile_how_it_works:'How it works',
+    profile_pet_owner:'Pet owner', profile_trainer:'Trainer', profile_sitter:'Sitter',
+    mode_switch_owner:'Look for a sitter instead', mode_switch_sitter:'Start hosting pets', mode_switch_trainer:'Offer training sessions',
+    responds_within:'Usually responds within',
+  },
+  tr: {
+    nav_browse:'Keşfet', nav_bookings:'Pawcation\'lar', nav_messages:'Mesajlar', nav_profile:'Profil',
+    mode_owner:'Bakıcı arıyorum', mode_sitter:'Evcil hayvan ağırlamak istiyorum', mode_trainer:'Eğitmenim',
+    title_find_sitter:'Bakıcı bul', title_pets_nearby:'Yakındaki hayvanlar', title_pets_training:'Eğitim bekleyen hayvanlar',
+    title_bookings:"Pawcation'lar", title_messages:'Mesajlar', title_profile:'Profil',
+    tour_skip:'Geç', tour_next:'İleri', tour_get_started:'Başlayalım',
+    tour1_title:'Evden uzakta bir yuva', tour1_body:"Pawcation, evcil hayvan sahiplerini gerçekten ilgilenmek isteyen kişilerle buluşturur — doğrulanmış, yorumlanmış ve yakınınızda.",
+    tour2_title:'Güvenebileceğin biri', tour2_body:'Kimlik doğrulama, arka plan kontrolü, gerçek yorumlar ve her kalışta canlı fotoğraf günlüğü — artık tahmin etmek yok.',
+    tour3_title:'Bakıcılık yap, eğitmenlik yap, ya da ikisi de', tour3_body:'Evini evcil hayvanlara aç ve kazan, ya da sertifikalı bir eğitmen olarak seanslar sun. İstediğin zaman rol değiştir.',
+    tour4_title:'İçin rahat rezervasyon yap', tour4_body:'İsteğe bağlı Pawcation Protect koruması, 7/24 SOS desteği ve net iptal politikaları — her adımda yanında.',
+    onboard_title1:'Evden uzakta', onboard_title2:'bir yuva.',
+    onboard_tag:'Pawcation, evcil hayvanına bakacak birine ihtiyacı olanları, gerçekten bunu yapmak isteyenlerle buluşturur. Nasıl başlayacağını seç — istediğin zaman değiştirebilirsin.',
+    onboard_owner_title:'Bakıcı arıyorum', onboard_owner_sub:'Seyahate çıkıyorum ve evcil hayvanıma bakacak birine ihtiyacım var',
+    onboard_sitter_title:'Evcil hayvan ağırlamak istiyorum', onboard_sitter_sub:'Evini aç ve birinin evcil hayvanına bakarak kazan — hayvan senin evinde kalır',
+    onboard_trainer_title:'Ben bir evcil hayvan eğitmeniyim', onboard_trainer_sub:'Eğitim seansları sun ve yardıma ihtiyacı olan sahiplerle eşleş',
+    profile_you:'Sen', profile_verification:'Doğrulama & güven', profile_mypets:'Hayvanlarım', profile_availability:'Müsaitliğim',
+    profile_favorites:'Favoriler', profile_payment:'Ödeme yöntemleri', profile_payout:'Ödeme bilgileri',
+    profile_notifications:'Bildirimler', profile_legal:'Yasal & politikalar', profile_documents:'İş belgeleri',
+    profile_points:'Pawcation Puanları', profile_trainercv:'Eğitmen özgeçmişi', profile_language:'Dil',
+    profile_switch_role:'Rol değiştir', profile_logout:'Çıkış yap', profile_how_it_works:'Nasıl çalışır',
+    profile_pet_owner:'Evcil hayvan sahibi', profile_trainer:'Eğitmen', profile_sitter:'Bakıcı',
+    mode_switch_owner:'Bunun yerine bakıcı ara', mode_switch_sitter:'Evcil hayvan ağırlamaya başla', mode_switch_trainer:'Eğitim seansları sun',
+    responds_within:'Genelde şu sürede yanıt verir:',
+  }
+};
+function t(key){
+  const dict = I18N[state.lang] || I18N.en;
+  return dict[key] || I18N.en[key] || key;
+}
+function setLang(lang){ state.lang = lang; render(); }
+function formatResponseTime(minutes){
+  const tr = state.lang==='tr';
+  if(minutes < 60) return tr ? `${minutes} dakika` : `${minutes} minutes`;
+  const hours = Math.round(minutes/60);
+  if(hours < 24) return tr ? `${hours} saat` : (hours===1 ? '1 hour' : `${hours} hours`);
+  return tr ? '1 gün' : '1 day';
+}
+
 /* ============ STATE ============ */
 let state = {
+  lang: 'en',
   onboarded: false,
   mode: 'owner', // owner | sitter | trainer
-  screen: 'onboard', // onboard | browse | detail | request | ticket | bookings | messages | profile
+  screen: 'tour', // tour | onboard | browse | detail | request | ticket | bookings | messages | profile
+  tourStep: 0,
   selectedId: null,
   filter: 'All',
-  bookings: [],
-  form: {},
+  bookings: [
+    { id:'demo1', status:'confirmed', petName:'Buddy', hostName:'Elif Kaya', loc:'Kadıköy', checkIn:'Jul 10', checkOut:'Jul 14', code:'PWC-7734', sitterId:'s1',
+      updates:[
+        { photo:'https://images.unsplash.com/photo-1591160690555-5debfba289f0?w=400&q=80', note:'Morning walk done — big appetite today, finished his whole bowl!', when:'Today, 09:14' },
+        { photo:'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=400&q=80', note:'Nap time in the sun ☀️ he’s completely settled in.', when:'Yesterday, 16:40' },
+      ], review:null },
+    { id:'demo2', status:'completed', petName:'Mia', hostName:'Ayşe Demir', loc:'Üsküdar', checkIn:'Jun 2', checkOut:'Jun 9', code:'PWC-4471', sitterId:'s3', updates:[], review:null },
+  ],
+  reviewDraft: null,
+  form: { protect:false },
+  loyaltyPoints: 180,
+  redeemedRewards: [],
+  favorites: [],
+  myBlockedDates: ['2026-07-20'],
+  chats: seedChats(),
   verification: { status:'unverified', selfie:null, idFront:null, idBack:null },
   consent: { terms:false, kvkk:false, petHealth:false, vetConsent:false },
   activePolicy: null,
@@ -901,12 +1225,7 @@ function unreadNotifCount(){
 /* ============ RENDER: TOPBAR ============ */
 function renderTopbar(){
   if(!state.onboarded){ app.topbar.innerHTML=''; return; }
-  const titles = {
-    browse: state.mode==='owner' ? 'Find a sitter' : state.mode==='sitter' ? 'Pets nearby' : 'Pets needing training',
-    detail: null, request: null, ticket: null,
-    bookings: 'Pawcations', messages: 'Messages', profile: 'Profile'
-  };
-  const showBack = ['detail','request','requestDetail','trainingDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents','trainercv','notifications'].includes(state.screen);
+  const showBack = ['detail','request','requestDetail','trainingDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents','trainercv','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour'].includes(state.screen);
   app.topbar.innerHTML = `
     <div class="topbar-row">
       ${showBack
@@ -917,9 +1236,9 @@ function renderTopbar(){
     </div>
     ${!showBack ? `
     <div class="modeswitch">
-      <button class="${state.mode==='owner'?'active':''}" data-action="mode-owner">I need a sitter</button>
-      <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">I want to host a pet</button>
-      <button class="${state.mode==='trainer'?'active':''}" data-action="mode-trainer">I'm a trainer</button>
+      <button class="${state.mode==='owner'?'active':''}" data-action="mode-owner">${t('mode_owner')}</button>
+      <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">${t('mode_sitter')}</button>
+      <button class="${state.mode==='trainer'?'active':''}" data-action="mode-trainer">${t('mode_trainer')}</button>
     </div>` : ''}
   `;
 }
@@ -929,12 +1248,12 @@ function renderBottomNav(){
   if(!state.onboarded){ app.bottomnav.style.display='none'; return; }
   app.bottomnav.style.display='flex';
   const items = [
-    {key:'browse', icon:ICON.home, label:'Browse'},
-    {key:'bookings', icon:ICON.ticket, label:'Pawcations'},
-    {key:'messages', icon:ICON.chat, label:'Messages'},
-    {key:'profile', icon:ICON.user, label:'Profile'},
+    {key:'browse', icon:ICON.home, label:t('nav_browse')},
+    {key:'bookings', icon:ICON.ticket, label:t('nav_bookings')},
+    {key:'messages', icon:ICON.chat, label:t('nav_messages')},
+    {key:'profile', icon:ICON.user, label:t('nav_profile')},
   ];
-  const activeKey = ['detail','request','ticket','requestDetail','trainingDetail','trainercv','verify','payment','mypets','addpet','policy','policyhub','documents','notifications'].includes(state.screen) ? null : state.screen;
+  const activeKey = ['detail','request','ticket','requestDetail','trainingDetail','trainercv','verify','payment','mypets','addpet','policy','policyhub','documents','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour'].includes(state.screen) ? null : state.screen;
   app.bottomnav.innerHTML = items.map(it => `
     <div class="navitem ${activeKey===it.key?'active':''}" data-action="nav-${it.key}">
       ${it.icon}<span>${it.label}</span>
@@ -946,25 +1265,60 @@ function renderBottomNav(){
 function screenOnboard(){
   return `
   <div class="onboard fade-in">
+    <div class="langswitch">
+      <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
+      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+    </div>
     <div class="mark-lg">${ICON.paw}</div>
-    <h1>A home away<br/>from home.</h1>
-    <p class="tag">Pawcation connects people who need someone to look after a pet with people who genuinely want to. Pick how you're starting out — you can switch anytime.</p>
+    <h1>${t('onboard_title1')}<br/>${t('onboard_title2')}</h1>
+    <p class="tag">${t('onboard_tag')}</p>
     <div class="roleoption owner" data-action="pick-owner">
       <div class="ricon">${ICON.paw}</div>
-      <div><strong>I need a sitter</strong><span>Going away and need someone to look after your pet</span></div>
+      <div><strong>${t('onboard_owner_title')}</strong><span>${t('onboard_owner_sub')}</span></div>
       <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
     </div>
     <div class="roleoption sitter" data-action="pick-sitter">
       <div class="ricon">${ICON.home}</div>
-      <div><strong>I want to host a pet</strong><span>Open your home and earn by hosting someone's pet — they stay at your place</span></div>
+      <div><strong>${t('onboard_sitter_title')}</strong><span>${t('onboard_sitter_sub')}</span></div>
       <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
     </div>
     <div class="roleoption trainer" data-action="pick-trainer">
       <div class="ricon">${ICON.cert}</div>
-      <div><strong>I'm a pet trainer</strong><span>Offer training sessions and get matched with owners who need help</span></div>
+      <div><strong>${t('onboard_trainer_title')}</strong><span>${t('onboard_trainer_sub')}</span></div>
       <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
     </div>
   </div>`;
+}
+
+function screenTour(){
+  const steps = [1,2,3,4];
+  const i = (state.tourStep||0) + 1;
+  const icons = [ICON.paw, ICON.shield, ICON.home, ICON.check];
+  return `
+  <div class="onboard fade-in tourscreen">
+    <div class="langswitch">
+      <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
+      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+    </div>
+    <div class="tourskip" data-action="tour-skip">${t('tour_skip')}</div>
+    <div class="mark-lg">${icons[i-1]||ICON.paw}</div>
+    <h1>${t('tour'+i+'_title')}</h1>
+    <p class="tag">${t('tour'+i+'_body')}</p>
+    <div class="tourdots">
+      ${steps.map(n=>`<span class="tourdot ${n===i?'active':''}" data-action="tour-dot-${n-1}"></span>`).join('')}
+    </div>
+    <button class="btn-primary tourbtn" data-action="tour-next">${i===steps.length ? t('tour_get_started') : t('tour_next')}</button>
+  </div>`;
+}
+
+function renderTrustBadges(s, compact){
+  const badges = [];
+  if(s.instantBook) badges.push({icon:ICON.bolt, label:'Instant Book', cls:'instant'});
+  if(s.verified) badges.push({icon:ICON.shield, label:'ID verified'});
+  badges.push({icon:ICON.check.replace('26','12').replace('26','12'), label:`${s.reviews}+ stays`});
+  if(s.backgroundCheck) badges.push({icon:ICON.idcard, label:'Background checked'});
+  const shown = compact ? badges.slice(0,1) : badges;
+  return `<div class="trustbadges">${shown.map(b=>`<span class="trustbadge ${b.cls||''}">${b.icon}${b.label}</span>`).join('')}</div>`;
 }
 
 function screenBrowseOwner(){
@@ -972,7 +1326,7 @@ function screenBrowseOwner(){
   const list = SITTERS.filter(s => state.filter==='All' || s.pets.includes(state.filter));
   return `
   <div class="fade-in">
-    <h2 class="title">Find a sitter</h2>
+    <h2 class="title">${t('title_find_sitter')}</h2>
     <p class="subtitle">Sitters near Istanbul, sorted by rating. Tap a profile to see availability and reviews.</p>
     <div class="searchbar">${ICON.search}<input placeholder="Neighborhood, dates, pet type…"/></div>
     <div class="chiprow">
@@ -981,7 +1335,9 @@ function screenBrowseOwner(){
     <div class="card-grid">
     ${list.map(s=>`
       <div class="card" data-action="open-sitter-${s.id}">
-        <div class="thumb" style="background-image:url('${s.img}')"></div>
+        <div class="thumb" style="background-image:url('${s.img}')">
+          <div class="heart-btn ${state.favorites.includes(s.id)?'active':''}" data-action="toggle-fav-${s.id}">${ICON.heart}</div>
+        </div>
         <div class="card-body">
           <div class="card-toprow">
             <div class="card-name">${s.name}</div>
@@ -989,6 +1345,7 @@ function screenBrowseOwner(){
           </div>
           <div class="card-loc">${ICON.pin}${s.loc}</div>
           <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+          ${renderTrustBadges(s, true)}
           <div class="price">${s.price} <span>/ night</span></div>
         </div>
       </div>
@@ -1002,7 +1359,7 @@ function screenBrowseSitter(){
   const list = REQUESTS.filter(r => state.filter==='All' || r.type.includes(state.filter));
   return `
   <div class="fade-in">
-    <h2 class="title">Pets nearby</h2>
+    <h2 class="title">${t('title_pets_nearby')}</h2>
     <p class="subtitle">Owners in your area looking for someone to host their pet. Offer to host the ones that fit.</p>
     <div class="searchbar">${ICON.search}<input placeholder="Dates, neighborhood, pet type…"/></div>
     <div class="chiprow">
@@ -1032,7 +1389,7 @@ function screenBrowseTrainer(){
   const list = TRAINING_REQUESTS.filter(r => state.filter==='All' || r.type.includes(state.filter));
   return `
   <div class="fade-in">
-    <h2 class="title">Pets needing training</h2>
+    <h2 class="title">${t('title_pets_training')}</h2>
     <p class="subtitle">Owners nearby looking for a trainer. Offer to train the ones that match what you're good at.</p>
     <div class="searchbar">${ICON.search}<input placeholder="Goal, neighborhood, pet type…"/></div>
     <div class="chiprow">
@@ -1097,6 +1454,7 @@ function screenSitterDetail(){
   <div class="fade-in" style="margin:0 -20px;">
     <div class="hero-img" style="background-image:url('${s.img}')">
       <div class="hero-fade"></div>
+      <div class="heart-btn ${state.favorites.includes(s.id)?'active':''}" data-action="toggle-fav-${s.id}">${ICON.heart}</div>
       <div class="hero-caption">
         <h2>${s.name}</h2>
         <div class="loc">${ICON.pin}${s.loc}</div>
@@ -1108,12 +1466,17 @@ function screenSitterDetail(){
         <div class="stat"><b>${s.reviews}</b><span>Pawcations</span></div>
         <div class="stat"><b>${s.price}</b><span>Per night</span></div>
       </div>
+      ${s.responseMinutes ? `<div class="responsetime">${ICON.clock}<span>${t('responds_within')} ${formatResponseTime(s.responseMinutes)}</span></div>` : ''}
       <p class="bio">${s.bio}</p>
       <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+      ${renderTrustBadges(s, false)}
+      <div class="section-label">Availability — ${CAL_MONTH.label}</div>
+      ${renderMiniCalendar(s.blockedDates||[], false)}
       <div class="section-label">Recent reviews</div>
-      ${REVIEWS.map(r=>`
+      ${REVIEWS.filter(r=>!r.sitterId || r.sitterId===s.id).map(r=>`
         <div class="reviewcard">
           <div class="rh"><span>${r.name}</span><span style="color:var(--ink-soft);font-weight:400">${r.when}</span></div>
+          ${r.stars ? `<div style="color:var(--gold);font-size:12px;margin-bottom:2px;">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>` : ''}
           <p>${r.text}</p>
         </div>
       `).join('')}
@@ -1128,10 +1491,17 @@ function screenSitterDetail(){
 
 function screenRequestForm(){
   const s = SITTERS.find(x=>x.id===state.selectedId);
+  const fIn = document.getElementById('f-in') ? document.getElementById('f-in').value : '2026-07-10';
+  const fOut = document.getElementById('f-out') ? document.getElementById('f-out').value : '2026-07-14';
+  const nights = computeNights(fIn||'2026-07-10', fOut||'2026-07-14');
+  const perNight = parsePrice(s.price);
+  const protectFee = 99;
+  const subtotal = nights*perNight;
+  const total = subtotal + (state.form.protect ? protectFee : 0);
   return `
   <div class="fade-in narrow">
     <h2 class="title">Tell ${s.name.split(' ')[0]} about your pet</h2>
-    <p class="subtitle">This goes straight to ${s.name.split(' ')[0]} as a booking request — nothing is confirmed until they accept.</p>
+    <p class="subtitle">${s.instantBook ? `${s.name.split(' ')[0]} accepts Instant Book — your pawcation is confirmed right away, no waiting for approval.` : `This goes straight to ${s.name.split(' ')[0]} as a booking request — nothing is confirmed until they accept.`}</p>
     <div class="field-row">
       <div class="field"><label>Pet's name</label><input id="f-petname" placeholder="e.g. Luna" value="Luna"/></div>
       <div class="field"><label>Pet type</label><select id="f-pettype"><option>Dog</option><option>Cat</option><option>Small pet</option><option>Bird</option></select></div>
@@ -1140,7 +1510,18 @@ function screenRequestForm(){
       <div class="field"><label>Check-in</label><input id="f-in" type="date" value="2026-07-10"/></div>
       <div class="field"><label>Check-out</label><input id="f-out" type="date" value="2026-07-14"/></div>
     </div>
+    ${isRangeBlocked(s, fIn||'2026-07-10', fOut||'2026-07-14') ? `<p style="color:var(--stamp);font-size:12px;margin:-8px 0 14px;">${s.name.split(' ')[0]} isn't available for some of these dates — check the calendar on their profile.</p>` : ''}
     <div class="field"><label>Anything ${s.name.split(' ')[0]} should know</label><textarea id="f-notes" placeholder="Feeding schedule, medication, temperament…">Very friendly, needs a short walk morning and evening.</textarea></div>
+    <div class="section-label">Add-ons</div>
+    <div class="consent-row addon-row ${state.form.protect ? 'checked' : ''}" data-action="toggle-protect">
+      <div class="consent-box">${state.form.protect ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
+      <p><b>Pawcation Protect</b> — ₺${protectFee} flat. Covers accidental damage at the sitter's home and adds 24/7 priority support for this stay.</p>
+    </div>
+    <div class="pricebox-summary">
+      <div class="pb-row"><span>${nights} night${nights>1?'s':''} × ${s.price}</span><b>₺${subtotal.toLocaleString('tr-TR')}</b></div>
+      ${state.form.protect ? `<div class="pb-row"><span>Pawcation Protect</span><b>₺${protectFee}</b></div>` : ''}
+      <div class="pb-row total"><span>Total</span><b>₺${total.toLocaleString('tr-TR')}</b></div>
+    </div>
     <div class="section-label">Before you send</div>
     <div class="consent-row ${state.consent.petHealth ? 'checked' : ''}" data-action="toggle-consent-petHealth">
       <div class="consent-box">${state.consent.petHealth ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
@@ -1150,7 +1531,7 @@ function screenRequestForm(){
       <div class="consent-box">${state.consent.vetConsent ? ICON.check.replace('26','14').replace('26','14') : ''}</div>
       <p>If I'm unreachable in an emergency, I authorize the sitter to seek veterinary care on my behalf, up to ₺2,000 — to be reimbursed by me afterward. <a data-action="open-policy-vetconsent-request">Read full consent</a></p>
     </div>
-    <button class="btn btn-primary" data-action="confirm-request-${s.id}" ${(!state.consent.petHealth||!state.consent.vetConsent) ? 'disabled' : ''}>Send request</button>
+    <button class="btn btn-primary" data-action="confirm-request-${s.id}" ${(!state.consent.petHealth||!state.consent.vetConsent) ? 'disabled' : ''}>${s.instantBook ? 'Book instantly' : 'Send request'}</button>
   </div>`;
 }
 
@@ -1203,13 +1584,14 @@ function screenTicket(){
   </div>`;
 }
 
-function renderTicketCard(b){
+function renderTicketCard(b, clickable){
+  const dim = b.status==='cancelled' ? 'opacity:.55;' : '';
   return `
-    <div class="ticket">
+    <div class="ticket" style="${dim}${clickable!==false ? 'cursor:pointer;' : ''}" ${clickable!==false ? `data-action="open-booking-${b.id}"` : ''}>
       <div class="ticket-top">
         <div class="ticket-brand">
           <div class="tb-name">${ICON.paw} Pawcation Pass</div>
-          <div class="stampbadge">${b.status==='pending' ? 'PENDING' : 'CONFIRMED'}</div>
+          <div class="stampbadge">${b.status==='pending' ? 'PENDING' : b.status==='completed' ? 'COMPLETED' : b.status==='cancelled' ? 'CANCELLED' : 'CONFIRMED'}</div>
         </div>
         <div class="ticket-route">
           <div class="pt"><b>${b.petName}</b><span>Pet</span></div>
@@ -1221,6 +1603,8 @@ function renderTicketCard(b){
           <div><span>Check-out</span><b>${b.checkOut}</b></div>
           <div><span>Location</span><b>${b.loc}</b></div>
         </div>
+        ${b.protect ? `<div class="protect-badge">${ICON.shield}Pawcation Protect included</div>` : ''}
+        ${b.total ? `<div class="protect-badge" style="color:var(--ink-soft);">Total paid: ₺${b.total.toLocaleString('tr-TR')}</div>` : ''}
       </div>
       <div class="tear"></div>
       <div class="ticket-bottom">
@@ -1244,67 +1628,280 @@ function screenBookings(){
   return `
   <div class="fade-in narrow">
     <h2 class="title">Your pawcations</h2>
-    <p class="subtitle">Every request, past and upcoming, kept as a pass.</p>
+    <p class="subtitle">Every request, past and upcoming, kept as a pass. Tap one for stay updates and details.</p>
     ${state.bookings.length===0 ? screenEmptyBookings() : state.bookings.slice().reverse().map(b=>renderTicketCard(b)).join('')}
   </div>`;
 }
 
-function screenMessages(){
-  const threads = state.mode==='owner'
-    ? SITTERS.slice(0,3).map((s,i)=>({name:s.name, img:s.img, msg: i===0 ? "Sounds great — I'll take good care of them!" : i===1 ? "Could you send Buddy's vet contact just in case?" : "Looking forward to meeting Luna 🐾", when:['2m','1h','Yesterday'][i], unread:i<2}))
-    : state.mode==='sitter'
-    ? REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i], unread:i<1}))
-    : TRAINING_REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you for taking on Boncuk's training!" : i===1 ? "She does get startled by loud noises, heads up." : "Same time next week works great.", when:['5m','3h','Mon'][i], unread:i<1}));
+function renderStarLine(n){
+  return `<span style="color:var(--gold);letter-spacing:1px;">${'★'.repeat(n)}${'☆'.repeat(5-n)}</span>`;
+}
+
+function renderReviewCard(r){
+  return `
+  <div class="reviewcard">
+    <div class="rh">${renderStarLine(r.overall)}<span style="color:var(--ink-soft);font-weight:400">Just now</span></div>
+    <p>${r.text || 'No written comment.'}</p>
+    <div class="tagrow" style="margin-top:8px;">
+      <span class="tag">Cleanliness ${r.cleanliness}★</span>
+      <span class="tag">Communication ${r.communication}★</span>
+      <span class="tag">Punctuality ${r.punctuality}★</span>
+    </div>
+  </div>`;
+}
+
+function renderReviewSection(b){
+  const isHostView = state.mode!=='owner';
+  if(isHostView){
+    if(b.review){
+      return `
+      <div class="section-label">Owner's review</div>
+      ${renderReviewCard(b.review)}
+      `;
+    }
+    if(b.trainerBooking){
+      return `
+      <div class="section-label">Review</div>
+      <p class="subtitle" style="margin-top:-6px;">No review yet — this is a mock, so you can simulate the owner leaving one.</p>
+      <button class="btn btn-ghost" data-action="simulate-trainer-review-${b.id}">Simulate: ask ${(b.ownerName||'owner').split(' ')[0]} to review</button>
+      `;
+    }
+    return `
+      <div class="section-label">Review</div>
+      <p class="subtitle" style="margin-top:-6px;">The owner hasn't left a review yet.</p>
+    `;
+  }
+  if(b.review){
+    return `<div class="section-label">Your review</div>${renderReviewCard(b.review)}`;
+  }
+  if(!b.sitterId) return '';
+  return `
+    <div class="section-label">How did it go?</div>
+    <button class="btn btn-primary" data-action="nav2-review-${b.id}">Leave a review</button>
+  `;
+}
+
+function screenBookingDetail(){
+  const b = state.bookings.find(x=>x.id===state.selectedId);
+  if(!b) return screenBookings();
+  const isHost = state.mode==='sitter' || state.mode==='trainer';
   return `
   <div class="fade-in narrow">
-    <h2 class="title">Messages</h2>
+    ${renderTicketCard(b, false)}
+    ${b.status==='cancelled' ? `
+      <div class="sos-banner" style="margin-top:16px;">${ICON.alert}<p>This pawcation was cancelled${b.cancelReason ? ': '+b.cancelReason : '.'}</p></div>
+    ` : ''}
+    <div style="display:flex;gap:10px;margin:16px 0 6px;">
+      ${b.status==='confirmed' ? `<button class="btn btn-ghost sos-btn" data-action="open-sos-${b.id}">${ICON.alert}SOS</button>` : ''}
+      ${b.status==='confirmed' && isHost ? `<button class="btn btn-primary" data-action="complete-booking-${b.id}" style="flex:1;">Mark stay as completed</button>` : ''}
+    </div>
+    ${(b.status==='pending' || b.status==='confirmed') ? `
+      <div style="display:flex;gap:10px;margin-bottom:16px;">
+        <button class="btn btn-ghost" style="flex:1;color:var(--stamp);border-color:var(--stamp);" data-action="open-cancel-${b.id}">Cancel pawcation</button>
+        ${b.status==='confirmed' ? `<button class="btn btn-ghost" style="flex:1;" data-action="open-reschedule-${b.id}">Reschedule</button>` : ''}
+      </div>
+    ` : ''}
+    ${b.sessions ? `
+      <div class="section-label">Session schedule${b.goal ? ' — '+b.goal : ''}</div>
+      ${b.sessions.map((s,i)=>`
+        <div class="session-row ${s.done?'done':''}" ${b.status!=='cancelled' ? `data-action="toggle-session-${b.id}-${i}"` : ''}>
+          <div class="session-num">${i+1}</div>
+          <div class="session-body"><b>${s.date}</b><span>${s.time}</span></div>
+          <div class="session-check">${s.done ? ICON.check.replace('26','13').replace('26','13') : ''}</div>
+        </div>
+      `).join('')}
+    ` : ''}
+    <div class="section-label">Stay updates</div>
+    ${b.updates.length===0 ? `<p class="subtitle" style="margin-top:-6px;">${isHost ? "Post a photo so the owner can see how things are going." : "No updates yet — your sitter or trainer will post photos here during the stay."}</p>` : ''}
+    ${b.updates.slice().reverse().map(u=>`
+      <div class="stayupdate">
+        <div class="su-img" style="background-image:url('${u.photo}')"></div>
+        <div class="su-body"><p>${u.note}</p><span>${u.when}</span></div>
+      </div>
+    `).join('')}
+    ${isHost && b.status==='confirmed' ? `
+      <div class="section-label">Post an update</div>
+      <div class="upload-tile" style="margin-bottom:10px;" data-upload="stayUpdatePhoto">
+        <div style="color:var(--ink-soft)">${ICON.camera}</div><div class="uplabel-empty">Add a photo</div>
+        <input type="file" accept="image/*" data-upload-input="stayUpdatePhoto"/>
+      </div>
+      <div class="field"><textarea id="su-note" placeholder="What's happening right now?"></textarea></div>
+      <button class="btn btn-ghost" data-action="post-update-${b.id}">Post update</button>
+    ` : ''}
+    ${b.status==='completed' ? renderReviewSection(b) : ''}
+  </div>`;
+}
+
+function screenSOS(){
+  const b = state.bookings.find(x=>x.id===state.selectedId);
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Emergency</h2>
+    <div class="sos-banner">${ICON.alert}<p>This is a mock emergency panel. In a live version these would reach the other side and Pawcation support in real time.</p></div>
+    <div class="sos-option" data-action="sos-call">
+      <div class="soicon">${ICON.phone}</div>
+      <div><b>Call ${b ? b.hostName : 'the other side'}</b><span>Reach them directly, right now</span></div>
+    </div>
+    <div class="sos-option" data-action="sos-support">
+      <div class="soicon">${ICON.shield}</div>
+      <div><b>Alert Pawcation support</b><span>A team member is notified immediately</span></div>
+    </div>
+    <div class="sos-option" data-action="sos-vet">
+      <div class="soicon">${ICON.cert}</div>
+      <div><b>Find nearest emergency vet</b><span>Uses the vet-care authorization from your booking</span></div>
+    </div>
+  </div>`;
+}
+
+function screenCancelBooking(){
+  const b = state.bookings.find(x=>x.id===state.selectedId);
+  if(!b) return screenBookings();
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Cancel this pawcation?</h2>
+    <p class="subtitle">Refunds follow the <a data-action="open-policy-cancellation-bookingDetail">cancellation policy</a>. This can't be undone.</p>
+    ${renderTicketCard(b, false)}
+    <div class="section-label">Reason (optional)</div>
+    <div class="field"><textarea id="cancel-reason" placeholder="Let them know why…"></textarea></div>
+    <button class="btn btn-primary" style="background:var(--stamp);" data-action="confirm-cancel-${b.id}">Confirm cancellation</button>
+    <button class="btn btn-ghost" data-action="back">Never mind</button>
+  </div>`;
+}
+
+function screenReschedule(){
+  const b = state.bookings.find(x=>x.id===state.selectedId);
+  if(!b) return screenBookings();
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Reschedule</h2>
+    <p class="subtitle">Propose new dates for this pawcation — ${b.hostName} will need to confirm them.</p>
+    ${renderTicketCard(b, false)}
+    <div class="section-label">New dates</div>
+    <div class="field-row">
+      <div class="field"><label>New check-in</label><input id="resch-in" value="${b.checkIn}"/></div>
+      <div class="field"><label>New check-out</label><input id="resch-out" value="${b.checkOut}"/></div>
+    </div>
+    <button class="btn btn-primary" data-action="confirm-reschedule-${b.id}">Send new dates</button>
+  </div>`;
+}
+
+function screenLeaveReview(){
+  const b = state.bookings.find(x=>x.id===state.selectedId);
+  if(!b) return screenBookings();
+  if(!state.reviewDraft) state.reviewDraft = { overall:5, cleanliness:5, communication:5, punctuality:5, text:'' };
+  const draft = state.reviewDraft;
+  const starRow = (key,label) => `
+    <div class="field">
+      <label>${label}</label>
+      <div class="starpicker">
+        ${[1,2,3,4,5].map(n=>`<span class="${draft[key]>=n?'filled':''}" data-action="set-review-${key}-${n}">${ICON.star}</span>`).join('')}
+      </div>
+    </div>`;
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Rate ${b.hostName}</h2>
+    <p class="subtitle">Your feedback helps other owners choose a trustworthy sitter.</p>
+    ${starRow('overall','Overall')}
+    ${starRow('cleanliness','Cleanliness')}
+    ${starRow('communication','Communication')}
+    ${starRow('punctuality','Punctuality')}
+    <div class="field"><label>Anything you'd like to add</label><textarea id="review-text" placeholder="How was the stay?">${draft.text}</textarea></div>
+    <button class="btn btn-primary" data-action="submit-review-${b.id}">Submit review</button>
+  </div>`;
+}
+
+function screenMessages(){
+  const prefix = state.mode==='owner' ? 'owner-' : state.mode==='sitter' ? 'sitter-' : 'trainer-';
+  const ids = Object.keys(state.chats).filter(id=>id.startsWith(prefix));
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">${t('title_messages')}</h2>
     <p class="subtitle">Conversations tied to your requests and bookings.</p>
-    ${threads.map(t=>`
-      <div class="msgrow">
+    ${ids.length===0 ? `
+      <div class="emptystate">
+        <div class="ico">${ICON.chat}</div>
+        <h3>No conversations yet</h3>
+        <p>Messages tied to your requests will show up here.</p>
+      </div>` : ids.map(id=>{
+        const t = state.chats[id];
+        const last = t.messages[t.messages.length-1];
+        return `
+      <div class="msgrow" data-action="open-chat-${id}">
         <div class="avatar" style="background-image:url('${t.img}')"></div>
         <div class="mbody">
-          <div class="mtop"><b>${t.name}</b><span>${t.when}</span></div>
-          <p>${t.msg}</p>
+          <div class="mtop"><b>${t.name}</b><span>${last.when}</span></div>
+          <p>${last.from==='me' ? 'You: ' : ''}${last.text}</p>
         </div>
         ${t.unread ? '<div class="unreaddot"></div>' : ''}
       </div>
-    `).join('')}
+    `;}).join('')}
+  </div>`;
+}
+
+function screenChatThread(){
+  const id = state.selectedId;
+  const t = state.chats[id];
+  if(!t) return screenMessages();
+  return `
+  <div class="fade-in narrow" style="display:flex;flex-direction:column;min-height:calc(100% - 20px);">
+    <div class="chat-header">
+      <div class="avatar" style="background-image:url('${t.img}')"></div>
+      <b>${t.name}</b>
+    </div>
+    <div class="chat-messages" id="chat-scroll">
+      ${t.messages.map(m=>`<div class="chat-bubble ${m.from}"><p>${m.text}</p><span>${m.when}</span></div>`).join('')}
+    </div>
+    <div class="chat-inputbar">
+      <input id="chat-input" placeholder="Type a message…"/>
+      <button class="sendbtn" data-action="send-chat-${id}">${ICON.send}</button>
+    </div>
   </div>`;
 }
 
 function screenProfile(){
   const isOwner = state.mode==='owner';
   const isTrainer = state.mode==='trainer';
-  const roleLabel = isOwner ? 'Pet owner' : isTrainer ? 'Trainer' : 'Sitter';
+  const roleLabel = isOwner ? t('profile_pet_owner') : isTrainer ? t('profile_trainer') : t('profile_sitter');
   const otherModes = ['owner','sitter','trainer'].filter(m=>m!==state.mode);
   const modeMeta = {
-    owner:{icon:ICON.paw, label:'Look for a sitter instead'},
-    sitter:{icon:ICON.home, label:'Start hosting pets'},
-    trainer:{icon:ICON.cert, label:'Offer training sessions'},
+    owner:{icon:ICON.paw, label:t('mode_switch_owner')},
+    sitter:{icon:ICON.home, label:t('mode_switch_sitter')},
+    trainer:{icon:ICON.cert, label:t('mode_switch_trainer')},
   };
   return `
   <div class="fade-in narrow">
     <div class="profile-head">
       <div class="avatar" style="background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:26px;">Y</div>
-      <h2>You</h2>
+      <h2 style="display:flex;align-items:center;gap:6px;justify-content:center;">${t('profile_you')} ${state.verification.status==='verified' ? `<span class="trustbadge">${ICON.shield}Verified</span>` : ''}</h2>
       <p>${roleLabel} · Istanbul, Turkey</p>
     </div>
-    <div class="profile-row" data-action="nav2-verify"><div class="left">${ICON.shield}<span>Verification & trust</span></div>
+    <div class="profile-row" data-action="nav2-verify"><div class="left">${ICON.shield}<span>${t('profile_verification')}</span></div>
       <span style="display:flex;align-items:center;gap:8px;">
         <span class="statuspill ${state.verification.status}" style="margin:0;padding:3px 9px;font-size:10px;"><span class="dot"></span>${state.verification.status==='unverified' ? 'Not started' : state.verification.status==='pending' ? 'In review' : 'Verified'}</span>
         ${ICON.chevron}
       </span>
     </div>
     ${isTrainer
-      ? `<div class="profile-row" data-action="nav2-trainercv"><div class="left">${ICON.cert}<span>Trainer CV</span></div>${state.trainerCV ? `<span style="color:var(--ink-soft);font-size:12px;">Complete</span>` : `<span style="color:var(--ink-soft);font-size:12px;">Not started</span>`}${ICON.chevron}</div>`
-      : `<div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Hosting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>`}
-    <div class="profile-row" data-action="nav2-payment"><div class="left">${ICON.cardicon}<span>${isOwner ? 'Payment methods' : 'Payout details'}</span></div>${ICON.chevron}</div>
-    <div class="profile-row" data-action="tap-bell"><div class="left">${ICON.bell}<span>Notifications</span></div>${ICON.chevron}</div>
-    <div class="profile-row" data-action="nav2-policyhub"><div class="left">${ICON.idcard}<span>Legal &amp; policies</span></div>${ICON.chevron}</div>
-    <div class="profile-row" data-action="nav2-documents"><div class="left">${ICON.filesheet}<span>Business documents</span></div>${ICON.chevron}</div>
-    <div class="section-label">Switch role</div>
+      ? `<div class="profile-row" data-action="nav2-trainercv"><div class="left">${ICON.cert}<span>${t('profile_trainercv')}</span></div>${state.trainerCV ? `<span style="color:var(--ink-soft);font-size:12px;">Complete</span>` : `<span style="color:var(--ink-soft);font-size:12px;">Not started</span>`}${ICON.chevron}</div>`
+      : `<div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-availability'}"><div class="left">${isOwner ? ICON.paw : ICON.calendar}<span>${isOwner ? t('profile_mypets') : t('profile_availability')}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : `<span style="color:var(--ink-soft);font-size:12px;">${state.myBlockedDates.length} blocked</span>`}${ICON.chevron}</div>`}
+    ${isOwner ? `<div class="profile-row" data-action="nav2-favorites"><div class="left">${ICON.heart}<span>${t('profile_favorites')}</span></div><span style="color:var(--ink-soft);font-size:12px;">${state.favorites.length} saved</span>${ICON.chevron}</div>` : ''}
+    <div class="profile-row" data-action="nav2-payment"><div class="left">${ICON.cardicon}<span>${isOwner ? t('profile_payment') : t('profile_payout')}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="tap-bell"><div class="left">${ICON.bell}<span>${t('profile_notifications')}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-policyhub"><div class="left">${ICON.idcard}<span>${t('profile_legal')}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-documents"><div class="left">${ICON.filesheet}<span>${t('profile_documents')}</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-rewards"><div class="left">${ICON.gift}<span>${t('profile_points')}</span></div><span style="color:var(--ink-soft);font-size:12px;">${state.loyaltyPoints} pts</span>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-tour"><div class="left">${ICON.clock}<span>${t('profile_how_it_works')}</span></div>${ICON.chevron}</div>
+    <div class="section-label">${t('profile_language')}</div>
+    <div class="profile-row" style="cursor:default;">
+      <div class="left"><span>🌐</span><span>${state.lang==='tr' ? 'Türkçe' : 'English'}</span></div>
+      <span class="langswitch" style="margin:0;">
+        <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
+        <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+      </span>
+    </div>
+    <div class="section-label">${t('profile_switch_role')}</div>
     ${otherModes.map(m=>`<div class="profile-row" data-action="mode-${m}"><div class="left">${modeMeta[m].icon}<span>${modeMeta[m].label}</span></div>${ICON.chevron}</div>`).join('')}
-    <div class="profile-row" style="color:var(--stamp);"><div class="left" style="color:var(--stamp);">${ICON.logout}<span>Log out</span></div></div>
+    <div class="profile-row" style="color:var(--stamp);"><div class="left" style="color:var(--stamp);">${ICON.logout}<span>${t('profile_logout')}</span></div></div>
   </div>`;
 }
 
@@ -1362,6 +1959,79 @@ function screenNotifications(){
         ${!n.read ? '<div class="unreaddot"></div>' : ''}
       </div>
     `).join('')}
+  </div>`;
+}
+
+function screenRewards(){
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Pawcation Points</h2>
+    <p class="subtitle">Earn 50 points every time you book a pawcation through the app. Redeem them for discounts and perks.</p>
+    <div class="pointsbanner">
+      <div><b>${state.loyaltyPoints}</b><span>points available</span></div>
+      ${ICON.gift}
+    </div>
+    <div class="section-label">Redeem</div>
+    ${REWARDS.map(r=>`
+      <div class="reward-row ${state.loyaltyPoints<r.cost?'locked':''}">
+        <div class="rw-icon">${r.icon}</div>
+        <div class="rw-body"><b>${r.title}</b><span>${r.cost} points</span></div>
+        <button class="btn btn-ghost" style="padding:8px 14px;font-size:12px;width:auto;" data-action="redeem-reward-${r.id}" ${state.loyaltyPoints<r.cost?'disabled':''}>Redeem</button>
+      </div>
+    `).join('')}
+    ${state.redeemedRewards.length ? `
+      <div class="section-label">Redeemed</div>
+      ${state.redeemedRewards.slice().reverse().map(rr=>`
+        <div class="reviewcard">
+          <div class="rh"><span>${rr.title}</span><span style="color:var(--ink-soft);font-weight:400">${rr.when}</span></div>
+          <p>Code: ${rr.code}</p>
+        </div>
+      `).join('')}
+    ` : ''}
+  </div>`;
+}
+
+function screenAvailability(){
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">My availability</h2>
+    <p class="subtitle">Tap a date to mark it unavailable. Owners see this on your profile before requesting a stay.</p>
+    <div class="section-label">${CAL_MONTH.label}</div>
+    ${renderMiniCalendar(state.myBlockedDates, true)}
+  </div>`;
+}
+
+function screenFavorites(){
+  const list = SITTERS.filter(s=>state.favorites.includes(s.id));
+  return `
+  <div class="fade-in">
+    <h2 class="title">Favorites</h2>
+    <p class="subtitle">Sitters you've saved for later.</p>
+    ${list.length===0 ? `
+      <div class="emptystate">
+        <div class="ico">${ICON.heart}</div>
+        <h3>No favorites yet</h3>
+        <p>Tap the heart on a sitter's card to save them here.</p>
+      </div>` : `
+    <div class="card-grid">
+    ${list.map(s=>`
+      <div class="card" data-action="open-sitter-${s.id}">
+        <div class="thumb" style="background-image:url('${s.img}')">
+          <div class="heart-btn active" data-action="toggle-fav-${s.id}">${ICON.heart}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-toprow">
+            <div class="card-name">${s.name}</div>
+            <div class="rating">${ICON.star}${s.rating}</div>
+          </div>
+          <div class="card-loc">${ICON.pin}${s.loc}</div>
+          <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+          ${renderTrustBadges(s, true)}
+          <div class="price">${s.price} <span>/ night</span></div>
+        </div>
+      </div>
+    `).join('')}
+    </div>`}
   </div>`;
 }
 
@@ -1526,10 +2196,19 @@ function screenTrainerCV(){
           <span style="display:block;margin:4px 0;">${cv.bio}</span>
         </div>
       </div>
+      <div class="responsetime">${ICON.clock}<span>${t('responds_within')} ${formatResponseTime(45)}</span></div>
       <div class="section-label">Works with</div>
       <div class="tagrow">${cv.animals.map(a=>`<span class="tag">${a}</span>`).join('') || '<span class="tag">Not set</span>'}</div>
       <div class="section-label">Certifications &amp; achievements</div>
       <p class="bio">${cv.certifications || 'None added yet.'}</p>
+      <div class="section-label">Reviews${TRAINER_REVIEWS.length ? ` · ${(TRAINER_REVIEWS.reduce((sum,r)=>sum+r.stars,0)/TRAINER_REVIEWS.length).toFixed(1)}★ (${TRAINER_REVIEWS.length})` : ''}</div>
+      ${TRAINER_REVIEWS.length===0 ? `<p class="subtitle" style="margin-top:-6px;">No reviews yet — complete a training booking to get your first one.</p>` : TRAINER_REVIEWS.map(r=>`
+        <div class="reviewcard">
+          <div class="rh"><span>${r.name}</span><span style="color:var(--ink-soft);font-weight:400">${r.when}</span></div>
+          <div style="color:var(--gold);font-size:12px;margin-bottom:2px;">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+          <p>${r.text}</p>
+        </div>
+      `).join('')}
       <button class="btn btn-ghost" data-action="nav2-trainercv-edit" style="margin-top:14px;">Edit CV</button>
     </div>`;
   }
@@ -1556,6 +2235,7 @@ function render(){
   renderBottomNav();
   let html = '';
   switch(state.screen){
+    case 'tour': html = screenTour(); break;
     case 'onboard': html = screenOnboard(); break;
     case 'browse': html = state.mode==='owner' ? screenBrowseOwner() : state.mode==='sitter' ? screenBrowseSitter() : screenBrowseTrainer(); break;
     case 'detail': html = screenSitterDetail(); break;
@@ -1575,6 +2255,15 @@ function render(){
     case 'documents': html = screenDocuments(); break;
     case 'trainercv': html = screenTrainerCV(); break;
     case 'notifications': html = screenNotifications(); break;
+    case 'rewards': html = screenRewards(); break;
+    case 'bookingDetail': html = screenBookingDetail(); break;
+    case 'sos': html = screenSOS(); break;
+    case 'leaveReview': html = screenLeaveReview(); break;
+    case 'chatThread': html = screenChatThread(); break;
+    case 'availability': html = screenAvailability(); break;
+    case 'favorites': html = screenFavorites(); break;
+    case 'cancelBooking': html = screenCancelBooking(); break;
+    case 'reschedule': html = screenReschedule(); break;
     default: html = screenOnboard();
   }
   app.content.innerHTML = html;
@@ -1589,6 +2278,16 @@ document.addEventListener('click', (e) => {
   if(action==='pick-owner'){ state.onboarded=true; state.mode='owner'; go('browse'); return; }
   if(action==='pick-sitter'){ state.onboarded=true; state.mode='sitter'; go('browse'); return; }
   if(action==='pick-trainer'){ state.onboarded=true; state.mode='trainer'; go('browse'); return; }
+  if(action==='set-lang-en'){ setLang('en'); return; }
+  if(action==='set-lang-tr'){ setLang('tr'); return; }
+  if(action==='tour-skip'){ go('onboard'); return; }
+  if(action==='tour-next'){
+    if((state.tourStep||0) >= 3){ go('onboard'); }
+    else { state.tourStep = (state.tourStep||0) + 1; render(); }
+    return;
+  }
+  if(action && action.startsWith('tour-dot-')){ state.tourStep = parseInt(action.replace('tour-dot-','')); render(); return; }
+  if(action==='nav2-tour'){ state.tourStep = 0; go('tour'); return; }
   if(action==='mode-owner'){ setMode('owner'); return; }
   if(action==='mode-sitter'){ setMode('sitter'); return; }
   if(action==='mode-trainer'){ setMode('trainer'); return; }
@@ -1601,7 +2300,12 @@ document.addEventListener('click', (e) => {
     else if(state.screen==='policy') go(state.policyReturnTo || 'policyhub');
     else if(state.screen==='policyhub') go('profile');
     else if(state.screen==='documents') go('profile');
-    else if(['verify','payment','mypets','trainercv','notifications'].includes(state.screen)) go('profile');
+    else if(state.screen==='bookingDetail') go('bookings');
+    else if(state.screen==='sos') go('bookingDetail', {selectedId:state.selectedId});
+    else if(state.screen==='leaveReview'){ state.reviewDraft=null; go('bookingDetail', {selectedId:state.selectedId}); }
+    else if(state.screen==='cancelBooking' || state.screen==='reschedule') go('bookingDetail', {selectedId:state.selectedId});
+    else if(state.screen==='chatThread') go('messages');
+    else if(['verify','payment','mypets','trainercv','notifications','rewards','availability','favorites','tour'].includes(state.screen)) go('profile');
     else go('browse');
     return;
   }
@@ -1616,6 +2320,81 @@ document.addEventListener('click', (e) => {
   }
   if(action==='nav2-policyhub'){ go('policyhub'); return; }
   if(action==='nav2-documents'){ go('documents'); return; }
+  if(action==='nav2-rewards'){ go('rewards'); return; }
+  if(action.startsWith('redeem-reward-')){
+    const id = action.replace('redeem-reward-','');
+    const r = REWARDS.find(x=>x.id===id);
+    if(!r || state.loyaltyPoints < r.cost){ toast('Not enough points yet'); return; }
+    state.loyaltyPoints -= r.cost;
+    state.redeemedRewards.push({ title:r.title, when:'Just now', code:'PWC-'+Math.random().toString(36).slice(2,7).toUpperCase() });
+    toast(r.title+' redeemed!');
+    render();
+    return;
+  }
+  if(action==='nav2-availability'){ go('availability'); return; }
+  if(action.startsWith('toggle-avail-')){
+    const iso = action.replace('toggle-avail-','');
+    const idx = state.myBlockedDates.indexOf(iso);
+    if(idx>-1) state.myBlockedDates.splice(idx,1); else state.myBlockedDates.push(iso);
+    render();
+    return;
+  }
+  if(action==='nav2-favorites'){ go('favorites'); return; }
+  if(action.startsWith('toggle-fav-')){
+    const id = action.replace('toggle-fav-','');
+    const idx = state.favorites.indexOf(id);
+    if(idx>-1){ state.favorites.splice(idx,1); toast('Removed from favorites'); }
+    else { state.favorites.push(id); toast('Added to favorites'); }
+    render();
+    return;
+  }
+  if(action.startsWith('open-chat-')){
+    const id = action.replace('open-chat-','');
+    if(state.chats[id]) state.chats[id].unread = false;
+    go('chatThread', {selectedId:id});
+    app.content.scrollTop = app.content.scrollHeight;
+    return;
+  }
+  if(action.startsWith('send-chat-')){
+    const id = action.replace('send-chat-','');
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if(!text) return;
+    const t = state.chats[id];
+    t.messages.push({from:'me', text, when:'Just now'});
+    go('chatThread', {selectedId:id});
+    app.content.scrollTop = app.content.scrollHeight;
+    setTimeout(()=>{
+      if(state.screen==='chatThread' && state.selectedId===id){
+        const replies = ["Got it, thank you!", "Sounds good 👍", "Will do — I'll keep you posted.", "Perfect, see you then!"];
+        t.messages.push({from:'them', text: replies[Math.floor(Math.random()*replies.length)], when:'Just now'});
+        render();
+        app.content.scrollTop = app.content.scrollHeight;
+      }
+    }, 1300);
+    return;
+  }
+  if(action.startsWith('open-cancel-')){ go('cancelBooking', {selectedId: action.replace('open-cancel-','')}); return; }
+  if(action.startsWith('confirm-cancel-')){
+    const id = action.replace('confirm-cancel-','');
+    const b = state.bookings.find(x=>x.id===id);
+    const reason = document.getElementById('cancel-reason').value;
+    if(b){ b.status='cancelled'; b.cancelReason = reason; }
+    toast('Pawcation cancelled');
+    go('bookingDetail', {selectedId:id});
+    return;
+  }
+  if(action.startsWith('open-reschedule-')){ go('reschedule', {selectedId: action.replace('open-reschedule-','')}); return; }
+  if(action.startsWith('confirm-reschedule-')){
+    const id = action.replace('confirm-reschedule-','');
+    const b = state.bookings.find(x=>x.id===id);
+    const newIn = document.getElementById('resch-in').value;
+    const newOut = document.getElementById('resch-out').value;
+    if(b){ b.checkIn = newIn; b.checkOut = newOut; b.status = 'pending'; }
+    toast('New dates sent — waiting for confirmation');
+    go('bookingDetail', {selectedId:id});
+    return;
+  }
   if(action.startsWith('nav-')){ go(action.replace('nav-','')); return; }
   if(action.startsWith('filter-')){ state.filter = action.replace('filter-',''); render(); return; }
   if(action.startsWith('open-sitter-')){ go('detail', {selectedId: action.replace('open-sitter-','')}); return; }
@@ -1624,9 +2403,11 @@ document.addEventListener('click', (e) => {
   if(action.startsWith('request-stay-')){
     state.consent.petHealth = false;
     state.consent.vetConsent = false;
+    state.form.protect = false;
     go('request', {selectedId: action.replace('request-stay-','')});
     return;
   }
+  if(action==='toggle-protect'){ state.form.protect = !state.form.protect; render(); return; }
 
   if(action.startsWith('confirm-request-')){
     const id = action.replace('confirm-request-','');
@@ -1634,14 +2415,25 @@ document.addEventListener('click', (e) => {
     const petName = document.getElementById('f-petname').value || 'Your pet';
     const checkIn = document.getElementById('f-in').value || '2026-07-10';
     const checkOut = document.getElementById('f-out').value || '2026-07-14';
+    if(isRangeBlocked(s, checkIn, checkOut)){
+      toast(s.name.split(' ')[0]+" isn't available for some of those dates");
+      return;
+    }
+    const nights = computeNights(checkIn, checkOut);
+    const protect = state.form.protect;
+    const protectFee = 99;
+    const total = nights*parsePrice(s.price) + (protect ? protectFee : 0);
     const booking = {
-      id: 'b'+Date.now(), status:'pending',
+      id: 'b'+Date.now(), status: s.instantBook ? 'confirmed' : 'pending',
       petName, hostName: s.name, loc: s.loc.split(',')[0],
       checkIn: fmtDate(checkIn), checkOut: fmtDate(checkOut),
-      code: randCode()
+      code: randCode(), sitterId: s.id, updates: [], review: null,
+      protect, protectFee: protect ? protectFee : 0, total
     };
     state.bookings.push(booking);
-    toast('Request sent to '+s.name.split(' ')[0]);
+    state.loyaltyPoints += 50;
+    state.form.protect = false;
+    toast((s.instantBook ? 'Confirmed with ' : 'Request sent to ')+s.name.split(' ')[0]+' · +50 points');
     go('ticket', {selectedId: booking.id});
     return;
   }
@@ -1653,7 +2445,7 @@ document.addEventListener('click', (e) => {
     const booking = {
       id: 'b'+Date.now(), status:'confirmed',
       petName: r.pet, hostName: 'You', loc: r.loc.split(',')[0],
-      checkIn, checkOut, code: randCode()
+      checkIn, checkOut, code: randCode(), updates: [], review: null
     };
     state.bookings.push(booking);
     toast('Offer sent to '+r.owner.split(' ')[0]);
@@ -1664,14 +2456,100 @@ document.addEventListener('click', (e) => {
   if(action.startsWith('offer-train-')){
     const id = action.replace('offer-train-','');
     const r = TRAINING_REQUESTS.find(x=>x.id===id);
+    const sessionMatch = r.dates.match(/(\d+)\s*session/i);
+    const sessionCount = sessionMatch ? parseInt(sessionMatch[1],10) : 4;
+    const sessions = generateSessions(sessionCount, '2026-07-06');
     const booking = {
       id: 'b'+Date.now(), status:'confirmed',
       petName: r.pet, hostName: 'You', loc: r.loc.split(',')[0],
-      checkIn: r.dates, checkOut: r.goal, code: randCode()
+      checkIn: sessions[0].date, checkOut: sessions[sessions.length-1].date,
+      code: randCode(), updates: [], review: null,
+      trainerBooking: true, ownerName: r.owner, goal: r.goal, sessions
     };
     state.bookings.push(booking);
     toast('Offer sent to '+r.owner.split(' ')[0]);
     go('ticket', {selectedId: booking.id});
+    return;
+  }
+
+  if(action.startsWith('open-booking-')){ go('bookingDetail', {selectedId: action.replace('open-booking-','')}); return; }
+  if(action.startsWith('open-sos-')){ go('sos', {selectedId: action.replace('open-sos-','')}); return; }
+  if(action==='sos-call'){ toast('Calling now… (mock)'); return; }
+  if(action==='sos-support'){ toast('Pawcation support has been notified'); return; }
+  if(action==='sos-vet'){ toast('Nearest emergency vets shown (mock)'); return; }
+
+  if(action.startsWith('complete-booking-')){
+    const id = action.replace('complete-booking-','');
+    const b = state.bookings.find(x=>x.id===id);
+    if(b){ b.status='completed'; toast('Marked as completed'); }
+    go('bookingDetail', {selectedId:id});
+    return;
+  }
+
+  if(action.startsWith('post-update-')){
+    const id = action.replace('post-update-','');
+    const b = state.bookings.find(x=>x.id===id);
+    const note = document.getElementById('su-note').value;
+    if(!pendingUploads.stayUpdatePhoto || !note){ toast('Add a photo and a short note'); return; }
+    b.updates.push({ photo: pendingUploads.stayUpdatePhoto, note, when:'Just now' });
+    delete pendingUploads.stayUpdatePhoto;
+    toast('Update posted');
+    go('bookingDetail', {selectedId:id});
+    return;
+  }
+
+  if(action.startsWith('toggle-session-')){
+    const rest = action.replace('toggle-session-','');
+    const idx = parseInt(rest.slice(rest.lastIndexOf('-')+1),10);
+    const bid = rest.slice(0, rest.lastIndexOf('-'));
+    const b = state.bookings.find(x=>x.id===bid);
+    if(b && b.sessions && b.sessions[idx]){ b.sessions[idx].done = !b.sessions[idx].done; render(); }
+    return;
+  }
+
+  if(action.startsWith('simulate-trainer-review-')){
+    const id = action.replace('simulate-trainer-review-','');
+    const b = state.bookings.find(x=>x.id===id);
+    if(!b) return;
+    const pool = [
+      { stars:5, text:"Incredible progress in just a few sessions — patient, clear, and really knows how to read the dog." },
+      { stars:4, text:"Solid trainer, very consistent. Would've liked a bit more written follow-up between sessions." },
+      { stars:5, text:"My dog's a different animal now. Highly recommend, worth every lira." },
+    ];
+    const pick = pool[Math.floor(Math.random()*pool.length)];
+    const review = { overall:pick.stars, cleanliness:pick.stars, communication:pick.stars, punctuality:pick.stars, text:pick.text };
+    b.review = review;
+    TRAINER_REVIEWS.unshift({ name: b.ownerName || 'Owner', when:'Just now', text: pick.text, stars: pick.stars });
+    toast((b.ownerName||'Owner').split(' ')[0]+' left a review!');
+    go('bookingDetail', {selectedId:id});
+    return;
+  }
+
+  if(action.startsWith('nav2-review-')){
+    state.reviewDraft = { overall:5, cleanliness:5, communication:5, punctuality:5, text:'' };
+    go('leaveReview', {selectedId: action.replace('nav2-review-','')});
+    return;
+  }
+  if(action.startsWith('set-review-')){
+    const rest = action.replace('set-review-','');
+    const n = parseInt(rest.slice(rest.lastIndexOf('-')+1), 10);
+    const key = rest.slice(0, rest.lastIndexOf('-'));
+    if(!state.reviewDraft) state.reviewDraft = { overall:5, cleanliness:5, communication:5, punctuality:5, text:'' };
+    state.reviewDraft[key] = n;
+    render();
+    return;
+  }
+  if(action.startsWith('submit-review-')){
+    const id = action.replace('submit-review-','');
+    const b = state.bookings.find(x=>x.id===id);
+    const text = document.getElementById('review-text').value;
+    const draft = state.reviewDraft || { overall:5, cleanliness:5, communication:5, punctuality:5, text:'' };
+    const review = { ...draft, text };
+    b.review = review;
+    if(b.sitterId){ REVIEWS.unshift({ name:'You', when:'Just now', text: text || 'No written comment.', stars: review.overall, sitterId: b.sitterId }); }
+    state.reviewDraft = null;
+    toast('Review submitted — thank you!');
+    go('bookingDetail', {selectedId:id});
     return;
   }
 
@@ -1780,14 +2658,15 @@ document.addEventListener('click', (e) => {
 /* ---- file uploads (kept in-memory only, never sent anywhere) ---- */
 const pendingUploads = {};
 document.addEventListener('change', (e) => {
+  if(e.target.id==='f-in' || e.target.id==='f-out'){ render(); return; }
   const input = e.target.closest('[data-upload-input]');
   if(!input || !input.files || !input.files[0]) return;
   const key = input.dataset.uploadInput;
   const reader = new FileReader();
   reader.onload = (ev) => {
     const dataUrl = ev.target.result;
-    if(key === 'newPetPhoto'){
-      pendingUploads.newPetPhoto = dataUrl;
+    if(key === 'newPetPhoto' || key === 'stayUpdatePhoto'){
+      pendingUploads[key] = dataUrl;
       const tile = input.closest('.upload-tile');
       tile.style.backgroundImage = `url('${dataUrl}')`;
       tile.classList.add('filled');
@@ -1921,6 +2800,23 @@ function fmtDate(iso){
 }
 function randCode(){
   return Math.random().toString(36).substring(2,6).toUpperCase() + '-' + Math.floor(1000+Math.random()*9000);
+}
+function parsePrice(str){
+  return parseInt(String(str).replace(/[^\d]/g,''),10) || 0;
+}
+function computeNights(inStr,outStr){
+  const d1 = new Date(inStr+'T00:00:00'), d2 = new Date(outStr+'T00:00:00');
+  const diff = Math.round((d2-d1)/86400000);
+  return diff>0 ? diff : 1;
+}
+function generateSessions(count, startISO){
+  const sessions = [];
+  const d = new Date(startISO+'T00:00:00');
+  for(let i=0;i<count;i++){
+    sessions.push({ date: d.toLocaleDateString('en-US',{month:'short', day:'numeric'}), time:'10:00 AM', done:false });
+    d.setDate(d.getDate()+7);
+  }
+  return sessions;
 }
 
 render();
