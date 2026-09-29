@@ -89,11 +89,14 @@
   }
   .modeswitch button{
     border:none; background:transparent;
-    font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600;
-    padding:8px 14px; border-radius:999px;
+    font-family:'Inter',sans-serif; font-size:12px; font-weight:600;
+    padding:8px 8px; border-radius:999px;
     color:var(--ink-soft);
     cursor:pointer;
     transition:.2s;
+    flex:1;
+    text-align:center;
+    white-space:nowrap;
   }
   .modeswitch button.active{
     background:var(--ink); color:var(--canvas);
@@ -216,6 +219,7 @@
   }
   .roleoption.owner .ricon{ background:rgba(227,162,59,0.18); color:var(--gold-deep); }
   .roleoption.sitter .ricon{ background:rgba(110,143,114,0.18); color:var(--moss-deep); }
+  .roleoption.trainer .ricon{ background:rgba(193,68,46,0.15); color:var(--stamp); }
   .roleoption strong{font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; display:block;}
   .roleoption span{font-size:12.5px; color:var(--ink-soft);}
 
@@ -705,6 +709,7 @@ const ICON = {
   filesheet:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M9 9v12"/></svg>`,
   fileslide:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
   filedoc:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4M8 13h8M8 17h5"/></svg>`,
+  cert:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5.5"/><path d="M9 13.3 7.5 21l4.5-2.5 4.5 2.5-1.5-7.7"/></svg>`,
 };
 
 /* ============ MOCK DATA ============ */
@@ -720,6 +725,12 @@ const REQUESTS = [
   {id:'r2', pet:'Mia', type:'British Shorthair · Cat', owner:'Can Öztürk', loc:'Beşiktaş, Istanbul', dates:'Jul 20 – Aug 5', pay:'₺5,600 total', img:'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80', notes:'Mia is independent and mostly self-sufficient — mainly need someone to check in, refill food/water, and scoop litter daily.'},
   {id:'r3', pet:'Rocky', type:'French Bulldog · Dog', owner:'Elif Sarı', loc:'Üsküdar, Istanbul', dates:'Jul 5 – Jul 7', pay:'₺900 total', img:'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=400&q=80', notes:'Short trip, Rocky just needs company — he does not do well fully alone. Brachycephalic, so please keep walks short and cool.'},
   {id:'r4', pet:'Fındık', type:'Tabby · Cat', owner:'Bora Kılıç', loc:'Şişli, Istanbul', dates:'Aug 1 – Aug 3', pay:'₺700 total', img:'https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&q=80', notes:'First time boarding her, a little anxious. Would love someone patient who can send a photo update.'},
+];
+
+const TRAINING_REQUESTS = [
+  {id:'t1', pet:'Boncuk', type:'Kangal Mix · Dog', owner:'Selin Aydın', loc:'Kadıköy, Istanbul', dates:'Flexible · 6 sessions', pay:'₺2,400 total', img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', notes:'Boncuk is 8 months old and pulls hard on the leash. Looking for basic obedience — sit, stay, loose-leash walking — with someone patient and consistent.', goal:'Leash manners & basic obedience'},
+  {id:'t2', pet:'Zeytin', type:'Tabby · Cat', owner:'Kerem Şahin', loc:'Beşiktaş, Istanbul', dates:'Flexible · 4 sessions', pay:'₺1,200 total', img:'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80', notes:'Zeytin scratches the furniture and hisses at guests. Would like help with litter-box consistency and reducing stress around visitors.', goal:'Behavior correction'},
+  {id:'t3', pet:'Max', type:'Border Collie · Dog', owner:'Gizem Koç', loc:'Üsküdar, Istanbul', dates:'Flexible · 8 sessions', pay:'₺3,600 total', img:'https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80', notes:'Max is smart but bored — lots of energy, some separation anxiety when left alone. Looking for advanced obedience plus mental-stimulation routines.', goal:'Advanced obedience & anxiety'},
 ];
 
 const REVIEWS = [
@@ -837,7 +848,7 @@ function screenDocuments(){
 /* ============ STATE ============ */
 let state = {
   onboarded: false,
-  mode: 'owner', // owner | sitter
+  mode: 'owner', // owner | sitter | trainer
   screen: 'onboard', // onboard | browse | detail | request | ticket | bookings | messages | profile
   selectedId: null,
   filter: 'All',
@@ -850,6 +861,14 @@ let state = {
   cards: [],
   payout: null,
   myPets: [],
+  trainerCV: null, // { experience, bio, certifications, animals:[] }
+  trainerCV_draft: null, // in-progress edits before saving
+  notifications: [
+    { id:'n1', from:'Zeynep Arslan', amount:1800, note:"for Buddy's stay", when:'2 hours ago', read:false },
+    { id:'n2', from:'Can Öztürk', amount:5600, note:"for Mia's stay", when:'Yesterday', read:false },
+    { id:'n3', from:'Selin Aydın', amount:2400, note:"for Boncuk's training", when:'3 days ago', read:true },
+    { id:'n4', from:'Elif Sarı', amount:900, note:"for Rocky's stay", when:'Last week', read:true },
+  ],
 };
 
 const app = {
@@ -869,34 +888,38 @@ function setMode(mode){
   state.filter = 'All';
   render();
 }
-function toast(msg){
+function toast(msg, icon){
   const t = document.getElementById('toast');
-  t.innerHTML = `<span style="color:var(--gold)">${ICON.check.replace('26','18').replace('26','18')}</span> ${msg}`;
+  t.innerHTML = `<span style="color:var(--gold)">${icon || ICON.check.replace('26','18').replace('26','18')}</span> ${msg}`;
   t.classList.add('show');
   setTimeout(()=> t.classList.remove('show'), 2200);
+}
+function unreadNotifCount(){
+  return state.notifications.filter(n=>!n.read).length;
 }
 
 /* ============ RENDER: TOPBAR ============ */
 function renderTopbar(){
   if(!state.onboarded){ app.topbar.innerHTML=''; return; }
   const titles = {
-    browse: state.mode==='owner' ? 'Find a sitter' : 'Pets nearby',
+    browse: state.mode==='owner' ? 'Find a sitter' : state.mode==='sitter' ? 'Pets nearby' : 'Pets needing training',
     detail: null, request: null, ticket: null,
     bookings: 'Pawcations', messages: 'Messages', profile: 'Profile'
   };
-  const showBack = ['detail','request','requestDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents'].includes(state.screen);
+  const showBack = ['detail','request','requestDetail','trainingDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents','trainercv','notifications'].includes(state.screen);
   app.topbar.innerHTML = `
     <div class="topbar-row">
       ${showBack
         ? `<div class="backbtn" data-action="back">${ICON.back}</div>`
         : `<div class="brand"><div class="mark">${ICON.paw}</div>Pawcation</div>`
       }
-      ${!showBack ? `<div class="backbtn" style="border:none;background:transparent;">${ICON.bell}</div>` : `<div style="width:34px"></div>`}
+      ${!showBack ? `<div class="backbtn" style="border:none;background:transparent;position:relative;" data-action="tap-bell">${ICON.bell}${unreadNotifCount()>0 ? `<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--stamp);border:1.5px solid var(--paper);"></div>` : ''}</div>` : `<div style="width:34px"></div>`}
     </div>
     ${!showBack ? `
     <div class="modeswitch">
       <button class="${state.mode==='owner'?'active':''}" data-action="mode-owner">I need a sitter</button>
       <button class="${state.mode==='sitter'?'active':''}" data-action="mode-sitter">I want to host a pet</button>
+      <button class="${state.mode==='trainer'?'active':''}" data-action="mode-trainer">I'm a trainer</button>
     </div>` : ''}
   `;
 }
@@ -911,7 +934,7 @@ function renderBottomNav(){
     {key:'messages', icon:ICON.chat, label:'Messages'},
     {key:'profile', icon:ICON.user, label:'Profile'},
   ];
-  const activeKey = ['detail','request','ticket'].includes(state.screen) ? null : state.screen;
+  const activeKey = ['detail','request','ticket','requestDetail','trainingDetail','trainercv','verify','payment','mypets','addpet','policy','policyhub','documents','notifications'].includes(state.screen) ? null : state.screen;
   app.bottomnav.innerHTML = items.map(it => `
     <div class="navitem ${activeKey===it.key?'active':''}" data-action="nav-${it.key}">
       ${it.icon}<span>${it.label}</span>
@@ -934,6 +957,11 @@ function screenOnboard(){
     <div class="roleoption sitter" data-action="pick-sitter">
       <div class="ricon">${ICON.home}</div>
       <div><strong>I want to host a pet</strong><span>Open your home and earn by hosting someone's pet — they stay at your place</span></div>
+      <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
+    </div>
+    <div class="roleoption trainer" data-action="pick-trainer">
+      <div class="ricon">${ICON.cert}</div>
+      <div><strong>I'm a pet trainer</strong><span>Offer training sessions and get matched with owners who need help</span></div>
       <div style="margin-left:auto;color:var(--ink-soft)">${ICON.chevron}</div>
     </div>
   </div>`;
@@ -995,6 +1023,70 @@ function screenBrowseSitter(){
         </div>
       </div>
     `).join('')}
+    </div>
+  </div>`;
+}
+
+function screenBrowseTrainer(){
+  const cats = ['All','Dog','Cat'];
+  const list = TRAINING_REQUESTS.filter(r => state.filter==='All' || r.type.includes(state.filter));
+  return `
+  <div class="fade-in">
+    <h2 class="title">Pets needing training</h2>
+    <p class="subtitle">Owners nearby looking for a trainer. Offer to train the ones that match what you're good at.</p>
+    <div class="searchbar">${ICON.search}<input placeholder="Goal, neighborhood, pet type…"/></div>
+    <div class="chiprow">
+      ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
+    </div>
+    <div class="card-grid">
+    ${list.map(r=>`
+      <div class="card" data-action="open-training-${r.id}">
+        <div class="thumb" style="background-image:url('${r.img}')"></div>
+        <div class="card-body">
+          <div class="card-toprow">
+            <div class="card-name">${r.pet}</div>
+          </div>
+          <div class="card-loc">${ICON.pin}${r.loc}</div>
+          <div class="tagrow"><span class="tag">${r.goal}</span></div>
+          <div class="card-loc" style="margin-top:2px">${ICON.calendar}${r.dates}</div>
+          <div class="price" style="margin-top:6px">${r.pay}</div>
+        </div>
+      </div>
+    `).join('')}
+    </div>
+  </div>`;
+}
+
+function screenTrainingDetail(){
+  const r = TRAINING_REQUESTS.find(x=>x.id===state.selectedId);
+  return `
+  <div class="fade-in" style="margin:0 -20px;">
+    <div class="hero-img" style="background-image:url('${r.img}')">
+      <div class="hero-fade"></div>
+      <div class="hero-caption">
+        <h2>${r.pet}</h2>
+        <div class="loc">${ICON.pin}${r.loc}</div>
+      </div>
+    </div>
+    <div style="padding:0 20px;" class="narrow">
+      <div class="statrow">
+        <div class="stat"><b>${r.dates.split(' · ')[1] || r.dates}</b><span>Program</span></div>
+        <div class="stat"><b>${r.pay.split(' ')[0]}</b><span>Total pay</span></div>
+        <div class="stat"><b>${r.type.split(' · ')[1] || r.type}</b><span>Species</span></div>
+      </div>
+      <div class="tagrow"><span class="tag">${r.goal}</span></div>
+      <div class="section-label">From ${r.owner}</div>
+      <p class="bio">${r.notes}</p>
+      <div class="section-label">Owner</div>
+      <div class="reviewcard" style="display:flex;align-items:center;gap:12px;">
+        <div class="avatar" style="background:var(--moss);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;">${r.owner.split(' ').map(n=>n[0]).join('')}</div>
+        <div><b style="display:block;font-size:13.5px;">${r.owner}</b><span style="font-size:12px;color:var(--ink-soft);">Member since 2025</span></div>
+      </div>
+      <div style="height:6px"></div>
+      <div class="stickybar">
+        <div class="pricebox"><b>${r.pay.split(' ')[0]}</b><span>total</span></div>
+        <button class="btn btn-primary" data-action="offer-train-${r.id}">Offer to train</button>
+      </div>
     </div>
   </div>`;
 }
@@ -1144,7 +1236,7 @@ function screenEmptyBookings(){
     <div class="emptystate">
       <div class="ico">${ICON.ticket}</div>
       <h3>No pawcations yet</h3>
-      <p>${state.mode==='owner' ? 'Request a stay with a sitter and it will show up here.' : 'Offer to host a pet and it will show up here.'}</p>
+      <p>${state.mode==='owner' ? 'Request a stay with a sitter and it will show up here.' : state.mode==='sitter' ? 'Offer to host a pet and it will show up here.' : 'Offer to train a pet and it will show up here.'}</p>
     </div>`;
 }
 
@@ -1160,7 +1252,9 @@ function screenBookings(){
 function screenMessages(){
   const threads = state.mode==='owner'
     ? SITTERS.slice(0,3).map((s,i)=>({name:s.name, img:s.img, msg: i===0 ? "Sounds great — I'll take good care of them!" : i===1 ? "Could you send Buddy's vet contact just in case?" : "Looking forward to meeting Luna 🐾", when:['2m','1h','Yesterday'][i], unread:i<2}))
-    : REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i], unread:i<1}));
+    : state.mode==='sitter'
+    ? REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you so much for offering to sit!" : i===1 ? "She's a little shy at first, gives it an hour." : "Here's the spare key code: 4471", when:['5m','3h','Mon'][i], unread:i<1}))
+    : TRAINING_REQUESTS.slice(0,3).map((r,i)=>({name:r.owner, img:r.img, msg: i===0 ? "Thank you for taking on Boncuk's training!" : i===1 ? "She does get startled by loud noises, heads up." : "Same time next week works great.", when:['5m','3h','Mon'][i], unread:i<1}));
   return `
   <div class="fade-in narrow">
     <h2 class="title">Messages</h2>
@@ -1180,12 +1274,20 @@ function screenMessages(){
 
 function screenProfile(){
   const isOwner = state.mode==='owner';
+  const isTrainer = state.mode==='trainer';
+  const roleLabel = isOwner ? 'Pet owner' : isTrainer ? 'Trainer' : 'Sitter';
+  const otherModes = ['owner','sitter','trainer'].filter(m=>m!==state.mode);
+  const modeMeta = {
+    owner:{icon:ICON.paw, label:'Look for a sitter instead'},
+    sitter:{icon:ICON.home, label:'Start hosting pets'},
+    trainer:{icon:ICON.cert, label:'Offer training sessions'},
+  };
   return `
   <div class="fade-in narrow">
     <div class="profile-head">
       <div class="avatar" style="background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:26px;">Y</div>
       <h2>You</h2>
-      <p>${isOwner ? 'Pet owner' : 'Sitter'} · Istanbul, Turkey</p>
+      <p>${roleLabel} · Istanbul, Turkey</p>
     </div>
     <div class="profile-row" data-action="nav2-verify"><div class="left">${ICON.shield}<span>Verification & trust</span></div>
       <span style="display:flex;align-items:center;gap:8px;">
@@ -1193,13 +1295,15 @@ function screenProfile(){
         ${ICON.chevron}
       </span>
     </div>
-    <div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Hosting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>
+    ${isTrainer
+      ? `<div class="profile-row" data-action="nav2-trainercv"><div class="left">${ICON.cert}<span>Trainer CV</span></div>${state.trainerCV ? `<span style="color:var(--ink-soft);font-size:12px;">Complete</span>` : `<span style="color:var(--ink-soft);font-size:12px;">Not started</span>`}${ICON.chevron}</div>`
+      : `<div class="profile-row" data-action="${isOwner ? 'nav2-mypets' : 'nav2-noop'}"><div class="left">${ICON.paw}<span>${isOwner ? 'My pets' : 'Hosting preferences'}</span></div>${isOwner ? `<span style="color:var(--ink-soft);font-size:12px;">${state.myPets.length} added</span>` : ''}${ICON.chevron}</div>`}
     <div class="profile-row" data-action="nav2-payment"><div class="left">${ICON.cardicon}<span>${isOwner ? 'Payment methods' : 'Payout details'}</span></div>${ICON.chevron}</div>
-    <div class="profile-row"><div class="left">${ICON.bell}<span>Notifications</span></div>${ICON.chevron}</div>
+    <div class="profile-row" data-action="tap-bell"><div class="left">${ICON.bell}<span>Notifications</span></div>${ICON.chevron}</div>
     <div class="profile-row" data-action="nav2-policyhub"><div class="left">${ICON.idcard}<span>Legal &amp; policies</span></div>${ICON.chevron}</div>
     <div class="profile-row" data-action="nav2-documents"><div class="left">${ICON.filesheet}<span>Business documents</span></div>${ICON.chevron}</div>
     <div class="section-label">Switch role</div>
-    <div class="profile-row" data-action="mode-${isOwner ? 'sitter' : 'owner'}"><div class="left">${ICON.home}<span>${isOwner ? 'Start hosting pets' : 'Look for a sitter instead'}</span></div>${ICON.chevron}</div>
+    ${otherModes.map(m=>`<div class="profile-row" data-action="mode-${m}"><div class="left">${modeMeta[m].icon}<span>${modeMeta[m].label}</span></div>${ICON.chevron}</div>`).join('')}
     <div class="profile-row" style="color:var(--stamp);"><div class="left" style="color:var(--stamp);">${ICON.logout}<span>Log out</span></div></div>
   </div>`;
 }
@@ -1232,6 +1336,30 @@ function screenPolicyHub(){
     ${POLICY_ORDER.map(key => `
       <div class="policyhub-row" data-action="open-policy-${key}-policyhub">
         <span>${POLICIES[key].title}</span>${ICON.chevron}
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function screenNotifications(){
+  const list = state.notifications.slice().sort((a,b)=> (a.read===b.read) ? 0 : (a.read ? 1 : -1));
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Notifications</h2>
+    <p class="subtitle">Payments and updates land here.</p>
+    ${list.length===0 ? `
+      <div class="emptystate">
+        <div class="ico">${ICON.bell}</div>
+        <h3>No notifications yet</h3>
+        <p>You'll see it here as soon as a payment comes in.</p>
+      </div>` : list.map(n=>`
+      <div class="msgrow">
+        <div class="avatar" style="background:var(--moss);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-weight:600;">${n.from.split(' ').map(w=>w[0]).join('')}</div>
+        <div class="mbody">
+          <div class="mtop"><b>${n.from}</b><span>${n.when}</span></div>
+          <p><b style="color:var(--moss-deep);">₺${n.amount.toLocaleString('tr-TR')}</b> sent ${n.note}</p>
+        </div>
+        ${!n.read ? '<div class="unreaddot"></div>' : ''}
       </div>
     `).join('')}
   </div>`;
@@ -1382,6 +1510,46 @@ function screenAddPet(){
   </div>`;
 }
 
+const TRAINER_ANIMALS = ['Dogs','Cats','Small pets','Birds','Exotic pets'];
+
+function screenTrainerCV(){
+  const cv = state.trainerCV;
+  if(cv){
+    return `
+    <div class="fade-in narrow">
+      <h2 class="title">Your trainer CV</h2>
+      <p class="subtitle">This is what owners see when they look at your profile as a trainer.</p>
+      <div class="savedcard" style="align-items:flex-start;">
+        <div class="ccmini">${ICON.cert}</div>
+        <div style="flex:1;">
+          <b>${cv.experience} years of experience</b>
+          <span style="display:block;margin:4px 0;">${cv.bio}</span>
+        </div>
+      </div>
+      <div class="section-label">Works with</div>
+      <div class="tagrow">${cv.animals.map(a=>`<span class="tag">${a}</span>`).join('') || '<span class="tag">Not set</span>'}</div>
+      <div class="section-label">Certifications &amp; achievements</div>
+      <p class="bio">${cv.certifications || 'None added yet.'}</p>
+      <button class="btn btn-ghost" data-action="nav2-trainercv-edit" style="margin-top:14px;">Edit CV</button>
+    </div>`;
+  }
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">Build your trainer CV</h2>
+    <p class="subtitle">A short profile owners see before requesting a session — like a CV for trainers.</p>
+    <div class="field-row">
+      <div class="field"><label>Years of experience</label><input id="tr-experience" type="number" min="0" max="60" placeholder="e.g. 4" value="${(state.trainerCV_draft && state.trainerCV_draft.experience) || ''}"/></div>
+    </div>
+    <div class="field"><label>About you</label><textarea id="tr-bio" placeholder="Your training style, background, what makes you a good fit…">${state.trainerCV_draft && state.trainerCV_draft.bio ? state.trainerCV_draft.bio : ''}</textarea></div>
+    <div class="section-label">Which animals can you work with?</div>
+    <div class="chiprow" style="flex-wrap:wrap;overflow:visible;">
+      ${TRAINER_ANIMALS.map(a=>`<div class="chip ${(state.trainerCV_draft && state.trainerCV_draft.animals && state.trainerCV_draft.animals.includes(a)) ? 'active' : ''}" data-action="toggle-trainer-animal-${a}">${a}</div>`).join('')}
+    </div>
+    <div class="field" style="margin-top:16px;"><label>Certifications &amp; past achievements</label><textarea id="tr-certifications" placeholder="e.g. Certified Dog Trainer (CPDT-KA), 3 years at Istanbul Animal Shelter, trained 50+ dogs for basic obedience…">${state.trainerCV_draft && state.trainerCV_draft.certifications ? state.trainerCV_draft.certifications : ''}</textarea></div>
+    <button class="btn btn-primary" data-action="save-trainer-cv">Save CV</button>
+  </div>`;
+}
+
 /* ============ MASTER RENDER ============ */
 function render(){
   renderTopbar();
@@ -1389,10 +1557,11 @@ function render(){
   let html = '';
   switch(state.screen){
     case 'onboard': html = screenOnboard(); break;
-    case 'browse': html = state.mode==='owner' ? screenBrowseOwner() : screenBrowseSitter(); break;
+    case 'browse': html = state.mode==='owner' ? screenBrowseOwner() : state.mode==='sitter' ? screenBrowseSitter() : screenBrowseTrainer(); break;
     case 'detail': html = screenSitterDetail(); break;
     case 'request': html = screenRequestForm(); break;
     case 'requestDetail': html = screenRequestDetail(); break;
+    case 'trainingDetail': html = screenTrainingDetail(); break;
     case 'ticket': html = screenTicket(); break;
     case 'bookings': html = screenBookings(); break;
     case 'messages': html = screenMessages(); break;
@@ -1404,6 +1573,8 @@ function render(){
     case 'policy': html = screenPolicy(); break;
     case 'policyhub': html = screenPolicyHub(); break;
     case 'documents': html = screenDocuments(); break;
+    case 'trainercv': html = screenTrainerCV(); break;
+    case 'notifications': html = screenNotifications(); break;
     default: html = screenOnboard();
   }
   app.content.innerHTML = html;
@@ -1417,17 +1588,20 @@ document.addEventListener('click', (e) => {
 
   if(action==='pick-owner'){ state.onboarded=true; state.mode='owner'; go('browse'); return; }
   if(action==='pick-sitter'){ state.onboarded=true; state.mode='sitter'; go('browse'); return; }
+  if(action==='pick-trainer'){ state.onboarded=true; state.mode='trainer'; go('browse'); return; }
   if(action==='mode-owner'){ setMode('owner'); return; }
   if(action==='mode-sitter'){ setMode('sitter'); return; }
+  if(action==='mode-trainer'){ setMode('trainer'); return; }
+  if(action==='tap-bell'){ state.notifications.forEach(n=> n.read=true); go('notifications'); return; }
   if(action==='back'){
-    if(state.screen==='detail' || state.screen==='requestDetail') go('browse');
+    if(state.screen==='detail' || state.screen==='requestDetail' || state.screen==='trainingDetail') go('browse');
     else if(state.screen==='request') go('detail', {selectedId:state.selectedId});
     else if(state.screen==='ticket') go('bookings');
     else if(state.screen==='addpet') go('mypets');
     else if(state.screen==='policy') go(state.policyReturnTo || 'policyhub');
     else if(state.screen==='policyhub') go('profile');
     else if(state.screen==='documents') go('profile');
-    else if(['verify','payment','mypets'].includes(state.screen)) go('profile');
+    else if(['verify','payment','mypets','trainercv','notifications'].includes(state.screen)) go('profile');
     else go('browse');
     return;
   }
@@ -1446,6 +1620,7 @@ document.addEventListener('click', (e) => {
   if(action.startsWith('filter-')){ state.filter = action.replace('filter-',''); render(); return; }
   if(action.startsWith('open-sitter-')){ go('detail', {selectedId: action.replace('open-sitter-','')}); return; }
   if(action.startsWith('open-request-')){ go('requestDetail', {selectedId: action.replace('open-request-','')}); return; }
+  if(action.startsWith('open-training-')){ go('trainingDetail', {selectedId: action.replace('open-training-','')}); return; }
   if(action.startsWith('request-stay-')){
     state.consent.petHealth = false;
     state.consent.vetConsent = false;
@@ -1486,7 +1661,54 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  if(action.startsWith('offer-train-')){
+    const id = action.replace('offer-train-','');
+    const r = TRAINING_REQUESTS.find(x=>x.id===id);
+    const booking = {
+      id: 'b'+Date.now(), status:'confirmed',
+      petName: r.pet, hostName: 'You', loc: r.loc.split(',')[0],
+      checkIn: r.dates, checkOut: r.goal, code: randCode()
+    };
+    state.bookings.push(booking);
+    toast('Offer sent to '+r.owner.split(' ')[0]);
+    go('ticket', {selectedId: booking.id});
+    return;
+  }
+
   if(action==='nav2-verify'){ go('verify'); return; }
+  if(action==='nav2-trainercv'){
+    if(!state.trainerCV) state.trainerCV_draft = { bio:'', animals:[] };
+    go('trainercv');
+    return;
+  }
+  if(action==='nav2-trainercv-edit'){
+    state.trainerCV_draft = { ...state.trainerCV };
+    state.trainerCV = null;
+    go('trainercv');
+    return;
+  }
+  if(action.startsWith('toggle-trainer-animal-')){
+    const animal = action.replace('toggle-trainer-animal-','');
+    if(!state.trainerCV_draft) state.trainerCV_draft = { bio:'', animals:[] };
+    if(!state.trainerCV_draft.animals) state.trainerCV_draft.animals = [];
+    const idx = state.trainerCV_draft.animals.indexOf(animal);
+    if(idx>-1) state.trainerCV_draft.animals.splice(idx,1);
+    else state.trainerCV_draft.animals.push(animal);
+    render();
+    return;
+  }
+  if(action==='save-trainer-cv'){
+    const experience = document.getElementById('tr-experience').value || '0';
+    const bio = document.getElementById('tr-bio').value;
+    const certifications = document.getElementById('tr-certifications').value;
+    const animals = (state.trainerCV_draft && state.trainerCV_draft.animals) || [];
+    if(!bio || animals.length===0){ toast('Add a short bio and pick at least one animal type'); return; }
+    state.trainerCV = { experience, bio, certifications, animals };
+    state.trainerCV_draft = null;
+    toast('Trainer CV saved');
+    go('profile');
+    return;
+  }
   if(action.startsWith('toggle-consent-')){
     const key = action.replace('toggle-consent-','');
     state.consent[key] = !state.consent[key];
