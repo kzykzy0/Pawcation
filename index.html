@@ -827,6 +827,103 @@
     font-family:'Inter',sans-serif; font-size:12.5px; color:rgba(241,239,226,0.65);
     letter-spacing:.02em;
   }
+
+
+  /* ---------- motion & micro-interactions (visual design above is unchanged) ---------- */
+  :root{
+    --dur-fast:150ms;
+    --dur:200ms;
+    --dur-slow:300ms;
+    --ease-out:cubic-bezier(.2,.8,.2,1);
+    --ease-soft:cubic-bezier(.34,1.56,.64,1);
+    --shadow-press:0 4px 10px -8px rgba(30,58,43,0.35);
+  }
+
+  .card, .roleoption, .policyhub-row, .profile-row, .doc-row, .sos-option, .session-row, .petcard, .ticket, .backbtn, .sendbtn{
+    transition:transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+  }
+
+  .btn, .btn-primary, .btn-ghost{
+    transition:background-color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out), opacity var(--dur) var(--ease-out);
+  }
+  .btn:not(:disabled):active, .tourbtn:active{ transform:translateY(1px); }
+  .btn:disabled{ transform:none; }
+
+  .modeswitch button{
+    transition:background-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  }
+  .chip, .langpill{
+    transition:background-color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+  }
+  .tourdot{ cursor:pointer; transition:transform var(--dur) var(--ease-soft), background-color var(--dur) var(--ease-out); }
+  .navitem{ transition:color var(--dur) var(--ease-out); }
+
+  .searchbar{ transition:border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+  .searchbar:focus-within{ border-color:var(--moss); box-shadow:0 0 0 4px rgba(110,143,114,0.16); }
+  .field input, .field select, .field textarea, .chat-inputbar input{
+    transition:border-color var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus, .chat-inputbar input:focus{
+    border-color:var(--moss); box-shadow:0 0 0 4px rgba(110,143,114,0.16);
+  }
+
+  .consent-row{ transition:border-color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out); }
+  .consent-box{ transition:background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-soft); }
+
+  .upload-tile, .addpet-tile{ transition:border-color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out); }
+
+  .heart-btn, .starpicker span, .cal-cell.editable{
+    transition:transform var(--dur) var(--ease-soft), color var(--dur) var(--ease-out), background-color var(--dur) var(--ease-out);
+  }
+  .msgrow[data-action]{ transition:transform var(--dur) var(--ease-out); }
+
+  .toast{ transition:opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-soft); }
+
+  .fade-in{ animation:fadein var(--dur-slow) var(--ease-out); }
+  @keyframes fadein{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .onboard .mark-lg{ animation:popin .6s var(--ease-soft) both; }
+  @keyframes popin{ from{ transform:scale(.6); opacity:0; } to{ transform:scale(1); opacity:1; } }
+
+  @media (hover:hover){
+    .card:hover, .roleoption:hover, .policyhub-row:hover, .profile-row[data-action]:hover, .doc-row:hover,
+    .sos-option:hover, .session-row[data-action]:hover, .petcard:hover, .ticket[data-action]:hover{
+      transform:translateY(-2px); box-shadow:var(--shadow);
+    }
+    .backbtn[data-action="back"]:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+    .backbtn[data-action="tap-bell"]:hover{ transform:translateY(-1px); }
+    .sendbtn:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+    .btn-primary:not(:disabled):hover{ background:#132a1d; }
+    .btn-ghost:not(:disabled):hover{ border-color:var(--ink-soft); }
+    .modeswitch button:not(.active):hover{ color:var(--ink); background:rgba(30,58,43,0.06); }
+    .chip:not(.active):hover{ border-color:var(--ink-soft); color:var(--ink); }
+    .langpill:not(.active):hover{ color:var(--ink); background:rgba(30,58,43,0.06); }
+    .tourdot:not(.active):hover{ transform:scale(1.3); }
+    .navitem:not(.active):hover{ color:var(--ink-soft); }
+    .consent-row:not(.checked):hover{ border-color:var(--ink-soft); }
+    .upload-tile:not(.filled):hover, .addpet-tile:hover{ border-color:var(--moss); background-color:rgba(110,143,114,0.08); }
+    .heart-btn:hover{ transform:scale(1.12); }
+    .starpicker span:hover{ transform:scale(1.15); }
+    .cal-cell.editable:hover{ transform:scale(1.08); }
+    .msgrow[data-action]:hover{ transform:translateX(3px); }
+  }
+
+  /* press states come after hover so a press always wins while the pointer is over the element */
+  .card:active, .roleoption:active, .policyhub-row:active, .profile-row[data-action]:active, .doc-row:active,
+  .sos-option:active, .session-row[data-action]:active, .ticket[data-action]:active, .backbtn[data-action="back"]:active, .sendbtn:active{
+    transform:translateY(1px); box-shadow:var(--shadow-press);
+  }
+  .backbtn[data-action="tap-bell"]:active{ transform:translateY(1px); }
+  .heart-btn:active{ transform:scale(.92); }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:.01ms !important; animation-iteration-count:1 !important;
+      transition-duration:.01ms !important; transition-delay:0s !important; scroll-behavior:auto !important;
+    }
+    .pawstep{ animation:none !important; opacity:.9; transform:translate(0,-50%); }
+    .cc-bankline .spinner{ animation:none !important; }
+  }
 </style>
 </head>
 <body>
