@@ -1225,6 +1225,57 @@
   }
   .twobtn{ flex-wrap:wrap; } .twobtn .btn{ min-width:140px; }
 
+  /* ---------- round 12 ---------- */
+  .svc-card{ background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:6px 14px 12px; margin-bottom:10px; }
+  .svc-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .svc-row:last-of-type{ border-bottom:0; }
+  .svc-row b{ display:block; font-size:calc(15px*var(--fs)); }
+  .svc-row span{ display:block; font-size:calc(12.5px*var(--fs)); color:var(--text2); margin-top:2px; }
+  .svc-hint{ font-size:calc(12.5px*var(--fs)); color:var(--text2); line-height:1.45; margin:8px 0; }
+  .svc-act{ display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+  .svc-act .btn-sm{ white-space:nowrap; }
+  .hol-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:10px 14px; margin-bottom:8px; }
+  .hol-row b{ display:block; font-size:calc(14px*var(--fs)); }
+  .hol-row span{ display:block; font-size:calc(12.5px*var(--fs)); color:var(--text2); }
+  .hol-row em{ display:block; font-style:normal; font-size:calc(12px*var(--fs)); color:var(--stamp); margin-top:2px; }
+  .plus-hero{ text-align:center; background:linear-gradient(160deg,#1E3A2B,#2f5a40); color:#F1EFE2; border-radius:22px; padding:22px 18px; margin-bottom:16px; }
+  .plus-hero svg{ width:34px; height:34px; color:var(--gold); }
+  .plus-hero .title{ color:#F1EFE2; margin:6px 0 4px !important; }
+  .plus-hero p{ margin:0; opacity:.85; font-size:calc(14px*var(--fs)); }
+  .perk{ display:flex; gap:12px; align-items:flex-start; padding:10px 2px; }
+  .perk svg{ width:20px; height:20px; flex:none; color:var(--moss-deep); margin-top:2px; }
+  .perk b{ display:block; font-size:calc(15px*var(--fs)); }
+  .perk span{ display:block; font-size:calc(13px*var(--fs)); color:var(--text2); }
+  .plan{ display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--paper); border:1.5px solid var(--line); border-radius:16px; padding:14px 16px; margin-bottom:10px; cursor:pointer; }
+  .plan.on{ border-color:var(--moss-deep); box-shadow:0 0 0 3px rgba(88,122,93,.25); }
+  .plan b{ display:block; font-size:calc(15px*var(--fs)); }
+  .plan span{ display:block; font-size:calc(12.5px*var(--fs)); color:var(--text2); }
+  .plan strong{ font-family:'Fraunces',serif; font-size:calc(22px*var(--fs)); }
+  .plan strong small{ font-family:'Inter',sans-serif; font-size:calc(12px*var(--fs)); color:var(--text2); font-weight:500; }
+  .ftag{ display:inline-flex; align-items:center; gap:4px; background:var(--gold); color:#1E3A2B; font-weight:700; font-size:calc(10.5px*var(--fs)); letter-spacing:.04em; text-transform:uppercase; border-radius:999px; padding:3px 9px; margin-left:6px; vertical-align:middle; }
+  .dayring{ font-size:calc(12px*var(--fs)); }
+  .quickrow{ display:flex; gap:8px; overflow-x:auto; padding:8px 0 4px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .quickrow::-webkit-scrollbar{ display:none; }
+  .qr{ flex:none; border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:999px; padding:8px 14px; font:inherit; font-size:calc(13px*var(--fs)); cursor:pointer; white-space:nowrap; min-height:38px; }
+  .qr:hover{ border-color:var(--moss); }
+  .trbtn{ display:inline-flex; align-items:center; gap:5px; border:0; background:none; color:var(--moss-deep); font:inherit; font-size:calc(11.5px*var(--fs)); font-weight:600; padding:6px 0 0; cursor:pointer; }
+  .trline{ display:flex; gap:6px; align-items:flex-start; margin-top:6px; padding-top:6px; border-top:1px dashed var(--line); font-size:calc(13px*var(--fs)); color:var(--text2); line-height:1.4; }
+  .trline svg{ flex:none; margin-top:2px; }
+  .trtoggle{ margin-left:auto; display:inline-flex; align-items:center; gap:6px; border:1.5px solid var(--line); background:var(--paper); color:var(--ink-soft); border-radius:999px; padding:6px 12px; font:inherit; font-size:calc(12px*var(--fs)); font-weight:600; cursor:pointer; min-height:34px; }
+  .trtoggle.on{ border-color:var(--moss-deep); background:rgba(88,122,93,.16); color:var(--moss-deep); }
+  .chat-bubble.voice{ padding:8px 10px; max-width:88%; }
+  .chat-bubble.voice audio{ width:100%; max-width:240px; height:36px; display:block; }
+  .chat-bubble.voice span{ display:flex; align-items:center; gap:4px; }
+  .recbar{ align-items:center; }
+  .recinfo{ flex:1; display:flex; align-items:center; gap:10px; font-size:calc(14px*var(--fs)); color:var(--ink); }
+  .recinfo span{ color:var(--text2); }
+  .recdot{ width:10px; height:10px; border-radius:50%; background:var(--stamp); animation:recpulse 1s infinite; }
+  @keyframes recpulse{ 50%{ opacity:.25; } }
+  html[data-motion=reduce] .recdot{ animation:none; }
+  .micbtn{ width:42px; height:42px; border-radius:50%; background:var(--paper); border:1.5px solid var(--line); color:var(--ink-soft); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
+  .langgrid{ display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+  .chat-inputbar[hidden]{ display:none; }
+
 </style>
 </head>
 <body>
@@ -1301,13 +1352,13 @@ const ICON = {
 
 /* ============ MOCK DATA ============ */
 const SITTERS = [
-  {id:'s1', name:'Elif Kaya', loc:'Kadıköy, Istanbul', rating:4.9, reviews:127, price:'₺450', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80', bio:"I've got a big fenced yard and two very lazy cats of my own who mostly ignore guests — perfect if your dog needs space to zoom around, or your cat needs a calm house to hide in for a bit.", tagline:'Big yard, calm house, two resident cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:['2026-07-12','2026-07-13'], responseMinutes:35, area:'Kadıköy', lat:40.990, lng:29.027, pricing:{weekend:50, holiday:100, multiPet:20, cleaning:0}},
-  {id:'s2', name:'Mert Yıldız', loc:'Beşiktaş, Istanbul', rating:4.8, reviews:94, price:'₺550', pets:['Dogs'], img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80', bio:'Dog walker turned full-time host. Daily walks along the Bosphorus, twice-a-day feeding updates with photos, and a strict no-other-boarders policy — your dog gets the run of the place.', tagline:'Daily Bosphorus walks, photo updates', verified:true, backgroundCheck:false, instantBook:false, blockedDates:['2026-07-20','2026-07-21','2026-07-22'], responseMinutes:180, area:'Beşiktaş', lat:41.043, lng:29.007, pricing:{weekend:75, holiday:150, multiPet:15, cleaning:100}},
-  {id:'s3', name:'Ayşe Demir', loc:'Üsküdar, Istanbul', rating:5.0, reviews:61, price:'₺350', pets:['Cats','Small pets'], img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', bio:'Quiet apartment, no other animals, no children — genuinely the best fit for shy or elderly cats, rabbits, or anything that startles easily. I work from home so someone is always around.', tagline:'Quiet home, ideal for shy cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:[], responseMinutes:15, area:'Üsküdar', lat:41.026, lng:29.015, pricing:{weekend:0, holiday:80, multiPet:25, cleaning:0}},
-  {id:'s4', name:'Deniz Aksoy', loc:'Şişli, Istanbul', rating:4.7, reviews:203, price:'₺600', pets:['Dogs','Cats','Birds'], img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', bio:'Former vet tech of 6 years — comfortable giving medication, monitoring chronic conditions, and handling senior pets. Also just really like animals more than most people.', tagline:'Former vet tech, meds & senior care ok', verified:true, backgroundCheck:true, instantBook:false, blockedDates:['2026-07-05'], responseMinutes:60, area:'Şişli', lat:41.060, lng:28.987, pricing:{weekend:100, holiday:200, multiPet:10, cleaning:150}},
-  {id:'s5', name:'Burcu Tan', loc:'Bakırköy, Istanbul', rating:4.6, reviews:38, price:'₺400', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=400&q=80', bio:'Ground-floor flat next to the Florya seaside park — long daily walks by the water and plenty of playtime. I only host one guest at a time.', tagline:'Seaside walks, one guest at a time', verified:true, backgroundCheck:true, instantBook:true, blockedDates:['2026-07-15','2026-07-16'], responseMinutes:25, area:'Bakırköy', lat:40.981, lng:28.872, pricing:{weekend:40, holiday:100, multiPet:20, cleaning:0}},
-  {id:'s6', name:'Kaan Özdemir', loc:'Sarıyer, Istanbul', rating:4.9, reviews:77, price:'₺650', pets:['Dogs'], img:'https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80', bio:'Detached house with a garden on the edge of Belgrad Forest. Forest walks twice a day — ideal for high-energy dogs and large breeds.', tagline:'Garden + Belgrad Forest walks', verified:true, backgroundCheck:true, instantBook:false, blockedDates:['2026-07-08','2026-07-09'], responseMinutes:120, area:'Sarıyer', lat:41.168, lng:29.057, pricing:{weekend:100, holiday:150, multiPet:10, cleaning:200}},
-  {id:'s7', name:'Selin Çetin', loc:'Ataşehir, Istanbul', rating:4.8, reviews:52, price:'₺380', pets:['Cats','Small pets','Birds'], img:'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80', bio:'Cat and small-pet specialist: a separate quiet room, daily cleaning, and photo updates every morning and evening. Experienced with rabbits and parrots.', tagline:'Quiet room, rabbits & parrots welcome', verified:true, backgroundCheck:false, instantBook:true, blockedDates:[], responseMinutes:20, area:'Ataşehir', lat:40.992, lng:29.127, pricing:{weekend:30, holiday:80, multiPet:25, cleaning:0}},
+  {id:'s1', services:{ walk:[120,200], visit:150 }, hours:{ from:8, to:20 }, holidays:[{ from:'2026-08-10', to:'2026-08-17', label:'Family trip' }], name:'Elif Kaya', loc:'Kadıköy, Istanbul', rating:4.9, reviews:127, price:'₺450', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80', bio:"I've got a big fenced yard and two very lazy cats of my own who mostly ignore guests — perfect if your dog needs space to zoom around, or your cat needs a calm house to hide in for a bit.", tagline:'Big yard, calm house, two resident cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:['2026-07-12','2026-07-13'], responseMinutes:35, area:'Kadıköy', lat:40.990, lng:29.027, pricing:{weekend:50, holiday:100, multiPet:20, cleaning:0}},
+  {id:'s2', featured:true, services:{ walk:[140,240], visit:null }, hours:{ from:7, to:21 }, weekly:[false,true,true,true,true,true,true], name:'Mert Yıldız', loc:'Beşiktaş, Istanbul', rating:4.8, reviews:94, price:'₺550', pets:['Dogs'], img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80', bio:'Dog walker turned full-time host. Daily walks along the Bosphorus, twice-a-day feeding updates with photos, and a strict no-other-boarders policy — your dog gets the run of the place.', tagline:'Daily Bosphorus walks, photo updates', verified:true, backgroundCheck:false, instantBook:false, blockedDates:['2026-07-20','2026-07-21','2026-07-22'], responseMinutes:180, area:'Beşiktaş', lat:41.043, lng:29.007, pricing:{weekend:75, holiday:150, multiPet:15, cleaning:100}},
+  {id:'s3', services:{ walk:null, visit:160 }, hours:{ from:9, to:18 }, name:'Ayşe Demir', loc:'Üsküdar, Istanbul', rating:5.0, reviews:61, price:'₺350', pets:['Cats','Small pets'], img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80', bio:'Quiet apartment, no other animals, no children — genuinely the best fit for shy or elderly cats, rabbits, or anything that startles easily. I work from home so someone is always around.', tagline:'Quiet home, ideal for shy cats', verified:true, backgroundCheck:true, instantBook:true, blockedDates:[], responseMinutes:15, area:'Üsküdar', lat:41.026, lng:29.015, pricing:{weekend:0, holiday:80, multiPet:25, cleaning:0}},
+  {id:'s4', services:{ walk:[150,260], visit:180 }, hours:{ from:8, to:19 }, name:'Deniz Aksoy', loc:'Şişli, Istanbul', rating:4.7, reviews:203, price:'₺600', pets:['Dogs','Cats','Birds'], img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80', bio:'Former vet tech of 6 years — comfortable giving medication, monitoring chronic conditions, and handling senior pets. Also just really like animals more than most people.', tagline:'Former vet tech, meds & senior care ok', verified:true, backgroundCheck:true, instantBook:false, blockedDates:['2026-07-05'], responseMinutes:60, area:'Şişli', lat:41.060, lng:28.987, pricing:{weekend:100, holiday:200, multiPet:10, cleaning:150}},
+  {id:'s5', services:{ walk:[110,190], visit:null }, hours:{ from:8, to:20 }, name:'Burcu Tan', loc:'Bakırköy, Istanbul', rating:4.6, reviews:38, price:'₺400', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=400&q=80', bio:'Ground-floor flat next to the Florya seaside park — long daily walks by the water and plenty of playtime. I only host one guest at a time.', tagline:'Seaside walks, one guest at a time', verified:true, backgroundCheck:true, instantBook:true, blockedDates:['2026-07-15','2026-07-16'], responseMinutes:25, area:'Bakırköy', lat:40.981, lng:28.872, pricing:{weekend:40, holiday:100, multiPet:20, cleaning:0}},
+  {id:'s6', services:{ walk:[160,280], visit:null }, hours:{ from:7, to:19 }, weekly:[true,true,true,true,true,true,false], name:'Kaan Özdemir', loc:'Sarıyer, Istanbul', rating:4.9, reviews:77, price:'₺650', pets:['Dogs'], img:'https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&q=80', bio:'Detached house with a garden on the edge of Belgrad Forest. Forest walks twice a day — ideal for high-energy dogs and large breeds.', tagline:'Garden + Belgrad Forest walks', verified:true, backgroundCheck:true, instantBook:false, blockedDates:['2026-07-08','2026-07-09'], responseMinutes:120, area:'Sarıyer', lat:41.168, lng:29.057, pricing:{weekend:100, holiday:150, multiPet:10, cleaning:200}},
+  {id:'s7', services:{ walk:null, visit:140 }, hours:{ from:9, to:19 }, name:'Selin Çetin', loc:'Ataşehir, Istanbul', rating:4.8, reviews:52, price:'₺380', pets:['Cats','Small pets','Birds'], img:'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80', bio:'Cat and small-pet specialist: a separate quiet room, daily cleaning, and photo updates every morning and evening. Experienced with rabbits and parrots.', tagline:'Quiet room, rabbits & parrots welcome', verified:true, backgroundCheck:false, instantBook:true, blockedDates:[], responseMinutes:20, area:'Ataşehir', lat:40.992, lng:29.127, pricing:{weekend:30, holiday:80, multiPet:25, cleaning:0}},
   {id:'s8', name:'Emre Baran', loc:'Beyoğlu, Istanbul', rating:4.6, reviews:29, price:'₺500', pets:['Dogs','Cats'], img:'https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&q=80', bio:'Designer working from home in Cihangir — your pet gets company all day, short walks every few hours and lots of cuddles.', tagline:'Home all day, company guaranteed', verified:true, backgroundCheck:false, instantBook:false, blockedDates:['2026-07-26'], responseMinutes:90, area:'Beyoğlu', lat:41.032, lng:28.985, pricing:{weekend:50, holiday:100, multiPet:15, cleaning:100}},
 ];
 
@@ -1381,12 +1432,12 @@ function renderMiniCalendar(blockedDates, editable){
   `;
 }
 function isRangeBlocked(s, checkIn, checkOut){
-  if(!s.blockedDates || !s.blockedDates.length) return false;
+  if((!s.blockedDates || !s.blockedDates.length) && !(s.holidays && s.holidays.length)) return false;
   let d = new Date(checkIn+'T00:00:00');
   const end = new Date(checkOut+'T00:00:00');
   while(d < end){
     const iso = isoLocal(d);
-    if(s.blockedDates.includes(iso)) return true;
+    if((s.blockedDates||[]).includes(iso) || holidayBlocked(s, iso)) return true;
     d.setDate(d.getDate()+1);
   }
   return false;
@@ -1590,7 +1641,7 @@ function formatResponseTime(minutes){
 
 /* ============ STATE ============ */
 let state = {
-  lang: (function(){ try{ var l=localStorage.getItem('pawcation.lang'); if(l==='tr'||l==='en') return l; }catch(e){} return ((typeof navigator!=='undefined' && navigator.language) || 'en').toLowerCase().startsWith('tr') ? 'tr' : 'en'; })(),
+  lang: (function(){ try{ var l=localStorage.getItem('pawcation.lang'); if(['tr','en','de','ru'].includes(l)) return l; }catch(e){} return ((typeof navigator!=='undefined' && navigator.language) || 'en').toLowerCase().startsWith('tr') ? 'tr' : 'en'; })(),
   search: { q:'', area:'All', maxPrice:700, instant:false, fast:false, checkIn:'', checkOut:'', maxDist:0, sort:'rating', view:'list', pin:null, panel:false, mv:{x:0,y:0,s:1} },
   userLoc: null,
   onboarded: false,
@@ -1612,7 +1663,7 @@ let state = {
   form: { protect:false, pets:1, petIdx:null, shareHealth:true, dates:null, prefill:null, rebook:false },
   consentGiven: true,
   selectedPet: null, editPetIdx: null,
-  myPricing: { base:450, weekend:50, holiday:100, multiPet:20, cleaning:0 },
+  myPricing: { base:450, weekend:50, holiday:100, multiPet:20, cleaning:0, walk30:120, walk60:200, visit:150 },
   referral: { code:'PAW-KUZEY7', usedCode:null, invited:[ {name:'Ece K.', status:'joined'}, {name:'Tolga A.', status:'pending'} ] },
   loyaltyPoints: 180,
   redeemedRewards: [],
@@ -1623,6 +1674,8 @@ let state = {
   hostStats: { rating:4.8, responseRate:92, responseMinutes:45, stays:8 },
   shareId: null, shareSrc: 'instagram', shareReturn: 'detail',
   myPolicy: 'moderate',
+  myServices: { walk:false, visit:false }, myWeekly:[true,true,true,true,true,true,true], myHours:{ from:8, to:20 }, myHolidays:[],
+  plus:null, boost:null, billing:[], chatPrefs:{ auto:false }, plusPick:null, boostPick:null,
   favorites: [],
   myBlockedDates: ['2026-07-20'],
   chats: seedChats(),
@@ -1731,6 +1784,7 @@ function mySitterObject(){
     pets:['Dogs','Cats'], img:p.gallery[0] || PLACEHOLDER_IMG, bio:p.bio || 'Add a short introduction so owners get to know you.', tagline:p.headline || '',
     verified:state.verification.status==='verified', backgroundCheck:false, instantBook:false, blockedDates:state.myBlockedDates,
     responseMinutes:m.responseMinutes, lat:40.99, lng:29.03, pricing:{ ...state.myPricing }, policy:state.myPolicy, gallery:p.gallery.slice(), video:p.video,
+    services:mySvc(), weekly:state.myWeekly.slice(), hours:{ ...state.myHours }, holidays:state.myHolidays.slice(), featured:boostActive(),
     stats:{ responseRate:m.responseRate, occupancy:m.occupancy } };
 }
 function profileChecks(){
@@ -1949,7 +2003,7 @@ async function backendPublishProfile(){
   const m = superMetrics({ id:'me' });
   const row = { id:'u-'+uid.slice(0,8), owner_id:uid, area:'Kadıköy', price:state.myPricing.base, rating:m.rating, lat:40.99, lng:29.03, instant_book:false, active:!!p.published,
     data:{ slug:slugify(p.name), name:p.name, headline:p.headline, bio:p.bio, gallery:p.gallery.filter(u=>!u.startsWith('data:')), video:p.video && p.video.url && !p.video.url.startsWith('blob:') ? p.video.url : null,
-      verified:state.verification.status==='verified', pricing:state.myPricing, blockedDates:state.myBlockedDates, responseMinutes:m.responseMinutes, stays:m.stays, stats:{ responseRate:m.responseRate, occupancy:m.occupancy }, pets:['Dogs','Cats'], policy:state.myPolicy, superSitter:superEval({id:'me'}).ok } };
+      verified:state.verification.status==='verified', pricing:state.myPricing, blockedDates:state.myBlockedDates, services:mySvc(), weekly:state.myWeekly, hours:state.myHours, holidays:state.myHolidays, responseMinutes:m.responseMinutes, stays:m.stays, stats:{ responseRate:m.responseRate, occupancy:m.occupancy }, pets:['Dogs','Cats'], policy:state.myPolicy, superSitter:superEval({id:'me'}).ok } };
   const r = await sb.from('sitters').upsert(row);
   if(r && r.error) throw r.error;
 }
@@ -1991,7 +2045,7 @@ function resolvePromo(q, protect){
   return { best, entered, first };
 }
 function quoteWithPromo(s, inISO, outISO, pets, protect){
-  const q = priceQuote(s, inISO, outISO, pets, protect), r = resolvePromo(q, protect);
+  const q = priceQuote(s, inISO, outISO, pets, protect); applyPlus(q, protect); const r = resolvePromo(q, protect);
   if(r.best){ q.lines.push({ label:(r.best.kind==='reward' ? '' : 'Promo · ')+r.best.label, amount:-r.best.discount, promo:true }); q.total -= r.best.discount; q.promo = r.best; }
   q.promoInfo = r; return q;
 }
@@ -2120,7 +2174,7 @@ function maybeSystemNotify(){
   }catch(e){}
 }
 function saveGrowthState(){
-  try{ localStorage.setItem('pawcation.growth', JSON.stringify({ notifPrefs:state.notifPrefs, dismissedReminders:state.dismissedReminders, seenReminders:state.seenReminders, promo:state.promo, myPolicy:state.myPolicy, myProfile:{ ...state.myProfile, video:null } })); }catch(e){}
+  try{ localStorage.setItem('pawcation.growth', JSON.stringify({ notifPrefs:state.notifPrefs, dismissedReminders:state.dismissedReminders, seenReminders:state.seenReminders, promo:state.promo, myPolicy:state.myPolicy, r12:r12Data(), myProfile:{ ...state.myProfile, video:null } })); }catch(e){}
   if(typeof backendSyncSoon==='function') backendSyncSoon();
 }
 function loadGrowthState(){
@@ -2130,6 +2184,7 @@ function loadGrowthState(){
     if(d.promo) state.promo = { firstUsed:!!d.promo.firstUsed, used:d.promo.used||[] };
     if(d.myProfile) state.myProfile = { ...state.myProfile, ...d.myProfile, gallery:Array.isArray(d.myProfile.gallery) ? d.myProfile.gallery : [] };
     if(d.myPolicy) state.myPolicy = d.myPolicy;
+    if(d.r12) applyR12(d.r12);
   }catch(e){}
 }
 function beProfileData(){
@@ -2274,7 +2329,7 @@ function stayParts(lines){
   const sum = f => lines.filter(f).reduce((a,l)=>a+l.amount, 0);
   return { protect:sum(l=>l.label==='Pawcation Protect'), promo:-sum(l=>l.promo), stay:sum(l=>l.label!=='Pawcation Protect' && !l.promo) };
 }
-function finOf(b){
+function finOf0(b){
   let lines = b.lines;
   if(!lines){
     if(b.hostName==='You') lines = [{ label:'Stay', amount:b.gross || b.earn || 0 }];
@@ -2289,7 +2344,7 @@ function hostMoney(gross){ const c = Math.round(gross*COMMISSION); return { gros
 function paymentOf(b){ return b.payment || { method:'card', status: b.status==='completed' ? 'released' : b.status==='cancelled' ? 'refunded' : b.status==='pending' ? 'authorized' : 'held' }; }
 function releaseISO(b){ const z = bkISO(b,'out'); return z ? addDaysISO(z, RELEASE_DELAY_DAYS) : null; }
 function releaseEscrow(b){ const p = paymentOf(b); if(p.status==='held' || p.status==='authorized') b.payment = { ...p, status:'released', releasedAt:'Just now' }; }
-function cancelQuote(b, who){
+function cancelQuote0(b, who){
   const f = finOf(b), pay = paymentOf(b), inISO = bkISO(b,'in');
   const days = inISO ? daysBetweenISO(DEMO_TODAY, inISO) : 99, policy = b.policy || 'moderate';
   const pct = who==='sitter' ? 100 : b.status==='pending' ? 100 : refundPct(policy, days);
@@ -2423,7 +2478,7 @@ function screenReceipts(){
   </div>`;
 }
 function standaloneDoc(title, inner){
-  const wrap = document.createElement('div'); wrap.innerHTML = inner; if(state.lang==='tr') trApply(wrap);
+  const wrap = document.createElement('div'); wrap.innerHTML = inner; if(state.lang==='tr' || X_LANGS.includes(state.lang)) trApply(wrap);
   return `<!doctype html><html lang="${state.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escAttr(title)}</title>
 <style>body{font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:#1B2620;max-width:640px;margin:32px auto;padding:0 20px}
 .rc-brand{font:700 22px Georgia,serif;display:flex;gap:8px;align-items:center}.rc-brand svg{width:22px;height:22px}.rc-title{font:600 28px Georgia,serif;margin:6px 0 18px}
@@ -2514,10 +2569,648 @@ function handleMoneyClick(action){
   return false;
 }
 
+/* ============ ROUND 12 — day services · recurring · availability rules · Plus · boost ============ */
+const SLOTS12 = [ {k:'morning', l:'Morning', h:'08:00–12:00'}, {k:'afternoon', l:'Afternoon', h:'12:00–17:00'}, {k:'evening', l:'Evening', h:'17:00–21:00'} ];
+const DOW12 = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DOW_ORDER = [1,2,3,4,5,6,0];
+const DOWN = { tr:['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'], de:['So','Mo','Di','Mi','Do','Fr','Sa'], ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб'] };
+const dowName = d => (DOWN[state.lang] || DOW12)[d];                       // Monday-first display
+const SVC_DEFAULT = { walk30:120, walk60:200, visit:150 };
+const PLUS = { monthly:{ price:79, name:'Monthly' }, yearly:{ price:790, name:'Yearly' }, pct:5, cap:150 };
+const BOOSTS = { d3:{ days:3, price:49 }, d7:{ days:7, price:99 }, d30:{ days:30, price:299 } };
+const HOL_PRESETS = [
+  { label:'Victory Day', from:'2026-08-30', to:'2026-08-30' },
+  { label:'Republic Day', from:'2026-10-29', to:'2026-10-29' },
+  { label:'New Year', from:'2026-12-31', to:'2027-01-02' },
+  { label:'Ramazan Bayramı', from:'2027-03-09', to:'2027-03-11' },
+];
+const pr12 = k => (state.myPricing && state.myPricing[k]!=null ? state.myPricing[k] : SVC_DEFAULT[k]);
+const dowOf = iso => new Date(iso+'T00:00:00').getDay();
+const fmtShort = iso => fmtDate(iso);
+
+/* ---------- services a sitter offers ---------- */
+function mySvc(){ return { walk: state.myServices.walk ? [pr12('walk30'), pr12('walk60')] : null, visit: state.myServices.visit ? pr12('visit') : null }; }
+function svcOf(s){ const v = s.services || {}; return { walk:v.walk || null, visit:v.visit || null }; }
+function hasDaySvc(s){ const v = svcOf(s); return !!(v.walk || v.visit); }
+
+/* ---------- availability rules ---------- */
+function holidayBlocked(s, iso){ return (s.holidays||[]).some(h => iso>=h.from && iso<=h.to); }
+function dayBlocked(s, iso){
+  if((s.blockedDates||[]).includes(iso) || holidayBlocked(s, iso)) return true;
+  return !!(s.weekly && s.weekly[dowOf(iso)]===false);
+}
+function holidayDates(list){
+  const out = [];
+  (list||[]).forEach(h => { let d = new Date(h.from+'T00:00:00'); const e = new Date(h.to+'T00:00:00'); let n = 0;
+    while(d<=e && n++<400){ out.push(isoLocal(d)); d.setDate(d.getDate()+1); } });
+  return out;
+}
+function hoursLabel(h){ h = h || { from:8, to:20 }; return String(h.from).padStart(2,'0')+':00–'+String(h.to).padStart(2,'0')+':00'; }
+
+/* ---------- Plus + boost ---------- */
+function plusActive(){ const p = state.plus; return !!(p && (!p.cancelled || p.renewISO >= DEMO_TODAY)); }
+function boostActive(){ const b = state.boost; return !!(b && b.untilISO >= DEMO_TODAY); }
+function featuredOf(s){ return s.isMe ? boostActive() : !!s.featured; }
+function applyPlus(q, protect){
+  if(!plusActive()) return;
+  const sub = promoSubtotal(q), d = Math.min(PLUS.cap, Math.round(sub*PLUS.pct/100));
+  if(d>0){ q.lines.push({ label:'Pawcation Plus · '+PLUS.pct+'% off', amount:-d, promo:true, plus:true }); q.total -= d; }
+  if(protect){ q.lines.push({ label:'Plus · Protect included', amount:-99, promo:true, plus:true }); q.total -= 99; }
+}
+function addBilling(desc, amount){ state.billing.push({ id:'bl'+Date.now(), date:DEMO_TODAY, desc, amount }); }
+
+/* ---------- day-service helpers ---------- */
+function firstFree(s){ for(let i=3;i<45;i++){ const iso = addDaysISO(DEMO_TODAY,i); if(!s || !dayBlocked(s, iso)) return iso; } return addDaysISO(DEMO_TODAY,5); }
+function dayDefaults(s){ return { date:firstFree(s), slot:'morning', mins:30, visits:1, repeat:'none', days:null, weeks:4 }; }
+function dayState(){ const F = state.form; if(!F.day) F.day = dayDefaults(sitterById(state.selectedId)); if(!F.day.days) F.day.days = [dowOf(F.day.date)]; return F.day; }
+function dayDates(s, D){
+  const dates = [], skipped = [];
+  const push = iso => { if(iso < DEMO_TODAY || dayBlocked(s, iso)) skipped.push(iso); else dates.push(iso); };
+  if(D.repeat==='none'){ push(D.date); return { dates, skipped }; }
+  const d = new Date(D.date+'T00:00:00'), end = new Date(D.date+'T00:00:00'); end.setDate(end.getDate()+D.weeks*7);
+  for(; d<end; d.setDate(d.getDate()+1)) if(D.days.includes(d.getDay())) push(isoLocal(d));
+  return { dates, skipped };
+}
+function serviceName(kind, D){ return kind==='walk' ? D.mins+'-min walk' : (D.visits>1 ? 'Home visit ×'+D.visits+' per day' : 'Home visit'); }
+function dayQuote(s, F){
+  const D = dayState(), sv = svcOf(s), kind = F.service, pets = F.pets||1;
+  const { dates, skipped } = dayDates(s, D);
+  const unit = kind==='walk' ? (D.mins===60 ? sv.walk[1] : sv.walk[0]) : sv.visit;
+  const qty = dates.length * (kind==='visit' ? D.visits : 1);
+  const lines = [];
+  if(qty) lines.push({ label: kind==='walk' ? `${qty} walk${qty>1?'s':''} × ₺${unit}` : `${qty} home visit${qty>1?'s':''} × ₺${unit}`, amount:qty*unit });
+  const stay = lines.reduce((a,l)=>a+l.amount,0), extra = Math.max(0, pets-1);
+  if(extra && stay) lines.push({ label:`Additional pets × ${extra} (50%)`, amount:Math.round(stay*0.5)*extra });
+  const q = { lines, total:lines.reduce((a,l)=>a+l.amount,0), dates, skipped, unit, qty };
+  applyPlus(q, false);
+  const r = resolvePromo(q, false);
+  if(r.best){ q.lines.push({ label:(r.best.kind==='reward' ? '' : 'Promo · ')+r.best.label, amount:-r.best.discount, promo:true }); q.total -= r.best.discount; q.promo = r.best; }
+  q.promoInfo = r; return q;
+}
+function repeatSummary(D){
+  if(D.repeat==='none') return '';
+  return 'Weekly · '+DOW_ORDER.filter(d=>D.days.includes(d)).map(d=>dowName(d)).join(', ')+' · '+D.weeks+' weeks';
+}
+
+/* ---------- request form: service picker + day-service form ---------- */
+function serviceChipsHTML(s){
+  if(!hasDaySvc(s) || s.isMe) return '';
+  const sv = svcOf(s), cur = state.form.service || 'boarding';
+  const chip = (k, label) => `<div class="chip ${cur===k?'active':''}" role="radio" aria-checked="${cur===k}" tabindex="0" data-action="svc-pick-${k}">${label}</div>`;
+  return `<div class="section-label" style="margin-top:0;">Service</div><div class="chiprow wrap" role="radiogroup" aria-label="Service" style="margin-bottom:14px;">${chip('boarding','Boarding (overnight)')}${sv.walk?chip('walk','Dog walking'):''}${sv.visit?chip('visit','Home visits'):''}</div>`;
+}
+function screenDayForm(s){
+  const F = state.form, D = dayState(), pre = F.prefill || {}, sv = svcOf(s), kind = F.service;
+  const keep = (id, dflt) => { const el = document.getElementById(id); return el ? el.value : dflt; };
+  const fPet = keep('f-petname', pre.petName || 'Luna'), fType = keep('f-pettype', pre.petType || 'Dog');
+  const fNotes = keep('f-notes', pre.notes || 'Very friendly. Please keep the leash short near the road.');
+  const first = s.name.split(' ')[0], q = dayQuote(s, F), tick = ICON.check.replace('26','14').replace('26','14');
+  const wd = DOW_ORDER.map(d => `<div class="chip ${D.days.includes(d)?'active':''}" role="checkbox" aria-checked="${D.days.includes(d)}" tabindex="0" data-action="d-dow-${d}">${dowName(d)}</div>`).join('');
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">${kind==='walk' ? 'Book a walk with '+first : 'Book home visits with '+first}</h2>
+    <p class="subtitle">${s.instantBook ? `${first} accepts Instant Book — your sessions are confirmed right away.` : `This goes to ${first} as a request — nothing is confirmed until they accept.`}</p>
+    ${serviceChipsHTML(s)}
+    ${state.myPets.length ? `<div class="section-label" style="margin-top:0;">Choose a saved pet</div>
+    <div class="chiprow wrap" style="margin-bottom:14px;">${state.myPets.map((p,i)=>`<div class="chip ${F.petIdx===i?'active':''}" data-action="select-pet-${i}">${p.name}</div>`).join('')}<div class="chip ${F.petIdx==null?'active':''}" data-action="select-pet-new">+ New pet</div></div>` : ''}
+    <div class="field-row">
+      <div class="field"><label>Pet's name</label><input id="f-petname" placeholder="e.g. Luna" value="${escAttr(fPet)}"/></div>
+      <div class="field"><label>Pet type</label><select id="f-pettype">${['Dog','Cat','Small pet','Bird'].map(o=>`<option value="${o}" ${fType===o?'selected':''}>${o}</option>`).join('')}</select></div>
+    </div>
+    <div class="field"><label>Number of pets</label><div class="stepper"><button data-action="pets-dec">−</button><b>${F.pets||1}</b><button data-action="pets-inc">+</button></div></div>
+    ${kind==='walk' ? `<div class="section-label">Walk length</div><div class="chiprow">${[30,60].map(m=>`<div class="chip ${D.mins===m?'active':''}" data-action="d-mins-${m}">${m} min · ₺${m===60?sv.walk[1]:sv.walk[0]}</div>`).join('')}</div>`
+      : `<div class="section-label">Visits per day</div><div class="chiprow">${[1,2].map(v=>`<div class="chip ${D.visits===v?'active':''}" data-action="d-visits-${v}">${v} visit${v>1?'s':''} · ₺${sv.visit*v}</div>`).join('')}</div>`}
+    <div class="field" style="margin-top:14px;"><label for="d-date">${D.repeat==='none' ? 'Date' : 'First date'}</label><input id="d-date" type="date" value="${D.date}" min="${DEMO_TODAY}"/></div>
+    <div class="section-label">Time of day</div>
+    <div class="chiprow wrap">${SLOTS12.map(x=>`<div class="chip ${D.slot===x.k?'active':''}" data-action="d-slot-${x.k}">${x.l} · ${x.h}</div>`).join('')}</div>
+    <div class="section-label">Repeat</div>
+    <div class="chiprow"><div class="chip ${D.repeat==='none'?'active':''}" data-action="d-repeat-none">Just once</div><div class="chip ${D.repeat==='weekly'?'active':''}" data-action="d-repeat-weekly">Weekly</div></div>
+    ${D.repeat==='weekly' ? `
+      <div class="field" style="margin-top:12px;"><label>On these days</label><div class="chiprow wrap" role="group" aria-label="Weekdays">${wd}</div></div>
+      <div class="field"><label>For how many weeks</label><div class="stepper"><button data-action="d-weeks-dec" aria-label="Fewer weeks">−</button><b>${D.weeks}</b><button data-action="d-weeks-inc" aria-label="More weeks">+</button></div></div>` : ''}
+    <div class="trustnote" style="margin:12px 0;">${ICON.clock}<span>${q.dates.length ? `<b>${q.dates.length} session${q.dates.length>1?'s':''}</b><span>${D.repeat==='weekly' ? ' · '+repeatSummary(D)+' · '+(SLOTS12.find(x=>x.k===D.slot).h)+'.' : ' on '+fmtShort(q.dates[0])+' · '+(SLOTS12.find(x=>x.k===D.slot).h)+'.'}</span>` : `<span>No sessions fit ${first}'s schedule — pick another date.</span>`}${q.skipped.length ? `<span style="display:block">${q.skipped.length} date${q.skipped.length>1?'s':''} skipped — ${first} isn't available then.</span>` : ''}<span style="display:block">${first} works ${hoursLabel(s.hours)} on days they're available.</span></span></div>
+    <div class="field"><label>Anything ${first} should know</label><textarea id="f-notes" placeholder="Leash, route, door code, medication…">${fNotes.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</textarea></div>
+    ${plusActive() ? `<div class="trustnote">${ICON.star}<span><b>Pawcation Plus</b> — ${PLUS.pct}% off applied to this booking.</span></div>` : ''}
+    ${promoBlockHTML(q, keep('f-promo',''))}
+    <div class="pricebox-summary">
+      ${q.lines.map(l=>`<div class="pb-row"><span>${l.label}</span><b>${fmtLine(l.amount)}</b></div>`).join('') || '<div class="pb-row"><span>No sessions yet</span><b>₺0</b></div>'}
+      <div class="pb-row total"><span>Total</span><b>₺${q.total.toLocaleString('tr-TR')}</b></div>
+    </div>
+    ${paymentBlockHTML(s, q)}
+    <div class="section-label">Before you send</div>
+    <div class="consent-row ${state.consent.petHealth ? 'checked' : ''}" data-action="toggle-consent-petHealth"><div class="consent-box">${state.consent.petHealth ? tick : ''}</div><p>I confirm my pet has no history of aggression toward people or other animals, and is current on core vaccinations. <a data-action="open-policy-health-request">Read full declaration</a></p></div>
+    <div class="consent-row ${state.consent.vetConsent ? 'checked' : ''}" data-action="toggle-consent-vetConsent"><div class="consent-box">${state.consent.vetConsent ? tick : ''}</div><p>If I'm unreachable in an emergency, I authorize the sitter to seek veterinary care on my behalf, up to ₺2,000 — to be reimbursed by me afterward. <a data-action="open-policy-vetconsent-request">Read full consent</a></p></div>
+    <button class="btn btn-primary" data-action="confirm-day-${s.id}" ${(!state.consent.petHealth||!state.consent.vetConsent||!q.dates.length) ? 'disabled' : ''}>${s.instantBook ? 'Book instantly' : 'Send request'}</button>
+  </div>`;
+}
+
+/* ---------- sitter detail: services block ---------- */
+function servicesBlockHTML(s){
+  if(s.isMe || !hasDaySvc(s)) return '';
+  const sv = svcOf(s), first = s.name.split(' ')[0];
+  const row = (title, sub, kind) => `<div class="svc-row"><div><b>${title}</b><span>${sub}</span></div><button class="btn btn-ghost btn-sm" data-action="book-day-${s.id}-${kind}">Book</button></div>`;
+  return `<div class="section-label">Day services</div>
+    <div class="svc-card">
+      ${sv.walk ? row('Dog walking', `30 min ₺${sv.walk[0]} · 60 min ₺${sv.walk[1]}`, 'walk') : ''}
+      ${sv.visit ? row('Home visits', `₺${sv.visit} per visit · feeding, play, litter, meds`, 'visit') : ''}
+      <p class="svc-hint">${first} works ${hoursLabel(s.hours)} ${s.weekly && s.weekly.includes(false) ? 'on '+DOW_ORDER.filter(d=>s.weekly[d]).map(d=>dowName(d)).join(', ') : 'every day'}. Book once or repeat weekly.</p>
+    </div>`;
+}
+
+/* ---------- booking: ticket grid, sessions, series cancel ---------- */
+function dayGridHTML(b){
+  const live = b.day.dates.filter(d=>!d.skipped), done = live.filter(d=>d.done).length;
+  return `<div><span>Service</span><b>${serviceName(b.day.kind, b.day)}</b></div><div><span>Sessions</span><b>${done} / ${live.length} done</b></div><div><span>Location</span><b>${b.loc}</b></div>`;
+}
+function dayBadgeHTML(b){ return b.day && b.day.repeat==='weekly' ? `<div class="protect-badge" style="color:var(--ink-soft);">${ICON.clock}${repeatSummary(b.day)}</div>` : ''; }
+function finOf(b){ const f = finOf0(b); if(!b.day || !(b.day.skips||[]).length) return f; const a = daySkipAdj(b), stay = f.stay - a.drop, commission = Math.round(stay*COMMISSION); return { ...f, stay, total:f.total - a.refund, commission, net:stay-commission }; }
+function cancelQuote(b, who){ return b.day ? dayCancelQuote(b, who) : cancelQuote0(b, who); }
+function daySkipAdj(b){ let drop = 0, refund = 0; ((b.day && b.day.skips)||[]).forEach(k => { drop += k.stayDrop; refund += k.refund; }); return { drop, refund }; }
+function dayPer(b){
+  const f = finOf(b), live = b.day.dates.filter(d=>!d.skipped);
+  return { f, live, per: live.length ? f.stay/live.length : 0, perPromo: live.length ? f.promo/live.length : 0 };
+}
+function dayCancelQuote(b, who){
+  const { f, live, per, perPromo } = dayPer(b), pay = paymentOf(b), policy = b.policy || 'moderate';
+  const rem = live.filter(d => !d.done && d.iso >= DEMO_TODAY);
+  let refundStay = 0, kept = (live.length - rem.length) * per;
+  rem.forEach(d => { const days = daysBetweenISO(DEMO_TODAY, d.iso), pct = (who==='sitter' || b.status==='pending') ? 100 : refundPct(policy, days);
+    refundStay += Math.round((per-perPromo)*pct/100); kept += per - Math.round(per*pct/100); });
+  const keptStay = Math.round(kept), commissionKept = Math.round(keptStay*COMMISSION);
+  const pct = rem.length ? Math.round(100*refundStay/Math.max(1, rem.length*(per-perPromo))) : 0;
+  return { pct, days: rem.length ? daysBetweenISO(DEMO_TODAY, rem[0].iso) : 0, policy, f, who, ownerRefund:refundStay, ownerPays:f.total-refundStay,
+    sitterNet:keptStay-commissionKept, commissionKept, started:rem.length===0, hold:pay.status==='authorized' || pay.status==='awaiting' };
+}
+function daySessionsHTML(b){
+  if(!b.day) return '';
+  const isHost = b.hostName==='You' || state.mode!=='owner', D = b.day, open = b.status==='confirmed';
+  const { per, perPromo } = dayPer(b), policy = b.policy || 'moderate';
+  const rows = D.dates.map((d,i) => {
+    const past = d.iso < DEMO_TODAY, days = daysBetweenISO(DEMO_TODAY, d.iso), pct = refundPct(policy, days);
+    const state_ = d.skipped ? '<span class="paychip done">Skipped</span>' : d.done ? '<span class="paychip ok">Done</span>' : '<span class="paychip wait">Upcoming</span>';
+    let act = '';
+    if(open && !d.skipped && !d.done){
+      act = isHost ? `<button class="btn btn-ghost btn-sm" data-action="day-done-${b.id}-${i}">Mark done</button>`
+        : (!past ? `<button class="btn btn-ghost btn-sm" data-action="day-skip-${b.id}-${i}" aria-label="Skip ${fmtShort(d.iso)}">Skip · ${pct ? '₺'+Math.round((per-perPromo)*pct/100).toLocaleString('tr-TR')+' back' : 'no refund'}</button>` : '');
+    }
+    return `<div class="session-row ${d.done?'done':''}"><div class="session-num">${i+1}</div><div class="session-body"><b>${fmtShort(d.iso)} · ${dowName(dowOf(d.iso))}</b><span>${(SLOTS12.find(x=>x.k===D.slot)||SLOTS12[0]).h}</span></div><div class="svc-act">${state_}${act}</div></div>`;
+  }).join('');
+  const sk = daySkipAdj(b);
+  return `<div class="section-label">Sessions · ${serviceName(D.kind, D)}</div>${rows}${sk.refund ? `<p class="svc-hint">Refunded for skipped sessions: ${fmtLine(sk.refund)}</p>` : ''}`;
+}
+function dayMaybeComplete(b){
+  const live = b.day.dates.filter(d=>!d.skipped);
+  if(live.length && live.every(d=>d.done) && b.status==='confirmed'){ b.status = 'completed'; releaseEscrow(b); toast('All sessions done — payment released'); }
+}
+
+/* ---------- Plus screen ---------- */
+function screenPlus(){
+  const p = state.plus, on = plusActive();
+  const perks = [ [`${PLUS.pct}% off every booking`, `Up to ₺${PLUS.cap} per booking, applied automatically.`], ['Pawcation Protect included', 'The ₺99 Protect add-on is free on every stay.'], ['Priority support', 'Your messages to Pawcation Support are answered first.'], ['Double loyalty points', '100 points per booking instead of 50.'] ];
+  const planCard = k => { const pl = PLUS[k]; return `<div class="plan ${(state.plusPick||'yearly')===k?'on':''}" role="radio" aria-checked="${(state.plusPick||'yearly')===k}" tabindex="0" data-action="plus-pick-${k}"><div><b>${pl.name}</b><span>${k==='yearly' ? 'Two months free' : 'Cancel anytime'}</span></div><strong>₺${pl.price}<small>/${k==='yearly'?'year':'month'}</small></strong></div>`; };
+  return `
+  <div class="fade-in narrow">
+    <div class="plus-hero">${ICON.star}<h2 class="title" style="margin:0;">Pawcation Plus</h2><p>Pay less, stay protected, get help faster.</p></div>
+    ${on ? `<div class="paycard"><div class="pc-top"><span class="paychip ok">${p.cancelled ? 'Ends '+fmtLong(p.renewISO) : 'Active'}</span><span class="pc-m">${PLUS[p.plan].name} · ₺${PLUS[p.plan].price}</span></div>
+      <p class="pc-hint">${p.cancelled ? 'Your membership has been cancelled. Benefits stay on until the date above.' : 'Renews on '+fmtLong(p.renewISO)+'.'}</p>
+      ${p.cancelled ? '<button class="btn btn-primary" data-action="plus-resume">Resume membership</button>' : '<button class="btn btn-ghost" style="color:var(--stamp);border-color:var(--stamp);" data-action="plus-cancel">Cancel membership</button>'}</div>` : ''}
+    <div class="section-label">What you get</div>
+    ${perks.map(x=>`<div class="perk">${ICON.check}<div><b>${x[0]}</b><span>${x[1]}</span></div></div>`).join('')}
+    ${on ? `<button class="btn btn-ghost" data-action="plus-support" style="margin-top:12px;">${ICON.chat}Message priority support</button>` : `
+    <div class="section-label">Choose a plan</div>
+    <div role="radiogroup" aria-label="Plan">${planCard('yearly')}${planCard('monthly')}</div>
+    <button class="btn btn-primary" data-action="plus-subscribe">Start Plus · ₺${PLUS[state.plusPick||'yearly'].price}</button>
+    <p class="svc-hint">Demo only — no real payment is taken. Nothing is charged to your card.</p>`}
+    ${state.billing.filter(x=>x.kind!=='boost').length ? `<div class="section-label">Billing history</div>${state.billing.filter(x=>x.kind!=='boost').slice().reverse().map(x=>`<div class="pr-row"><span>${x.desc} · ${fmtLong(x.date)}</span><b>₺${x.amount}</b></div>`).join('')}` : ''}
+  </div>`;
+}
+
+/* ---------- Boost screen (sitter) ---------- */
+function screenBoost(){
+  const on = boostActive(), b = state.boost, me = mySitterObject(), pick = state.boostPick || 'd7';
+  const opt = k => { const o = BOOSTS[k]; return `<div class="plan ${pick===k?'on':''}" role="radio" aria-checked="${pick===k}" tabindex="0" data-action="boost-pick-${k}"><div><b>${o.days} days</b><span>₺${Math.round(o.price/o.days)} per day</span></div><strong>₺${o.price}</strong></div>`; };
+  return `
+  <div class="fade-in narrow">
+    <div class="plus-hero">${ICON.bolt}<h2 class="title" style="margin:0;">Boost my profile</h2><p>Appear at the top of search results with a Featured badge.</p></div>
+    ${on ? `<div class="paycard"><div class="pc-top"><span class="paychip ok">Featured</span><span class="pc-m">until ${fmtLong(b.untilISO)}</span></div><p class="pc-hint">Your profile is shown first when owners sort by Recommended.</p></div>` : ''}
+    <div class="section-label">How owners see you</div>
+    ${sitterCardHTML({ ...me, price:me.price }, null)}
+    ${!state.myProfile.published ? `<div class="trustnote">${ICON.alert}<span>Your profile isn't published yet — publish it from <a data-action="nav2-hostprofile">My public profile</a> so a boost can reach owners.</span></div>` : ''}
+    <div class="section-label">${on ? 'Extend' : 'Choose a boost'}</div>
+    <div role="radiogroup" aria-label="Boost length">${opt('d3')}${opt('d7')}${opt('d30')}</div>
+    <button class="btn btn-primary" data-action="boost-buy">${on ? 'Extend' : 'Boost'} · ₺${BOOSTS[pick].price}</button>
+    <p class="svc-hint">Demo only — no real payment is taken. A boost doesn't change reviews or Super sitter status; it only changes ordering.</p>
+    ${state.billing.filter(x=>x.kind==='boost').length ? `<div class="section-label">Boost history</div>${state.billing.filter(x=>x.kind==='boost').slice().reverse().map(x=>`<div class="pr-row"><span>${x.desc} · ${fmtLong(x.date)}</span><b>₺${x.amount}</b></div>`).join('')}` : ''}
+  </div>`;
+}
+
+/* ---------- Services screen (sitter) ---------- */
+function screenServices(){
+  const sv = state.myServices;
+  const sw = (k, on) => `<button class="switch" role="switch" aria-checked="${on}" aria-label="${k==='walk'?'Offer dog walking':'Offer home visits'}" data-action="svc-toggle-${k}"></button>`;
+  const num = (id, label, v) => `<div class="field"><label for="${id}">${label}</label><input id="${id}" type="number" inputmode="numeric" min="0" max="5000" value="${v}"/></div>`;
+  return `
+  <div class="fade-in narrow">
+    <h2 class="title">My services</h2>
+    <p class="subtitle">Overnight boarding is always on. Add day services to earn between stays.</p>
+    <div class="setrow"><div><b>Boarding</b><small>Overnight stays at your home · ₺${state.myPricing.base} / night</small></div><span class="paychip ok">On</span></div>
+    <div class="setrow"><div><b>Dog walking</b><small>Short walks in your area</small></div>${sw('walk', sv.walk)}</div>
+    ${sv.walk ? `<div class="field-row">${num('sv-walk30','30-minute walk (₺)',pr12('walk30'))}${num('sv-walk60','60-minute walk (₺)',pr12('walk60'))}</div>` : ''}
+    <div class="setrow"><div><b>Home visits</b><small>Feeding, play, litter and medication at the owner's home</small></div>${sw('visit', sv.visit)}</div>
+    ${sv.visit ? num('sv-visit','Price per visit (₺)',pr12('visit')) : ''}
+    ${commissionNoteHTML()}
+    <p class="svc-hint">Set the days and hours you work in <a data-action="nav2-availability">My availability</a>.</p>
+  </div>`;
+}
+
+/* ---------- availability rules (weekly · hours · holidays) ---------- */
+function availabilityRulesHTML(){
+  const wk = state.myWeekly, h = state.myHours;
+  const opts = (from, to, cur) => { let o=''; for(let i=from;i<=to;i++) o += `<option value="${i}" ${i===cur?'selected':''}>${String(i).padStart(2,'0')}:00</option>`; return o; };
+  const conflicts = hol => state.bookings.some(b => b.status==='confirmed' && b.hostName==='You' && (bkISO(b,'in')||'')<=hol.to && (bkISO(b,'out')||'')>=hol.from);
+  return `
+    <div class="section-label">Weekly schedule</div>
+    <p class="svc-hint" style="margin-top:-4px;">Day services (walks and home visits) are offered on the days that are on. Overnight stays follow the calendar above.</p>
+    <div class="chiprow wrap" role="group" aria-label="Working days">${DOW_ORDER.map(d=>`<div class="chip ${wk[d]?'active':''}" role="checkbox" aria-checked="${wk[d]}" tabindex="0" data-action="wk-toggle-${d}">${dowName(d)}</div>`).join('')}</div>
+    <div class="field-row" style="margin-top:12px;">
+      <div class="field"><label for="hr-from">Start</label><select id="hr-from">${opts(5,14,h.from)}</select></div>
+      <div class="field"><label for="hr-to">End</label><select id="hr-to">${opts(13,23,h.to)}</select></div>
+    </div>
+    <div class="section-label">Holidays &amp; time off</div>
+    ${state.myHolidays.length ? state.myHolidays.map((x,i)=>`<div class="hol-row"><div><b>${x.label||'Time off'}</b><span>${x.from===x.to ? fmtLong(x.from) : fmtLong(x.from)+' – '+fmtLong(x.to)}</span>${conflicts(x) ? `<em>You have a confirmed stay in this period.</em>` : ''}</div><button class="btn btn-ghost btn-sm" data-action="hol-del-${i}" aria-label="Remove ${x.label||'time off'}">Remove</button></div>`).join('') : '<p class="svc-hint">No time off added.</p>'}
+    <div class="chiprow wrap" style="margin:10px 0;">${HOL_PRESETS.map((p,i)=>`<div class="chip" data-action="hol-preset-${i}">+ ${p.label}</div>`).join('')}</div>
+    <div class="field-row">
+      <div class="field"><label for="hol-from">From</label><input id="hol-from" type="date" min="${DEMO_TODAY}"/></div>
+      <div class="field"><label for="hol-to">To</label><input id="hol-to" type="date" min="${DEMO_TODAY}"/></div>
+    </div>
+    <div class="field"><label for="hol-label">Label (optional)</label><input id="hol-label" placeholder="e.g. Summer holiday"/></div>
+    <button class="btn btn-ghost" data-action="hol-add">Add time off</button>`;
+}
+
+/* ---------- r12 state persistence ---------- */
+function r12Data(){ return { myServices:state.myServices, myWeekly:state.myWeekly, myHours:state.myHours, myHolidays:state.myHolidays, plus:state.plus, boost:state.boost, billing:state.billing, chatPrefs:state.chatPrefs, myPricing12:{ walk30:pr12('walk30'), walk60:pr12('walk60'), visit:pr12('visit') } }; }
+function applyR12(d){
+  if(!d) return;
+  if(d.myServices) state.myServices = { walk:!!d.myServices.walk, visit:!!d.myServices.visit };
+  if(Array.isArray(d.myWeekly) && d.myWeekly.length===7) state.myWeekly = d.myWeekly.map(Boolean);
+  if(d.myHours) state.myHours = { from:+d.myHours.from||8, to:+d.myHours.to||20 };
+  if(Array.isArray(d.myHolidays)) state.myHolidays = d.myHolidays;
+  if(d.plus!==undefined) state.plus = d.plus;
+  if(d.boost!==undefined) state.boost = d.boost;
+  if(Array.isArray(d.billing)) state.billing = d.billing;
+  if(d.chatPrefs) state.chatPrefs = { ...state.chatPrefs, ...d.chatPrefs };
+  if(d.myPricing12) Object.assign(state.myPricing, d.myPricing12);
+}
+
+/* ---------- click + input handlers ---------- */
+function handleR12Click(action, el){
+  if(action==='nav2-services'){ go('services'); return true; }
+  if(action==='nav2-plus'){ go('plus'); return true; }
+  if(action==='nav2-boost'){ go('boost'); return true; }
+  if(action==='set-lang-de'){ setLang('de'); return true; }
+  if(action==='set-lang-ru'){ setLang('ru'); return true; }
+  /* service picking on the request form */
+  if(action.startsWith('svc-pick-')){ const k = action.replace('svc-pick-',''); state.form.service = k==='boarding' ? null : k; if(k!=='boarding') dayState(); render(); return true; }
+  if(action.startsWith('book-day-')){
+    const m = /^book-day-(.+)-(walk|visit)$/.exec(action); if(!m) return true;
+    state.consent.petHealth = false; state.consent.vetConsent = false;
+    state.form = { protect:false, pets:1, petIdx:null, shareHealth:true, dates:null, prefill:null, rebook:false, service:m[2], day:dayDefaults(sitterById(m[1])) };
+    state.form.day.days = [dowOf(state.form.day.date)];
+    go('request', { selectedId:m[1] }); return true;
+  }
+  if(action.startsWith('d-mins-')){ dayState().mins = parseInt(action.replace('d-mins-',''),10); render(); return true; }
+  if(action.startsWith('d-visits-')){ dayState().visits = parseInt(action.replace('d-visits-',''),10); render(); return true; }
+  if(action.startsWith('d-slot-')){ dayState().slot = action.replace('d-slot-',''); render(); return true; }
+  if(action.startsWith('d-repeat-')){ const D = dayState(); D.repeat = action.replace('d-repeat-',''); if(D.repeat==='weekly' && (!D.days || !D.days.length)) D.days = [dowOf(D.date)]; render(); return true; }
+  if(action.startsWith('d-dow-')){ const D = dayState(), d = parseInt(action.replace('d-dow-',''),10); D.days = D.days.includes(d) ? (D.days.length>1 ? D.days.filter(x=>x!==d) : D.days) : D.days.concat(d); render(); return true; }
+  if(action==='d-weeks-inc'){ const D = dayState(); D.weeks = Math.min(12, D.weeks+1); render(); return true; }
+  if(action==='d-weeks-dec'){ const D = dayState(); D.weeks = Math.max(2, D.weeks-1); render(); return true; }
+  if(action.startsWith('confirm-day-')){
+    const s = sitterById(action.replace('confirm-day-','')), F = state.form, D = dayState();
+    const q = dayQuote(s, F); if(!q.dates.length){ toast('No sessions fit '+s.name.split(' ')[0]+'’s schedule'); return true; }
+    const petName = (document.getElementById('f-petname')||{}).value || 'Your pet';
+    const selPet = F.petIdx!=null ? state.myPets[F.petIdx] : null, first = q.dates[0], last = q.dates[q.dates.length-1];
+    const b = {
+      id:'b'+Date.now(), status: s.instantBook ? 'confirmed' : 'pending', petName, hostName:s.name, loc:s.loc.split(',')[0],
+      checkIn:fmtDate(first), checkOut:fmtDate(last), checkInISO:first, checkOutISO:last, code:randCode(), sitterId:s.id, updates:[], review:null, reports:[], chatKey:'owner-'+s.id,
+      protect:false, protectFee:0, total:q.total, pets:F.pets||1,
+      promo: q.promo ? { code:q.promo.code, kind:q.promo.kind, label:q.promo.label, amount:q.promo.discount } : null,
+      lines:q.lines.map(l=>({ label:l.label, amount:l.amount, promo:!!l.promo })), policy:s.policy||'moderate', paidISO:DEMO_TODAY,
+      payment:{ method:F.payMethod||'card', status: F.payMethod==='havale' ? 'awaiting' : s.instantBook ? 'held' : 'authorized' },
+      petCard:(selPet && F.shareHealth!==false) ? { name:selPet.name, type:selPet.type, breed:selPet.breed, age:selPet.age, photo:selPet.photo, health:{ ...selPet.health } } : null,
+      day:{ kind:F.service, mins:D.mins, visits:D.visits, slot:D.slot, repeat:D.repeat, days:D.days.slice(), weeks:D.weeks, dates:q.dates.map(iso=>({ iso, done:false, skipped:false })), skips:[] }
+    };
+    state.bookings.push(b); state.loyaltyPoints += plusActive() ? 100 : 50;
+    if(b.promo){
+      if(b.promo.kind==='first') state.promo.firstUsed = true;
+      else if(b.promo.kind==='code') state.promo.used.push(b.promo.code);
+      else if(b.promo.kind==='reward'){ const rw = state.redeemedRewards.find(x=>String(x.code).toUpperCase()===b.promo.code); if(rw) rw.used = true; }
+      saveGrowthState();
+    }
+    state.consentGiven = true; state.form = { protect:false, pets:1, petIdx:null, shareHealth:true, dates:null, prefill:null, rebook:false };
+    toast((s.instantBook ? 'Confirmed with ' : 'Request sent to ')+s.name.split(' ')[0]+' · +'+(plusActive()?100:50)+' points');
+    go('ticket', { selectedId:b.id }); return true;
+  }
+  /* day sessions */
+  let m;
+  if((m = /^day-done-(.+)-(\d+)$/.exec(action))){ const b = state.bookings.find(x=>x.id===m[1]); if(b && b.day){ b.day.dates[+m[2]].done = true; toast('Session marked done'); dayMaybeComplete(b); render(); } return true; }
+  if((m = /^day-skip-(.+)-(\d+)$/.exec(action))){
+    const b = state.bookings.find(x=>x.id===m[1]); if(b && b.day){
+      const d = b.day.dates[+m[2]], { per, perPromo } = dayPer(b), pct = refundPct(b.policy||'moderate', daysBetweenISO(DEMO_TODAY, d.iso));
+      d.skipped = true; const refund = Math.round((per-perPromo)*pct/100), stayDrop = Math.round(per*pct/100);
+      b.day.skips = (b.day.skips||[]).concat({ iso:d.iso, refund, stayDrop, kept:per-stayDrop });
+      b.payment = { ...paymentOf(b), refund:(paymentOf(b).refund||0)+refund };
+      toast(refund ? 'Session skipped · '+fmtLine(refund)+' refunded' : 'Session skipped · no refund under this policy');
+      dayMaybeComplete(b); render();
+    } return true;
+  }
+  /* services */
+  if(action==='svc-toggle-walk'){ state.myServices.walk = !state.myServices.walk; saveGrowthState(); render(); return true; }
+  if(action==='svc-toggle-visit'){ state.myServices.visit = !state.myServices.visit; saveGrowthState(); render(); return true; }
+  /* availability rules */
+  if(action.startsWith('wk-toggle-')){ const d = parseInt(action.replace('wk-toggle-',''),10); state.myWeekly[d] = !state.myWeekly[d]; saveGrowthState(); render(); return true; }
+  if(action.startsWith('hol-preset-')){ const p = HOL_PRESETS[parseInt(action.replace('hol-preset-',''),10)]; if(!state.myHolidays.some(h=>h.from===p.from && h.to===p.to)) state.myHolidays.push({ ...p }); saveGrowthState(); render(); return true; }
+  if(action.startsWith('hol-del-')){ state.myHolidays.splice(parseInt(action.replace('hol-del-',''),10),1); saveGrowthState(); render(); return true; }
+  if(action==='hol-add'){
+    const f = document.getElementById('hol-from').value, t = document.getElementById('hol-to').value || f, label = (document.getElementById('hol-label').value||'').trim();
+    if(!f){ toast('Pick a start date'); return true; }
+    if(t < f){ toast('The end date is before the start date'); return true; }
+    state.myHolidays.push({ from:f, to:t, label }); state.myHolidays.sort((a,b)=>a.from<b.from?-1:1); saveGrowthState(); render(); toast('Time off added'); return true;
+  }
+  /* Plus */
+  if(action.startsWith('plus-pick-')){ state.plusPick = action.replace('plus-pick-',''); render(); return true; }
+  if(action==='plus-subscribe'){
+    const k = state.plusPick || 'yearly'; state.plus = { plan:k, since:DEMO_TODAY, renewISO:addDaysISO(DEMO_TODAY, k==='yearly'?365:30), cancelled:false };
+    addBilling('Pawcation Plus · '+PLUS[k].name, PLUS[k].price); saveGrowthState(); toast('Welcome to Plus'); render(); return true;
+  }
+  if(action==='plus-cancel'){ state.plus.cancelled = true; saveGrowthState(); toast('Membership cancelled — benefits stay until it ends'); render(); return true; }
+  if(action==='plus-resume'){ state.plus.cancelled = false; saveGrowthState(); toast('Membership resumed'); render(); return true; }
+  if(action==='plus-support'){
+    const c = ensureChat('owner-support', 'Pawcation Support', 'icons/icon-192.png');
+    if(!c.messages.length) c.messages.push({ from:'them', text:'Hi! This is Pawcation priority support. How can we help?', when:'Just now' });
+    go('chatThread', { selectedId:'owner-support' }); return true;
+  }
+  /* boost */
+  if(action.startsWith('boost-pick-')){ state.boostPick = action.replace('boost-pick-',''); render(); return true; }
+  if(action==='boost-buy'){
+    const k = state.boostPick || 'd7', o = BOOSTS[k], from = boostActive() ? state.boost.untilISO : DEMO_TODAY;
+    state.boost = { plan:k, startISO:state.boost && boostActive() ? state.boost.startISO : DEMO_TODAY, untilISO:addDaysISO(from, o.days) };
+    state.billing.push({ id:'bl'+Date.now(), date:DEMO_TODAY, desc:'Profile boost · '+o.days+' days', amount:o.price, kind:'boost' });
+    saveGrowthState(); toast('Your profile is featured'); render(); return true;
+  }
+  return false;
+}
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(t.id==='d-date' && state.screen==='request'){ const D = dayState(); D.date = t.value || D.date; if(D.repeat==='none') D.days = [dowOf(D.date)]; else if(!D.days.length) D.days = [dowOf(D.date)]; render(); }
+  if(t.id==='hr-from' || t.id==='hr-to'){ const f = +document.getElementById('hr-from').value, to = +document.getElementById('hr-to').value; state.myHours = { from:f, to:Math.max(to, f+1) }; saveGrowthState(); render(); }
+});
+document.addEventListener('input', e => {
+  const t = e.target, map = { 'sv-walk30':'walk30', 'sv-walk60':'walk60', 'sv-visit':'visit' };
+  if(map[t.id]){ state.myPricing[map[t.id]] = Math.max(0, parseInt(t.value,10) || 0); saveGrowthState(); }
+});
+
+/* ============ ROUND 12 — chat: quick replies · voice messages · translation ============ */
+ICON.mic = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>`;
+ICON.stop = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>`;
+ICON.translate = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6.5 8M12 5c-.5 4-3 7-7 8.5M14 20l3.5-8L21 20M15.2 17.5h4.6"/></svg>`;
+
+/* quick replies: written once per language so the message you send is in your language */
+const QUICK = {
+  owner: [
+    { en:'Thanks for the update!', tr:'Güncelleme için teşekkürler!', de:'Danke für das Update!', ru:'Спасибо за новости!' },
+    { en:'Can we do a meet & greet first?', tr:'Önce bir tanışma görüşmesi yapabilir miyiz?', de:'Können wir uns zuerst kennenlernen?', ru:'Можем сначала познакомиться?' },
+    { en:'Please send a photo when you can.', tr:'Müsait olunca bir fotoğraf atar mısın?', de:'Schick mir bitte ein Foto, wenn du kannst.', ru:'Пришлите, пожалуйста, фото, когда сможете.' },
+    { en:'What time should I drop off?', tr:'Kaçta bırakmalıyım?', de:'Wann soll ich ihn/sie vorbeibringen?', ru:'Во сколько привезти питомца?' },
+    { en:'How is my pet doing?', tr:'Dostum nasıl?', de:'Wie geht es meinem Tier?', ru:'Как себя чувствует мой питомец?' },
+  ],
+  host: [
+    { en:"Yes, I'm available for those dates!", tr:'Evet, bu tarihlerde müsaitim!', de:'Ja, an diesen Terminen habe ich Zeit!', ru:'Да, в эти даты я свободен!' },
+    { en:"Thanks for booking — I'm looking forward to it!", tr:'Rezervasyon için teşekkürler, sabırsızlanıyorum!', de:'Danke für die Buchung, ich freue mich!', ru:'Спасибо за бронь, с нетерпением жду!' },
+    { en:'Walk done — all good!', tr:'Yürüyüş tamam, her şey yolunda!', de:'Spaziergang erledigt, alles gut!', ru:'Прогулка закончена, всё хорошо!' },
+    { en:'Your pet ate well today.', tr:'Dostun bugün iyi yemek yedi.', de:'Dein Tier hat heute gut gefressen.', ru:'Ваш питомец сегодня хорошо поел.' },
+    { en:'Could you share the feeding schedule?', tr:'Beslenme programını paylaşır mısın?', de:'Kannst du mir den Fütterungsplan schicken?', ru:'Поделитесь, пожалуйста, графиком кормления.' },
+  ],
+};
+const quickKey = () => (state.mode==='owner' ? 'owner' : 'host');
+const quickText = q => q[state.lang] || q.en;
+function quickRowHTML(id){
+  return `<div class="quickrow" role="group" aria-label="Quick replies">${QUICK[quickKey()].map((q,i)=>`<button class="qr" data-action="qr-${id}-${i}">${escAttr(quickText(q))}</button>`).join('')}</div>`;
+}
+
+/* demo translator: a small phrase book, optionally replaced by your own service (config.js → translateUrl) */
+const PHRASES = [
+  { en:"Got it, thank you!", tr:'Anladım, teşekkürler!', de:'Verstanden, danke!', ru:'Понял, спасибо!' },
+  { en:'Sounds good 👍', tr:'Harika olur 👍', de:'Klingt gut 👍', ru:'Отлично 👍' },
+  { en:"Will do — I'll keep you posted.", tr:'Olur, seni haberdar edeceğim.', de:'Mache ich, ich halte dich auf dem Laufenden.', ru:'Сделаю, буду держать вас в курсе.' },
+  { en:'Perfect, see you then!', tr:'Mükemmel, o zaman görüşürüz!', de:'Perfekt, dann bis dahin!', ru:'Отлично, тогда до встречи!' },
+  { en:"Sounds great — I'll take good care of them!", tr:'Harika, onlara çok iyi bakacağım!', de:'Super, ich kümmere mich gut um sie!', ru:'Отлично, я хорошо позабочусь о них!' },
+  { en:"Could you send Buddy's vet contact just in case?", tr:"Her ihtimale karşı Buddy'nin veteriner iletişim bilgisini gönderir misin?", de:'Kannst du mir vorsichtshalber die Kontaktdaten von Buddys Tierarzt schicken?', ru:'Пришлите, пожалуйста, на всякий случай контакты ветеринара Бадди.' },
+  { en:'Looking forward to meeting Luna 🐾', tr:"Luna ile tanışmayı sabırsızlıkla bekliyorum 🐾", de:'Ich freue mich darauf, Luna kennenzulernen 🐾', ru:'С нетерпением жду встречи с Луной 🐾' },
+  { en:'Thank you so much for offering to sit!', tr:'Bakıcılık teklifin için çok teşekkürler!', de:'Vielen Dank für das Angebot, auf ihn aufzupassen!', ru:'Огромное спасибо за предложение присмотреть!' },
+  { en:"She's a little shy at first, gives it an hour.", tr:'İlk başta biraz çekingen, bir saat süre tanı.', de:'Sie ist anfangs etwas schüchtern, gib ihr eine Stunde.', ru:'Сначала она немного стесняется, дайте ей час.' },
+  { en:"Love it, thanks for sharing! 🐾", tr:'Çok sevdim, paylaştığın için teşekkürler! 🐾', de:'Toll, danke fürs Teilen! 🐾', ru:'Прекрасно, спасибо, что поделились! 🐾' },
+  { en:'Aww, thank you!', tr:'Ahh, teşekkürler!', de:'Ach, danke dir!', ru:'Ох, спасибо!' },
+  { en:'Got your voice message, thank you!', tr:'Sesli mesajını aldım, teşekkürler!', de:'Sprachnachricht erhalten, danke!', ru:'Получил голосовое сообщение, спасибо!' },
+  { en:'Hi! This is Pawcation priority support. How can we help?', tr:'Merhaba! Burası Pawcation öncelikli destek. Nasıl yardımcı olabiliriz?', de:'Hallo! Hier ist der Pawcation-Prioritätssupport. Wie können wir helfen?', ru:'Здравствуйте! Это приоритетная поддержка Pawcation. Чем помочь?' },
+].concat(QUICK.owner, QUICK.host);
+function normPhrase(s){ return String(s||'').toLowerCase().replace(/[’']/g,"'").replace(/\s+/g,' ').trim(); }
+const PHRASE_INDEX = (() => { const m = {}; PHRASES.forEach(p => ['en','tr','de','ru'].forEach(l => { if(p[l]) m[normPhrase(p[l])] = p; })); return m; })();
+async function translateText(text, to){
+  const url = window.PAWCATION_CONFIG && window.PAWCATION_CONFIG.translateUrl;
+  if(url){ try{ const r = await fetch(url, { method:'POST', headers:{ 'content-type':'application/json' }, body:JSON.stringify({ text, target:to }) }); const j = await r.json(); if(j && j.text) return { text:j.text, demo:false }; }catch(e){} }
+  const p = PHRASE_INDEX[normPhrase(text)];
+  if(p && p[to]) return { text:p[to], demo:true };
+  return { text:null, demo:true };
+}
+function trLineHTML(m){
+  if(m.from!=='them' || !m.text) return '';
+  if(m.trErr && m.showTr) return `<small class="trline">Demo translator doesn't know this message yet. Connect a translation service in config.js for full translation.</small>`;
+  return m.tr && m.showTr ? `<small class="trline">${ICON.translate}${escAttr(m.tr)}</small>` : '';
+}
+function trBtnHTML(m, idx){
+  if(m.from!=='them' || !m.text || m.type) return '';
+  return `<button class="trbtn" data-action="chat-tr-${idx}">${ICON.translate}${m.showTr ? 'Hide translation' : 'Translate'}</button>`;
+}
+async function toggleTranslate(idx){
+  const t = state.chats[state.selectedId]; if(!t) return; const m = t.messages[idx]; if(!m) return;
+  if(m.showTr){ m.showTr = false; m.trErr = false; render(); return; }
+  if(!m.tr || m.trLang!==state.lang){ const r = await translateText(m.text, state.lang); m.tr = r.text; m.trLang = state.lang; m.trErr = !r.text; m.trTried = state.lang; if(r.text && normPhrase(r.text)===normPhrase(m.text)) m.tr = 'This message is already in your language.'; }
+  m.showTr = true; render();
+}
+async function autoTranslateAll(t){
+  let changed = false;
+  for(const m of t.messages){
+    if(m.from!=='them' || !m.text || m.type) continue;
+    if(m.trTried!==state.lang){ const r = await translateText(m.text, state.lang); m.tr = r.text; m.trLang = state.lang; m.trTried = state.lang; m.trErr = !r.text; changed = true; }
+    if(m.tr && !m.showTr){ m.showTr = true; changed = true; }
+  }
+  if(changed && state.screen==='chatThread') render();
+}
+function needAutoTr(t){ return state.chatPrefs.auto && t.messages.some(m => m.from==='them' && m.text && !m.type && m.trTried!==state.lang); }
+
+/* ---------- voice messages ---------- */
+let REC = null;
+const fmtDur = s => Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+async function voiceStart(){
+  if(REC) return;
+  if(!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder)){ toast('Voice messages aren’t supported on this device'); return; }
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    const mime = ['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(m => MediaRecorder.isTypeSupported(m)) || '';
+    const mr = new MediaRecorder(stream, mime ? { mimeType:mime } : undefined), chunks = [];
+    REC = { mr, stream, chunks, t0:Date.now(), cancel:false, chat:state.selectedId };
+    mr.ondataavailable = e => { if(e.data && e.data.size) chunks.push(e.data); };
+    mr.onstop = () => {
+      const r = REC; REC = null; clearInterval(r.timer); r.stream.getTracks().forEach(t=>t.stop());
+      const dur = Math.max(1, Math.round((Date.now()-r.t0)/1000));
+      if(r.cancel || !chunks.length){ if(state.screen==='chatThread') render(); return; }
+      const blob = new Blob(chunks, { type:mr.mimeType || 'audio/webm' }), fr = new FileReader();
+      fr.onload = () => { sendVoice(r.chat, fr.result, dur); };
+      fr.readAsDataURL(blob);
+    };
+    mr.start();
+    REC.timer = setInterval(() => { const el = document.getElementById('rec-time'); const s = (Date.now()-REC.t0)/1000; if(el) el.textContent = fmtDur(s); if(s>=120) voiceStop(false); }, 250);
+    render();
+  }catch(e){ REC = null; toast('Microphone access was blocked'); }
+}
+function voiceStop(cancel){ if(!REC) return; REC.cancel = !!cancel; try{ REC.mr.stop(); }catch(e){} }
+function sendVoice(id, src, dur){
+  const t = state.chats[id]; if(!t) return;
+  t.messages.push({ from:'me', type:'voice', src, dur, when:'Just now' });
+  if(state.screen==='chatThread' && state.selectedId===id){ render(); app.content.scrollTop = app.content.scrollHeight; }
+  setTimeout(() => {
+    t.messages.push({ from:'them', text:'Got your voice message, thank you!', when:'Just now' });
+    if(state.screen==='chatThread' && state.selectedId===id){ render(); app.content.scrollTop = app.content.scrollHeight; }
+  }, 1500);
+}
+function voiceBubbleHTML(m){ return `<div class="chat-bubble ${m.from} voice"><audio controls preload="metadata" src="${m.src}" aria-label="Voice message"></audio><span>${ICON.mic.replace(/width="20" height="20"/,'width="12" height="12"')} ${fmtDur(m.dur||0)} · ${m.when}</span></div>`; }
+function recBarHTML(id){
+  return `<div class="chat-inputbar recbar" role="group" aria-label="Recording"><button class="attachbtn" data-action="voice-cancel" aria-label="Cancel recording">${ICON.close}</button><div class="recinfo"><i class="recdot"></i><b id="rec-time">0:00</b><span>Recording…</span></div><button class="sendbtn" data-action="voice-stop" aria-label="Send voice message">${ICON.send}</button></div>`;
+}
+function chatToolbarHTML(t){
+  return `<button class="trtoggle ${state.chatPrefs.auto?'on':''}" role="switch" aria-checked="${state.chatPrefs.auto}" data-action="chat-auto">${ICON.translate}<span>Translate messages</span></button>`;
+}
+
+function handleChatClick(action){
+  if(action==='voice-rec'){ voiceStart(); return true; }
+  if(action==='voice-stop'){ voiceStop(false); return true; }
+  if(action==='voice-cancel'){ voiceStop(true); return true; }
+  if(action==='chat-auto'){ state.chatPrefs.auto = !state.chatPrefs.auto; saveGrowthState(); const t = state.chats[state.selectedId]; if(state.chatPrefs.auto && t) autoTranslateAll(t); else { if(t) t.messages.forEach(m=>{ m.showTr = false; }); render(); } return true; }
+  let m;
+  if((m = /^chat-tr-(\d+)$/.exec(action))){ toggleTranslate(+m[1]); return true; }
+  if((m = /^qr-(.+)-(\d+)$/.exec(action))){
+    const id = m[1], q = QUICK[quickKey()][+m[2]], t = state.chats[id]; if(!t || !q) return true;
+    t.messages.push({ from:'me', text:quickText(q), when:'Just now' });
+    go('chatThread', { selectedId:id }); app.content.scrollTop = app.content.scrollHeight;
+    setTimeout(() => { if(state.screen==='chatThread' && state.selectedId===id){ t.messages.push({ from:'them', text:["Got it, thank you!","Sounds good 👍","Perfect, see you then!"][Math.floor(Math.random()*3)], when:'Just now' }); render(); app.content.scrollTop = app.content.scrollHeight; } }, 1300);
+    return true;
+  }
+  return false;
+}
+
+/* ---------- extra UI languages (German, Russian): English text → dictionary, anything missing stays English ---------- */
+function xText(str){
+  const d = XDICT[state.lang]; if(!d) return str;
+  const lead = str.match(/^\s*/)[0], trail = str.match(/\s*$/)[0], core = str.trim(); if(!core) return str;
+  if(d[core]) return lead+d[core]+trail;
+  if(core.includes(' · ')){ const parts = core.split(' · '), out = parts.map(p => d[p] || xPattern(p, d)); if(out.some((p,i)=>p!==parts[i])) return lead+out.join(' · ')+trail; }
+  const p = xPattern(core, d); return p!==core ? lead+p+trail : str;
+}
+function xPattern(s, d){
+  for(const [re, fn] of (XPAT[state.lang]||[])){ const m = re.exec(s); if(m) return fn(m); }
+  return d[s] || s;
+}
+const XPAT = { de:[], ru:[] };
+
+const XMON = { de:["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"], ru:["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"] };
+const EN_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+XPAT.de.push(
+  [/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})$/, m=> m[2]+'. '+XMON.de[EN_MON.indexOf(m[1])]],
+  [/^(\d+) nights? × (.+)$/, m=> `${m[1]} Nächte × ${m[2]}`],
+  [/^(\d+) walks? × ₺([\d.,]+)$/, m=> `${m[1]} Spaziergänge × ₺${m[2]}`],
+  [/^(\d+) home visits? × ₺([\d.,]+)$/, m=> `${m[1]} Hausbesuche × ₺${m[2]}`],
+  [/^(\d+) sessions?$/, m=> `${m[1]} Termin${m[1]==='1'?'':'e'}`],
+  [/^(\d+) weeks?$/, m=> `${m[1]} Woche${m[1]==='1'?'':'n'}`],
+  [/^(\d+) days$/, m=> `${m[1]} Tage`],
+  [/^(\d+)-min walk$/, m=> `${m[1]}-Min.-Spaziergang`],
+  [/^(\d+) min · ₺([\d.,]+)$/, m=> `${m[1]} Min. · ₺${m[2]}`],
+  [/^(\d+) visits? · ₺([\d.,]+)$/, m=> `${m[1]} Besuch${m[1]==='1'?'':'e'} · ₺${m[2]}`],
+  [/^(\d+) \/ (\d+) done$/, m=> `${m[1]} / ${m[2]} erledigt`],
+  [/^Skip · ₺([\d.,]+) back$/, m=> `Überspringen · ₺${m[1]} zurück`],
+  [/^Book a walk with (.+)$/, m=> `Spaziergang mit ${m[1]} buchen`],
+  [/^Book home visits with (.+)$/, m=> `Hausbesuche mit ${m[1]} buchen`],
+  [/^Tell (.+) about your pet$/, m=> `Erzähl ${m[1]} von deinem Tier`],
+  [/^Anything (.+) should know$/, m=> `Was sollte ${m[1]} wissen?`],
+  [/^Meet (.+) first — a short, free visit before you book\.$/, m=> `Lerne ${m[1]} zuerst kennen – ein kurzer, kostenloser Besuch vor der Buchung.`],
+  [/^This goes to (.+) as a request — nothing is confirmed until they accept\.$/, m=> `Das geht als Anfrage an ${m[1]} – bestätigt ist erst, wenn die Anfrage angenommen wird.`],
+  [/^Start Plus · ₺(\d+)$/, m=> `Plus starten · ₺${m[1]}`],
+  [/^(Boost|Extend) · ₺(\d+)$/, m=> `${m[1]==='Boost'?'Hervorheben':'Verlängern'} · ₺${m[2]}`],
+  [/^₺(\d+) per day$/, m=> `₺${m[1]} pro Tag`],
+  [/^(\d+)\+ stays$/, m=> `${m[1]}+ Aufenthalte`],
+  [/^(\d+)% response rate$/, m=> `${m[1]} % Antwortquote`],
+  [/^\+ (.+)$/, m=> '+ '+(XDICT.de[m[1]]||m[1])]
+);
+XPAT.ru.push(
+  [/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2})$/, m=> m[2]+' '+XMON.ru[EN_MON.indexOf(m[1])]],
+  [/^(\d+) nights? × (.+)$/, m=> `${m[1]} ноч. × ${m[2]}`],
+  [/^(\d+) walks? × ₺([\d.,]+)$/, m=> `${m[1]} прогулок × ₺${m[2]}`],
+  [/^(\d+) home visits? × ₺([\d.,]+)$/, m=> `${m[1]} визитов × ₺${m[2]}`],
+  [/^(\d+) sessions?$/, m=> `${m[1]} сеанс.`],
+  [/^(\d+) weeks?$/, m=> `${m[1]} нед.`],
+  [/^(\d+) days$/, m=> `${m[1]} дн.`],
+  [/^(\d+)-min walk$/, m=> `Прогулка ${m[1]} мин`],
+  [/^(\d+) min · ₺([\d.,]+)$/, m=> `${m[1]} мин · ₺${m[2]}`],
+  [/^(\d+) visits? · ₺([\d.,]+)$/, m=> `${m[1]} виз. · ₺${m[2]}`],
+  [/^(\d+) \/ (\d+) done$/, m=> `${m[1]} из ${m[2]} выполнено`],
+  [/^Skip · ₺([\d.,]+) back$/, m=> `Пропустить · вернётся ₺${m[1]}`],
+  [/^Book a walk with (.+)$/, m=> `Забронировать прогулку: ${m[1]}`],
+  [/^Book home visits with (.+)$/, m=> `Забронировать визиты: ${m[1]}`],
+  [/^Tell (.+) about your pet$/, m=> `Расскажите ${m[1]} о питомце`],
+  [/^Anything (.+) should know$/, m=> `Что нужно знать ${m[1]}`],
+  [/^Meet (.+) first — a short, free visit before you book\.$/, m=> `Сначала познакомьтесь с ${m[1]} — короткая бесплатная встреча перед бронированием.`],
+  [/^This goes to (.+) as a request — nothing is confirmed until they accept\.$/, m=> `Заявка уйдёт ${m[1]}; бронь подтверждается после принятия.`],
+  [/^Start Plus · ₺(\d+)$/, m=> `Подключить Plus · ₺${m[1]}`],
+  [/^(Boost|Extend) · ₺(\d+)$/, m=> `${m[1]==='Boost'?'Продвинуть':'Продлить'} · ₺${m[2]}`],
+  [/^₺(\d+) per day$/, m=> `₺${m[1]} в день`],
+  [/^(\d+)\+ stays$/, m=> `${m[1]}+ проживаний`],
+  [/^(\d+)% response rate$/, m=> `Отвечает в ${m[1]}% случаев`],
+  [/^\+ (.+)$/, m=> '+ '+(XDICT.ru[m[1]]||m[1])]
+);
+
+function xApply(node){
+  if(node.nodeType===3){
+    const par = node.parentNode, p = par && par.nodeName;
+    if(p==='SCRIPT' || p==='STYLE' || p==='TEXTAREA') return;
+    if(par && par.closest && par.closest('.chat-bubble, #chat-input')) return;   // never rewrite chat content
+    const o = xText(node.nodeValue); if(o!==node.nodeValue) node.nodeValue = o; return;
+  }
+  if(node.nodeType!==1) return;
+  node.querySelectorAll('option').forEach(o => { if(!o.hasAttribute('value')) o.setAttribute('value', o.textContent); });
+  if(node.nodeName==='OPTION' && !node.hasAttribute('value')) node.setAttribute('value', node.textContent);
+  const w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT), list = []; while(w.nextNode()) list.push(w.currentNode);
+  list.forEach(xApply);
+  const ph = el => { ['placeholder','aria-label'].forEach(a => { const v = el.getAttribute(a); if(v){ const o = xText(v); if(o!==v) el.setAttribute(a, o); } }); };
+  if(node.hasAttribute) ph(node);
+  node.querySelectorAll('[placeholder],[aria-label]').forEach(ph);
+}
+
+const LANG_NAMES = { en:'English', tr:'Türkçe', de:'Deutsch', ru:'Русский' };
+const X_LANGS = ['de','ru'];
+const XDICT = { de:{"A home away": "Ein Zuhause", "from home.": "fern der Heimat.", "Pawcation connects people who need someone to look after a pet with people who genuinely want to. Pick how you're starting out — you can switch anytime.": "Pawcation bringt Menschen, die jemanden für ihr Haustier suchen, mit Menschen zusammen, die sich wirklich gern kümmern. Wähle deinen Start – du kannst jederzeit wechseln.", "I need a sitter": "Ich suche einen Betreuer", "Going away and need someone to look after your pet": "Du verreist und brauchst jemanden für dein Tier", "I want to host a pet": "Ich möchte Tiere aufnehmen", "Open your home and earn by hosting someone's pet — they stay at your place": "Öffne dein Zuhause und verdiene mit der Betreuung fremder Tiere", "I'm a pet trainer": "Ich bin Hundetrainer", "Offer training sessions and get matched with owners who need help": "Biete Trainings an und finde Halter, die Hilfe brauchen", "I'm a trainer": "Ich bin Trainer", "Browse": "Entdecken", "Pawcations": "Buchungen", "Messages": "Nachrichten", "Profile": "Profil", "Find a sitter": "Betreuer finden", "Sitters near Istanbul. Tap a profile to see availability and reviews.": "Betreuer in Istanbul. Tippe auf ein Profil für Verfügbarkeit und Bewertungen.", "Your first booking is 15% off": "Deine erste Buchung ist 15 % günstiger", "Applied automatically at checkout · up to ₺300": "Wird automatisch angewendet · bis zu ₺300", "Filters": "Filter", "Near me": "In meiner Nähe", "List": "Liste", "Map": "Karte", "Your sitters": "Deine Betreuer", "Rebook": "Erneut buchen", "All": "Alle", "Dogs": "Hunde", "Cats": "Katzen", "Small pets": "Kleintiere", "Birds": "Vögel", "Dog": "Hund", "Cat": "Katze", "Small pet": "Kleintier", "Bird": "Vogel", "Featured": "Empfohlen", "ID verified": "ID geprüft", "/ night": "/ Nacht", "Super sitter": "Super-Betreuer", "Instant Book": "Sofortbuchung", "Neighborhood, name, pet type…": "Stadtteil, Name, Tierart …", "Rating": "Bewertung", "Per night": "Pro Nacht", "Day services": "Tagesleistungen", "Dog walking": "Gassi-Service", "Home visits": "Hausbesuche", "Home visit": "Hausbesuch", "Book": "Buchen", "Pricing": "Preise", "Base rate": "Grundpreis", "Each additional pet": "Jedes weitere Tier", "Cleaning fee": "Reinigungsgebühr", "Included": "Inklusive", "Cancellation policy": "Stornierungsbedingungen", "Flexible": "Flexibel", "Moderate": "Moderat", "Strict": "Streng", "Available": "Verfügbar", "Not available": "Nicht verfügbar", "Not sure yet?": "Noch unsicher?", "Meet & greet": "Kennenlernen", "Rating breakdown": "Bewertungsdetails", "Communication": "Kommunikation", "Cleanliness": "Sauberkeit", "Reliability": "Zuverlässigkeit", "Recent reviews": "Neueste Bewertungen", "Request this stay": "Aufenthalt anfragen", "Background checked": "Hintergrund geprüft", "No refund": "Keine Erstattung", "Handled by support": "Durch den Support", "Service": "Leistung", "Boarding (overnight)": "Übernachtung", "Boarding": "Übernachtung", "Choose a saved pet": "Gespeichertes Tier wählen", "+ New pet": "+ Neues Tier", "Pet's name": "Name des Tieres", "Pet type": "Tierart", "Number of pets": "Anzahl der Tiere", "Check-in": "Anreise", "Check-out": "Abreise", "Add-ons": "Extras", "Pawcation Protect": "Pawcation Protect", "Promo code": "Aktionscode", "Apply": "Anwenden", "Total": "Gesamt", "Payment": "Zahlung", "Credit / debit card": "Kredit-/Debitkarte", "Troy card": "Troy-Karte", "Bank transfer (havale / EFT)": "Banküberweisung (Havale/EFT)", "Before you send": "Bevor du sendest", "Read full declaration": "Ganze Erklärung lesen", "Read full consent": "Ganze Einwilligung lesen", "Book instantly": "Sofort buchen", "Send request": "Anfrage senden", "Enter a code": "Code eingeben", "Feeding schedule, medication, temperament…": "Fütterung, Medikamente, Charakter …", "Leash, route, door code, medication…": "Leine, Route, Türcode, Medikamente …", "Walk length": "Dauer des Spaziergangs", "Visits per day": "Besuche pro Tag", "Date": "Datum", "First date": "Erster Termin", "Time of day": "Tageszeit", "Morning": "Morgens", "Afternoon": "Nachmittags", "Evening": "Abends", "Repeat": "Wiederholen", "Just once": "Einmalig", "Weekly": "Wöchentlich", "On these days": "An diesen Tagen", "For how many weeks": "Für wie viele Wochen", "Sessions": "Termine", "Done": "Erledigt", "Upcoming": "Bevorstehend", "Skipped": "Übersprungen", "Mark done": "Als erledigt markieren", "Skip · no refund": "Überspringen · keine Erstattung", "Session marked done": "Termin als erledigt markiert", "All sessions done — payment released": "Alle Termine erledigt – Zahlung freigegeben", "Your pawcations": "Deine Buchungen", "Every request, past and upcoming, kept as a pass. Tap one for stay updates and details.": "Jede Anfrage, vergangen und kommend, als Pass. Tippe für Updates und Details.", "Pawcation Pass": "Pawcation-Pass", "CONFIRMED": "BESTÄTIGT", "PENDING": "AUSSTEHEND", "COMPLETED": "ABGESCHLOSSEN", "CANCELLED": "STORNIERT", "Pet": "Tier", "Host": "Gastgeber", "Location": "Ort", "Held by Pawcation": "Von Pawcation verwahrt", "Paid": "Bezahlt", "Paid out": "Ausgezahlt", "Cancel pawcation": "Buchung stornieren", "Receipt": "Beleg", "Daily report": "Tagesbericht", "Stay updates": "Neuigkeiten", "Problems": "Probleme", "Report an issue": "Problem melden", "Post an update": "Update posten", "Add a photo": "Foto hinzufügen", "Post update": "Posten", "Write today's report": "Heutigen Bericht schreiben", "Cancel this pawcation?": "Diese Buchung stornieren?", "Who pays what": "Wer zahlt was", "You get back": "Du erhältst zurück", "Confirm cancellation": "Stornierung bestätigen", "Never mind": "Abbrechen", "Reason (optional)": "Grund (optional)", "You": "Du", "Verification & trust": "Verifizierung & Vertrauen", "My pets": "Meine Tiere", "Favorites": "Favoriten", "Payment methods": "Zahlungsmethoden", "Notifications": "Benachrichtigungen", "Legal & policies": "Rechtliches", "Pawcation Points": "Pawcation-Punkte", "Payments & receipts": "Zahlungen & Belege", "Offers & promo codes": "Angebote & Aktionscodes", "Invite friends": "Freunde einladen", "How it works": "So funktioniert's", "Appearance & accessibility": "Darstellung & Barrierefreiheit", "Language": "Sprache", "Switch role": "Rolle wechseln", "Start hosting pets": "Tiere aufnehmen", "Offer training sessions": "Trainings anbieten", "Log out": "Abmelden", "Not started": "Nicht gestartet", "Reports & claims": "Meldungen & Ansprüche", "Earnings": "Einnahmen", "My availability": "Meine Verfügbarkeit", "My public profile": "Mein öffentliches Profil", "Monthly statement": "Monatsabrechnung", "My pricing": "Meine Preise", "Payout details": "Auszahlungsdetails", "Look for a sitter instead": "Stattdessen Betreuer suchen", "Conversations tied to your requests and bookings.": "Gespräche zu deinen Anfragen und Buchungen.", "Type a message…": "Nachricht schreiben …", "Attach a photo or video": "Foto oder Video anhängen", "Translate messages": "Nachrichten übersetzen", "Translate": "Übersetzen", "Hide translation": "Übersetzung ausblenden", "Quick replies": "Schnellantworten", "Record a voice message": "Sprachnachricht aufnehmen", "Recording…": "Aufnahme …", "Cancel recording": "Aufnahme abbrechen", "Send voice message": "Sprachnachricht senden", "🎤 Voice message": "🎤 Sprachnachricht", "Voice message": "Sprachnachricht", "This message is already in your language.": "Diese Nachricht ist bereits in deiner Sprache.", "Demo translator doesn't know this message yet. Connect a translation service in config.js for full translation.": "Der Demo-Übersetzer kennt diese Nachricht noch nicht. Verbinde in config.js einen Übersetzungsdienst.", "Thanks for the update!": "Danke für das Update!", "Can we do a meet & greet first?": "Können wir uns zuerst kennenlernen?", "Please send a photo when you can.": "Schick mir bitte ein Foto, wenn du kannst.", "What time should I drop off?": "Wann soll ich ihn/sie vorbeibringen?", "How is my pet doing?": "Wie geht es meinem Tier?", "Today's report": "Heutiger Bericht", "Meals": "Mahlzeiten", "Walks": "Spaziergänge", "Mood": "Stimmung", "Pawcation Plus": "Pawcation Plus", "Save 5%": "5 % sparen", "Pay less, stay protected, get help faster.": "Weniger zahlen, geschützt sein, schneller Hilfe bekommen.", "What you get": "Deine Vorteile", "5% off every booking": "5 % Rabatt auf jede Buchung", "Up to ₺150 per booking, applied automatically.": "Bis zu ₺150 pro Buchung, automatisch angewendet.", "Pawcation Protect included": "Pawcation Protect inklusive", "The ₺99 Protect add-on is free on every stay.": "Das Protect-Extra für ₺99 ist bei jedem Aufenthalt gratis.", "Priority support": "Priorisierter Support", "Your messages to Pawcation Support are answered first.": "Deine Nachrichten an den Pawcation-Support werden zuerst beantwortet.", "Double loyalty points": "Doppelte Treuepunkte", "100 points per booking instead of 50.": "100 statt 50 Punkte pro Buchung.", "Choose a plan": "Tarif wählen", "Yearly": "Jährlich", "Monthly": "Monatlich", "Two months free": "Zwei Monate gratis", "Cancel anytime": "Jederzeit kündbar", "/year": "/Jahr", "/month": "/Monat", "Demo only — no real payment is taken. Nothing is charged to your card.": "Nur Demo – es wird nichts abgebucht.", "Active": "Aktiv", "Cancel membership": "Mitgliedschaft kündigen", "Resume membership": "Mitgliedschaft fortsetzen", "Message priority support": "Priority-Support schreiben", "Billing history": "Abrechnungsverlauf", "My services": "Meine Leistungen", "Boost my profile": "Mein Profil hervorheben", "Overnight boarding is always on. Add day services to earn between stays.": "Übernachtung ist immer aktiv. Füge Tagesleistungen hinzu, um zwischen Aufenthalten zu verdienen.", "Short walks in your area": "Kurze Spaziergänge in deiner Gegend", "Feeding, play, litter and medication at the owner's home": "Füttern, Spielen, Katzenklo und Medikamente beim Besitzer zu Hause", "30-minute walk (₺)": "30-Minuten-Spaziergang (₺)", "60-minute walk (₺)": "60-Minuten-Spaziergang (₺)", "Price per visit (₺)": "Preis pro Besuch (₺)", "Weekly schedule": "Wochenplan", "Start": "Beginn", "End": "Ende", "Holidays & time off": "Feiertage & freie Zeit", "From": "Von", "To": "Bis", "Label (optional)": "Bezeichnung (optional)", "Add time off": "Auszeit hinzufügen", "Remove": "Entfernen", "No time off added.": "Keine Auszeiten eingetragen.", "Victory Day": "Tag des Sieges", "Republic Day": "Tag der Republik", "New Year": "Neujahr", "Ramazan Bayramı": "Ramazan Bayramı", "Appear at the top of search results with a Featured badge.": "Erscheine mit „Empfohlen“-Siegel ganz oben in den Suchergebnissen.", "How owners see you": "So sehen dich Halter", "Choose a boost": "Hervorhebung wählen", "Extend": "Verlängern", "Boost history": "Verlauf der Hervorhebungen", "Your profile is shown first when owners sort by Recommended.": "Dein Profil wird zuerst gezeigt, wenn Halter nach „Empfohlen“ sortieren.", "Settings": "Einstellungen", "Back": "Zurück", "Cancel": "Abbrechen", "Save": "Speichern", "Close": "Schließen", "Mon": "Mo", "Tue": "Di", "Wed": "Mi", "Thu": "Do", "Fri": "Fr", "Sat": "Sa", "Sun": "So", "Yesterday": "Gestern", "Today": "Heute", "No favorites yet": "Noch keine Favoriten", "No conversations yet": "Noch keine Gespräche", "Pets nearby": "Tiere in der Nähe", "Owners in your area looking for someone to host their pet. Offer to host the ones that fit.": "Halter in deiner Nähe suchen einen Gastgeber für ihr Tier. Biete an, passende aufzunehmen."}, ru:{"A home away": "Дом вдали", "from home.": "от дома.", "Pawcation connects people who need someone to look after a pet with people who genuinely want to. Pick how you're starting out — you can switch anytime.": "Pawcation соединяет тех, кому нужен присмотр за питомцем, с теми, кто действительно этого хочет. Выберите, как начать — потом можно сменить.", "I need a sitter": "Мне нужен ситтер", "Going away and need someone to look after your pet": "Вы уезжаете и ищете присмотр за питомцем", "I want to host a pet": "Хочу принимать питомцев", "Open your home and earn by hosting someone's pet — they stay at your place": "Откройте дом и зарабатывайте, принимая чужих питомцев", "I'm a pet trainer": "Я кинолог", "Offer training sessions and get matched with owners who need help": "Проводите занятия и находите владельцев, которым нужна помощь", "I'm a trainer": "Я тренер", "Browse": "Поиск", "Pawcations": "Поездки", "Messages": "Сообщения", "Profile": "Профиль", "Find a sitter": "Найти ситтера", "Sitters near Istanbul. Tap a profile to see availability and reviews.": "Ситтеры в Стамбуле. Откройте профиль, чтобы увидеть доступность и отзывы.", "Your first booking is 15% off": "Первая бронь со скидкой 15%", "Applied automatically at checkout · up to ₺300": "Применяется автоматически · до ₺300", "Filters": "Фильтры", "Near me": "Рядом", "List": "Список", "Map": "Карта", "Your sitters": "Ваши ситтеры", "Rebook": "Забронировать снова", "All": "Все", "Dogs": "Собаки", "Cats": "Кошки", "Small pets": "Грызуны", "Birds": "Птицы", "Dog": "Собака", "Cat": "Кошка", "Small pet": "Мелкое животное", "Bird": "Птица", "Featured": "В топе", "ID verified": "Личность подтверждена", "/ night": "/ ночь", "Super sitter": "Суперситтер", "Instant Book": "Мгновенная бронь", "Neighborhood, name, pet type…": "Район, имя, вид питомца…", "Rating": "Рейтинг", "Per night": "За ночь", "Day services": "Услуги в течение дня", "Dog walking": "Выгул собак", "Home visits": "Визиты на дом", "Home visit": "Визит на дом", "Book": "Забронировать", "Pricing": "Цены", "Base rate": "Базовая цена", "Each additional pet": "Каждое следующее животное", "Cleaning fee": "Плата за уборку", "Included": "Включено", "Cancellation policy": "Условия отмены", "Flexible": "Гибкие", "Moderate": "Умеренные", "Strict": "Строгие", "Available": "Свободно", "Not available": "Недоступно", "Not sure yet?": "Не уверены?", "Meet & greet": "Знакомство", "Rating breakdown": "Оценки по критериям", "Communication": "Общение", "Cleanliness": "Чистота", "Reliability": "Надёжность", "Recent reviews": "Недавние отзывы", "Request this stay": "Запросить проживание", "Background checked": "Проверка пройдена", "No refund": "Без возврата", "Handled by support": "Решает поддержка", "Service": "Услуга", "Boarding (overnight)": "Передержка (с ночёвкой)", "Boarding": "Передержка", "Choose a saved pet": "Выберите питомца", "+ New pet": "+ Новый питомец", "Pet's name": "Кличка", "Pet type": "Вид питомца", "Number of pets": "Количество питомцев", "Check-in": "Заезд", "Check-out": "Выезд", "Add-ons": "Дополнения", "Pawcation Protect": "Pawcation Protect", "Promo code": "Промокод", "Apply": "Применить", "Total": "Итого", "Payment": "Оплата", "Credit / debit card": "Кредитная/дебетовая карта", "Troy card": "Карта Troy", "Bank transfer (havale / EFT)": "Банковский перевод (havale/EFT)", "Before you send": "Перед отправкой", "Read full declaration": "Читать полностью", "Read full consent": "Читать полностью", "Book instantly": "Забронировать сразу", "Send request": "Отправить запрос", "Enter a code": "Введите код", "Feeding schedule, medication, temperament…": "Режим кормления, лекарства, характер…", "Leash, route, door code, medication…": "Поводок, маршрут, код двери, лекарства…", "Walk length": "Длительность прогулки", "Visits per day": "Визитов в день", "Date": "Дата", "First date": "Первая дата", "Time of day": "Время суток", "Morning": "Утро", "Afternoon": "День", "Evening": "Вечер", "Repeat": "Повтор", "Just once": "Один раз", "Weekly": "Еженедельно", "On these days": "В эти дни", "For how many weeks": "Сколько недель", "Sessions": "Сеансы", "Done": "Выполнено", "Upcoming": "Предстоит", "Skipped": "Пропущено", "Mark done": "Отметить выполненным", "Skip · no refund": "Пропустить · без возврата", "Session marked done": "Сеанс отмечен выполненным", "All sessions done — payment released": "Все сеансы выполнены — оплата переведена", "Your pawcations": "Ваши поездки", "Every request, past and upcoming, kept as a pass. Tap one for stay updates and details.": "Каждая заявка — как пропуск. Нажмите, чтобы увидеть новости и детали.", "Pawcation Pass": "Пропуск Pawcation", "CONFIRMED": "ПОДТВЕРЖДЕНО", "PENDING": "ОЖИДАЕТ", "COMPLETED": "ЗАВЕРШЕНО", "CANCELLED": "ОТМЕНЕНО", "Pet": "Питомец", "Host": "Ситтер", "Location": "Место", "Held by Pawcation": "Удерживается Pawcation", "Paid": "Оплачено", "Paid out": "Выплачено", "Cancel pawcation": "Отменить бронь", "Receipt": "Квитанция", "Daily report": "Ежедневный отчёт", "Stay updates": "Новости", "Problems": "Проблемы", "Report an issue": "Сообщить о проблеме", "Post an update": "Опубликовать новость", "Add a photo": "Добавить фото", "Post update": "Опубликовать", "Write today's report": "Написать отчёт за сегодня", "Cancel this pawcation?": "Отменить бронь?", "Who pays what": "Кто сколько платит", "You get back": "Вам вернётся", "Confirm cancellation": "Подтвердить отмену", "Never mind": "Не отменять", "Reason (optional)": "Причина (по желанию)", "You": "Вы", "Verification & trust": "Проверка и доверие", "My pets": "Мои питомцы", "Favorites": "Избранное", "Payment methods": "Способы оплаты", "Notifications": "Уведомления", "Legal & policies": "Правовая информация", "Pawcation Points": "Баллы Pawcation", "Payments & receipts": "Платежи и квитанции", "Offers & promo codes": "Предложения и промокоды", "Invite friends": "Пригласить друзей", "How it works": "Как это работает", "Appearance & accessibility": "Оформление и доступность", "Language": "Язык", "Switch role": "Сменить роль", "Start hosting pets": "Принимать питомцев", "Offer training sessions": "Проводить занятия", "Log out": "Выйти", "Not started": "Не начато", "Reports & claims": "Жалобы и обращения", "Earnings": "Доходы", "My availability": "Моя доступность", "My public profile": "Мой профиль", "Monthly statement": "Ежемесячная выписка", "My pricing": "Мои цены", "Payout details": "Данные для выплат", "Look for a sitter instead": "Искать ситтера", "Conversations tied to your requests and bookings.": "Переписка по вашим заявкам и броням.", "Type a message…": "Введите сообщение…", "Attach a photo or video": "Прикрепить фото или видео", "Translate messages": "Переводить сообщения", "Translate": "Перевести", "Hide translation": "Скрыть перевод", "Quick replies": "Быстрые ответы", "Record a voice message": "Записать голосовое сообщение", "Recording…": "Запись…", "Cancel recording": "Отменить запись", "Send voice message": "Отправить голосовое", "🎤 Voice message": "🎤 Голосовое сообщение", "Voice message": "Голосовое сообщение", "This message is already in your language.": "Это сообщение уже на вашем языке.", "Demo translator doesn't know this message yet. Connect a translation service in config.js for full translation.": "Демо-переводчик пока не знает это сообщение. Подключите сервис перевода в config.js.", "Thanks for the update!": "Спасибо за новости!", "Can we do a meet & greet first?": "Можем сначала познакомиться?", "Please send a photo when you can.": "Пришлите, пожалуйста, фото, когда сможете.", "What time should I drop off?": "Во сколько привезти питомца?", "How is my pet doing?": "Как себя чувствует мой питомец?", "Today's report": "Отчёт за сегодня", "Meals": "Питание", "Walks": "Прогулки", "Mood": "Настроение", "Pawcation Plus": "Pawcation Plus", "Save 5%": "Скидка 5%", "Pay less, stay protected, get help faster.": "Платите меньше, будьте защищены, получайте помощь быстрее.", "What you get": "Что вы получаете", "5% off every booking": "5% скидка на каждую бронь", "Up to ₺150 per booking, applied automatically.": "До ₺150 за бронь, применяется автоматически.", "Pawcation Protect included": "Pawcation Protect включён", "The ₺99 Protect add-on is free on every stay.": "Дополнение Protect за ₺99 бесплатно при каждом проживании.", "Priority support": "Приоритетная поддержка", "Your messages to Pawcation Support are answered first.": "Ваши сообщения в поддержку Pawcation обрабатываются в первую очередь.", "Double loyalty points": "Двойные баллы", "100 points per booking instead of 50.": "100 баллов за бронь вместо 50.", "Choose a plan": "Выберите тариф", "Yearly": "Год", "Monthly": "Месяц", "Two months free": "Два месяца в подарок", "Cancel anytime": "Отмена в любое время", "/year": "/год", "/month": "/мес.", "Demo only — no real payment is taken. Nothing is charged to your card.": "Только демо — деньги не списываются.", "Active": "Активно", "Cancel membership": "Отменить подписку", "Resume membership": "Возобновить подписку", "Message priority support": "Написать в поддержку", "Billing history": "История платежей", "My services": "Мои услуги", "Boost my profile": "Продвинуть мой профиль", "Overnight boarding is always on. Add day services to earn between stays.": "Передержка включена всегда. Добавьте дневные услуги, чтобы зарабатывать между проживаниями.", "Short walks in your area": "Короткие прогулки в вашем районе", "Feeding, play, litter and medication at the owner's home": "Кормление, игры, лоток и лекарства в доме владельца", "30-minute walk (₺)": "Прогулка 30 минут (₺)", "60-minute walk (₺)": "Прогулка 60 минут (₺)", "Price per visit (₺)": "Цена за визит (₺)", "Weekly schedule": "Расписание на неделю", "Start": "Начало", "End": "Конец", "Holidays & time off": "Праздники и выходные", "From": "С", "To": "По", "Label (optional)": "Название (по желанию)", "Add time off": "Добавить выходной", "Remove": "Удалить", "No time off added.": "Выходные не добавлены.", "Victory Day": "День Победы", "Republic Day": "День Республики", "New Year": "Новый год", "Ramazan Bayramı": "Рамазан Байрамы", "Appear at the top of search results with a Featured badge.": "Показывайтесь вверху поиска с пометкой «В топе».", "How owners see you": "Как вас видят владельцы", "Choose a boost": "Выберите продвижение", "Extend": "Продлить", "Boost history": "История продвижения", "Your profile is shown first when owners sort by Recommended.": "Ваш профиль показывается первым при сортировке «Рекомендуемые».", "Settings": "Настройки", "Back": "Назад", "Cancel": "Отмена", "Save": "Сохранить", "Close": "Закрыть", "Mon": "Пн", "Tue": "Вт", "Wed": "Ср", "Thu": "Чт", "Fri": "Пт", "Sat": "Сб", "Sun": "Вс", "Yesterday": "Вчера", "Today": "Сегодня", "No favorites yet": "Пока нет избранного", "No conversations yet": "Пока нет переписок", "Pets nearby": "Питомцы рядом", "Owners in your area looking for someone to host their pet. Offer to host the ones that fit.": "Владельцы рядом ищут, кто примет их питомца. Предлагайте тем, кто вам подходит."} };
+(function seedDayBooking(){
+  if(state.bookings.some(b=>b.id==='demo4')) return;
+  const dates = ['2026-07-14','2026-07-16','2026-07-21','2026-07-23','2026-07-28','2026-07-30'];
+  state.bookings.push({ id:'demo4', status:'confirmed', seed:true, petName:'Buddy', hostName:'Mert Yıldız', loc:'Beşiktaş', checkIn:'Jul 14', checkOut:'Jul 30', checkInISO:'2026-07-14', checkOutISO:'2026-07-30',
+    code:'PWC-9012', sitterId:'s2', updates:[], review:null, reports:[], chatKey:'owner-s2', protect:false, protectFee:0, total:840, pets:1, promo:null,
+    lines:[{ label:'6 walks × ₺140', amount:840, promo:false }], policy:'moderate', paidISO:'2026-07-12', payment:{ method:'card', status:'held' },
+    day:{ kind:'walk', mins:30, visits:1, slot:'evening', repeat:'weekly', days:[2,4], weeks:3, dates:dates.map((iso,i)=>({ iso, done:i===0, skipped:false })), skips:[] } });
+})();
+
 /* ============ RENDER: TOPBAR ============ */
 function renderTopbar(){
   if(!state.onboarded){ app.topbar.innerHTML=''; return; }
-  const showBack = ['receipt','receipts','statement','hostprofile','shareProfile','offers','notifsettings','settings','reportForm','meetForm','incidentForm','incidentDetail','incidents','detail','request','requestDetail','trainingDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents','trainercv','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour','petdetail','earnings','pricing','invite'].includes(state.screen);
+  const showBack = ['plus','boost','services','receipt','receipts','statement','hostprofile','shareProfile','offers','notifsettings','settings','reportForm','meetForm','incidentForm','incidentDetail','incidents','detail','request','requestDetail','trainingDetail','ticket','verify','payment','mypets','addpet','policy','policyhub','documents','trainercv','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour','petdetail','earnings','pricing','invite'].includes(state.screen);
   app.topbar.innerHTML = `
     <div class="topbar-row">
       ${showBack
@@ -2545,7 +3238,7 @@ function renderBottomNav(){
     {key:'messages', icon:ICON.chat, label:t('nav_messages')},
     {key:'profile', icon:ICON.user, label:t('nav_profile')},
   ];
-  const activeKey = ['receipt','receipts','statement','hostprofile','shareProfile','offers','notifsettings','settings','reportForm','meetForm','incidentForm','incidentDetail','incidents','detail','request','ticket','requestDetail','trainingDetail','trainercv','verify','payment','mypets','addpet','policy','policyhub','documents','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour','petdetail','earnings','pricing','invite'].includes(state.screen) ? null : state.screen;
+  const activeKey = ['plus','boost','services','receipt','receipts','statement','hostprofile','shareProfile','offers','notifsettings','settings','reportForm','meetForm','incidentForm','incidentDetail','incidents','detail','request','ticket','requestDetail','trainingDetail','trainercv','verify','payment','mypets','addpet','policy','policyhub','documents','notifications','rewards','bookingDetail','sos','leaveReview','chatThread','availability','favorites','cancelBooking','reschedule','tour','petdetail','earnings','pricing','invite'].includes(state.screen) ? null : state.screen;
   app.bottomnav.innerHTML = items.map(it => `
     <div class="navitem ${activeKey===it.key?'active':''}" data-action="nav-${it.key}">
       ${it.icon}<span>${it.label}</span>
@@ -2559,7 +3252,7 @@ function screenOnboard(){
   <div class="onboard fade-in">
     <div class="langswitch">
       <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
-      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span><span class="langpill ${state.lang==='de'?'active':''}" data-action="set-lang-de">DE</span><span class="langpill ${state.lang==='ru'?'active':''}" data-action="set-lang-ru">RU</span>
     </div>
     <div class="mark-lg">${ICON.paw}</div>
     <h1>${t('onboard_title1')}<br/>${t('onboard_title2')}</h1>
@@ -2590,7 +3283,7 @@ function screenTour(){
   <div class="onboard fade-in tourscreen">
     <div class="langswitch">
       <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
-      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span><span class="langpill ${state.lang==='de'?'active':''}" data-action="set-lang-de">DE</span><span class="langpill ${state.lang==='ru'?'active':''}" data-action="set-lang-ru">RU</span>
     </div>
     <div class="tourskip" data-action="tour-skip">${t('tour_skip')}</div>
     <div class="mark-lg">${icons[i-1]||ICON.paw}</div>
@@ -2663,7 +3356,8 @@ function filteredSitters(){
     response:   (a,b)=> a.s.responseMinutes-b.s.responseMinutes,
     distance:   (a,b)=> (a.dist==null?1e9:a.dist)-(b.dist==null?1e9:b.dist),
   };
-  list.sort(sorters[f.sort] || sorters.rating);
+  const sf = sorters[f.sort] || sorters.rating;
+  list.sort((a,b)=> (f.sort==='rating' ? (featuredOf(b.s) - featuredOf(a.s)) : 0) || sf(a,b));
   return list;
 }
 function requestHaystack(r){
@@ -2690,7 +3384,7 @@ function sitterCardHTML(s, dist){
       </div>
       <div class="card-body">
         <div class="card-toprow">
-          <div class="card-name">${s.name}</div>
+          <div class="card-name">${s.name}${featuredOf(s) ? '<span class="ftag">Featured</span>' : ''}</div>
           <div class="rating">${ICON.star}${s.rating}</div>
         </div>
         <div class="card-loc">${ICON.pin}${s.loc}${dist!=null ? ` · ${fmtKm(dist)}` : ''}</div>
@@ -3043,11 +3737,12 @@ function screenSitterDetail(){
       <p class="bio">${s.bio}</p>
       <div class="tagrow">${s.pets.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
       ${renderTrustBadges(s, false)}
+      ${servicesBlockHTML(s)}
       <div class="section-label">Pricing</div>
       ${pricingRowsHTML(parsePrice(s.price), s.pricing || {weekend:0,holiday:0,multiPet:0,cleaning:0})}
       ${policyCardHTML(s.policy)}
       <div class="section-label">Availability — ${CAL_MONTH.label}</div>
-      ${renderMiniCalendar(s.blockedDates||[], false)}
+      ${renderMiniCalendar((s.blockedDates||[]).concat(holidayDates(s.holidays)), false)}
       ${s.isMe ? '' : `<div class="meetprompt"><div><b>Not sure yet?</b>Meet ${s.name.split(' ')[0]} first — a short, free visit before you book.</div><button class="btn btn-ghost" style="width:auto;padding:9px 14px;" data-action="open-meet-${s.id}">Meet &amp; greet</button></div>`}
       ${breakdownHTML(s)}
       <div class="section-label">Recent reviews</div>
@@ -3072,6 +3767,7 @@ function screenSitterDetail(){
 function screenRequestForm(){
   const s = sitterById(state.selectedId);
   const F = state.form, pre = F.prefill || {};
+  if(F.service && svcOf(s)[F.service]) return screenDayForm(s);
   const keep = (id, dflt) => { const el = document.getElementById(id); return el ? el.value : dflt; };
   const fIn = keep('f-in', (F.dates && F.dates.in) || state.search.checkIn || '2026-07-10');
   const fOut = keep('f-out', (F.dates && F.dates.out) || state.search.checkOut || '2026-07-14');
@@ -3086,6 +3782,7 @@ function screenRequestForm(){
   <div class="fade-in narrow">
     <h2 class="title">Tell ${first} about your pet</h2>
     <p class="subtitle">${s.instantBook ? `${first} accepts Instant Book — your pawcation is confirmed right away, no waiting for approval.` : `This goes straight to ${first} as a booking request — nothing is confirmed until they accept.`}</p>
+    ${serviceChipsHTML(s)}
     ${F.rebook ? `<div class="trustnote" style="margin-bottom:14px;">${ICON.check}<span>Rebooking ${first} — we filled in your last stay's details and the declarations you already agreed to. Check the dates and send.</span></div>` : ''}
     ${state.myPets.length ? `
     <div class="section-label" style="margin-top:0;">Choose a saved pet</div>
@@ -3199,10 +3896,11 @@ function renderTicketCard(b, clickable){
           <div class="pt" style="text-align:right"><b>${b.hostName}</b><span>Host</span></div>
         </div>
         <div class="ticket-grid">
-          <div><span>Check-in</span><b>${b.checkIn}</b></div>
+          ${b.day ? dayGridHTML(b) : `<div><span>Check-in</span><b>${b.checkIn}</b></div>
           <div><span>Check-out</span><b>${b.checkOut}</b></div>
-          <div><span>Location</span><b>${b.loc}</b></div>
+          <div><span>Location</span><b>${b.loc}</b></div>`}
         </div>
+        ${dayBadgeHTML(b)}
         ${b.protect ? `<div class="protect-badge">${ICON.shield}Pawcation Protect included</div>` : ''}
         ${b.petCard ? `<div class="protect-badge">${ICON.cert}Health card shared</div>` : ''}
         ${b.pets>1 ? `<div class="protect-badge" style="color:var(--ink-soft);">${b.pets} pets</div>` : ''}
@@ -3300,15 +3998,15 @@ function screenBookingDetail(){
     ` : ''}
     <div style="display:flex;gap:10px;margin:16px 0 6px;">
       ${b.status==='confirmed' ? `<button class="btn btn-ghost sos-btn" data-action="open-sos-${b.id}">${ICON.alert}SOS</button>` : ''}
-      ${b.status==='confirmed' && isHost ? `<button class="btn btn-primary" data-action="complete-booking-${b.id}" style="flex:1;">Mark stay as completed</button>` : ''}
+      ${b.status==='confirmed' && isHost && !b.day ? `<button class="btn btn-primary" data-action="complete-booking-${b.id}" style="flex:1;">Mark stay as completed</button>` : ''}
     </div>
     ${(b.status==='pending' || b.status==='confirmed') ? `
       <div style="display:flex;gap:10px;margin-bottom:16px;">
         <button class="btn btn-ghost" style="flex:1;color:var(--stamp);border-color:var(--stamp);" data-action="open-cancel-${b.id}">Cancel pawcation</button>
-        ${b.status==='confirmed' ? `<button class="btn btn-ghost" style="flex:1;" data-action="open-reschedule-${b.id}">Reschedule</button>` : ''}
+        ${b.status==='confirmed' && !b.day ? `<button class="btn btn-ghost" style="flex:1;" data-action="open-reschedule-${b.id}">Reschedule</button>` : ''}
       </div>
     ` : ''}
-    ${(!isHost && b.sitterId && b.status==='completed') ? `<button class="btn btn-primary" style="margin-bottom:16px;" data-action="rebook-${b.sitterId}">Book again</button>` : ''}
+    ${(!isHost && b.sitterId && b.status==='completed' && !b.day) ? `<button class="btn btn-primary" style="margin-bottom:16px;" data-action="rebook-${b.sitterId}">Book again</button>` : ''}
     ${paymentCardHTML(b, b.hostName==='You')}
     ${b.petCard ? `<div class="section-label">Pet health card</div>${renderHealthRows(b.petCard.health)}` : ''}
     ${b.sessions ? `
@@ -3321,6 +4019,7 @@ function screenBookingDetail(){
         </div>
       `).join('')}
     ` : ''}
+    ${daySessionsHTML(b)}
     ${reportsSectionHTML(b)}
     <div class="section-label">Stay updates</div>
     ${b.updates.length===0 ? `<p class="subtitle" style="margin-top:-6px;">${isHost ? "Post a photo so the owner can see how things are going." : "No updates yet — your sitter or trainer will post photos here during the stay."}</p>` : ''}
@@ -3432,7 +4131,7 @@ function screenMessages(){
         <div class="avatar" style="background-image:url('${t.img}')"></div>
         <div class="mbody">
           <div class="mtop"><b>${t.name}</b><span>${last.when}</span></div>
-          <p>${last.from==='me' ? 'You: ' : ''}${last.text || (last.media ? (last.media.type==='video' ? '🎬 Video' : '📷 Photo') : '')}</p>
+          <p>${last.from==='me' ? 'You: ' : ''}${last.text || (last.type==='voice' ? '🎤 Voice message' : (last.media ? (last.media.type==='video' ? '🎬 Video' : '📷 Photo') : ''))}</p>
         </div>
         ${t.unread ? '<div class="unreaddot"></div>' : ''}
       </div>
@@ -3444,19 +4143,22 @@ function screenChatThread(){
   const id = state.selectedId;
   const t = state.chats[id];
   if(!t) return screenMessages();
+  if(needAutoTr(t)) setTimeout(()=>autoTranslateAll(t), 0);
   return `
   <div class="fade-in narrow" style="display:flex;flex-direction:column;min-height:calc(100% - 20px);">
     <div class="chat-header">
       <div class="avatar" style="background-image:url('${t.img}')"></div>
-      <b>${t.name}</b>
+      <b>${t.name}</b>${chatToolbarHTML(t)}
     </div>
     <div class="chat-messages" id="chat-scroll">
       ${t.messages.map((m,i)=>chatBubbleHTML(m,i)).join('')}
     </div>
     <div id="chat-preview-wrap">${chatPreviewHTML()}</div>
-    <div class="chat-inputbar">
+    ${REC && REC.chat===id ? recBarHTML(id) : quickRowHTML(id)}
+    <div class="chat-inputbar" ${REC && REC.chat===id ? 'hidden' : ''}>
       <label class="attachbtn" title="Attach a photo or video"><span class="sr-only">Attach a photo or video</span>${ICON.attach}<input type="file" accept="image/*,video/*" data-upload-input="chatMedia" hidden/></label>
       <input id="chat-input" placeholder="Type a message…"/>
+      <button class="micbtn" data-action="voice-rec" aria-label="Record a voice message">${ICON.mic}</button>
       <button class="sendbtn" data-action="send-chat-${id}">${ICON.send}</button>
     </div>
   </div>`;
@@ -3500,15 +4202,18 @@ function screenProfile(){
     ${isOwner ? `<div class="profile-row" data-action="nav2-offers"><div class="left">${ICON.gift}<span>Offers &amp; promo codes</span></div>${promoEligibleFirst() ? `<span style="color:var(--gold-deep);font-size:calc(12px*var(--fs));font-weight:600;">First booking −15%</span>` : ''}${ICON.chevron}</div>` : ''}
     ${state.mode==='sitter' ? `<div class="profile-row" data-action="nav2-pricing"><div class="left">${ICON.bolt}<span>My pricing</span></div><span style="color:var(--ink-soft);font-size:calc(12px*var(--fs));">₺${state.myPricing.base} / night</span>${ICON.chevron}</div>` : ''}
     <div class="profile-row" data-action="nav2-incidents"><div class="left">${ICON.shield}<span>Reports &amp; claims</span></div><span style="color:var(--ink-soft);font-size:calc(12px*var(--fs));">${state.incidents.length || ''}</span>${ICON.chevron}</div>
+    ${isOwner ? `<div class="profile-row" data-action="nav2-plus"><div class="left">${ICON.star}<span>Pawcation Plus</span></div><span style="color:var(--gold-deep);font-size:calc(12px*var(--fs));font-weight:600;">${plusActive() ? 'Active' : 'Save '+PLUS.pct+'%'}</span>${ICON.chevron}</div>` : ''}
+    ${state.mode==='sitter' ? `<div class="profile-row" data-action="nav2-services"><div class="left">${ICON.paw}<span>My services</span></div><span style="color:var(--ink-soft);font-size:calc(12px*var(--fs));">${1+(state.myServices.walk?1:0)+(state.myServices.visit?1:0)} on</span>${ICON.chevron}</div>
+    <div class="profile-row" data-action="nav2-boost"><div class="left">${ICON.bolt}<span>Boost my profile</span></div><span style="color:var(--gold-deep);font-size:calc(12px*var(--fs));font-weight:600;">${boostActive() ? 'Featured' : ''}</span>${ICON.chevron}</div>` : ''}
     <div class="profile-row" data-action="nav2-invite"><div class="left">${ICON.gift}<span>Invite friends</span></div><span style="color:var(--ink-soft);font-size:calc(12px*var(--fs));">Get 100 pts</span>${ICON.chevron}</div>
     <div class="profile-row" data-action="nav2-tour"><div class="left">${ICON.clock}<span>${t('profile_how_it_works')}</span></div>${ICON.chevron}</div>
     <div class="profile-row" data-action="nav2-settings"><div class="left"><span aria-hidden="true">🌓</span><span>Appearance &amp; accessibility</span></div><span style="color:var(--ink-soft);font-size:calc(12px*var(--fs));">${PREFS.theme==='auto'?'Auto':PREFS.theme==='dark'?'Dark':'Light'}</span>${ICON.chevron}</div>
     <div class="section-label">${t('profile_language')}</div>
     <div class="profile-row" style="cursor:default;">
-      <div class="left"><span>🌐</span><span>${state.lang==='tr' ? 'Türkçe' : 'English'}</span></div>
+      <div class="left"><span>🌐</span><span>${LANG_NAMES[state.lang]||'English'}</span></div>
       <span class="langswitch" style="margin:0;">
         <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
-        <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+        <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span><span class="langpill ${state.lang==='de'?'active':''}" data-action="set-lang-de">DE</span><span class="langpill ${state.lang==='ru'?'active':''}" data-action="set-lang-ru">RU</span>
       </span>
     </div>
     <div class="section-label">${t('profile_switch_role')}</div>
@@ -3614,6 +4319,7 @@ function screenAvailability(){
     <p class="subtitle">Tap a date to mark it unavailable. Owners see this on your profile before requesting a stay.</p>
     <div class="section-label">${CAL_MONTH.label}</div>
     ${renderMiniCalendar(state.myBlockedDates, true)}
+    ${availabilityRulesHTML()}
   </div>`;
 }
 
@@ -4181,7 +4887,7 @@ function beUUID(){ return (window.crypto && crypto.randomUUID) ? crypto.randomUU
 function beSlices(){
   const profile = { lang:state.lang, points:state.loyaltyPoints, data:{
     onboarded:state.onboarded, mode:state.mode, myPricing:state.myPricing, myBlockedDates:state.myBlockedDates, redeemedRewards:state.redeemedRewards,
-    notifPrefs:state.notifPrefs, dismissedReminders:state.dismissedReminders, promo:state.promo, myProfile:beProfileData(), myPolicy:state.myPolicy,
+    notifPrefs:state.notifPrefs, dismissedReminders:state.dismissedReminders, promo:state.promo, myProfile:beProfileData(), myPolicy:state.myPolicy, r12:r12Data(),
     consent:state.consent, trainerCV:state.trainerCV, verificationStatus:state.verification && state.verification.status,
     invited:state.referral.invited, usedCode:state.referral.usedCode, prefs:{ theme:PREFS.theme, text:PREFS.text, contrast:PREFS.contrast, motion:PREFS.motion } } };
   const pets = state.myPets.map((p,i)=>{ const {id,name,...rest}=p; return { id, position:i, name, data:JSON.parse(beJSON(rest)) }; });
@@ -4274,6 +4980,7 @@ async function backendLoad(){
   state.redeemedRewards = d.redeemedRewards || [];
   if(d.notifPrefs) state.notifPrefs = { ...state.notifPrefs, ...d.notifPrefs };
   state.dismissedReminders = d.dismissedReminders || [];
+  applyR12(d.r12);
   if(d.myPolicy) state.myPolicy = d.myPolicy;
   if(d.promo) state.promo = { firstUsed:!!d.promo.firstUsed, used:d.promo.used||[] };
   if(d.myProfile) state.myProfile = { ...state.myProfile, ...d.myProfile, gallery:d.myProfile.gallery||[] };
@@ -4326,7 +5033,7 @@ function screenAuth(){
   <div class="onboard fade-in" style="justify-content:flex-start;padding-top:56px;overflow-y:auto;">
     <div class="langswitch">
       <span class="langpill ${state.lang==='en'?'active':''}" data-action="set-lang-en">EN</span>
-      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span>
+      <span class="langpill ${state.lang==='tr'?'active':''}" data-action="set-lang-tr">TR</span><span class="langpill ${state.lang==='de'?'active':''}" data-action="set-lang-de">DE</span><span class="langpill ${state.lang==='ru'?'active':''}" data-action="set-lang-ru">RU</span>
     </div>
     <div class="mark-lg">${ICON.paw}</div>
     <h1>${up ? 'Create your account' : 'Welcome back'}</h1>
@@ -4548,6 +5255,7 @@ function makeReportMessage(b, r, from){
 
 /* ---------- chat media ---------- */
 function chatBubbleHTML(m, idx){
+  if(m.type==='voice') return voiceBubbleHTML(m);
   if(m.type==='report'){
     const b = state.bookings.find(x=>x.id===m.bookingId), r = b && (b.reports||[]).find(x=>x.id===m.reportId);
     if(r) return `<div class="chat-report ${m.from}">${reportCardHTML(r,b)}<span>${m.when}</span></div>`;
@@ -4555,7 +5263,7 @@ function chatBubbleHTML(m, idx){
   const media = m.media ? (m.media.type==='video'
     ? `<video class="chat-media" src="${m.media.src}" controls playsinline preload="metadata" aria-label="Video"></video>`
     : `<img class="chat-media" src="${m.media.src}" alt="Photo" data-action="view-media-${idx}"/>`) : '';
-  return `<div class="chat-bubble ${m.from}">${media}${m.text ? `<p>${m.text}</p>` : ''}<span>${m.when}</span></div>`;
+  return `<div class="chat-bubble ${m.from}">${media}${m.text ? `<p>${m.text}</p>` : ''}${trLineHTML(m)}${trBtnHTML(m, idx)}<span>${m.when}</span></div>`;
 }
 function chatPreviewHTML(){
   const m = pendingUploads.chatMedia; if(!m) return '';
@@ -4810,6 +5518,9 @@ function render(){
     case 'notifsettings': html = screenNotifSettings(); break;
     case 'receipt': html = screenReceipt(); break;
     case 'receipts': html = screenReceipts(); break;
+    case 'plus': html = screenPlus(); break;
+    case 'boost': html = screenBoost(); break;
+    case 'services': html = screenServices(); break;
     case 'statement': html = screenStatement(); break;
     case 'auth': html = screenAuth(); break;
     default: html = screenOnboard();
@@ -4827,6 +5538,8 @@ document.addEventListener('click', (e) => {
   if(mapDragMoved && Date.now()-mapDragEnd < 300 && action.startsWith('map-')){ return; }
   if(handleGrowthClick(action, el)) return;
   if(handleMoneyClick(action)) return;
+  if(handleR12Click(action, el)) return;
+  if(handleChatClick(action)) return;
 
   /* ---- search / filter / map ---- */
   if(action==='search-clear'){ state.search.q=''; render(); return; }
@@ -4916,7 +5629,7 @@ document.addEventListener('click', (e) => {
     else if(state.screen==='incidentDetail') go(state.incidentReturn==='bookingDetail' ? 'bookingDetail' : 'incidents');
     else if(state.screen==='incidents') go('profile');
     else if(state.screen==='receipt') go(state.receiptReturn==='receipts' ? 'receipts' : 'bookingDetail');
-    else if(state.screen==='receipts') go('profile');
+    else if(state.screen==='receipts' || state.screen==='plus' || state.screen==='boost' || state.screen==='services') go('profile');
     else if(state.screen==='statement') go('earnings');
     else if(state.screen==='notifsettings') go('notifications');
     else if(state.screen==='hostprofile' || state.screen==='offers') go('profile');
@@ -5053,7 +5766,7 @@ document.addEventListener('click', (e) => {
       petCard: (selPet && state.form.shareHealth!==false) ? { name:selPet.name, type:selPet.type, breed:selPet.breed, age:selPet.age, photo:selPet.photo, health:{ ...selPet.health } } : null
     };
     state.bookings.push(booking);
-    state.loyaltyPoints += 50;
+    state.loyaltyPoints += plusActive() ? 100 : 50;
     if(booking.promo){
       if(booking.promo.kind==='first') state.promo.firstUsed = true;
       else if(booking.promo.kind==='code') state.promo.used.push(booking.promo.code);
@@ -5062,7 +5775,7 @@ document.addEventListener('click', (e) => {
     }
     state.consentGiven = true;
     state.form = { protect:false, pets:1, petIdx:null, shareHealth:true, dates:null, prefill:null, rebook:false };
-    toast((s.instantBook ? 'Confirmed with ' : 'Request sent to ')+s.name.split(' ')[0]+' · +50 points');
+    toast((s.instantBook ? 'Confirmed with ' : 'Request sent to ')+s.name.split(' ')[0]+' · +'+(plusActive()?100:50)+' points');
     go('ticket', {selectedId: booking.id});
     return;
   }
@@ -6229,6 +6942,149 @@ const TR_EXACT = {
   "Commission on itemised bookings":"Listelenen rezervasyonların komisyonu",
   "Total net earnings":"Toplam net kazanç",
   "Reason (optional)":"Sebep (isteğe bağlı)",
+  /* --- round 12 --- */
+  "Service":"Hizmet",
+  "Boarding (overnight)":"Konaklama (geceleme)",
+  "Boarding":"Konaklama",
+  "Day services":"Gün içi hizmetler",
+  "Dog walking":"Köpek gezdirme",
+  "Home visits":"Evde bakım ziyareti",
+  "Home visit":"Evde bakım ziyareti",
+  "Book":"Rezerve et",
+  "Walk length":"Gezdirme süresi",
+  "Visits per day":"Günlük ziyaret",
+  "Time of day":"Günün saati",
+  "Morning":"Sabah",
+  "Afternoon":"Öğleden sonra",
+  "Evening":"Akşam",
+  "Repeat":"Tekrar",
+  "Just once":"Tek seferlik",
+  "Weekly":"Haftalık",
+  "Date":"Tarih",
+  "First date":"İlk tarih",
+  "On these days":"Şu günlerde",
+  "For how many weeks":"Kaç hafta boyunca",
+  "Leash, route, door code, medication…":"Tasma, güzergâh, kapı şifresi, ilaç…",
+  "Sessions":"Seanslar",
+  "Done":"Tamamlandı",
+  "Upcoming":"Yaklaşan",
+  "Skipped":"Atlandı",
+  "Mark done":"Tamamlandı işaretle",
+  "Skip · no refund":"Atla · iade yok",
+  "Session marked done":"Seans tamamlandı olarak işaretlendi",
+  "Session skipped · no refund under this policy":"Seans atlandı · bu politikada iade yok",
+  "All sessions done — payment released":"Tüm seanslar tamam — ödeme aktarıldı",
+  "No sessions yet":"Henüz seans yok",
+  "Pawcation Plus":"Pawcation Plus",
+  "Save 5%":"%5 tasarruf",
+  "Pay less, stay protected, get help faster.":"Daha az öde, korunmuş ol, daha hızlı destek al.",
+  "What you get":"Neler kazanırsın",
+  "5% off every booking":"Her rezervasyonda %5 indirim",
+  "Up to ₺150 per booking, applied automatically.":"Rezervasyon başına ₺150'ye kadar, otomatik uygulanır.",
+  "Pawcation Protect included":"Pawcation Protect dahil",
+  "The ₺99 Protect add-on is free on every stay.":"₺99'luk Protect eklentisi her konaklamada ücretsiz.",
+  "Priority support":"Öncelikli destek",
+  "Your messages to Pawcation Support are answered first.":"Pawcation Destek'e yazdıkların önce yanıtlanır.",
+  "Double loyalty points":"Çift sadakat puanı",
+  "100 points per booking instead of 50.":"Rezervasyon başına 50 yerine 100 puan.",
+  "Choose a plan":"Plan seç",
+  "Yearly":"Yıllık",
+  "Monthly":"Aylık",
+  "Two months free":"İki ay ücretsiz",
+  "Cancel anytime":"İstediğin zaman iptal et",
+  "/year":"/yıl",
+  "/month":"/ay",
+  "Demo only — no real payment is taken. Nothing is charged to your card.":"Yalnızca demo — gerçek ödeme alınmaz. Kartından hiçbir şey çekilmez.",
+  "Active":"Aktif",
+  "Cancel membership":"Üyeliği iptal et",
+  "Resume membership":"Üyeliği sürdür",
+  "Message priority support":"Öncelikli destekle yaz",
+  "Billing history":"Faturalama geçmişi",
+  "Welcome to Plus":"Plus'a hoş geldin",
+  "Membership cancelled — benefits stay until it ends":"Üyelik iptal edildi — avantajlar bitiş tarihine kadar sürer",
+  "Membership resumed":"Üyelik sürdürüldü",
+  "Your membership has been cancelled. Benefits stay on until the date above.":"Üyeliğin iptal edildi. Avantajlar yukarıdaki tarihe kadar sürer.",
+  "Pawcation Plus · 5% off":"Pawcation Plus · %5 indirim",
+  "Plus · Protect included":"Plus · Protect dahil",
+  "Pawcation Plus · Monthly":"Pawcation Plus · Aylık",
+  "Pawcation Plus · Yearly":"Pawcation Plus · Yıllık",
+  "Translate messages":"Mesajları çevir",
+  "Translate":"Çevir",
+  "Hide translation":"Çeviriyi gizle",
+  "Quick replies":"Hazır yanıtlar",
+  "Record a voice message":"Sesli mesaj kaydet",
+  "Recording…":"Kaydediliyor…",
+  "Cancel recording":"Kaydı iptal et",
+  "Send voice message":"Sesli mesajı gönder",
+  "🎤 Voice message":"🎤 Sesli mesaj",
+  "Voice message":"Sesli mesaj",
+  "This message is already in your language.":"Bu mesaj zaten senin dilinde.",
+  "Demo translator doesn't know this message yet. Connect a translation service in config.js for full translation.":"Demo çevirmen bu mesajı henüz bilmiyor. Tam çeviri için config.js'ten bir çeviri servisi bağla.",
+  "Voice messages aren’t supported on this device":"Bu cihazda sesli mesaj desteklenmiyor",
+  "Microphone access was blocked":"Mikrofon erişimi engellendi",
+  "My services":"Hizmetlerim",
+  "Overnight boarding is always on. Add day services to earn between stays.":"Geceleme konaklama her zaman açık. Konaklamalar arasında kazanmak için gün içi hizmet ekle.",
+  "Short walks in your area":"Bölgende kısa yürüyüşler",
+  "Feeding, play, litter and medication at the owner's home":"Sahibin evinde mama, oyun, tuvalet ve ilaç",
+  "Set the days and hours you work in":"Çalıştığın gün ve saatleri şurada ayarla",
+  "30-minute walk (₺)":"30 dakikalık gezdirme (₺)",
+  "60-minute walk (₺)":"60 dakikalık gezdirme (₺)",
+  "Price per visit (₺)":"Ziyaret başı ücret (₺)",
+  "Offer dog walking":"Köpek gezdirme sun",
+  "Offer home visits":"Evde bakım ziyareti sun",
+  "On":"Açık",
+  "Weekly schedule":"Haftalık program",
+  "Day services (walks and home visits) are offered on the days that are on. Overnight stays follow the calendar above.":"Gün içi hizmetler (gezdirme ve evde bakım) açık olan günlerde sunulur. Geceleme konaklamalar yukarıdaki takvime göre ilerler.",
+  "Start":"Başlangıç",
+  "End":"Bitiş",
+  "Holidays & time off":"Tatiller ve izinler",
+  "From":"Başlangıç",
+  "To":"Bitiş",
+  "Label (optional)":"Etiket (isteğe bağlı)",
+  "Add time off":"İzin ekle",
+  "e.g. Summer holiday":"örn. Yaz tatili",
+  "No time off added.":"Henüz izin eklenmedi.",
+  "Remove":"Kaldır",
+  "Time off":"İzin",
+  "Time off added":"İzin eklendi",
+  "Pick a start date":"Başlangıç tarihi seç",
+  "The end date is before the start date":"Bitiş tarihi başlangıçtan önce",
+  "Working days":"Çalışma günleri",
+  "Victory Day":"Zafer Bayramı",
+  "Republic Day":"Cumhuriyet Bayramı",
+  "New Year":"Yılbaşı",
+  "Ramazan Bayramı":"Ramazan Bayramı",
+  "Summer":"Yaz",
+  "Family trip":"Aile gezisi",
+  "You have a confirmed stay in this period.":"Bu dönemde onaylı bir konaklamanın var.",
+  "Boost my profile":"Profilimi öne çıkar",
+  "Appear at the top of search results with a Featured badge.":"Öne Çıkan rozetiyle arama sonuçlarının en üstünde görün.",
+  "How owners see you":"Sahipler seni nasıl görüyor",
+  "Featured":"Öne çıkan",
+  "Choose a boost":"Bir öne çıkarma seç",
+  "Extend":"Uzat",
+  "Your profile is shown first when owners sort by Recommended.":"Sahipler Önerilen'e göre sıraladığında profilin ilk gösterilir.",
+  "Your profile is featured":"Profilin öne çıkarıldı",
+  "Boost history":"Öne çıkarma geçmişi",
+  "so a boost can reach owners.":"böylece öne çıkarma sahiplere ulaşabilir.",
+  "Your profile isn't published yet — publish it from":"Profilin henüz yayında değil — şuradan yayınla:",
+  "Demo only — no real payment is taken. A boost doesn't change reviews or Super sitter status; it only changes ordering.":"Yalnızca demo — gerçek ödeme alınmaz. Öne çıkarma yorumları ya da Süper bakıcı durumunu değiştirmez; yalnızca sıralamayı etkiler.",
+  "Choose a saved pet":"Kayıtlı hayvan seç",
+  "Boost":"Öne çıkar",
+  "Visit":"Ziyaret",
+  "Thanks for the update!":"Güncelleme için teşekkürler!",
+  "Can we do a meet & greet first?":"Önce bir tanışma görüşmesi yapabilir miyiz?",
+  "Please send a photo when you can.":"Müsait olunca bir fotoğraf atar mısın?",
+  "What time should I drop off?":"Kaçta bırakmalıyım?",
+  "How is my pet doing?":"Dostum nasıl?",
+  "Mon":"Pzt",
+  "Tue":"Sal",
+  "Wed":"Çar",
+  "Thu":"Per",
+  "Fri":"Cum",
+  "Sat":"Cmt",
+  "Sun":"Paz",
+  "Day services are only on the days that are on":"Gün içi hizmetler yalnızca açık günlerde",
 };
 
 const TR_WHEN = { hour:'saat', hours:'saat', day:'gün', days:'gün', week:'hafta', weeks:'hafta' };
@@ -6360,6 +7216,55 @@ const TR_PATTERNS = [
   [/^Amounts are after Pawcation’s (\d+)% commission\. Payments are held in escrow and released (\d+) days? after check-out\.$/, (m,n,d)=> `Tutarlar Pawcation'ın %${n} komisyonu düşüldükten sonraki tutarlardır. Ödemeler emanette tutulur ve check-out'tan ${d} gün sonra aktarılır.`],
   [/^Pawcation keeps a (\d+)% commission\. On a (.+) night you receive$/, (m,n,a)=> `Pawcation %${n} komisyon alır. ${a} tutarındaki bir gecede eline geçen`],
   [/^\. Payments are held in escrow and paid out (\d+) days? after check-out\.$/, (m,d)=> `. Ödemeler emanette tutulur ve check-out'tan ${d} gün sonra aktarılır.`],
+  /* --- round 12 --- */
+  [/^Book a walk with (.+)$/, (m,n)=> `${n} ile gezdirme ayarla`],
+  [/^Book home visits with (.+)$/, (m,n)=> `${n} ile evde bakım ayarla`],
+  [/^This goes to (.+) as a request — nothing is confirmed until they accept\.$/, (m,n)=> `Bu, ${n} adlı kişiye talep olarak gider; kabul edene kadar hiçbir şey kesinleşmez.`],
+  [/^(.+) accepts Instant Book — your sessions are confirmed right away\.$/, (m,n)=> `${n} Anında Rezervasyon kabul ediyor; seansların hemen onaylanır.`],
+  [/^(\d+) walks? × ₺([\d.,]+)$/, (m,n,pr)=> `${n} gezdirme × ₺${pr}`],
+  [/^(\d+) home visits? × ₺([\d.,]+)$/, (m,n,pr)=> `${n} evde bakım ziyareti × ₺${pr}`],
+  [/^Additional pets × (\d+) \(50%\)$/, (m,n)=> `Ek hayvan × ${n} (%50)`],
+  [/^(\d+)-min walk$/, (m,n)=> `${n} dk'lık gezdirme`],
+  [/^Home visit ×(\d) per day$/, (m,n)=> `Günde ${n} ziyaret`],
+  [/^Sessions · (\d+)-min walk$/, (m,n)=> `Seanslar · ${n} dk'lık gezdirme`],
+  [/^Sessions · Home visit(?: ×(\d) per day)?$/, (m,n)=> n ? `Seanslar · Günde ${n} ziyaret` : 'Seanslar · Evde bakım ziyareti'],
+  [/^(\d+) min · ₺([\d.,]+)$/, (m,n,pr)=> `${n} dk · ₺${pr}`],
+  [/^(\d+) visits? · ₺([\d.,]+)$/, (m,n,pr)=> `${n} ziyaret · ₺${pr}`],
+  [/^30 min ₺([\d.,]+) · 60 min ₺([\d.,]+)$/, (m,a,b)=> `30 dk ₺${a} · 60 dk ₺${b}`],
+  [/^₺([\d.,]+) per visit · feeding, play, litter, meds$/, (m,a)=> `ziyaret başı ₺${a} · mama, oyun, tuvalet, ilaç`],
+  [/^(.+) works (\d\d:\d\d–\d\d:\d\d) (every day|on (.+))\. Book once or repeat weekly\.$/, (m,n,h,d,list)=> `${n}, ${h} arasında ${list ? list+' günleri' : 'her gün'} çalışır. Tek seferlik ya da haftalık tekrarlı rezerve edebilirsin.`],
+  [/^(.+) works (\d\d:\d\d–\d\d:\d\d) on days they're available\.$/, (m,n,h)=> `${n}, müsait olduğu günlerde ${h} arasında çalışır.`],
+  [/^(\d+) sessions?$/, (m,n)=> `${n} seans`],
+  [/^on ([A-Z][a-z]{2} \d{1,2}) · (\d\d:\d\d–\d\d:\d\d)\.$/, (m,d,h)=> `${trText(d)} · ${h}.`],
+  [/^· Weekly · (.+) · (\d+) weeks · (\d\d:\d\d–\d\d:\d\d)\.$/, (m,d,n,h)=> `· Haftalık · ${d} · ${n} hafta · ${h}.`],
+  [/^Weekly · (.+) · (\d+) weeks$/, (m,d,n)=> `Haftalık · ${d} · ${n} hafta`],
+  [/^(\d+) weeks?$/, (m,n)=> `${n} hafta`],
+  [/^(\d+) dates? skipped — (.+) isn't available then\.$/, (m,n,nm)=> `${n} tarih atlandı — ${nm} o gün müsait değil.`],
+  [/^No sessions fit (.+)'s schedule — pick another date\.$/, (m,n)=> `Hiçbir seans ${n} adlı kişinin programına uymuyor — başka bir tarih seç.`],
+  [/^No sessions fit (.+)’s schedule$/, (m,n)=> `Hiçbir seans ${n} adlı kişinin programına uymuyor`],
+  [/^(\d+) \/ (\d+) done$/, (m,a,b)=> `${a} / ${b} tamamlandı`],
+  [/^Skip · ₺([\d.,]+) back$/, (m,a)=> `Atla · ₺${a} iade`],
+  [/^Session skipped · ₺([\d.,]+) refunded$/, (m,a)=> `Seans atlandı · ₺${a} iade edildi`],
+  [/^Session skipped · (.+) refunded$/, (m,a)=> `Seans atlandı · ${a} iade edildi`],
+  [/^Refunded for skipped sessions: (.+)$/, (m,a)=> `Atlanan seanslar için iade: ${a}`],
+  [/^Skip (.+)$/, (m,d)=> `${trText(d)} seansını atla`],
+  [/^Yearly · ₺(\d+)$/, (m,a)=> `Yıllık · ₺${a}`],
+  [/^Monthly · ₺(\d+)$/, (m,a)=> `Aylık · ₺${a}`],
+  [/^Start Plus · ₺(\d+)$/, (m,a)=> `Plus'ı başlat · ₺${a}`],
+  [/^(Boost|Extend) · ₺(\d+)$/, (m,v,a)=> `${v==='Boost'?'Öne çıkar':'Uzat'} · ₺${a}`],
+  [/^Renews on (.+)\.$/, (m,d)=> `${trText(d)} tarihinde yenilenir.`],
+  [/^Ends (.+)$/, (m,d)=> `${trText(d)} tarihinde biter`],
+  [/^until (.+)$/, (m,d)=> `${trText(d)} tarihine kadar`],
+  [/^₺(\d+) per day$/, (m,a)=> `günlük ₺${a}`],
+  [/^(\d+) days$/, (m,n)=> `${n} gün`],
+  [/^Pawcation Plus · (Monthly|Yearly)$/, (m,k)=> `Pawcation Plus · ${k==='Monthly'?'Aylık':'Yıllık'}`],
+  [/^Profile boost · (\d+) days$/, (m,n)=> `Profil öne çıkarma · ${n} gün`],
+  [/^\+ (.+)$/, (m,x)=> `+ ${trText(x)}`],
+  [/^Remove (.+)$/, (m,x)=> `${trText(x)} kaldır`],
+  [/^(\d+) on$/, (m,n)=> `${n} açık`],
+  [/^Welcome to Plus$/, ()=> `Plus'a hoş geldin`],
+  [/^(Confirmed with|Request sent to) (.+) · \+(\d+) points$/, (m,v,n,pt)=> `${v==='Confirmed with' ? n+' ile onaylandı' : n+' adlı kişiye talep gönderildi'} · +${pt} puan`],
+  [/^Mert’s? schedule$/, ()=> 'Mert’in programı'],
 ];
 
 function trCore(c){
@@ -6381,7 +7286,8 @@ function trText(raw){
   return raw.slice(0, raw.indexOf(core)) + out + raw.slice(raw.indexOf(core)+core.length);
 }
 function trApply(node){
-  if(state.lang!=='tr' || !node) return;
+  if(!node) return;
+  if(state.lang!=='tr'){ if(X_LANGS.includes(state.lang)) xApply(node); return; }
   if(node.nodeType===3){
     const par = node.parentNode, p = par && par.nodeName;
     if(p==='SCRIPT' || p==='STYLE') return;
@@ -6408,7 +7314,7 @@ function trApply(node){
   });
 }
 const trObserver = new MutationObserver(muts => {
-  if(state.lang!=='tr') return;
+  if(state.lang!=='tr' && !X_LANGS.includes(state.lang)) return;
   trObserver.disconnect();                       // our own edits must not re-trigger us
   muts.forEach(m => {
     if(m.type==='childList') m.addedNodes.forEach(trApply);

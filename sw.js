@@ -1,5 +1,5 @@
 /* Pawcation service worker — offline app shell + runtime caching */
-const VERSION = 'pawcation-v12';
+const VERSION = 'pawcation-v13';
 const SHELL = ['./', './index.html', './app.html', './manifest.webmanifest', './config.js',
   './vendor/leaflet.js', './vendor/leaflet.css', './vendor/supabase.js', './vendor/qrcode.js',
   './vendor/images/marker-icon.png', './vendor/images/layers.png',

@@ -70,3 +70,6 @@ Profil ve puanlar, hayvanlar (sağlık kartı + fotoğraf → Storage), rezervas
 - Giriş akışı **demo**dur: hesaplar yalnızca tarayıcıda (`pawcation.accounts`, şifre SHA-256+tuz ile) saklanır; doğrulama kodu ekranda gösterilir. Canlıda Supabase Auth + SMS/e-posta sağlayıcısı ile değiştirilmelidir.
 - `app.html`, oturum yoksa tanıtım sayfasına yönlendirir (`?sitter=` bağlantıları, PWA ve `?demo=1` hariç). Çıkış yapınca tanıtım sayfasına dönülür.
 - Sonraki turlarda ana kaynak `pawcation.html` ise `app/app.html` olarak kopyalanmalıdır (`index.html` artık tanıtım sayfası).
+
+## Tur 12 – Ürün genişletme
+Tekrarlayan rezervasyon (haftalık yürüyüş/ziyaret serileri, seans atlama/iade), gün içi hizmetler (gezdirme, evde bakım), bakıcı için haftalık müsaitlik + tatil dönemleri, mesajlaşmada hazır yanıt / çeviri / sesli mesaj, Almanca ve Rusça (beta sözlük, eksik metin İngilizce kalır), Pawcation Plus aboneliği ve bakıcı için "Öne çıkar" (hepsi demo/simülasyon). Çeviri demo ifade sözlüğüdür; gerçek çeviri için config'te `translateUrl` tanımlayın.
