@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A2B">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  if(q.get('sitter')){ location.replace('app.html'+location.search); return; }
+  var P={theme:'auto'};
+  try{ var r=JSON.parse(localStorage.getItem('pawcation.prefs')||'{}'); if(r.theme) P.theme=r.theme; if(r.motion) document.documentElement.dataset.motion='reduce'; }catch(e){}
+  document.documentElement.dataset.theme=P.theme;
+})();
+</script>
+<link rel="stylesheet" href="site.css">
+<meta name="description" content="Pawcation yardım merkezi ve sık sorulan sorular.">
+<title>Pawcation — Yardım</title>
+</head>
+<body data-title-tr="Pawcation — Yardım" data-title-en="Pawcation — Help">
+<a class="skip" href="#main" data-i="skip">Ana içeriğe geç</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav always" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Pawcation"><span class="mk" data-ic="paw"></span><span class="t">Pawcation</span></a>
+    <nav class="nav-links nav-left" aria-label="Ana menü" id="navLinks">
+      <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+      <a href="become-sitter.html" data-i="nv_sitter">Become a sitter</a>
+      <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Tema" data-ic="moon"></button>
+      <button class="chip" id="langBtn" aria-label="Dil / Language">EN</button>
+      <button class="btn btn-gold" data-auth="up" id="navCta" data-i="nv_signup">Sign up</button>
+      <button class="btn btn-ghost hide-m" data-auth="in" data-i="nv_signin">Sign in</button>
+      <a class="helplink hide-m" href="help.html" aria-current="page" data-i="nv_help">Help</a>
+      <button class="icon-btn burger" id="burger" aria-label="Menü" aria-expanded="false" data-ic="menu"></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+  <a href="become-sitter.html" data-i="nv_sitter">Become a sitter</a>
+  <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+  <a href="about.html" data-i="ab_h">About</a>
+  <a href="#" data-auth="up" data-i="nv_signup">Sign up</a>
+  <a href="#" data-auth="in" data-i="nv_signin">Sign in</a>
+  <a href="help.html" data-i="nv_help">Help</a>
+</div>
+<main id="main">
+<section class="pagehead"><div class="wrap"><h1 data-i="hp_h"></h1><p data-i="hp_p"></p></div></section>
+<section id="sss" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head center reveal"><div class="kicker" data-i="nav_faq">SSS</div><h2 data-i="fq_h">Aklına takılanlar</h2></div>
+    <div class="faq reveal" id="faq"></div>
+  </div>
+</section>
+<section style="padding:0 0 30px"><div class="wrap"><div class="helpcard reveal"><div><h3 data-i="hp_c_h">Still can't find an answer?</h3><p data-i="hp_c_p"></p></div><a class="btn btn-gold" href="mailto:hello@pawcation.example" data-i="hp_c_b">Send an email</a></div></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><a class="brand" href="index.html" style="color:var(--ink);padding:0"><span class="mk" data-ic="paw"></span>Pawcation</a><p style="margin-top:14px;max-width:280px" data-i="ft_t">Evden uzakta bir yuva. Türkiye'de evcil hayvan sahipleri, bakıcılar ve eğitmenler için.</p></div>
+      <div><h4 data-i="ft1">Keşfet</h4><a href="index.html#nasil" data-i="nav_how">Nasıl çalışır</a><a href="about.html#misyon" data-i="nav_mission">Misyonumuz</a><a href="about.html#guven" data-i="nav_trust">Güven</a></div>
+      <div><h4 data-i="ft2">Katıl</h4><a href="#" data-auth="up" data-role="owner" data-i="r1h">Evcil hayvan sahibi</a><a href="become-sitter.html" data-i="r2h">Bakıcı</a><a href="become-trainer.html" data-i="r3h">Eğitmen</a></div>
+      <div><h4 data-i="ft3">Yasal</h4><button class="lnk" data-legal="privacy" data-i="lg_p">Gizlilik ve KVKK</button><button class="lnk" data-legal="terms" data-i="lg_t">Kullanım koşulları</button><button class="lnk" data-legal="contact" data-i="lg_c">İletişim</button></div>
+    </div>
+    <div class="copy"><span>© 2026 Pawcation</span><span data-i="ft_d">Bu sayfa ve uygulama bir demodur; gerçek ödeme ya da kimlik doğrulama yapılmaz.</span></div>
+  </div>
+</footer>
+<!-- AUTH MODAL -->
+<div class="ov" id="authOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle" id="authModal">
+    <div class="m-top">
+      <button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button>
+      <div class="brand"><span class="mk" data-ic="paw"></span>Pawcation</div>
+      <h3 id="authTitle"></h3><p id="authSub"></p>
+    </div>
+    <div class="m-body" id="authBody"></div>
+  </div>
+</div>
+<div class="ov" id="legalOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <div class="m-top"><button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button><h3 id="legalTitle"></h3></div>
+    <div class="legal-body" id="legalBody" style="padding-top:20px"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+<script src="site.js"></script>
+</body>
+</html>

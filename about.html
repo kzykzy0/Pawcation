@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A2B">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  if(q.get('sitter')){ location.replace('app.html'+location.search); return; }
+  var P={theme:'auto'};
+  try{ var r=JSON.parse(localStorage.getItem('pawcation.prefs')||'{}'); if(r.theme) P.theme=r.theme; if(r.motion) document.documentElement.dataset.motion='reduce'; }catch(e){}
+  document.documentElement.dataset.theme=P.theme;
+})();
+</script>
+<link rel="stylesheet" href="site.css">
+<meta name="description" content="Pawcation misyonu, güvenlik önlemleri ve kazanç modeli.">
+<title>Pawcation — Hakkımızda</title>
+</head>
+<body data-title-tr="Pawcation — Hakkımızda" data-title-en="Pawcation — About">
+<a class="skip" href="#main" data-i="skip">Ana içeriğe geç</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav always" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Pawcation"><span class="mk" data-ic="paw"></span><span class="t">Pawcation</span></a>
+    <nav class="nav-links nav-left" aria-label="Ana menü" id="navLinks">
+      <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+      <a href="become-sitter.html" data-i="nv_sitter">Become a sitter</a>
+      <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Tema" data-ic="moon"></button>
+      <button class="chip" id="langBtn" aria-label="Dil / Language">EN</button>
+      <button class="btn btn-gold" data-auth="up" id="navCta" data-i="nv_signup">Sign up</button>
+      <button class="btn btn-ghost hide-m" data-auth="in" data-i="nv_signin">Sign in</button>
+      <a class="helplink hide-m" href="help.html" data-i="nv_help">Help</a>
+      <button class="icon-btn burger" id="burger" aria-label="Menü" aria-expanded="false" data-ic="menu"></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+  <a href="become-sitter.html" data-i="nv_sitter">Become a sitter</a>
+  <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+  <a href="about.html" data-i="ab_h">About</a>
+  <a href="#" data-auth="up" data-i="nv_signup">Sign up</a>
+  <a href="#" data-auth="in" data-i="nv_signin">Sign in</a>
+  <a href="help.html" data-i="nv_help">Help</a>
+</div>
+<main id="main">
+<section class="pagehead"><div class="wrap"><h1 data-i="ab_h"></h1><p data-i="ab_p"></p></div></section>
+<section class="mission" id="misyon">
+  <div class="wrap mis-grid">
+    <div>
+      <div class="kicker reveal" data-i="nav_mission">Misyonumuz</div>
+      <h2 class="reveal" data-i-html="mis_h">Her evcil hayvan <em>sevgiyle</em> bakılmayı hak eder.</h2>
+      <p class="sub reveal" data-i="mis_s">Pawcation'ı, seyahat eden herkesin "Peki ya patim?" kaygısını ortadan kaldırmak, bakıcılara ise sevdikleri işten adil kazanç sağlamak için kuruyoruz. Kafes ve otel yerine, gerçek bir ev ve gerçek bir ilgi.</p>
+      <div class="values">
+        <div class="val reveal" style="--d:.05s"><span class="ic" data-ic="heart"></span><div><b data-i="v1h">Önce güven</b><span data-i="v1p">Kimlik doğrulama, tanışma görüşmesi, günlük rapor ve olay bildirimi sürecin parçası.</span></div></div>
+        <div class="val reveal" style="--d:.12s"><span class="ic" data-ic="home"></span><div><b data-i="v2h">Evde, ailenin bir parçası gibi</b><span data-i="v2p">Dostun stresli bir kafes yerine sıcak bir ev ortamında kalır.</span></div></div>
+        <div class="val reveal" style="--d:.19s"><span class="ic" data-ic="coin"></span><div><b data-i="v3h">Şeffaf ve adil fiyat</b><span data-i="v3p">Komisyon ve net kazanç baştan görünür. Sürpriz ücret yok.</span></div></div>
+      </div>
+    </div>
+    <div class="counters reveal">
+      <div class="cnt"><b data-count="3">0</b><span data-i="c1">hesap türü: sahip, bakıcı, eğitmen</span></div>
+      <div class="cnt"><b data-count="3">0</b><span data-i="c2">ödeme yöntemi: kart, Troy, havale</span></div>
+      <div class="cnt"><b data-count="3">0</b><span data-i="c3">iptal politikası: esnek, orta, katı</span></div>
+      <div class="cnt"><b data-count="6">0</b><span data-i="c4">güven özelliği: kimlik, emanet, rapor ve daha fazlası</span></div>
+    </div>
+  </div>
+</section>
+<section id="guven">
+  <div class="wrap">
+    <div class="head center reveal"><div class="kicker" data-i="nav_trust">Güven</div><h2 data-i="tr_h">Güvenin her adımına bir önlem</h2><p class="sub" data-i="tr_s">İçin rahat etsin diye süreci baştan sona koruyan özellikler.</p></div>
+    <div class="feat" id="feat"></div>
+  </div>
+</section>
+<section class="protect" id="emanet">
+  <div class="wrap pt-grid">
+    <div class="reveal">
+      <div class="kicker" data-i="pr_k">Emanet (escrow) mantığı</div>
+      <h2 data-i="pr_h">Paran, her şey yolunda gidene kadar güvende</h2>
+      <p class="sub" data-i="pr_s">Ödemeyi yaptığında para bakıcıya hemen geçmez; platformda tutulur. Konaklama tamamlanınca bakıcıya aktarılır. İptal durumunda seçilen politikaya göre iade otomatik hesaplanır.</p>
+      <p class="fine" data-i="pr_f">Not: Oranlar ve süreler örnek değerlerdir; canlıda ödeme kuruluşunun pazaryeri altyapısıyla çalışır.</p>
+    </div>
+    <div class="timeline reveal" id="timeline">
+      <div class="tl"><b data-i="t1h">Rezervasyon ve ödeme</b><span data-i="t1p">Kart, Troy ya da havale ile ödersin. Tutar emanete alınır.</span></div>
+      <div class="tl"><b data-i="t2h">Konaklama başlar</b><span data-i="t2p">Günlük fotoğraf raporları ve mesajlarla evcil dostunu takip edersin.</span></div>
+      <div class="tl"><b data-i="t3h">Teslim ve onay</b><span data-i="t3p">Dostun sağ salim sana döner, konaklama tamamlanır.</span></div>
+      <div class="tl"><b data-i="t4h">Ödeme serbest kalır</b><span data-i="t4p">Komisyon düşülür, net kazanç bakıcıya geçer. Makbuz indirilebilir.</span></div>
+    </div>
+  </div>
+</section>
+<section id="toplulugumuz">
+  <div class="wrap">
+    <div class="head center reveal"><div class="kicker" data-i="nav_roles">Kimler için</div><h2 data-i="ro_h">Pawcation'a nasıl katılırsın?</h2><p class="sub" data-i="ro_s">Üç farklı rol, tek bir hesap. Dilediğin zaman rol değiştirebilirsin.</p></div>
+    <div class="roles">
+      <div class="role r1 reveal" style="--d:.05s"><div class="ic" data-ic="paw"></div><h3 data-i="r1h">Evcil hayvan sahibi</h3><p data-i="r1p">Seyahate çıkıyorsun ve dostuna bakacak güvenilir birini arıyorsun.</p><ul><li><i data-ic="check" data-s="15"></i><span data-i="r1a">Harita ve filtrelerle bakıcı ara</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r1b">Sağlık kartı, hatırlatmalar, promosyon kodları</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r1c">Günlük rapor ve mesajlaşma</span></li></ul><button class="btn" data-auth="up" data-role="owner" data-i="r1btn">Bakıcı arıyorum</button></div>
+      <div class="role r2 reveal" style="--d:.15s"><div class="ic" data-ic="home"></div><h3 data-i="r2h">Bakıcı</h3><p data-i="r2p">Evini aç, sevdiğin işi yap ve düzenli kazanç elde et.</p><ul><li><i data-ic="check" data-s="15"></i><span data-i="r2a">Kendi fiyatın, kendi takvimin</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r2b">Süper bakıcı rozeti ve paylaşılabilir profil</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r2c">Aylık kazanç dökümü, net kazanç gösterimi</span></li></ul><button class="btn" data-auth="up" data-role="sitter" data-i="r2btn">Bakıcı olmak istiyorum</button></div>
+      <div class="role r3 reveal" style="--d:.25s"><div class="ic" data-ic="cert"></div><h3 data-i="r3h">Eğitmen</h3><p data-i="r3p">Eğitim seansları ver, ihtiyacı olan sahiplerle eşleş.</p><ul><li><i data-ic="check" data-s="15"></i><span data-i="r3a">Sertifikalarını profilinde göster</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r3b">Tek seans ya da paket sat</span></li><li><i data-ic="check" data-s="15"></i><span data-i="r3c">Randevu ve ödemeler tek ekranda</span></li></ul><button class="btn" data-auth="up" data-role="trainer" data-i="r3btn">Eğitmen olarak katıl</button></div>
+    </div>
+  </div>
+</section>
+<section id="kazanc" style="padding-top:20px">
+  <div class="wrap calc-wrap">
+    <div class="reveal">
+      <div class="kicker" data-i="nav_earn">Kazanç</div>
+      <h2 data-i="ea_h">Sevdiğin işten ne kadar kazanırsın?</h2>
+      <ul class="checks"><li><i data-ic="check" data-s="20"></i><span data-i="ea1">Gecelik fiyatı sen belirlersin; hafta sonu ve tatil için farklı fiyat girebilirsin.</span></li><li><i data-ic="check" data-s="20"></i><span data-i="ea2">Komisyon açıkça gösterilir, net kazancın her zaman görünür.</span></li><li><i data-ic="check" data-s="20"></i><span data-i="ea3">Ödeme konaklama bitince serbest kalır; aylık döküm indirebilirsin.</span></li></ul>
+      <button class="btn btn-moss btn-lg" data-auth="up" data-role="sitter" data-i="ea_btn">Bakıcı olarak başla</button>
+    </div>
+    <div class="calc reveal" style="--d:.1s">
+      <label for="nights"><span data-i="ca_n">Gece sayısı</span><output id="nOut">7</output></label>
+      <input type="range" id="nights" min="1" max="30" value="7">
+      <label for="price"><span data-i="ca_p">Gecelik fiyat</span><output id="pOut">₺600</output></label>
+      <input type="range" id="price" min="250" max="1500" step="50" value="600">
+      <div class="res" aria-live="polite">
+        <div><span data-i="ca_g">Toplam tutar</span><span id="rG">₺4.200</span></div>
+        <div><span data-i="ca_c">Platform komisyonu (%15)</span><span id="rC">−₺630</span></div>
+        <div class="net"><span data-i="ca_net">Net kazancın</span><b id="rN">₺3.570</b></div>
+      </div>
+      <p class="fine" data-i="ca_f">Örnek hesaplama; komisyon oranı demo değeridir ve değişebilir.</p>
+    </div>
+  </div>
+</section>
+<section style="padding:20px 0 90px">
+  <div class="cta reveal">
+    <div class="trail" aria-hidden="true"><span class="paw" style="left:6%;top:14%;--r:-18deg" data-ic="paw" data-s="120"></span><span class="paw" style="right:7%;bottom:12%;--r:20deg" data-ic="paw" data-s="120"></span></div>
+    <h2 data-i="cta_h">Dostun için en iyi yuvayı birlikte bulalım</h2>
+    <p data-i="cta_p">Hesabını bir dakikada oluştur; bakıcıları incelemeye hemen başla.</p>
+    <div class="row"><button class="btn btn-gold btn-lg" data-auth="up" data-i="signup">Hesap oluştur</button><button class="btn btn-ghost btn-lg" data-auth="in" data-i="login">Giriş yap</button></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><a class="brand" href="index.html" style="color:var(--ink);padding:0"><span class="mk" data-ic="paw"></span>Pawcation</a><p style="margin-top:14px;max-width:280px" data-i="ft_t">Evden uzakta bir yuva. Türkiye'de evcil hayvan sahipleri, bakıcılar ve eğitmenler için.</p></div>
+      <div><h4 data-i="ft1">Keşfet</h4><a href="index.html#nasil" data-i="nav_how">Nasıl çalışır</a><a href="about.html#misyon" data-i="nav_mission">Misyonumuz</a><a href="about.html#guven" data-i="nav_trust">Güven</a></div>
+      <div><h4 data-i="ft2">Katıl</h4><a href="#" data-auth="up" data-role="owner" data-i="r1h">Evcil hayvan sahibi</a><a href="become-sitter.html" data-i="r2h">Bakıcı</a><a href="become-trainer.html" data-i="r3h">Eğitmen</a></div>
+      <div><h4 data-i="ft3">Yasal</h4><button class="lnk" data-legal="privacy" data-i="lg_p">Gizlilik ve KVKK</button><button class="lnk" data-legal="terms" data-i="lg_t">Kullanım koşulları</button><button class="lnk" data-legal="contact" data-i="lg_c">İletişim</button></div>
+    </div>
+    <div class="copy"><span>© 2026 Pawcation</span><span data-i="ft_d">Bu sayfa ve uygulama bir demodur; gerçek ödeme ya da kimlik doğrulama yapılmaz.</span></div>
+  </div>
+</footer>
+<!-- AUTH MODAL -->
+<div class="ov" id="authOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle" id="authModal">
+    <div class="m-top">
+      <button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button>
+      <div class="brand"><span class="mk" data-ic="paw"></span>Pawcation</div>
+      <h3 id="authTitle"></h3><p id="authSub"></p>
+    </div>
+    <div class="m-body" id="authBody"></div>
+  </div>
+</div>
+<div class="ov" id="legalOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <div class="m-top"><button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button><h3 id="legalTitle"></h3></div>
+    <div class="legal-body" id="legalBody" style="padding-top:20px"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+<script src="site.js"></script>
+</body>
+</html>

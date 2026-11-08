@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A2B">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  if(q.get('sitter')){ location.replace('app.html'+location.search); return; }
+  var P={theme:'auto'};
+  try{ var r=JSON.parse(localStorage.getItem('pawcation.prefs')||'{}'); if(r.theme) P.theme=r.theme; if(r.motion) document.documentElement.dataset.motion='reduce'; }catch(e){}
+  document.documentElement.dataset.theme=P.theme;
+})();
+</script>
+<link rel="stylesheet" href="site.css">
+<meta name="description" content="Pawcation ile evcil hayvanlara bakarak para kazan.">
+<title>Pawcation — Bakıcı ol</title>
+</head>
+<body data-title-tr="Pawcation — Bakıcı ol" data-title-en="Pawcation — Become a sitter">
+<a class="skip" href="#main" data-i="skip">Ana içeriğe geç</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav always" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Pawcation"><span class="mk" data-ic="paw"></span><span class="t">Pawcation</span></a>
+    <nav class="nav-links nav-left" aria-label="Ana menü" id="navLinks">
+      <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+      <a href="become-sitter.html" aria-current="page" data-i="nv_sitter">Become a sitter</a>
+      <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Tema" data-ic="moon"></button>
+      <button class="chip" id="langBtn" aria-label="Dil / Language">EN</button>
+      <button class="btn btn-gold" data-auth="up" id="navCta" data-i="nv_signup">Sign up</button>
+      <button class="btn btn-ghost hide-m" data-auth="in" data-i="nv_signin">Sign in</button>
+      <a class="helplink hide-m" href="help.html" data-i="nv_help">Help</a>
+      <button class="icon-btn burger" id="burger" aria-label="Menü" aria-expanded="false" data-ic="menu"></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#search" data-nav="search" data-i="nv_search">Search for a sitter</a>
+  <a href="become-sitter.html" data-i="nv_sitter">Become a sitter</a>
+  <a href="become-trainer.html" data-i="nv_trainer">Become a trainer</a>
+  <a href="about.html" data-i="ab_h">About</a>
+  <a href="#" data-auth="up" data-i="nv_signup">Sign up</a>
+  <a href="#" data-auth="in" data-i="nv_signin">Sign in</a>
+  <a href="help.html" data-i="nv_help">Help</a>
+</div>
+<main id="main">
+<section class="bshero">
+  <img class="bshero-img" src="img/sitter-hero.jpg" alt="" width="1600" height="700" fetchpriority="high" onerror="this.onerror=null;this.src='img/sitter-hero.svg'">
+  <div class="bshero-scrim" aria-hidden="true"></div>
+  <div class="wrap bshero-in"><h1 data-i="bs_h1"></h1><p data-i="bs_sub"></p></div>
+</section>
+<section class="bscols"><div class="wrap bscols-in">
+  <div class="bscol reveal"><h2 data-i="bs_c1h"></h2><ul class="cklist"><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c1a"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c1b"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c1c"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c1d"></span></li></ul></div>
+  <div class="bscol reveal"><h2 data-i="bs_c2h"></h2><ul class="cklist"><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c2a"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c2b"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c2c"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c2d"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_c2e"></span></li></ul></div>
+</div></section>
+<section class="bsphotos">
+  <figure class="bsfig"><img src="img/sitter-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='img/sitter-2.svg'"><figcaption class="bsq"><span class="samp" data-i="bs_sample"></span><blockquote data-i="bs_q1"></blockquote><cite data-i="bs_qn1"></cite></figcaption></figure>
+  <figure class="bsfig"><img src="img/sitter-3.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='img/sitter-3.svg'"><figcaption class="bsq"><span class="samp" data-i="bs_sample"></span><blockquote data-i="bs_q2"></blockquote><cite data-i="bs_qn2"></cite></figcaption></figure>
+</section>
+<section class="bshow"><div class="wrap">
+  <h2 data-i="bs_how"></h2>
+  <ol class="bssteps">
+    <li><span class="n">1</span><h3 data-i="bs_s1"></h3><p data-i="bs_s1p"></p></li>
+    <li><span class="n">2</span><h3 data-i="bs_s2"></h3><p data-i="bs_s2p"></p></li>
+    <li><span class="n">3</span><h3 data-i="bs_s3"></h3><p data-i="bs_s3p"></p></li>
+  </ol>
+  <div class="center"><button class="btn btn-gold btn-lg" data-auth="up" data-role="sitter" data-i="bs_go"></button></div>
+</div></section>
+<section class="bsinfo"><div class="wrap bsinfo-in">
+  <div class="bsl"><h2 data-i="bs_sv"></h2>
+    <div class="srv"><span class="sic" data-ic="home" data-s="30"></span><div><h3><span data-i="bs_sv1"></span><span class="badge" data-i="bs_pop"></span></h3><p data-i="bs_sv1p"></p></div></div><div class="srv"><span class="sic" data-ic="paw" data-s="30"></span><div><h3><span data-i="bs_sv2"></span></h3><p data-i="bs_sv2p"></p></div></div><div class="srv"><span class="sic" data-ic="sun" data-s="30"></span><div><h3><span data-i="bs_sv3"></span><span class="badge" data-i="bs_soon"></span></h3><p data-i="bs_sv3p"></p></div></div><div class="srv"><span class="sic" data-ic="key" data-s="30"></span><div><h3><span data-i="bs_sv4"></span></h3><p data-i="bs_sv4p"></p></div></div><div class="srv"><span class="sic" data-ic="cert" data-s="30"></span><div><h3><span data-i="bs_sv5"></span></h3><p data-i="bs_sv5p"></p><a class="trl" href="become-trainer.html" data-i="bs_sv5l"></a></div></div>
+  </div>
+  <div class="bsr"><h2 data-i="bs_sf"></h2><p class="lead2" data-i="bs_sfp"></p><ul class="cklist"><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_sf1"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_sf2"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_sf3"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_sf4"></span></li><li><span class="ck" data-ic="check" data-s="18"></span><span data-i="bs_sf5"></span></li></ul></div>
+</div>
+<div class="bsend wrap"><h2 data-i="bs_end"></h2><button class="btn btn-gold btn-lg" data-auth="up" data-role="sitter" data-i="bs_end_b"></button></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><a class="brand" href="index.html" style="color:var(--ink);padding:0"><span class="mk" data-ic="paw"></span>Pawcation</a><p style="margin-top:14px;max-width:280px" data-i="ft_t">Evden uzakta bir yuva. Türkiye'de evcil hayvan sahipleri, bakıcılar ve eğitmenler için.</p></div>
+      <div><h4 data-i="ft1">Keşfet</h4><a href="index.html#nasil" data-i="nav_how">Nasıl çalışır</a><a href="about.html#misyon" data-i="nav_mission">Misyonumuz</a><a href="about.html#guven" data-i="nav_trust">Güven</a></div>
+      <div><h4 data-i="ft2">Katıl</h4><a href="#" data-auth="up" data-role="owner" data-i="r1h">Evcil hayvan sahibi</a><a href="become-sitter.html" data-i="r2h">Bakıcı</a><a href="become-trainer.html" data-i="r3h">Eğitmen</a></div>
+      <div><h4 data-i="ft3">Yasal</h4><button class="lnk" data-legal="privacy" data-i="lg_p">Gizlilik ve KVKK</button><button class="lnk" data-legal="terms" data-i="lg_t">Kullanım koşulları</button><button class="lnk" data-legal="contact" data-i="lg_c">İletişim</button></div>
+    </div>
+    <div class="copy"><span>© 2026 Pawcation</span><span data-i="ft_d">Bu sayfa ve uygulama bir demodur; gerçek ödeme ya da kimlik doğrulama yapılmaz.</span></div>
+  </div>
+</footer>
+<!-- AUTH MODAL -->
+<div class="ov" id="authOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle" id="authModal">
+    <div class="m-top">
+      <button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button>
+      <div class="brand"><span class="mk" data-ic="paw"></span>Pawcation</div>
+      <h3 id="authTitle"></h3><p id="authSub"></p>
+    </div>
+    <div class="m-body" id="authBody"></div>
+  </div>
+</div>
+<div class="ov" id="legalOv" role="presentation">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <div class="m-top"><button class="m-x" data-close aria-label="Kapat" data-ic="x" data-s="18"></button><h3 id="legalTitle"></h3></div>
+    <div class="legal-body" id="legalBody" style="padding-top:20px"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+<script src="site.js"></script>
+</body>
+</html>

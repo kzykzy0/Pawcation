@@ -3339,6 +3339,7 @@ function filteredSitters(){
   let list = SITTERS.map(s => ({ s, dist: u ? distKm(u.lat,u.lng,s.lat,s.lng) : null }));
   list = list.filter(({s,dist}) => {
     if(state.filter!=='All' && !s.pets.includes(state.filter)) return false;
+    if(f.svc && !(s.services && s.services[f.svc])) return false;
     if(words.length){ const h = sitterHaystack(s); if(!words.every(w=>h.includes(w))) return false; }
     if(f.area!=='All' && s.area!==f.area) return false;
     if(f.maxPrice<700 && parsePrice(s.price)>f.maxPrice) return false;
@@ -3670,8 +3671,18 @@ function screenBrowse(){
     <div class="chiprow">
       ${cats.map(c=>`<div class="chip ${state.filter===c?'active':''}" data-action="filter-${c}">${c}</div>`).join('')}
     </div>
+    ${(mode==='owner' && (f.svc||state.homeNote||state.homeAddr)) ? homeSearchChipHTML() : ''}
     <div class="resultsmeta" id="results-meta">${v.meta}</div>
     <div id="results">${v.body}</div>
+  </div>`;
+}
+function homeSearchChipHTML(){
+  const tr = state.lang==='tr', f = state.search;
+  const names = { walk: tr?'Gezdirme':'Dog walking', visit: tr?'Ev ziyareti':'Drop-in visit' };
+  const addr = state.homeAddr ? ` · ${escAttr(state.homeAddr)}` : '';
+  return `<div class="card" style="padding:12px 14px;margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    ${f.svc ? `<span class="tag">${names[f.svc]}${addr}</span><span class="clearq" style="position:static" role="button" tabindex="0" aria-label="${tr?'Filtreyi kaldır':'Clear filter'}" data-action="home-svc-clear">×</span>` : (addr?`<span class="tag">${addr.slice(3)}</span>`:'')}
+    ${state.homeNote ? `<span style="font-size:13px;color:var(--text2)">${state.homeNote}</span>` : ''}
   </div>`;
 }
 function screenBrowseOwner(){ return screenBrowse(); }
@@ -5543,6 +5554,7 @@ document.addEventListener('click', (e) => {
 
   /* ---- search / filter / map ---- */
   if(action==='search-clear'){ state.search.q=''; render(); return; }
+  if(action==='home-svc-clear'){ state.search = {...state.search, svc:''}; state.homeNote=''; render(); return; }
   if(action==='flt-toggle'){ state.search.panel = !state.search.panel; render(); return; }
   if(action==='view-list'){ state.search.view='list'; render(); return; }
   if(action==='view-map'){ state.search.view='map'; render(); return; }
@@ -7331,6 +7343,19 @@ loadGrowthState();
 (function(){ try{
   const ss = JSON.parse(localStorage.getItem('pawcation.session')||'null');
   if(ss && ['owner','sitter','trainer'].includes(ss.role) && !readDeepLink() && !backendActive()){ state.onboarded = true; state.mode = ss.role; state.screen = 'browse'; }
+}catch(e){} })();
+/* arriving from the website's search box: ?demo=1&svc=walk&addr=... */
+(function(){ try{
+  const q = new URLSearchParams(location.search), svc = q.get('svc'), addr = (q.get('addr')||'').trim();
+  if(!svc && !addr) return;
+  if(!state.onboarded){ state.onboarded = true; state.mode = 'owner'; }
+  if(state.mode!=='owner') state.mode = 'owner';
+  state.screen = 'browse';
+  const tr = state.lang==='tr';
+  if(addr) state.homeAddr = addr.slice(0,80);
+  if(svc==='walk' || svc==='visit') state.search = {...state.search, svc};
+  else if(svc==='housesitting' || svc==='daycare') state.homeNote = tr ? 'Bu hizmet yakında. Şimdilik konaklama sunan bakıcılar gösteriliyor.' : 'This service is coming soon. Showing sitters who offer boarding for now.';
+  else if(svc==='training') state.homeNote = tr ? 'Eğitmen arama yakında. Şimdilik bakıcılar gösteriliyor.' : 'Trainer search is coming soon. Showing sitters for now.';
 }catch(e){} })();
 (function(){
   const dl = readDeepLink(); if(!dl) return;

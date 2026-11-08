@@ -73,3 +73,22 @@ Profil ve puanlar, hayvanlar (sağlık kartı + fotoğraf → Storage), rezervas
 
 ## Tur 12 – Ürün genişletme
 Tekrarlayan rezervasyon (haftalık yürüyüş/ziyaret serileri, seans atlama/iade), gün içi hizmetler (gezdirme, evde bakım), bakıcı için haftalık müsaitlik + tatil dönemleri, mesajlaşmada hazır yanıt / çeviri / sesli mesaj, Almanca ve Rusça (beta sözlük, eksik metin İngilizce kalır), Pawcation Plus aboneliği ve bakıcı için "Öne çıkar" (hepsi demo/simülasyon). Çeviri demo ifade sözlüğüdür; gerçek çeviri için config'te `translateUrl` tanımlayın.
+
+## Tur 13 – Çok sayfalı site
+- `index.html` ana sayfa (hayvanlı banner, hizmet butonları, adres + Search), `about.html` (misyon, güven, kazanç), `help.html` (SSS, iletişim), `app.html` uygulama.
+- Ortak dosyalar: `site.css`, `site.js`, `img/hero.svg` (banner çizimi).
+- Üst menü: Search for a sitter / Become a sitter / Become a trainer; sağda Sign up, Sign in, Help.
+- Search: seçilen hizmet ve adres uygulamaya `?svc=&addr=` ile taşınır (Gezdirme ve Ev ziyareti filtreler; diğerleri "yakında" notu gösterir).
+
+## Tur 14 – Bakıcı ol sayfası
+`become-sitter.html`: banner, iki sütun, iki fotoğraf + örnek yorum, 3 adımlı "How it works", hizmetler/güvenlik. Fotoğraflar şimdilik çizim (`img/sitter-hero.svg`, `sitter-2.svg`, `sitter-3.svg`). Gerçek fotoğraf için aynı adlarla `img/sitter-hero.jpg`, `img/sitter-2.jpg`, `img/sitter-3.jpg` koyun; otomatik onlar kullanılır. Yorumlar "örnek" etiketlidir; gerçek bakıcı yorumları gelince değiştirin.
+
+## Tur 14 – Bakıcı ol sayfası
+`become-sitter.html`: üstte fotoğraf + başlık, iki sütun, iki fotoğraf + örnek alıntı, "How it works", hizmetler/güvenlik.
+**Gerçek fotoğraf için:** telifsiz (Unsplash/Pexels) veya kendi fotoğraflarını `img/` klasörüne şu adlarla koy: `sitter-hero.jpg`, `sitter-2.jpg`, `sitter-3.jpg`. Sayfa .jpg varsa onu, yoksa çizimi (.svg) gösterir. Alıntılar örnektir; gerçek bakıcı yorumlarıyla değiştir.
+
+## Tur 15 – Gerçek fotoğraflar
+`img/home-hero.jpg` (ana sayfa banner), `img/sitter-2.jpg` ve `img/sitter-3.jpg` (Bakıcı ol sayfası, yan yana iki fotoğraf). Fotoğraflar Pexels'tan; lisans ve fotoğrafçı bilgisini Pexels sayfalarından kontrol et. Alıntılar örnektir.
+
+## Tur 16 – Eğitmen ol sayfası
+`become-trainer.html` (bakıcı sayfasıyla aynı düzen). Fotoğraflar: `img/trainer-hero.jpg`, `trainer-2.jpg`, `trainer-3.jpg` (Pexels). Üst menüdeki "Become a trainer" artık bu sayfaya gider.

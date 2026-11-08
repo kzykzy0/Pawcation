@@ -1,6 +1,6 @@
 /* Pawcation service worker — offline app shell + runtime caching */
-const VERSION = 'pawcation-v13';
-const SHELL = ['./', './index.html', './app.html', './manifest.webmanifest', './config.js',
+const VERSION = 'pawcation-v18';
+const SHELL = ['./', './index.html', './about.html', './help.html', './become-sitter.html', './become-trainer.html', './img/trainer-hero.jpg', './img/trainer-2.jpg', './img/trainer-3.jpg', './site.css', './site.js', './img/hero.svg', './img/sitter-hero.jpg', './img/home-hero.jpg', './img/sitter-2.jpg', './img/sitter-3.jpg', './img/sitter-hero.svg', './img/sitter-hero.jpg', './img/sitter-1.svg', './img/sitter-2.svg', './img/sitter-3.svg', './become-sitter.html', './img/sitter-hero.svg', './img/sitter-2.svg', './img/sitter-3.svg', './app.html', './manifest.webmanifest', './config.js',
   './vendor/leaflet.js', './vendor/leaflet.css', './vendor/supabase.js', './vendor/qrcode.js',
   './vendor/images/marker-icon.png', './vendor/images/layers.png',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
