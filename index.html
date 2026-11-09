@@ -19,7 +19,7 @@
   document.documentElement.dataset.theme=P.theme;
 })();
 </script>
-<link rel="stylesheet" href="site.css?v=27">
+<link rel="stylesheet" href="site.css?v=26">
 <meta name="description" content="Pawcation: evcil hayvanını güvenle emanet edebileceğin, doğrulanmış bakıcı ve eğitmen pazaryeri.">
 <title>Pawcation — Evden uzakta bir yuva</title>
 </head>
@@ -77,7 +77,9 @@
 .mtstep h3{font-family:'Inter',sans-serif; font-size:22px; font-weight:700; letter-spacing:0; margin-top:26px;}
 .mtstep p{margin:10px auto 0; max-width:340px; color:var(--ink-soft); font-size:17px; line-height:1.6;}
 .mblob{position:relative; width:min(230px,60vw); aspect-ratio:1; margin:30px auto 0;}
-.mcircle{position:absolute; inset:0; border-radius:50%; background:var(--moss); overflow:hidden; box-shadow:0 18px 34px -20px rgba(30,58,43,.7);}
+.mblob::before{content:''; position:absolute; inset:0; border-radius:50%; box-shadow:0 18px 34px -20px rgba(30,58,43,.7);}
+.mcircle{position:absolute; inset:0; border-radius:50%; background:var(--moss); overflow:hidden; -webkit-clip-path:circle(50% at 50% 50%); clip-path:circle(50% at 50% 50%); isolation:isolate; transform:translateZ(0);}
+.mblob .pin{filter:none;}
 .mblob img{position:absolute; max-width:none; height:auto; display:block; pointer-events:none; user-select:none; filter:drop-shadow(0 6px 10px rgba(0,0,0,.18));}
 .mpop img{filter:none !important;}
 .mpop{position:absolute; inset:0; clip-path:inset(-100% -100% 50% -100%);}
@@ -148,6 +150,6 @@ html[data-theme=dark] .mcircle{background:#4F7256;}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 
-<script src="site.js?v=27"></script>
+<script src="site.js?v=26"></script>
 </body>
 </html>
