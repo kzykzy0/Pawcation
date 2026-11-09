@@ -92,3 +92,9 @@ Tekrarlayan rezervasyon (haftalık yürüyüş/ziyaret serileri, seans atlama/ia
 
 ## Tur 16 – Eğitmen ol sayfası
 `become-trainer.html` (bakıcı sayfasıyla aynı düzen). Fotoğraflar: `img/trainer-hero.jpg`, `trainer-2.jpg`, `trainer-3.jpg` (Pexels). Üst menüdeki "Become a trainer" artık bu sayfaya gider.
+
+## Tur 17 – Ana sayfa "Search / Meet / Book" bölümü
+Ana sayfadaki "nasıl çalışır" bölümü, daire/blob fotoğraflı üç adıma çevrildi (`img/meet-1..3.jpg`, mevcut fotoğraflardan kırpıldı).
+
+## Tur 18 – Şeffaf hayvan görselleri
+Ana sayfadaki üç adımlık bölümde yeşil daire + şeffaf arka planlı hayvanlar (`img/pet-1..3.png`). Biri daireden dışarı taşar.
